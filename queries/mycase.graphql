@@ -1,0 +1,27 @@
+query MyCaseQuery {
+	mycase {
+		data {
+			attributes {
+				title
+				slug
+				hero {
+					richText
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+					buttons {
+						label
+						href
+						newTab
+					}
+				}
+				sections
+			}
+		}
+	}
+}
