@@ -1,0 +1,68 @@
+query AboutQuery {
+	aboutPage {
+		data {
+			attributes {
+				title
+				slug
+				hero {
+					richText
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
+				cta {
+					richText
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
+				practiceAreaHeading
+				practiceAreaCards {
+					id
+					icon {
+						id
+						href
+						icon
+						newTab
+					}
+					richText
+				}
+				whyChooseUs {
+					richText
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
+				ourPhilosophyHeading
+				ourPhilosophyCards {
+					id
+					richText
+				}
+				contactSection {
+					richText
+					buttons {
+						id
+						label
+						href
+						newTab
+					}
+				}
+			}
+		}
+	}
+}
