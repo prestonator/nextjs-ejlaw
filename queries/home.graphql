@@ -1,0 +1,69 @@
+query HomeQuery {
+	home {
+		data {
+			attributes {
+				title
+				hero {
+					richText
+					buttons {
+						id
+						label
+						href
+						newTab
+					}
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
+				modal {
+					richText
+					buttons {
+						label
+						href
+						newTab
+					}
+				}
+				staffPreviewHeading
+				staffPreview(sort: "id:asc") {
+					id
+					richText
+					button {
+						label
+						href
+						newTab
+					}
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+					socialIcons(sort: "id:asc") {
+						id
+						icon
+						href
+						newTab
+					}
+				}
+				whyUsHeading
+				whyUsCards(sort: "id:asc") {
+					id
+					icon
+					richText
+					button {
+						label
+						href
+						newTab
+					}
+				}
+			}
+		}
+	}
+}
