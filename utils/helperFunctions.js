@@ -9,9 +9,25 @@ export const SafeImage = (imageData, styles) => {
 	const alt = imageData?.attributes?.alternativeText ?? "";
 
 	return (
-		<Image src={strapiMediaEndpoint + url} alt={alt} width={100} height={100} className={styles} />
+		<Image
+			src={strapiMediaEndpoint + url}
+			alt={alt}
+			width={100}
+			height={100}
+			className={styles}
+		/>
 	);
 };
+
+export const SafeImageUrl = (imageData) => {
+	const strapiMediaEndpoint = process.env.STRAPI_MEDIA_ENDPOINT;
+	const url = encodeURI(imageData?.attributes?.url) ?? "";
+
+	const full_url = strapiMediaEndpoint + url;
+
+	return full_url
+};
+
 
 export const SafeHtml = (html) => {
 	const cleanedHtml = sanitize(html);

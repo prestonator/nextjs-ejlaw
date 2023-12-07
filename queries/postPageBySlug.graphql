@@ -1,0 +1,10 @@
+query NewsBlogBySlug {
+	newsBlogPages {
+		data {
+			attributes {
+				title
+				slug
+			}
+		}
+	}
+}
