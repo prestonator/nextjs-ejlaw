@@ -1,0 +1,17 @@
+query RootLayoutQuery {
+	rootLayout {
+		data {
+			attributes {
+				navMenu
+				logo {
+					data {
+						attributes {
+							url
+							name
+						}
+					}
+				}
+			}
+		}
+	}
+}
