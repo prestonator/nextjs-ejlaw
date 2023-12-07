@@ -15,7 +15,7 @@ const getPage = async (slug) => {
 		const { data } = await fetchData(NewsBlogPages.loc.source.body, {
 			filters: {
 				slug: {
-					containsi: slug,
+					eq: slug,
 				},
 			},
 		});

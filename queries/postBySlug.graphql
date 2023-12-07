@@ -1,0 +1,17 @@
+query PostBySlug {
+	newsBlogPosts {
+		data {
+			attributes {
+				title
+				slug
+				news_blog_page {
+					data {
+						attributes {
+							slug
+						}
+					}
+				}
+			}
+		}
+	}
+}
