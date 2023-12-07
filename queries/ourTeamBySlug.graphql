@@ -1,0 +1,9 @@
+query OurTeamsBySlug {
+	ourTeams {
+		data {
+			attributes {
+				slug
+			}
+		}
+	}
+}
