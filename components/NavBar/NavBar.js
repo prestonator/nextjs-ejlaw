@@ -1,9 +1,10 @@
-import NavItem from "./parts/NavItem";
-import styles from "./Nav.module.css";
+import NavItem from "./parts/navItem";
+import styles from "@/components/Navbar/navBar.module.css";
 import Link from "next/link";
 import { SafeImage } from "@/utils/helperFunctions";
+import Image from "next/image";
 
-async function Navbar({ navItems, logo }) {
+async function NavBar({ navItems, logo }) {
 	const ourTeam = navItems.menuItems[1].children;
 	const practiceAreas = navItems.menuItems[2].children;
 	return (
@@ -46,10 +47,15 @@ function Logo({ url, logo }) {
 	return (
 		<li className={`${styles.navItem} ${styles.logoItem}`}>
 			<Link href={url} className={styles.logoWrapper}>
-				{SafeImage(logo, styles.image)}
+				<Image
+					src={process.env.STRAPI_MEDIA_ENDPOINT + logo.attributes.url}
+					alt={logo.attributes.name}
+					className={styles.image}
+					fill
+				/>
 			</Link>
 		</li>
 	);
 }
 
-export default Navbar;
+export default NavBar;
