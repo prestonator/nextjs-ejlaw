@@ -37,19 +37,24 @@ export async function generateStaticParams() {
 
 const Page = async ({ params }) => {
 	const { subservice } = params;
-	const { title, slug, hero, sections } =
-		(await getPage(subservice)) || {};
+	const { title, slug, hero, sections } = (await getPage(subservice)) || {};
 	return (
 		<main>
+			{/* Hero section */}
 			<section
+				className={styles.heroSection}
 				style={{
 					backgroundImage: `url(${SafeImageUrl(hero?.image?.data)})`,
 					backgroundSize: "cover",
 				}}
 			>
-				<div>{SafeHtml(hero?.richText)}</div>
+				<div className={styles.heroTextContainer}>
+					{SafeHtml(hero?.richText)}
+				</div>
 			</section>
-			<section>{SafeHtml(sections)}</section>
+			<section className={styles.infoSections}>
+				<div className={styles.infoSectionWrapper}>{SafeHtml(sections)}</div>
+			</section>
 		</main>
 	);
 };

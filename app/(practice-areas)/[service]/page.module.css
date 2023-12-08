@@ -1,0 +1,86 @@
+.heroSection {
+	padding-top: var(--size-15);
+	background-blend-mode: multiply;
+	background-color: var(--bg-overlay-dark);
+}
+
+.heroSection div {
+	display: flex;
+	flex-direction: column;
+	max-width: var(--size-60);
+	width: 100%;
+	padding-bottom: var(--size-25);
+	padding-left: var(--size-15);
+	padding-top: var(--size-10);
+	padding-right: var(--size-15);
+}
+
+.heroSection div h1 {
+	color: var(--color-white);
+	font: 700 var(--size-2-5) var(--font-fancy);
+	text-transform: uppercase;
+	word-wrap: break-word;
+}
+
+.heroSection div h2 {
+	color: var(--color-secondary);
+	font: 700 var(--size-1-5) var(--font-special);
+	text-transform: uppercase;
+}
+
+.heroSection div p {
+	color: var(--color-white);
+	font: 500 var(--size-1) / var(--size-2) var(--font-body);
+	letter-spacing: 1px;
+}
+
+.infoSections {
+	margin: auto;
+	padding-top: var(--size-5);
+	max-width: var(--size-160);
+}
+
+.flipCardSection {
+	margin: auto;
+	max-width: var(--size-200);
+	padding-top: var(--size-10);
+}  
+
+.infoSections h3 {
+	font-family: var(--font-fancy);
+	font-size: var(--size-3-5);
+	font-weight: 400;
+	line-height: 1.25;
+	text-align: center;
+}
+
+.infoSections h4 {
+	color: var(--color-secondary);
+	display: block;
+	font: 700 var(--size-1) var(--font-special);
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+	margin-top: var(--size-5);
+}  
+
+.infoSections hr {
+	border-color: var(--color-accent);
+	border-top-width: 2px;
+	margin: var(--size-1) auto var(--size-2-5);
+	width: var(--size-40);
+}
+
+.infoSections p {
+	color: var(--color-medium-gray);
+	font: 500 var(--size-1) / 2 var(--font-body);
+	margin-bottom: var(--size-2);
+}
+
+.flipCardSection {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--size-3-5);
+	justify-content: center;
+	padding-bottom: var(--size-20);
+}

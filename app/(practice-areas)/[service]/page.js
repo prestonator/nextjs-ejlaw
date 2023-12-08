@@ -41,17 +41,25 @@ const Page = async ({ params }) => {
 		(await getPage(params.service)) || {};
 	return (
 		<main>
+			{/* Hero section */}
 			<section
+				className={styles.heroSection}
 				style={{
 					backgroundImage: `url(${SafeImageUrl(hero?.image?.data)})`,
 					backgroundSize: "cover",
 				}}
 			>
-				<div>{SafeHtml(hero?.richText)}</div>
+				<div className={styles.heroTextContainer}>
+					{SafeHtml(hero?.richText)}
+				</div>
 			</section>
-			<section>{SafeHtml(sections)}</section>
+			{/* Information section */}
+			<section className={styles.infoSections}>
+				<div className={styles.infoSectionWrapper}>{SafeHtml(sections)}</div>
+			</section>
+			{/* Flip card section */}
 			{sub_practice_areas && (
-				<section>
+				<section className={styles.flipCardSection}>
 					{sub_practice_areas.data.map((card, cardIndex) => (
 						<ExpandCard
 							key={card.attributes.cardContent.id}
