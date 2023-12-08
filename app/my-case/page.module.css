@@ -1,0 +1,77 @@
+.main {
+	padding: var(--size-15) 0;
+}
+
+.heroSection {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	gap: var(--size-10);
+}
+
+.imageButtonWrapper {
+	width: var(--size-100);
+}
+
+.imageWrapper {
+	position: relative;
+	width: 100%;
+	height: var(--size-35);
+}
+
+.image {
+	object-fit: contain;
+}
+
+.buttonWrapper {
+	text-align: center;
+}
+
+.heroText {
+	width: var(--size-100);
+}
+
+.heroText h1 {
+	font: 600 var(--size-5) var(--font-fancy);
+}
+
+.heroText h2 {
+	color: var(--color-accent);
+	font: 700 var(--size-1-25) var(--font-special);
+}
+
+.heroText p,
+.contentWrapper p {
+	font: 400 var(--size-1) / 1.8 var(--font-body);
+}
+
+.heroText p:first-of-type,
+.contentWrapper p {
+	margin-bottom: var(--size-1-25);
+}
+
+.heroText hr {
+	border-top: 3px solid var(--color-black);
+	width: var(--size-10);
+	margin: var(--size-1-5) 0;
+}
+
+.contentSection {
+	max-width: var(--size-150);
+	margin: auto;
+	padding-top: var(--size-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-1-25);
+}
+
+.contentWrapper h3 {
+	font: 500 var(--size-2-5) var(--font-fancy);
+}
+
+.contentWrapper hr {
+	border-top: 2px solid var(--color-secondary);
+	width: var(--size-15);
+	margin: var(--size-0-75) 0;
+}

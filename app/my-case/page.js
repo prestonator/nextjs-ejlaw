@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { MyCaseQuery } from "@/queries/mycase.graphql";
+import Button from "@/components/Buttons/MainButton/Button";
 
 const getData = async () => {
 	const { data } = await fetchData(MyCaseQuery.loc.source.body);
@@ -12,18 +13,22 @@ const getData = async () => {
 const MyCasePage = async () => {
 	const { title, slug, hero, sections } = await getData();
 	return (
-		<main>
-			<section>
-				<div>
-					<div>{SafeImage(hero?.image?.data, styles.image)}</div>
-					<button>
-						<Link href={hero?.buttons[0]?.href}>{hero?.buttons[0]?.label}</Link>
-					</button>
+		<main className={styles.main}>
+			<section className={styles.heroSection}>
+				<div className={styles.imageButtonWrapper}>
+					<div className={styles.imageWrapper}>
+						{SafeImage(hero?.image?.data, styles.image)}
+					</div>
+					<div className={styles.buttonWrapper}>
+						<Button href={hero?.buttons[0]?.href}>
+							{hero?.buttons[0]?.label}
+						</Button>
+					</div>
 				</div>
-				<div>{SafeHtml(hero?.richText)}</div>
+				<div className={styles.heroText}>{SafeHtml(hero?.richText)}</div>
 			</section>
-			<section>
-				<div>{SafeHtml(sections)}</div>
+			<section className={styles.contentSection}>
+				<div className={styles.contentWrapper}>{SafeHtml(sections)}</div>
 			</section>
 		</main>
 	);
