@@ -1,0 +1,30 @@
+.iconCard {
+	display: flex;
+	flex-direction: column;
+	flex-basis: var(--size-40);
+	justify-content: flex-start;
+	align-items: center;
+	height: var(--size-20);
+}
+
+.iconCard .iconWrapper {
+	flex-basis: 25%;
+}
+
+.iconCard .iconWrapper svg {
+	width: var(--size-3-5);
+	height: var(--size-3-5);
+	color: var(--color-accent);
+}
+
+.iconCard h6 {
+    font: 400 var(--size-2) var(--font-special);
+    flex-basis: 25%;
+}
+
+.iconCard p {
+    color: var(--color-medium-gray);
+    flex-basis: var(--size-10);
+    text-align: center;
+    line-height: 1.8em;
+}

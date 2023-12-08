@@ -1,13 +1,46 @@
-import { SafeImage, SafeHtml, IconComponent } from "@/utils/helperFunctions";
+import {
+	SafeImage,
+	SafeHtml,
+	IconComponent,
+	SafeImageUrl,
+} from "@/utils/helperFunctions";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { AboutQuery } from "@/queries/about.graphql";
+import TextCard from "@/components/Cards/TextCard/TextCard";
+import IconCard from "@/components/Cards/IconCard/IconCard";
+import Button from "@/components/Buttons/MainButton/Button";
 
 const getData = async () => {
 	const { data } = await fetchData(AboutQuery.loc.source.body);
 	return data?.aboutPage?.data?.attributes;
 };
+
+// Use destructuring assignment
+const splitCardIntoRows = ({ practiceAreaCards }) => {
+	const midPoint = Math.ceil(practiceAreaCards.length / 2);
+	return [
+		practiceAreaCards.slice(0, midPoint),
+		practiceAreaCards.slice(midPoint),
+	];
+};
+
+const renderIconCard = (contentArr) => (
+	<>
+		{contentArr.map((item) => (
+			<IconCard key={item.id} content={item.richText} icon={item.icon} />
+		))}
+	</>
+);
+
+const renderTextCard = (contentArr) => (
+	<>
+		{contentArr.map((item) => (
+			<TextCard key={item.id} content={item.richText} />
+		))}
+	</>
+);
 
 const AboutPage = async () => {
 	const {
@@ -22,48 +55,61 @@ const AboutPage = async () => {
 		ourPhilosophyCards,
 		contactSection,
 	} = await getData();
+
+	const [firstRow, secondRow] = splitCardIntoRows({ practiceAreaCards });
 	return (
-		<main>
-			<section>
-				<div>{SafeImage(hero?.image?.data)}</div>
-				<div>{SafeHtml(hero?.richText)}</div>
+		<main className={styles.container}>
+			<section className={styles.hero}>
+				<div className={styles.imageWrapper}>
+					{SafeImage(hero?.image?.data, styles.image)}
+				</div>
+				<div className={styles.textContent}>{SafeHtml(hero?.richText)}</div>
 			</section>
-			<section>
-				<div>{SafeHtml(cta?.richText)}</div>
-				<div>{SafeImage(cta?.image?.data)}</div>
+			<section className={styles.callToAction}>
+				<div className={styles.textContent}>{SafeHtml(cta?.richText)}</div>
+				<div className={styles.imageWrapper}>
+					{SafeImage(cta?.image?.data, styles.image)}
+				</div>
 			</section>
-			<section>
-				<div>{SafeHtml(practiceAreaHeading)}</div>
-				{practiceAreaCards?.map((card) => (
-					<Link href={card?.icon?.href} key={card?.id}>
-						<div>
-							{IconComponent({
-								icon: card?.icon?.icon,
-								customClassName: styles.icon,
-							})}
-						</div>
-						<div>{SafeHtml(card?.richText)}</div>
-					</Link>
-				))}
+			<section className={styles.ourServices}>
+				<div className={styles.textContent}>
+					<h3>{SafeHtml(practiceAreaHeading)}</h3>
+					<hr />
+				</div>
+				<div className={styles.services}>{renderIconCard(firstRow)}</div>
+				<div className={styles.services}>{renderIconCard(secondRow)}</div>
 			</section>
-			<section>
-				<div>{SafeImage(whyChooseUs?.image?.data)}</div>
-				<div>{SafeHtml(whyChooseUs?.richText)}</div>
+			<section className={styles.whyChoose}>
+				<div
+					className={styles.image}
+					style={{
+						backgroundImage: `url(${SafeImageUrl(whyChooseUs?.image?.data)})`,
+						backgroundRepeat: "no-repeat",
+						backgroundSize: "cover",
+						backgroundPositionY: "calc(-1 * var(--size-10))",
+					}}
+				></div>
+				<div className={styles.textContent}>
+					{SafeHtml(whyChooseUs?.richText)}
+				</div>
 			</section>
-			<section>
-				<div>{SafeHtml(ourPhilosophyHeading)}</div>
-				{ourPhilosophyCards?.map((card) => (
-					<div key={card?.id}>{SafeHtml(card?.richText)}</div>
-				))}
+			<section className={styles.ourPhilosophy}>
+				<div className={styles.textContent}>
+					<h3>{SafeHtml(ourPhilosophyHeading)}</h3>
+					<hr />
+				</div>
+				<div className={styles.services}>
+					{renderTextCard(ourPhilosophyCards)}
+				</div>
 			</section>
-			<section>
-				<div>
-					<div>{SafeHtml(contactSection?.richText)}</div>
-					<button>
-						<Link href={contactSection?.buttons[0]?.href}>
-							{contactSection?.buttons[0]?.label}
-						</Link>
-					</button>
+			<section className={styles.contactDetails}>
+				<div className={styles.textContent}>
+					{SafeHtml(contactSection?.richText)}
+				</div>
+				<div className={styles.button}>
+					<Button href={contactSection?.buttons[0]?.href}>
+						{contactSection?.buttons[0]?.label}
+					</Button>
 				</div>
 			</section>
 		</main>

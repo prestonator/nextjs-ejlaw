@@ -1,0 +1,26 @@
+.textCard {
+	background: transparent;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	flex-basis: var(--size-40);
+}
+
+.textCard h6:nth-of-type(1) {
+	color: var(--color-black);
+	flex-basis: var(--size-5);
+	font: 500 var(--size-2-5) var(--font-special);
+}
+
+.textCard h6:nth-of-type(2) {
+	font: 500 var(--size-1-5) var(--font-special);
+	flex-basis: var(--size-2-5);
+}
+
+.textCard p {
+    text-align: left;
+    color: var(--color-medium-gray);
+    flex-basis: var(--size-25);
+    font: 500 var(--size-1)/2 var(--font-body);
+}
