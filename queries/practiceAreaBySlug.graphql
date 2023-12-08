@@ -1,0 +1,10 @@
+query PracticeAreaSlugs {
+	mainPracticeAreas {
+		data {
+			attributes {
+				title
+				slug
+			}
+		}
+	}
+}

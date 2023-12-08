@@ -15,7 +15,7 @@ const getPage = async (slug) => {
 		const { data } = await fetchData(NewsBlogPages.loc.source.body, {
 			filters: {
 				slug: {
-					eq: slug,
+					eq: "in-the-news",
 				},
 			},
 		});
@@ -49,7 +49,7 @@ const Page = async ({ params }) => {
 				<div>{SafeHtml(hero?.richText)}</div>
 			</section>
 			<section>
-				{news_blog_posts.data.map((post) => (
+				{news_blog_posts?.data?.map((post) => (
 					<Link href={`${slug}/${post.attributes.slug}`} key={post.id}>
 						<div>{SafeImage(post.attributes.image.data, styles.image)}</div>
 						<div>
