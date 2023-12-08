@@ -9,12 +9,7 @@ export const SafeImage = (imageData, styles) => {
 	const alt = imageData?.attributes?.alternativeText ?? "";
 
 	return (
-		<Image
-			src={strapiMediaEndpoint + url}
-			alt={alt}
-			fill
-			className={styles}
-		/>
+		<Image src={strapiMediaEndpoint + url} alt={alt} fill className={styles} />
 	);
 };
 
@@ -24,9 +19,35 @@ export const SafeImageUrl = (imageData) => {
 
 	const full_url = strapiMediaEndpoint + url;
 
-	return full_url
+	return full_url;
 };
 
+export const formatDate = (dateStr) => {
+	const date = new Date(dateStr);
+	const formattedDate = date.toLocaleString("en-us", {
+		month: "long",
+		day: "numeric",
+		year: "numeric",
+	});
+
+	// Add day suffix (st, nd, rd, th)
+	const dayOfMonth = date.getDate();
+	const getDaySuffix = (day) => {
+		if (day > 3 && day < 21) {
+			return "th";
+		}
+		const lastDigit = day % 10;
+		return ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"][
+			lastDigit
+		];
+	};
+	const daySuffix = getDaySuffix(dayOfMonth);
+
+	return formattedDate.replace(
+		dayOfMonth,
+		`${dayOfMonth}<sup>${daySuffix}</sup>`
+	);
+};
 
 export const SafeHtml = (html) => {
 	const cleanedHtml = sanitize(html);

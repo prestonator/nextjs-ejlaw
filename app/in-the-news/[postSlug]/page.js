@@ -47,19 +47,58 @@ const Page = async ({ params }) => {
 		(await getPage(postSlug, slug)) || {};
 	return (
 		<main>
-			<section>
-				<div>{SafeImage(image.data, styles.image)}</div>
-				<div>
-					<div>{SafeImage(team_member.data.attributes.image.data, styles.image)}</div>
-					<p>Written by <strong>{team_member.data.attributes.title}</strong></p>
-					<div>{SafeHtml(team_member.data.attributes.shortBio)}</div>
-					<div>{category.data.attributes.title}</div>
-                    <span>{date}</span>
+			{/* Hero section */}
+			<section className={styles.heroSection}>
+				<div className={styles.textContainer}>
+					<h1 className={styles.postTitle}>{title}</h1>
+				</div>
+				<div className={styles.heroContent}>
+					{/* Image */}
+					<div className={`${styles.heroImageWrapper} ${styles.imageWrapper}`}>
+						{SafeImage(image.data, styles.image)}
+					</div>
+					{/* Blog post info */}
+					<div className={styles.infoContainer}>
+						{/* Author info */}
+						<div className={`${styles.heroRow} ${styles.authorInfo}`}>
+							<div className={styles.iconWrapper}>
+								<div className={`${styles.imageWrapper}`}>
+									{SafeImage(
+										team_member.data.attributes.image.data,
+										styles.image
+									)}
+								</div>
+							</div>
+							<div className={`${styles.contentCol} ${styles.authorMeta}`}>
+								<div>
+									<span>Written by </span>
+									<Link href={`/our-team/${team_member.data.attributes.slug}`}>
+										{team_member.data.attributes.title}
+									</Link>
+								</div>
+								{SafeHtml(team_member.data.attributes.shortBio)}
+							</div>
+						</div>
+						{/* Categories */}
+						<div className={`${styles.heroRow} ${styles.categoryInfo}`}>
+							<div className={`${styles.contentCol} ${styles.categoryMeta}`}>
+								<div className={styles.category}>
+									{category.data.attributes.title}
+								</div>
+							</div>
+						</div>
+						{/* Date */}
+						<div className={`${styles.heroRow} ${styles.dateInfo}`}>
+							<div className={`${styles.contentCol} ${styles.dateMeta}`}>
+								{SafeHtml(formatDate(date))}
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
-            <section>
-                <div>{SafeHtml(sections)}</div>
-            </section>
+			<section className={styles.contentSection}>
+				<div className={styles.contentContainer}>{SafeHtml(sections)}</div>
+			</section>
 		</main>
 	);
 };

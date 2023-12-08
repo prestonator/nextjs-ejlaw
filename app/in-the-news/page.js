@@ -4,6 +4,7 @@ import {
 	SafeHtml,
 	IconComponent,
 } from "@/utils/helperFunctions";
+import BlogCard from "@/components/Cards/BlogCard/BlogCard";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
@@ -40,27 +41,39 @@ const Page = async ({ params }) => {
 		(await getPage(params.slug)) || {};
 	return (
 		<main>
+			{/* Hero section */}
 			<section
+				className={styles.heroSection}
 				style={{
 					backgroundImage: `url(${SafeImageUrl(hero?.image?.data)})`,
 					backgroundSize: "cover",
 				}}
 			>
-				<div>{SafeHtml(hero?.richText)}</div>
+				<div className={styles.textContainer}>{SafeHtml(hero?.richText)}</div>
 			</section>
-			<section>
-				{news_blog_posts?.data?.map((post) => (
-					<Link href={`${slug}/${post.attributes.slug}`} key={post.id}>
-						<div>{SafeImage(post.attributes.image.data, styles.image)}</div>
-						<div>
-							<h4>{post.attributes.title}</h4>
-							<span>{post.attributes.date}</span>
-							<p>by {post.attributes.team_member.data.attributes.title}</p>
-							<div>{SafeHtml(post.attributes.excerpt)}</div>
-							<div>{post.attributes.category.data.attributes.title}</div>
-						</div>
-					</Link>
-				))}
+			{/* Blog Post Cards Section */}
+			<section className={styles.blogCardSection}>
+				<div className={styles.blogCardGrid}>
+					{news_blog_posts?.data?.map((post) => {
+						return (
+							<BlogCard
+								key={post.id}
+								title={post.attributes.title}
+								slug={`${slug}/${post.attributes.slug}`}
+								author={post.attributes.team_member.data.attributes.title}
+								date={post.attributes.date}
+								excerpt={
+									post.attributes.excerpt.length > 200
+										? post.attributes.excerpt.slice(0, 200) + "..."
+										: post.attributes.excerpt
+								}
+								image={post.attributes.image.data}
+								categories={post.attributes.category.data.attributes.title}
+							/>
+						);
+					})}
+				</div>
+				<div></div>
 			</section>
 		</main>
 	);
