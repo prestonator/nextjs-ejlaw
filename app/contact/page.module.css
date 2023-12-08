@@ -1,0 +1,196 @@
+.contactMain {
+	padding-bottom: var(--size-20);
+}
+
+.mapSection {
+	padding-top: var(--size-12-5);
+}
+
+.mapSection iframe,
+.mapSection > div {
+	width: 100%;
+	height: var(--size-50);
+}
+
+.bookingSection {
+	display: flex;
+	justify-content: center;
+	gap: var(--size-10);
+}
+
+.bookingContainer {
+	max-width: calc(100% - var(--size-75));
+	width: 100%;
+	transform: translateY(calc(-1 * var(--size-20)));
+	box-shadow: var(--default-box-shadow);
+	background: var(--color-white);
+}
+
+.contactInfoWrapper {
+	display: flex;
+}
+
+.contactScheduleWrapper {
+	width: 100%;
+	background-color: #F3F3F3;
+	padding: var(--size-3-5) 0;
+}
+
+.contactInfoTitle {
+	text-align: center;
+	font: 600 var(--size-5) var(--font-fancy);
+	padding: var(--size-2-5) 0;
+	background: var(--color-off-white);
+	color: black;
+}
+
+.contactInfoContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	width: 30%;
+	background: var(--color-secondary);
+	padding: 0 var(--size-0-75);
+}
+
+.contactInfoContainer .row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: var(--size-1-25);
+}
+
+.contactInfoContainer .row .iconWrapper {
+	width: var(--size-2-5);
+}
+
+.contactInfoContainer .row .iconWrapper svg {
+	width: var(--size-2-5);
+	height: var(--size-2-5);
+}
+
+.contactInfoContainer .row .textContainer {
+	text-align: center;
+}
+
+.contactInfoContainer .row .textContainer h4 {
+	color: var(--color-medium-gray);
+	text-transform: uppercase;
+	font: 500 var(--size-1) var(--font-special);
+}
+
+.contactInfoContainer .row .textContainer p {
+	font: 600 var(--size-0-75) / 2 var(--font-body);
+}
+
+.ctaSection,
+.socialSection {
+	display: flex;
+	justify-content: center;
+	padding: var(--size-10) var(--size-0-75);
+	border-left: var(--size-1) solid var(--color-accent);
+	border-right: var(--size-1) solid var(--color-accent);
+	gap: var(--size-10);
+}
+
+.ctaSection > div,
+.socialSection > div {
+	width: var(--size-50);
+}
+
+.ctaSection .iconWrapper svg,
+.socialSection .iconWrapper svg {
+	filter: invert(6%) sepia(91%) saturate(7495%) hue-rotate(2deg) brightness(77%)
+		contrast(105%);
+	width: var(--size-10);
+	height: var(--size-10);
+}
+
+.ctaSection .iconWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ctaSection .textContainer h5,
+.socialSection .textContainer h5 {
+	color: var(--color-accent);
+	font: 700 var(--size-1-25) var(--font-special);
+	letter-spacing: 1px;
+}
+
+.ctaSection .textContainer h4,
+.socialSection .textContainer h4 {
+	font: 600 var(--size-3-5) var(--font-fancy);
+}
+
+.ctaSection .textContainer hr,
+.socialSection .textContainer hr {
+	border-top: 1px solid var(--color-secondary);
+	width: var(--size-10);
+	margin: var(--size-2-5) 0;
+}
+
+.ctaSection .textContainer p,
+.socialSection .textContainer p {
+	margin: var(--size-2-5) 0;
+	font: 400 var(--size-1) / 1.6 var(--font-body);
+}
+
+.socialSection .iconWrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.socialSection .iconWrapper a {
+	display: inline-flex;
+}
+
+.socialSection .iconWrapper a:nth-of-type(1),
+.socialSection .iconWrapper a:nth-of-type(3) {
+	justify-content: flex-end;
+}
+
+@media (max-width: 980px) {
+	.bookingContainer {
+		max-width: calc(100% - var(--size-35));
+	}
+	.contactInfoWrapper {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.contactInfoContainer {
+		flex-direction: row;
+		width: 100%;
+		padding: var(--size-2) 0;
+	}
+	.contactInfoContainer .row {
+		flex: 1 1 auto;
+		gap: var(--size-0-75);
+	}
+	.contactInfoContainer .row + .row {
+		border-left: 2px solid var(--color-black);
+	}
+	.contactScheduleWrapper {
+		width: 100%;
+	}
+}
+
+@media (max-width: 600px) {
+	.bookingContainer {
+		max-width: calc(100% - var(--size-7-5));
+	}
+}
+
+@media (max-width: 450px) {
+	.bookingContainer {
+		max-width: calc(100% - var(--size-1-5));
+	}
+	.contactInfoContainer {
+		flex-wrap: wrap;
+	}
+	.contactInfoContainer .row + .row {
+		border-left: none;
+	}
+}
