@@ -5,6 +5,7 @@ import { fetchData } from "@/lib/fetchData";
 import { HomeQuery } from "@/queries/home.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 import StaffPreview from "@/components/StaffPreview/staffPreview";
+import ServiceCard from "@/components/Cards/ServiceCard/ServiceCard";
 
 const getData = async () => {
 	const { data } = await fetchData(HomeQuery.loc.source.body);
@@ -51,7 +52,7 @@ const Home = async () => {
 			</section>
 			{/* Our Team Section */}
 			<section className={styles.staff}>
-				<div>{SafeHtml(staffPreviewHeading)}</div>
+				<div className={styles.heading}>{SafeHtml(staffPreviewHeading)}</div>
 				{/* Staff Preview */}
 				{staffPreview?.map((staff, index) => (
 					<StaffPreview
@@ -66,22 +67,20 @@ const Home = async () => {
 					/>
 				))}
 			</section>
-			<section>
-				<div>{SafeHtml(whyUsHeading)}</div>
-				<div>
-					{whyUsCards.map((card) => (
-						<div key={card?.id}>
-							{IconComponent({
-								icon: card?.icon,
-								customClassName: styles.icon,
-								key: card?.id,
-							})}
-							<div>{SafeHtml(card?.richText)}</div>
-							<button>
-								<Link href={card?.button?.href}>{card?.button?.label}</Link>
-							</button>
-						</div>
-					))}
+			{/* Why Choose Us Section */}
+			<section className={styles.whyChoose}>
+				<div className={styles.services}>
+					<div className={styles.heading}>{SafeHtml(whyUsHeading)}</div>
+					<ul className={styles.serviceGrid}>
+						{whyUsCards.map((card) => (
+							<ServiceCard
+								key={card.id}
+								icon={card.icon}
+								content={card.richText}
+								button={card.button}
+							/>
+						))}
+					</ul>
 				</div>
 			</section>
 		</main>

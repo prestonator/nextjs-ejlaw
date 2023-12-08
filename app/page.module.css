@@ -92,16 +92,16 @@
 	align-items: center;
 }
 
-.services .heading {
+.heading {
 	transform: translateY(calc(-1 * var(--size-5)));
 }
 
-.services .heading h3 {
+.heading h3 {
 	font: 500 var(--size-5) var(--font-fancy);
 	text-align: center;
 }
 
-.services .heading hr {
+.heading hr {
 	border-color: var(--color-accent);
 	border-top-width: 2px;
 	margin: var(--size-2-5) auto;
