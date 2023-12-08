@@ -61,17 +61,20 @@ const AboutPage = async () => {
 		<main className={styles.container}>
 			<section className={styles.hero}>
 				<div className={styles.imageWrapper}>
-					{SafeImage(hero?.image?.data)}
+					{SafeImage(hero?.image?.data, styles.image)}
 				</div>
 				<div className={styles.textContent}>{SafeHtml(hero?.richText)}</div>
 			</section>
 			<section className={styles.callToAction}>
 				<div className={styles.textContent}>{SafeHtml(cta?.richText)}</div>
-				<div className={styles.imageWrapper}>{SafeImage(cta?.image?.data)}</div>
+				<div className={styles.imageWrapper}>
+					{SafeImage(cta?.image?.data, styles.image)}
+				</div>
 			</section>
 			<section className={styles.ourServices}>
 				<div className={styles.textContent}>
-					{SafeHtml(practiceAreaHeading)}
+					<h3>{SafeHtml(practiceAreaHeading)}</h3>
+					<hr />
 				</div>
 				<div className={styles.services}>{renderIconCard(firstRow)}</div>
 				<div className={styles.services}>{renderIconCard(secondRow)}</div>
