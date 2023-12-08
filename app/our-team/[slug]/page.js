@@ -50,28 +50,30 @@ const Page = async ({ params }) => {
 		<span key={item.id}>{item.text}</span>
 	));
 	return (
-		<main>
-			<section>
-				<div>
+		<main className={styles.ourTeamContainer}>
+			<section className={styles.authorInfo}>
+				<div className={`${styles.infoColumn} ${styles.headshotWrapper}`}>
 					{SafeImage(team_member.data.attributes.image.data, styles.image)}
 				</div>
-				<div>
-					<h1>{title}</h1>
-					<div>
-						{positionSpans.reduce((positions, position, index) => {
-							positions.push(position);
-							if (index < positionSpans.length - 1) {
-								positions.push(
-									IconComponent({
-										icon: "RxDividerVertical",
-										customClassName: styles.positionDivider,
-									})
-								);
-							}
-							return positions;
-						}, [])}
+				<div className={`${styles.infoColumn} ${styles.authorDetails}`}>
+					<div className={styles.authorInfoTitle}>
+						<h1 className={styles.authorTitle}>{title}</h1>
+						<div className={styles.authorPositions}>
+							{positionSpans.reduce((positions, position, index) => {
+								positions.push(position);
+								if (index < positionSpans.length - 1) {
+									positions.push(
+										IconComponent({
+											icon: "RxDividerVertical",
+											customClassName: styles.positionDivider,
+										})
+									);
+								}
+								return positions;
+							}, [])}
+						</div>
 					</div>
-					<div>
+					<div className={styles.authorContact}>
 						<p className={styles.phone}>
 							<a href={`tel:${team_member.data.attributes.phone}`}>
 								{team_member.data.attributes.phone}
