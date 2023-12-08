@@ -1,0 +1,22 @@
+query SubPracticeAreaData($filters: SubPracticeAreaFiltersInput) {
+	subPracticeAreas(filters: $filters) {
+		data {
+			attributes {
+				title
+				slug
+				hero {
+					richText
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
+				sections
+			}
+		}
+	}
+}
