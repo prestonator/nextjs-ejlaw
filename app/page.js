@@ -3,6 +3,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { HomeQuery } from "@/queries/home.graphql";
+import Button from "@/components/Buttons/MainButton/Button";
+import StaffPreview from "@/components/StaffPreview/staffPreview";
 
 const getData = async () => {
 	const { data } = await fetchData(HomeQuery.loc.source.body);
@@ -20,59 +22,49 @@ const Home = async () => {
 		whyUsCards,
 	} = await getData();
 	return (
-		<main>
-			<section>
-				<div>
-					<div>{SafeHtml(hero.richText)}</div>
-					<div>
+		<main className={styles.main}>
+			{/* Hero section */}
+			<section className={styles.hero}>
+				<div className={styles.textContent}>
+					{SafeHtml(hero.richText)}
+					<div className={styles.button}>
 						{hero?.buttons?.map((button) => (
-							<button key={button.id}>
-								<Link href={button.href}>{button.label}</Link>
-							</button>
+							<Button key={button.id} href={button.href}>
+								{button.label}
+							</Button>
 						))}
 					</div>
 				</div>
-				<div>{SafeImage(hero.image.data, styles.image)}</div>
-			</section>
-			<section>
-				<div>
-					<div>{SafeHtml(modal?.richText)}</div>
-					<div>
-						<button>
-							<Link href={modal?.buttons[0]?.href}>
-								{modal?.buttons[0]?.label}
-							</Link>
-						</button>
-					</div>
+				{/* Image */}
+				<div className={styles.imageWrapper}>
+					{SafeImage(hero.image.data, styles.image)}
 				</div>
 			</section>
-			<section>
+			{/* Call to Action Section */}
+			<section className={`${styles.callToAction} ${styles.modalContainer}`}>
+				<article className={styles.modal}>
+					{SafeHtml(modal?.richText)}
+					<Button href={modal?.buttons[0]?.href}>
+						{modal?.buttons[0]?.label}
+					</Button>
+				</article>
+			</section>
+			{/* Our Team Section */}
+			<section className={styles.staff}>
 				<div>{SafeHtml(staffPreviewHeading)}</div>
-				<div>
-					{staffPreview?.map((staff) => (
-						<div key={staff.id}>
-							<div>
-								<div>
-									{staff.socialIcons.map(({ icon, href }) =>
-										IconComponent({
-											icon: icon,
-											customClassName: styles.icon,
-											href: href,
-											key: icon,
-										})
-									)}
-								</div>
-								<div>{SafeImage(staff.image.data, styles.image)}</div>
-							</div>
-							<div>
-								{SafeHtml(staff.richText)}
-								<button>
-									<Link href={staff?.button?.href}>{staff?.button?.label}</Link>
-								</button>
-							</div>
-						</div>
-					))}
-				</div>
+				{/* Staff Preview */}
+				{staffPreview?.map((staff, index) => (
+					<StaffPreview
+						key={staff.id}
+						socialIcons={staff.socialIcons}
+						avatarImage={staff.image.data}
+						infoText={staff.richText}
+						infoButton={staff.button}
+						placement={staff.id % 2 === 0}
+						index={index}
+						totalItems="2"
+					/>
+				))}
 			</section>
 			<section>
 				<div>{SafeHtml(whyUsHeading)}</div>

@@ -1,0 +1,146 @@
+/* page.module.css */
+
+@custom-media --medium-viewport (max-width: 850px);
+.hero {
+	align-items: center;
+	display: flex;
+	gap: var(--size-7-5);
+	justify-content: center;
+	padding-top: var(--size-20);
+	position: relative;
+}
+
+.hero .textContent {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	width: var(--size-60);
+}
+
+.hero .textContent p {
+	color: var(--color-accent);
+	font: 700 var(--size-1-5) var(--font-body);
+}
+
+.hero .textContent h1 {
+	font: 500 var(--size-5) var(--font-fancy);
+	margin: var(--size-1-5) 0;
+}
+
+.hero .imageWrapper {
+	height: var(--size-50);
+	position: relative;
+	width: var(--size-75);
+}
+
+.hero .imageWrapper .image {
+	filter: drop-shadow(15px 15px 0px var(--color-accent));
+	object-fit: contain;
+}
+
+.hero .button {
+	display: flex;
+	gap: var(--size-1-5);
+	margin-top: var(--size-1-5);
+}
+
+.callToAction,
+.whyChoose {
+	padding: var(--size-15) 0;
+}
+
+.callToAction .modal {
+	align-items: center;
+	background: var(--color-white);
+	box-shadow: var(--default-box-shadow);
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-2);
+	margin: 0 auto;
+	padding: var(--size-5) 0;
+	width: var(--size-100);
+}
+
+.callToAction .modal p {
+	color: var(--color-accent);
+	font: 700 var(--size-1) var(--font-body);
+}
+
+.callToAction .modal h4 {
+	font: 600 var(--size-3) var(--font-fancy);
+}
+
+.staff {
+	border-bottom: 0.15rem solid var(--color-light-gray);
+}
+
+.whyChoose {
+	max-width: calc(100vw - var(--size-15));
+	margin: 0 auto;
+	padding-bottom: var(--size-20);
+}
+
+.serviceGrid {
+	display: flex;
+	gap: var(--size-5);
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+.services .heading {
+	transform: translateY(calc(-1 * var(--size-5)));
+}
+
+.services .heading h3 {
+	font: 500 var(--size-5) var(--font-fancy);
+	text-align: center;
+}
+
+.services .heading hr {
+	border-color: var(--color-accent);
+	border-top-width: 2px;
+	margin: var(--size-2-5) auto;
+	width: var(--size-10);
+}
+
+@media (--medium-viewport) {
+	.hero {
+		padding-top: var(--size-10);
+	}
+
+	.hero .textContent {
+		background: rgba(0, 0, 0, 0.6);
+		padding: var(--size-7-5) var(--size-0-75);
+		width: 100%;
+		z-index: 1;
+	}
+
+	.hero .textContent p {
+		color: var(--color-secondary);
+	}
+
+	.hero .textContent h1 {
+		color: var(--color-white);
+	}
+
+	.hero .button {
+		border-color: var(--color-white);
+		color: var(--color-white);
+	}
+
+	.hero .imageWrapper {
+		height: -webkit-fill-available;
+		position: absolute;
+		width: 100%;
+	}
+
+	.hero .imageWrapper .image {
+		filter: unset;
+		object-fit: cover;
+	}
+}

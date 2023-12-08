@@ -1,0 +1,184 @@
+@custom-media --medium-viewport (max-width: 850px);
+
+.staffPreviewContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--size-10);
+}
+
+.staffPreviewContainer.even {
+	flex-direction: row;
+}
+
+.staffPreviewContainer.odd {
+	flex-direction: row-reverse;
+}
+
+.staffPreviewContainer:last-child {
+	margin-bottom: var(--size-10);
+}
+
+.divider {
+	margin: var(--size-5) auto;
+	width: var(--size-5);
+	border: 5px solid var(--color-accent);
+}
+
+.colOne {
+	display: flex;
+	align-items: center;
+	gap: var(--size-2-5);
+}
+
+.colOne.even {
+	flex-direction: row;
+}
+
+.colOne.odd {
+	flex-direction: row-reverse;
+}
+
+.iconContainer {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-1-25);
+}
+
+.iconContainer svg {
+	width: var(--size-3);
+	height: var(--size-3);
+	color: var(--color-accent);
+}
+
+.avatarWrapper {
+	position: relative;
+	width: var(--size-30);
+	height: var(--size-30);
+	border-radius: var(--avatar-border-radius);
+	overflow: hidden;
+	box-shadow: var(--avatar-box-shadow);
+}
+
+.avatar {
+	object-fit: cover;
+}
+
+.content {
+	box-shadow: rgb(0 0 0 / 20%) 0px 0px 5px 0px;
+}
+
+.content blockquote > a {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+}
+
+.content blockquote {
+	position: relative;
+	width: var(--size-70);
+	max-width: 100%;
+	padding: var(--size-3-5) var(--size-2) var(--size-7-5) var(--size-2);
+	line-height: 1.7em;
+	color: var(--color-medium-gray);
+	background-color: #fcfcfc;
+}
+
+.content blockquote h3 {
+	font: 500 var(--size-3-5) var(--font-fancy);
+	color: var(--color-black);
+	margin-bottom: var(--size-1);
+}
+
+.content blockquote > p {
+	margin-bottom: var(--size-2);
+	font: 300 var(--size-1-25) var(--font-body);
+}
+
+.content blockquote ul li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--size-0-5);
+}
+
+.content.even blockquote {
+	text-align: left;
+	border-left: 3px solid var(--color-accent);
+}
+
+.content.odd blockquote {
+	text-align: right;
+	border-right: 3px solid var(--color-accent);
+}
+
+.content blockquote ul {
+	display: flex;
+	flex-direction: row;
+	gap: var(--size-1);
+	flex-wrap: wrap;
+	margin: var(--size-1-25) 0;
+}
+
+.content.even blockquote ul {
+	justify-content: flex-start;
+}
+
+.content.odd blockquote ul {
+	justify-content: flex-end;
+}
+
+.content blockquote ul li {
+	background: var(--color-accent);
+	color: var(--color-white);
+	padding: 0.25rem var(--size-1);
+	border-radius: var(--size-1);
+}
+
+.content blockquote button {
+	position: absolute;
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+}
+
+@media (--medium-viewport) {
+	.staffPreviewContainer {
+		gap: var(--size-5);
+	}
+
+	.staffPreviewContainer.even,
+	.staffPreviewContainer.odd {
+		flex-direction: column;
+	}
+
+	.staffPreviewContainer .colOne.even,
+	.staffPreviewContainer .colOne.odd {
+		flex-direction: column-reverse;
+	}
+	.staffPreviewContainer .avatarWrapper {
+		width: var(--size-50);
+		height: var(--size-50);
+	}
+	.staffPreviewContainer .content {
+		width: var(--size-115);
+	}
+	.staffPreviewContainer .content blockquote {
+		width: auto;
+		text-align: center;
+		border-right: 3px solid var(--color-accent);
+		border-left: 3px solid var(--color-accent);
+		padding-bottom: var(--size-15);
+	}
+	.staffPreviewContainer .content blockquote ul {
+		justify-content: center;
+	}
+	.iconContainer {
+		flex-direction: row;
+		.icon {
+			width: var(--size-7-5);
+			height: var(--size-7-5);
+		}
+	}
+}
