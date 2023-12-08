@@ -1,8 +1,9 @@
 import "./globals.css";
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
-import Navbar from "@/components/NavBar/NavBar";
-
+import NavBar from "@/components/NavBar/navBar";
+import ClientNavbar from "@/components/NavBar/navBarClient";
+import { cormorant, montserrat, saira } from "@/lib/font";
 
 const getData = async () => {
 	const { data } = await fetchData(RootLayoutQuery.loc.source.body);
@@ -17,9 +18,14 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 	const { navMenu, logo } = await getData();
 	return (
-		<html lang="en">
+		<html
+			lang="en"
+			className={`${cormorant.variable} ${montserrat.variable} ${saira.variable}`}
+		>
 			<body>
-				<Navbar navItems={navMenu} logo={logo} />
+				<ClientNavbar>
+					<NavBar navItems={navMenu} logo={logo} />
+				</ClientNavbar>
 				{children}
 			</body>
 		</html>
