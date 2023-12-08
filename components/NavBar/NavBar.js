@@ -6,7 +6,7 @@ import { SafeImage } from "@/utils/helperFunctions";
 async function Navbar({ navItems, logo }) {
 	const ourTeam = navItems.menuItems[1].children;
 	const practiceAreas = navItems.menuItems[2].children;
-
+	//console.log(logo);
 	return (
 		<ul className={styles.navbarItems}>
 			{navItems.menuItems.map((menuItem, index) => {

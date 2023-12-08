@@ -5,6 +5,7 @@ query RootLayoutQuery {
 				navMenu
 				logo {
 					data {
+						id
 						attributes {
 							url
 							name

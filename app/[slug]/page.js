@@ -36,16 +36,17 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({ params }) => {
-	const { title, slug, hero, news_blog_posts } = await getPage(params.slug);
+	const { title, slug, hero, news_blog_posts } =
+		(await getPage(params.slug)) || {};
 	return (
 		<main>
 			<section
 				style={{
-					backgroundImage: `url(${SafeImageUrl(hero.image.data)})`,
+					backgroundImage: `url(${SafeImageUrl(hero?.image?.data)})`,
 					backgroundSize: "cover",
 				}}
 			>
-				<div>{SafeHtml(hero.richText)}</div>
+				<div>{SafeHtml(hero?.richText)}</div>
 			</section>
 			<section>
 				{news_blog_posts.data.map((post) => (
