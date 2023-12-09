@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.eltonjenkinslaw.com
+
+# Sitemaps
+Sitemap: https://www.eltonjenkinslaw.com/sitemap.xml
+Sitemap: https://www.eltonjenkinslaw.com/server-sitemap-index.xml
