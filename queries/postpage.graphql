@@ -50,6 +50,24 @@ query NewsBlogPages($filters: NewsBlogPageFiltersInput) {
 						}
 					}
 				}
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								alternativeText
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
 			}
 		}
 	}

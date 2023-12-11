@@ -21,6 +21,24 @@ query MyCaseQuery {
 					}
 				}
 				sections
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								alternativeText
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
 			}
 		}
 	}

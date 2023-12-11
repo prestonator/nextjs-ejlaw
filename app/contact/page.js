@@ -1,4 +1,4 @@
-import { SafeImage, SafeHtml, IconComponent } from "@/utils/helperFunctions";
+import { SafeImage, SafeImageUrl, SafeImageAlt, SafeHtml, IconComponent } from "@/utils/helperFunctions";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
@@ -27,10 +27,10 @@ export async function generateMetadata() {
 			type: meta?.ogType || "",
 			images: [
 				{
-					url: getSafeUrl(meta?.ogImage?.data),
+					url: SafeImageUrl(meta?.ogImage?.data),
 					width: 1200,
 					height: 630,
-					alt: getSafeAlt(meta?.ogImage?.data),
+					alt: SafeImageAlt(meta?.ogImage?.data),
 				},
 			],
 		},
