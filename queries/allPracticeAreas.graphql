@@ -1,0 +1,67 @@
+query PracticeAreaData($filters: MainPracticeAreaFiltersInput) {
+	mainPracticeAreas(filters: $filters) {
+		data {
+			attributes {
+				title
+				slug
+				hero {
+					richText
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
+				sections
+				sub_practice_areas {
+					data {
+						attributes {
+							title
+							slug
+							cardContent {
+								id
+								cardTitle
+								cardBody
+								cardButton {
+									id
+									label
+									href
+									newTab
+								}
+								image {
+									data {
+										attributes {
+											url
+											name
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								alternativeText
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
+			}
+		}
+	}
+}

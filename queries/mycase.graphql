@@ -1,0 +1,45 @@
+query MyCaseQuery {
+	mycase {
+		data {
+			attributes {
+				title
+				slug
+				hero {
+					richText
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+					buttons {
+						label
+						href
+						newTab
+					}
+				}
+				sections
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								alternativeText
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,70 @@
+query PostData($filters: NewsBlogPostFiltersInput) {
+	newsBlogPosts(filters: $filters) {
+		data {
+			attributes {
+				title
+				slug
+				news_blog_page {
+					data {
+						attributes {
+							slug
+						}
+					}
+				}
+				image {
+					data {
+						attributes {
+							url
+							name
+						}
+					}
+				}
+				team_member {
+					data {
+						attributes {
+							image {
+								data {
+									attributes {
+										url
+										name
+									}
+								}
+							}
+							title
+							shortBio
+							slug
+						}
+					}
+				}
+				category {
+					data {
+						attributes {
+							title
+							slug
+						}
+					}
+				}
+				date
+				sections
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								alternativeText
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
+			}
+		}
+	}
+}

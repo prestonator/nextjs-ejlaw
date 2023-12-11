@@ -1,0 +1,74 @@
+query NewsBlogPages($filters: NewsBlogPageFiltersInput) {
+	newsBlogPages(filters: $filters) {
+		data {
+			attributes {
+				title
+				slug
+				hero {
+					richText
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
+				news_blog_posts {
+					data {
+						id
+						attributes {
+							title
+							slug
+							image {
+								data {
+									attributes {
+										url
+										name
+									}
+								}
+							}
+							date
+							team_member {
+								data {
+									attributes {
+										title
+									}
+								}
+							}
+							excerpt
+							category {
+								data {
+									id
+									attributes {
+										title
+										slug
+									}
+								}
+							}
+						}
+					}
+				}
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								alternativeText
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
+			}
+		}
+	}
+}

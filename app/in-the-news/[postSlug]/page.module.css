@@ -1,0 +1,154 @@
+.heroSection {
+	padding-top: var(--size-20);
+}
+
+.heroSection .textContainer .postTitle {
+	font: 500 var(--size-5) / 1.2 var(--font-fancy);
+	text-align: center;
+	margin-bottom: var(--size-5);
+}
+
+.heroSection .heroContent {
+	display: flex;
+	gap: var(--size-5);
+	justify-content: center;
+	align-items: center;
+	max-width: calc(100vw - (var(--size-10)));
+	margin: auto;
+}
+
+.heroContent .heroImageWrapper {
+	position: relative;
+	width: calc(75vw - (var(--size-45)));
+	height: var(--size-70);
+	.image {
+		object-fit: cover;
+		box-shadow: var(--default-box-shadow);
+		border-radius: 10px;
+	}
+}
+
+.infoContainer {
+	display: flex;
+	flex-direction: column;
+	max-width: calc(50vw - (var(--size-35)));
+	gap: var(--size-2-5);
+	width: 100%;
+	align-items: center;
+}
+
+.authorInfo .imageWrapper {
+	position: relative;
+	width: var(--size-12-5);
+	height: var(--size-12-5);
+	background-color: var(--color-light-gray);
+	border-radius: var(--avatar-border-radius);
+	overflow: hidden;
+	box-shadow: var(--avatar-box-shadow);
+	.image {
+		object-fit: cover;
+	}
+}
+
+.authorMeta {
+	text-align: center;
+}
+
+.authorMeta p {
+	font: 500 var(--size-1) var(--font-body);
+}
+
+.authorMeta div span {
+	font: 500 var(--size-1-25) var(--font-special);
+}
+
+.authorMeta div a {
+	font: 800 var(--size-1-25) var(--font-special);
+	letter-spacing: 1px;
+}
+
+.categoryInfo .categoryMeta {
+	display: flex;
+	flex-direction: row;
+	gap: var(--size-1-25);
+}
+
+.categoryInfo .categoryMeta .category {
+	background: var(--color-accent);
+	color: var(--color-white);
+	padding: var(--size-0-75) var(--size-1-25);
+	border-radius: 20px;
+}
+
+.iconWrapper svg {
+	width: var(--size-3-5);
+	height: var(--size-3-5);
+}
+
+.authorInfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--size-2-5);
+}
+
+.contentSection {
+	max-width: calc(100vw - (var(--size-40)));
+	margin: auto;
+	padding-top: var(--size-7-5);
+	padding-bottom: var(--size-20);
+}
+
+.contentSection .contentContainer h2 {
+	font: 600 var(--size-2-25) / 1.8 var(--font-body);
+	color: var(--color-gray);
+	margin-bottom: var(--size-0-5);
+}
+
+.contentSection .contentContainer h3 {
+	font: 600 var(--size-1-5) / 1.8 var(--font-body);
+	color: var(--color-gray);
+	margin-bottom: var(--size-0-5);
+}
+
+.contentSection .contentContainer h3:not(:first-child),
+.contentSection .contentContainer h2:not(:first-child) {
+	margin-top: var(--size-2);
+}
+
+.contentSection .contentContainer p {
+	font: 400 var(--size-1) / 1.8 var(--font-body);
+	margin-bottom: var(--size-1);
+}
+
+.contentSection .contentContainer ul {
+	list-style-position: inside;
+	list-style-type: none;
+}
+
+.contentSection .contentContainer ul li::before {
+	content: "•"; /* Use a bullet point or any other desired marker */
+	margin-right: var(--size-0-75);
+}
+
+.contentSection .contentContainer ul li {
+	display: flex; /* Use Flexbox */
+	align-items: center; /* Vertically center the content */
+	margin-bottom: var(--size-1-5);
+}
+
+.contentSection .contentContainer ul li p {
+	margin-bottom: 0;
+}
+
+@media (max-width: 980px) {
+	.heroSection .heroContent {
+		flex-direction: column;
+	}
+	.heroContent .heroImageWrapper {
+		width: calc(100vw - (var(--size-35)));
+	}
+	.heroContent .infoContainer {
+		max-width: calc(100vw - (var(--size-25)));
+	}
+}

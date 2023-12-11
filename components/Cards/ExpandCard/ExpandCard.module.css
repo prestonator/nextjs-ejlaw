@@ -1,0 +1,192 @@
+.container {
+	height: var(--size-25);
+	margin: var(--size-2-5) 0 var(--size-7-5);
+	position: relative;
+}
+
+.container,
+.face {
+	width: calc(var(--size-50) * 1.25);
+}
+
+.card {
+	cursor: pointer;
+}
+
+.card.expanded {
+	pointer-events: all;
+}
+
+.card.closed .faceTwo .contentContainer {
+	pointer-events: none;
+}
+
+.face {
+	transition: 0.5s;
+}
+
+.face.faceOne {
+	display: flex;
+	background-size: cover;
+	align-items: center;
+	justify-content: center;
+	height: var(--size-30);
+	transform: translateY(0);
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+	background-blend-mode: multiply;
+	background-color: rgb(0 0 0 / 75%);
+}
+
+.card.expanded .face.faceOne {
+	height: var(--size-25);
+	transform: translateY(calc(-1 * var(--size-15)));
+}
+
+.face.faceOne .contentContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: var(--size-1-25);
+	padding: 0 var(--size-1-25);
+	transition: 0.5s;
+}
+
+
+.face.faceOne .contentContainer hr {
+	height: 2px;
+	border-color: var(--color-white);
+	width: 60%;
+	background: var(--color-white);
+}
+
+.face.faceOne .contentContainer > h3 {
+	font: 500 var(--size-2-25) var(--font-fancy);
+	text-align: center;
+	color: var(--color-white);
+	letter-spacing: 1px;
+}
+
+.face.faceOne .contentContainer > p {
+	color: var(--color-white);
+    font: 500 var(--size-1-25) var(--font-body);
+    text-align: center;
+}
+
+.cardExcerpt {
+	color: var(--color-white);
+    font: 500 var(--size-1-25) var(--font-body);
+    text-align: center;
+}
+
+.face.faceTwo {
+	position: relative;
+	height: 0;
+	background: var(--color-white);
+	opacity: 0;
+	transform: translateY(0);
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+	box-sizing: border-box;
+}
+
+.card.expanded .face.faceTwo {
+	height: calc(var(--size-35) * 1.15);
+	opacity: 1;
+	transform: translateY(calc(-1 * var(--size-15)));
+	z-index: 2;
+}
+
+.face.faceTwo .contentContainer {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	gap: var(--size-1);
+	width: calc(var(--size-50) * 1.15);
+	height: calc(var(--size-35) * 1.15);
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.face.faceTwo .content p {
+	font: 400 var(--size-1-25) / 2 var(--font-body);
+	text-align: justify;
+	width: 95%;
+	margin: 0 auto;
+}
+
+
+@media screen and (min-width: 550px) {
+	.face.faceTwo .content p {
+		font: 450 var(--size-1) / calc(6px + 2ex) var(--font-body);
+	}
+}
+
+@media screen and (min-width: 745px) {
+	.face.faceTwo .content p {
+		font: 400 var(--size-1) / calc(5px + 2ex) var(--font-body);
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.face.faceTwo .content p {
+		font: 400 var(--size-1-25) / calc(5px + 2ex) var(--font-body);
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	.face.faceTwo .content p {
+		font: 400 var(--size-1-5) / calc(8px + 2ex) var(--font-body);
+	}
+}
+
+@media screen and (min-width: 1800px) {
+	.face.faceTwo .content p {
+		font: 400 var(--size-1-5) / calc(8px + 3ex) var(--font-body);
+	}
+}
+
+@media screen and (max-width: 1250px) {
+	.face.faceTwo .contentContainer,
+	.card.expanded .face.faceTwo,
+	.card:hover .face.faceTwo {
+		height: calc(var(--size-35) * 1.25);
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.container,
+	.face {
+		width: calc(var(--size-50) * 1.5);
+	}
+	.face.faceTwo .contentContainer {
+		width: 100%;
+		gap: 0.5rem;
+	}
+	.face.faceTwo .content p {
+		width: calc(100% - var(--size-3-5));
+	}
+}
+
+@media screen and (max-width: 745px) {
+	.container,
+	.face {
+		width: calc(var(--size-50) * 2.5);
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.container,
+	.face {
+		width: calc((var(--size-50) * 2.5) - 1.75rem);
+	}
+	.face.faceTwo .content p {
+		font: 400 var(--size-1) / calc(2px + 1.5ex) var(--font-body);
+	}
+	.face.faceTwo .contentContainer,
+	.card.expanded .face.faceTwo,
+	.card:hover .face.faceTwo {
+		height: calc(var(--size-35) * 1.45);
+	}
+}

@@ -1,0 +1,52 @@
+.heroSection {
+	padding: var(--size-20) 0 var(--size-20) var(--size-50);
+	background-color: var(--bg-overlay-dark);
+	background-blend-mode: multiply;
+}
+
+.heroSection .textContainer {
+	width: var(--size-35);
+	display: flex;
+	flex-direction: column;
+    gap: var(--size-1-25);
+}
+
+.heroSection .textContainer h2 {
+	color: var(--color-secondary);
+	font: 700 var(--size-1-5) var(--font-special);
+	text-transform: uppercase;
+}
+
+.heroSection .textContainer h1 {
+	color: var(--color-white);
+	font: 500 var(--size-3-5) var(--font-fancy);
+	text-transform: uppercase;
+	word-wrap: break-word;
+}
+
+.heroSection .textContainer p {
+	color: var(--color-white);
+	font: 500 var(--size-1) / 1.6 var(--font-body);
+	letter-spacing: 1px;
+}
+
+.blogCardSection {
+	padding-bottom: var(--size-20);
+}
+
+.blogCardSection .blogCardGrid {
+	display: grid;
+    grid-template-columns: repeat(2, var(--size-50));
+    grid-template-rows: auto;
+	justify-items: center;
+	grid-row-gap: var(--size-10);
+	justify-content: center;
+}
+
+.blogCardSection .blogCardGrid > a:nth-child(even) {
+	margin-top: calc(-1 * var(--size-1-5));
+}
+
+.blogCardSection .blogCardGrid > a:nth-child(odd) {
+	margin-top: calc(-1 * var(--size-5));
+}

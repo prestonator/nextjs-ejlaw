@@ -1,0 +1,57 @@
+query OurTeams($filters: OurTeamFiltersInput) {
+	ourTeams(filters: $filters) {
+		data {
+			attributes {
+				title
+				slug
+				team_member {
+					data {
+						attributes {
+							positions {
+								id
+								text
+							}
+							phone
+							email
+							longBio
+							image {
+								data {
+									attributes {
+										url
+										name
+									}
+								}
+							}
+						}
+					}
+				}
+				tabContainer {
+					id
+					tab {
+						id
+						tabHeading
+						tabContent
+					}
+				}
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								alternativeText
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
+			}
+		}
+	}
+}

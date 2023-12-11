@@ -1,0 +1,60 @@
+.cardContainer {
+}
+
+.cardWrapper {
+	width: var(--size-40);
+	height: -webkit-fill-available;
+	display: flex;
+	flex-direction: column;
+	box-shadow: var(--default-box-shadow);
+}
+
+.imageWrapper {
+	position: relative;
+	height: var(--size-25);
+	width: 100%;
+}
+
+.image {
+	object-fit: cover;
+}
+
+.textWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: var(--size-1-25);
+}
+
+.textWrapper h4 {
+	font: 500 var(--size-2) var(--font-fancy);
+	text-align: center;
+}
+
+.textWrapper span {
+	color: var(--color-secondary);
+	text-transform: uppercase;
+	font: 500 var(--size-0-75) var(--font-body);
+	margin: var(--size-0-5) 0;
+}
+
+.textWrapper .categoryContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--size-0-5);
+	margin: var(--size-1-25) 0;
+}
+
+.textWrapper .category {
+	color: var(--color-white);
+	background-color: var(--color-accent);
+	padding: var(--size-0-5);
+	border-radius: 10px;
+}
+
+.textWrapper p {
+	font: 500 var(--size-0-75) / 1.8 var(--font-body);
+	text-align: center;
+}

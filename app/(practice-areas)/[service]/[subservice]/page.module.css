@@ -1,0 +1,92 @@
+.heroSection {
+	padding-top: var(--size-15);
+	background-blend-mode: multiply;
+	background-color: var(--bg-overlay-dark);
+}
+
+.heroSection .heroTextContainer {
+	display: flex;
+	flex-direction: column;
+	max-width: var(--size-75);
+	margin: auto;
+	text-align: center;
+	width: 100%;
+	gap: var(--size-1-25);
+	padding-bottom: var(--size-25);
+	padding-left: var(--size-15);
+	padding-top: var(--size-10);
+	padding-right: var(--size-15);
+}
+
+.heroSection .heroTextContainer h1 {
+	color: var(--color-white);
+	font: 800 var(--size-3-5) var(--font-fancy);
+	text-transform: uppercase;
+	word-wrap: break-word;
+}
+
+.heroSection .heroTextContainer p {
+	font: 400 var(--size-1-5) var(--font-body);
+	color: var(--color-white);
+	letter-spacing: 1px;
+}
+
+.heroSection .heroTextContainer hr {
+	width: var(--size-5);
+	height: 5px;
+	background: var(--color-secondary);
+	border: none;
+}
+
+.heroSection .heroTextContainer h2 {
+	font: 400 var(--size-1-5) var(--font-body);
+	color: var(--color-white);
+	letter-spacing: 1px;
+}
+
+.infoSections {
+	margin: auto;
+	padding-top: var(--size-5);
+	max-width: var(--size-150);
+	padding-bottom: var(--size-20);
+}
+
+.infoSections > div:not(:last-child) {
+	margin-bottom: var(--size-7-5);
+}
+
+.infoSections > div > p:has(> em) {
+	text-align: center;
+}
+
+.infoSections h2 {
+	font-family: var(--font-fancy);
+	font-size: var(--size-3-5);
+	font-weight: 400;
+	line-height: 1.25;
+	text-align: center;
+}
+
+.infoSections h4 {
+	font: 600 var(--size-1-25) var(--font-special);
+	margin-bottom: var(--size-1-25);
+}
+
+.infoSections h2:not(:first-child) {
+	margin-top: var(--size-5);
+}
+
+.infoSections hr {
+	border-color: var(--color-accent);
+	border-top-width: 2px;
+	margin: var(--size-1) auto var(--size-2-5);
+	width: var(--size-40);
+}
+
+.infoSections p,
+.infoSections ol li,
+.infoSections ul li {
+	color: var(--color-medium-gray);
+	font: 500 var(--size-1) / 2 var(--font-body);
+	margin-bottom: var(--size-2);
+}

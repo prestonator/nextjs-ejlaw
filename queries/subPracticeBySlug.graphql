@@ -1,0 +1,10 @@
+query SubPracticeBySlug {
+	subPracticeAreas {
+		data {
+			attributes {
+				title
+				slug
+			}
+		}
+	}
+}

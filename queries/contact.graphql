@@ -1,0 +1,51 @@
+query ContactPageQuery {
+	contact {
+		data {
+			attributes {
+				title
+				slug
+				details {
+					id
+					icon
+					richText
+				}
+				cta {
+					icon
+					richText
+					button {
+						label
+						href
+						newTab
+					}
+				}
+				socials {
+					richText
+					icon {
+						id
+						icon
+						href
+						newTab
+					}
+				}
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								alternativeText
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
+			}
+		}
+	}
+}

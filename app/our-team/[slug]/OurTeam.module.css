@@ -1,0 +1,311 @@
+@custom-media --first-font-viewport (max-width: 1300px);
+@custom-media --second-font-viewport (max-width: 1150px);
+@custom-media --menu-breakpoint (max-width: 850px);
+
+.ourTeamContainer {
+	animation: gradient 2s ease forwards;
+	background-image: linear-gradient(115deg, #fff 35%, #2b2b2b 35%);
+	background-size: 400% 400%;
+}
+
+.authorInfo {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	gap: var(--size-5);
+	justify-content: center;
+	margin: auto;
+	max-width: var(--size-175);
+	padding-top: var(--size-7-5);
+}
+
+.headshotWrapper {
+	height: var(--size-75);
+	position: relative;
+	width: 100%;
+}
+
+.image {
+	object-fit: contain;
+	object-position: bottom;
+}
+
+.authorPositions {
+	align-items: center;
+	display: flex;
+}
+
+.authorInfoTitle {
+	align-items: center;
+	background-color: var(--color-white);
+	display: flex;
+	flex-direction: column;
+	font-family: var(--font-fancy);
+	justify-content: center;
+	margin: 0 auto;
+	padding: var(--size-1-25) 0;
+	width: var(--size-75);
+}
+
+.authorTitle {
+	font-size: var(--size-5);
+}
+
+.authorSubtitle,
+.positionDivider {
+	font-size: var(--size-2);
+}
+
+.authorContact {
+	animation: textColor 2s ease forwards;
+	display: flex;
+	flex-direction: row;
+	font-size: var(--size-1-25);
+	justify-content: center;
+	gap: var(--size-1-5);
+	margin: var(--size-1-25) auto;
+	width: auto;
+}
+
+.phone,
+.email {
+	text-align: center;
+}
+
+.authorBio {
+	animation: textColor 2s ease forwards;
+	font-size: var(--size-1-25);
+	line-height: 1.15;
+	text-align: center;
+	font-family: var(--font-body);
+}
+
+.authorBio p:not(:last-child) {
+	margin-bottom: var(--size-1-25);
+}
+
+.tabContainer {
+	width: 100%;
+}
+
+.tabButtonContainer {
+	align-items: center;
+	background: linear-gradient(135deg, #e5eaf1 0%, #b9c5d8 100%);
+	display: flex;
+	height: var(--size-5);
+	justify-content: space-between;
+	list-style-type: none;
+}
+
+.tabButtonWrapper {
+	flex: 1;
+}
+
+.tabButton {
+	background: linear-gradient(
+		90deg,
+		transparent 70%,
+		rgba(255, 255, 255, 0.2) 100%
+	);
+	cursor: pointer;
+	height: var(--size-5);
+	overflow: hidden;
+	position: relative;
+	transition: 0.3s;
+	width: 100%;
+}
+
+.tabButton.active {
+	background: var(--color-white);
+	transform: scaleY(1.4);
+}
+
+.tabButton.active::before,
+.tabButton.active:hover::before {
+	transform: scaleY(0.05);
+}
+
+.tabButton.active .tabButtonText {
+	transform: scaleY(0.714);
+}
+
+.tabButton.active:hover .tabButtonText,
+.tabButton.active .tabButtonText {
+	background: linear-gradient(135deg, #2b2b2b 0%, #4e0000 48%, #2b2b2b 100%);
+	background-clip: text;
+	color: transparent;
+	font-size: var(--size-1-5);
+	opacity: 1;
+}
+
+.tabButton:hover::before {
+	transform: scaleY(1);
+}
+
+.tabButton::before {
+	background: linear-gradient(135deg, #2b2b2b 0%, #4e0000 48%, #2b2b2b 100%);
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: 0.3s ease-in-out;
+	width: 100%;
+	z-index: 2;
+}
+
+.tabButton:hover .tabButtonText {
+	color: var(--color-white);
+	opacity: 1;
+}
+
+.tabButton:hover .tabButtonText::before {
+	transform: translateY(-175%);
+}
+
+.tabButton .tabButtonText {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	opacity: 0.6;
+	position: relative;
+	transition: 0.5s;
+	z-index: 2;
+}
+
+.tabButton .tabButtonText::before {
+	color: #fff;
+	content: attr(data-text);
+	font-size: 40px;
+	font-weight: 600;
+	opacity: 0.1;
+	position: absolute;
+	top: 160%;
+	transition: 1.2s ease-out;
+	z-index: -1;
+}
+
+.tabContentContainer {
+	background: var(--color-white);
+	list-style-type: none;
+	margin-top: 0;
+	padding: var(--size-5) var(--size-2-5);
+	position: relative;
+	transition: 1s;
+	padding-bottom: var(--size-20);
+}
+
+.tabContentContainer::after {
+	background: linear-gradient(135deg, #2b2b2b 0%, #4e0000 48%, #2b2b2b 100%);
+	bottom: 0;
+	content: "";
+	height: 2px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+
+.tabContentContainer .tabContent {
+	animation: fadeIn 0.6s forwards;
+	display: none;
+	font-weight: 300;
+	line-height: 1.8;
+	min-height: 200px;
+	opacity: 0;
+	transform: translateY(30%);
+}
+
+.tabContentContainer .tabContent.active {
+	display: block;
+}
+
+.tabContentContainer .tabContent blockquote {
+	border-left: 3px solid var(--color-accent);
+	font-style: italic;
+	letter-spacing: 1px;
+	font-size: var(--size-1-5);
+	margin: var(--size-1) 0;
+	padding: var(--size-0-75) var(--size-2);
+}
+
+.tabContentContainer .tabContent > p {
+	font: 500 var(--size-2) var(--font-special);
+}
+
+.tabContentContainer .tabContent blockquote > ul {
+	list-style-position: inside;
+	list-style-type: disc;
+}
+
+.tabContentContainer .tabContent > hr {
+	width: 95%;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 35% 50%;
+	}
+}
+
+@keyframes textColor {
+	0% {
+		color: var(--color-black);
+	}
+
+	100% {
+		color: var(--color-white);
+	}
+}
+
+@keyframes fadeIn {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (--first-font-viewport) {
+	.authorBio {
+		font-size: var(--size-1);
+	}
+}
+
+@media (--second-font-viewport) {
+	.authorTitle {
+		font-size: var(--size-3-5);
+	}
+	.authorSubtitle {
+		font-size: var(--size-1-5);
+	}
+	.authorContact {
+		font-size: var(--size-1);
+	}
+	.authorBio {
+		font-size: var(--size-0-75);
+	}
+}
+
+@media (--menu-breakpoint) {
+	.authorInfo {
+		flex-direction: column;
+		gap: 0;
+		max-width: 100%;
+	}
+	.authorInfoTitle {
+		width: 100%;
+	}
+	.authorBio {
+		padding: var(--size-5) var(--size-20);
+		font-size: var(--size-1);
+		background: white;
+	}
+	.authorBio p {
+		color: black;
+	}
+}
