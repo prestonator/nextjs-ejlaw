@@ -6,6 +6,7 @@ import {
 	formatDate,
 	SafeImageAlt,
 } from "@/utils/helperFunctions";
+import JsonLd from "@/components/Seo/jsonLD";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
@@ -73,10 +74,11 @@ export async function generateStaticParams() {
 
 const Page = async ({ params }) => {
 	const { postSlug, slug } = params;
-	const { title, hero, image, team_member, category, date, sections } =
+	const { title, hero, image, team_member, category, date, sections, meta } =
 		(await getPage(postSlug, slug)) || {};
 	return (
 		<main>
+			<JsonLd jsonLd={meta?.jsonLD} />
 			{/* Hero section */}
 			<section className={styles.heroSection}>
 				<div className={styles.textContainer}>
