@@ -1,6 +1,7 @@
 import {
 	SafeImage,
 	SafeImageUrl,
+	SafeImageAlt,
 	SafeHtml,
 	IconComponent,
 } from "@/utils/helperFunctions";
@@ -27,6 +28,34 @@ const getPage = async (slug) => {
 		return null;
 	}
 };
+
+export async function generateMetadata() {
+	const { meta } = await getPage();
+	return {
+		title: meta?.metaTitle,
+		description: meta?.metaDescription,
+		alternates: {
+			canonical: meta?.canonical,
+		},
+		openGraph: {
+			title: meta?.ogTitle || "",
+			description: meta?.ogDescription || "",
+			url: meta?.ogUrl || "",
+			type: meta?.ogType || "",
+			images: [
+				{
+					url: SafeImageUrl(meta?.ogImage?.data),
+					width: 1200,
+					height: 630,
+					alt: SafeImageAlt(meta?.ogImage?.data),
+				},
+			],
+		},
+		twitter: {
+			card: meta?.twitterCard || "",
+		},
+	};
+}
 
 export async function generateStaticParams() {
 	const { data } = await fetchData(NewsBlogBySlug.loc.source.body);

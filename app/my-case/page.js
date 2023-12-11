@@ -1,4 +1,10 @@
-import { SafeImage, SafeHtml, IconComponent } from "@/utils/helperFunctions";
+import {
+	SafeImage,
+	SafeHtml,
+	IconComponent,
+	SafeImageUrl,
+	SafeImageAlt,
+} from "@/utils/helperFunctions";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
@@ -9,6 +15,34 @@ const getData = async () => {
 	const { data } = await fetchData(MyCaseQuery.loc.source.body);
 	return data?.mycase?.data?.attributes;
 };
+
+export async function generateMetadata() {
+	const { meta } = await getData();
+	return {
+		title: meta?.metaTitle || "MyCase",
+		description: meta?.metaDescription || "",
+		alternates: {
+			canonical: meta?.canonical || "",
+		},
+		openGraph: {
+			title: meta?.ogTitle || "",
+			description: meta?.ogDescription || "",
+			url: meta?.ogUrl || "",
+			type: meta?.ogType || "",
+			images: [
+				{
+					url: SafeImageUrl(meta?.ogImage?.data),
+					width: 1200,
+					height: 630,
+					alt: SafeImageAlt(meta?.ogImage?.data),
+				},
+			],
+		},
+		twitter: {
+			card: meta?.twitterCard || "",
+		},
+	};
+}
 
 const MyCasePage = async () => {
 	const { title, slug, hero, sections } = await getData();

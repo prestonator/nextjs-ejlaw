@@ -1,4 +1,4 @@
-import { SafeImage, SafeHtml, IconComponent } from "@/utils/helperFunctions";
+import { SafeImage, SafeImageUrl, SafeImageAlt, SafeHtml, IconComponent } from "@/utils/helperFunctions";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
@@ -11,6 +11,34 @@ const getData = async () => {
 	const { data } = await fetchData(ContactPageQuery.loc.source.body);
 	return data?.contact?.data?.attributes;
 };
+
+export async function generateMetadata() {
+	const { meta } = await getData();
+	return {
+		title: meta?.metaTitle || "Contact Us",
+		description: meta?.metaDescription || "",
+		alternates: {
+			canonical: meta?.canonical || "",
+		},
+		openGraph: {
+			title: meta?.ogTitle || "",
+			description: meta?.ogDescription || "",
+			url: meta?.ogUrl || "",
+			type: meta?.ogType || "",
+			images: [
+				{
+					url: SafeImageUrl(meta?.ogImage?.data),
+					width: 1200,
+					height: 630,
+					alt: SafeImageAlt(meta?.ogImage?.data),
+				},
+			],
+		},
+		twitter: {
+			card: meta?.twitterCard || "",
+		},
+	};
+}
 
 const ContactPage = async () => {
 	const { title, slug, details, cta, socials } = await getData();

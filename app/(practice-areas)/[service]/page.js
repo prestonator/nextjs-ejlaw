@@ -1,6 +1,7 @@
 import {
 	SafeImage,
 	SafeImageUrl,
+	SafeImageAlt,
 	SafeHtml,
 	IconComponent,
 } from "@/utils/helperFunctions";
@@ -34,6 +35,34 @@ export async function generateStaticParams() {
 	return PracticeAreaPageData.map((page) => ({
 		service: page.attributes.slug,
 	}));
+}
+
+export async function generateMetadata({ params }) {
+	const meta = (await getPage(params.service))?.meta || {};
+	return {
+		title: meta?.metaTitle || "",
+		description: meta?.metaDescription || "",
+		alternates: {
+			canonical: meta?.canonical || "",
+		},
+		openGraph: {
+			title: meta?.ogTitle || "",
+			description: meta?.ogDescription || "",
+			url: meta?.ogUrl || "",
+			type: meta?.ogType || "",
+			images: [
+				{
+					url: SafeImageUrl(meta?.ogImage?.data) || "",
+					width: 1200 || "",
+					height: 630 || "",
+					alt: SafeImageAlt(meta?.ogImage?.data) || "",
+				},
+			],
+		},
+		twitter: {
+			card: meta?.twitterCard || "",
+		},
+	};
 }
 
 const Page = async ({ params }) => {

@@ -17,11 +17,11 @@ export const metadata = {
 		"Elton Jenkins Law, P.L.L.C. is a law firm in Oklahoma that specializes in criminal defense, family law, personal injury law, and mediation. The firm values honesty, integrity, and justice and prioritizes its clients. Contact us for a free consultation.",
 	icons: {
 		icon: [
-			{ url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-			{ url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+			{ url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+			{ url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
 		],
-		shortcut: "/favicon.ico",
-		apple: "/apple-touch-icon.png",
+		shortcut: "/icons/favicon.ico",
+		apple: "/icons/apple-touch-icon.png",
 	},
 };
 
