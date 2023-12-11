@@ -22,6 +22,12 @@ export const SafeImageUrl = (imageData) => {
 	return full_url;
 };
 
+export const SafeImageAlt = (imageData) => {
+	const alt = imageData?.attributes?.name ?? "";
+
+	return alt;
+};
+
 export const formatDate = (dateStr) => {
 	const date = new Date(dateStr);
 	const formattedDate = date.toLocaleString("en-us", {
