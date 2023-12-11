@@ -4,6 +4,7 @@ import {
 	SafeHtml,
 	IconComponent,
 	formatDate,
+	SafeImageAlt,
 } from "@/utils/helperFunctions";
 import Link from "next/link";
 import styles from "./page.module.css";
@@ -32,6 +33,34 @@ const getPage = async (postSlug, slug) => {
 		return null;
 	}
 };
+
+export async function generateMetadata({ params }) {
+	const { meta } = await getPage(params.postSlug, params.slug);
+	return {
+		title: meta?.metaTitle,
+		description: meta?.metaDescription,
+		alternates: {
+			canonical: meta?.canonical,
+		},
+		openGraph: {
+			title: meta?.ogTitle || "",
+			description: meta?.ogDescription || "",
+			url: meta?.ogUrl || "",
+			type: meta?.ogType || "",
+			images: [
+				{
+					url: SafeImageUrl(meta?.ogImage?.data),
+					width: 1200,
+					height: 630,
+					alt: SafeImageAlt(meta?.ogImage?.data),
+				},
+			],
+		},
+		twitter: {
+			card: meta?.twitterCard || "",
+		},
+	};
+}
 
 export async function generateStaticParams() {
 	const { data } = await fetchData(PostBySlug.loc.source.body);
