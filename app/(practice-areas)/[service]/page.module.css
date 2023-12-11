@@ -38,6 +38,8 @@
 	margin: auto;
 	padding-top: var(--size-5);
 	max-width: var(--size-160);
+	padding-left: var(--size-2-5);
+    padding-right: var(--size-2-5);
 }
 
 .flipCardSection {

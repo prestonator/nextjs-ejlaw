@@ -5,6 +5,7 @@ import {
 	SafeImageUrl,
 	SafeImageAlt,
 } from "@/utils/helperFunctions";
+import JsonLd from "@/components/Seo/jsonLD";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { HomeQuery } from "@/queries/home.graphql";
@@ -53,9 +54,11 @@ const Home = async () => {
 		staffPreview,
 		whyUsHeading,
 		whyUsCards,
+		meta
 	} = await getData();
 	return (
 		<main className={styles.main}>
+			<JsonLd jsonLd={meta?.jsonLD} />
 			{/* Hero section */}
 			<section className={styles.hero}>
 				<div className={styles.textContent}>
