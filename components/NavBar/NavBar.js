@@ -1,5 +1,5 @@
 import NavItem from "./parts/NavItem";
-import styles from "@/components/Navbar/NavBar.module.css";
+import styles from "@/components/NavBar/NavBar.module.css";
 import Link from "next/link";
 import { SafeImage } from "@/utils/helperFunctions";
 import Image from "next/image";

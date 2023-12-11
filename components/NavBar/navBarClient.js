@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { debounce } from "./debounce";
-import styles from "@/components/Navbar/navBar.module.css";
+import styles from "@/components/NavBar/NavBar.module.css";
 import { IconComponent } from "@/utils/helperFunctions";
 
 function ClientNavbar({ children }) {
