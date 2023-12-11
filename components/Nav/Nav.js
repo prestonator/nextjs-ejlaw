@@ -1,10 +1,10 @@
-import NavItem from "./parts/NavItem";
-import styles from "@/components/NavBar/NavBar.module.css";
+import NavItem from "./parts/Submenu";
+import styles from "@/components/Nav/Nav.module.css";
 import Link from "next/link";
 import { SafeImage } from "@/utils/helperFunctions";
 import Image from "next/image";
 
-async function NavBar({ navItems, logo }) {
+async function Nav({ navItems, logo }) {
 	const ourTeam = navItems.menuItems[1].children;
 	const practiceAreas = navItems.menuItems[2].children;
 	return (
@@ -58,4 +58,4 @@ function Logo({ url, logo }) {
 	);
 }
 
-export default NavBar;
+export default Nav;

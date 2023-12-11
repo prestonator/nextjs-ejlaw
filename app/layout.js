@@ -2,9 +2,9 @@ import "./globals.css";
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import FloatingButton from "@/components/ContactForm/FloatingButton";
-import NavBar from "@/components/NavBar/NavBar";
+import Nav from "@/components/Nav/Nav";
 import Footer from "@/components/Footer/Footer";
-import ClientNavbar from "@/components/NavBar/NavBarClient";
+import NavClient from "@/components/Nav/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 
 const getData = async () => {
@@ -35,9 +35,9 @@ export default async function RootLayout({ children }) {
 			className={`${cormorant.variable} ${montserrat.variable} ${saira.variable}`}
 		>
 			<body>
-				<ClientNavbar>
-					<NavBar navItems={navMenu} logo={logo} />
-				</ClientNavbar>
+				<NavClient>
+					<Nav navItems={navMenu} logo={logo} />
+				</NavClient>
 				{children}
 				<Footer footer={footer} />
 				<FloatingButton />
