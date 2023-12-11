@@ -18,7 +18,7 @@ const getData = async () => {
 };
 
 export async function generateMetadata() {
-	const { meta } = await getPage();
+	const { meta } = await getData();
 	return {
 		title: meta?.metaTitle || "Home | Elton Jenkins Law, P.L.L.C.",
 		description: meta?.metaDescription || "",

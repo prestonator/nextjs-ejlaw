@@ -12,6 +12,34 @@ const getData = async () => {
 	return data?.contact?.data?.attributes;
 };
 
+export async function generateMetadata() {
+	const { meta } = await getData();
+	return {
+		title: meta?.metaTitle || "Contact Us",
+		description: meta?.metaDescription || "",
+		alternates: {
+			canonical: meta?.canonical || "",
+		},
+		openGraph: {
+			title: meta?.ogTitle || "",
+			description: meta?.ogDescription || "",
+			url: meta?.ogUrl || "",
+			type: meta?.ogType || "",
+			images: [
+				{
+					url: getSafeUrl(meta?.ogImage?.data),
+					width: 1200,
+					height: 630,
+					alt: getSafeAlt(meta?.ogImage?.data),
+				},
+			],
+		},
+		twitter: {
+			card: meta?.twitterCard || "",
+		},
+	};
+}
+
 const ContactPage = async () => {
 	const { title, slug, details, cta, socials } = await getData();
 	return (
