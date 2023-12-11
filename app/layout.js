@@ -2,6 +2,7 @@ import "./globals.css";
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import NavBar from "@/components/NavBar/navBar";
+import Footer from "@/components/Footer/Footer";
 import ClientNavbar from "@/components/NavBar/navBarClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 
@@ -26,7 +27,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-	const { navMenu, logo } = await getData();
+	const { navMenu, logo, footer } = await getData();
 	return (
 		<html
 			lang="en"
@@ -37,6 +38,7 @@ export default async function RootLayout({ children }) {
 					<NavBar navItems={navMenu} logo={logo} />
 				</ClientNavbar>
 				{children}
+				<Footer footer={footer} />
 			</body>
 		</html>
 	);

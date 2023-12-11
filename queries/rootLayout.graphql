@@ -12,6 +12,27 @@ query RootLayoutQuery {
 						}
 					}
 				}
+				footer {
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+					modalText
+					column {
+						id
+						richText
+					}
+					socialIcons {
+						id
+						icon
+						href
+						newTab
+					}
+				}
 			}
 		}
 	}
