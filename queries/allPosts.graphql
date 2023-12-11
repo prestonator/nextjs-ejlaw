@@ -63,6 +63,7 @@ query PostData($filters: NewsBlogPostFiltersInput) {
 					ogUrl
 					ogType
 					twitterCard
+					jsonLD
 				}
 			}
 		}

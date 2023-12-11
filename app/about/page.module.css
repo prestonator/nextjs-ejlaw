@@ -1,3 +1,25 @@
+@custom-media --medium-viewport (max-width: 768px);
+
+@media (--medium-viewport) {
+	.container .hero {
+		flex-direction: column;
+	}
+	.container .callToAction {
+		flex-direction: column-reverse;
+	}
+	.container .callToAction .textContent {
+		max-width: 80vw;
+	}
+	.container .whyChoose {
+		flex-direction: column;
+	}
+	.container .ourPhilosophy .services {
+		flex-direction: column;
+		max-width: 50%;
+		margin: 0 auto;
+	}
+}
+
 .imageWrapper {
 	position: relative;
 	width: 100%;
@@ -37,7 +59,7 @@
 }
 
 .callToAction {
-	max-width: var(--size-100);
+	padding: 0 var(--size-15);
 	margin: auto;
 	margin-top: var(--size-15);
 }
@@ -52,7 +74,7 @@
 }
 
 .callToAction .textContent {
-	max-width: var(--size-30);
+	max-width: 20vw;
 }
 
 .callToAction h3 {
@@ -76,8 +98,8 @@
 }
 
 .callToAction .imageWrapper {
-	width: var(--size-50);
-	height: var(--size-65);
+	width: var(--size-60);
+	height: var(--size-90);
 }
 
 .callToAction .imageWrapper .image {

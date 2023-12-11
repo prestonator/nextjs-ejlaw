@@ -35,6 +35,7 @@
 	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 	background-blend-mode: multiply;
 	background-color: rgb(0 0 0 / 75%);
+	padding: var(--size-2) 0;
 }
 
 .card.expanded .face.faceOne {
@@ -52,7 +53,6 @@
 	transition: 0.5s;
 }
 
-
 .face.faceOne .contentContainer hr {
 	height: 2px;
 	border-color: var(--color-white);
@@ -69,14 +69,14 @@
 
 .face.faceOne .contentContainer > p {
 	color: var(--color-white);
-    font: 500 var(--size-1-25) var(--font-body);
-    text-align: center;
+	font: 500 var(--size-1-25) var(--font-body);
+	text-align: center;
 }
 
 .cardExcerpt {
 	color: var(--color-white);
-    font: 500 var(--size-1-25) var(--font-body);
-    text-align: center;
+	font: 500 var(--size-1-25) var(--font-body);
+	text-align: center;
 }
 
 .face.faceTwo {
@@ -112,10 +112,9 @@
 .face.faceTwo .content p {
 	font: 400 var(--size-1-25) / 2 var(--font-body);
 	text-align: justify;
-	width: 95%;
+	padding: 0 var(--size-2);
 	margin: 0 auto;
 }
-
 
 @media screen and (min-width: 550px) {
 	.face.faceTwo .content p {
@@ -163,9 +162,6 @@
 	.face.faceTwo .contentContainer {
 		width: 100%;
 		gap: 0.5rem;
-	}
-	.face.faceTwo .content p {
-		width: calc(100% - var(--size-3-5));
 	}
 }
 

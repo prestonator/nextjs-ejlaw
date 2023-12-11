@@ -1,0 +1,177 @@
+.footerHero > .textContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-white);
+	background-color: var(--color-gray);
+	font: 600 var(--size-1-25) / 2 var(--font-special);
+	border-top: var(--size-0-75) solid var(--color-secondary);
+	padding: var(--size-5) 0;
+	letter-spacing: 2px;
+	border-bottom: 1px solid #000000;
+    width: 100%;
+	transform: translateY(calc(-1 * var(--size-7-5)));
+	max-width: calc(90vw - (var(--size-5)));
+	margin: auto;
+}
+
+.footerWrapper {
+	background-image: linear-gradient(45deg, #d6dcf9 0%, rgba(0, 0, 0, 0) 100%);
+	border-radius: var(--size-1) var(--size-1) 0 0;
+	overflow: hidden;
+}
+
+.footerContainer {
+	padding: var(--size-10) 0;
+	background-image: linear-gradient(215deg, #c0dff9 0%, rgba(0, 0, 0, 0) 100%);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: var(--size-5);
+	padding-left: var(--size-0-75);
+    padding-right: var(--size-0-75);
+}
+
+.footerWrapper .column {
+	max-width: calc((100vw / 4) - var(--size-7-5));
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.footerWrapper .linkColumn {
+	margin-right: var(--size-5);
+}
+
+.footerWrapper .linkColumn h5 {
+	font: 600 var(--size-2-5) var(--font-fancy);
+	width: 100%;
+	text-align: center;
+}
+
+.footerWrapper .linkColumn hr {
+	width: var(--size-10);
+	border-top: 1px solid var(--color-black);
+	margin: var(--size-1-5) 0;
+}
+
+.footerWrapper .linkColumn p {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	text-align: center;
+}
+
+.footerWrapper .linkColumn p a {
+	font: 400 var(--size-1-25) var(--font-special);
+}
+
+.footerWrapper .signUpColumn {
+	justify-content: space-between;
+	gap: var(--size-0-75);
+}
+
+.footerWrapper .signUpColumn .row {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
+.footerWrapper .signUpColumn .row.iconWrapper {
+	flex-direction: row;
+	gap: var(--size-1);
+}
+
+.footerWrapper .signUpColumn .row.iconWrapper svg {
+	width: var(--size-2-5);
+	height: var(--size-2-5);
+}
+
+.footerWrapper .signUpColumn .row.formWrapper {
+	flex-direction: column;
+	padding: 0 var(--size-2-5);
+	gap: var(--size-0-75);
+}
+
+.footerWrapper .signUpColumn .row.formWrapper .textInput {
+	border: 1px solid var(--color-black);
+	border: 1px solid;
+	background-color: transparent;
+}
+
+.footerWrapper .signUpColumn .row.formWrapper .textInput:focus-visible {
+	outline: none;
+}
+
+.footerWrapper .signUpColumn .row.formWrapper .textInput,
+.footerWrapper .signUpColumn .row.formWrapper .submitInput {
+	padding: var(--size-0-75) 0;
+	text-align: center;
+}
+
+.footerWrapper .signUpColumn .row.formWrapper .submitInput {
+	background-color: var(--color-white);
+	color: var(--color-black);
+	border: none;
+	border-radius: var(--size-1-5);
+	cursor: pointer;
+}
+
+.scheduleFormWrapper {
+	width: 100%;
+	height: 100%;
+	background-color: #333333;
+	padding-top: var(--size-1-5);
+}
+
+@media (max-width: 1350px) {
+	.footerHero .scheduleWrapper {
+		flex-direction: column-reverse;
+		max-width: calc(100vw - var(--size-65));
+	}
+	.scheduleFormWrapper {
+		width: 100%;
+	}
+	.footerHero .scheduleWrapper .textContent {
+		width: 100%;
+		padding: var(--size-5) 0;
+	}
+}
+
+@media (max-width: 650px) {
+	.footerHero .scheduleWrapper {
+		max-width: calc(100vw - var(--size-20));
+	}
+	.footerWrapper .footerContainer {
+		flex-wrap: wrap;
+		gap: 0;
+	}
+	.footerWrapper .column {
+		max-width: calc((100vw / 2) - var(--size-7-5));
+		width: 100%;
+	}
+	.footerWrapper .signUpColumn,
+	.footerWrapper .linkColumn:nth-of-type(3) {
+		margin-top: var(--size-10);
+	}
+	.footerWrapper .linkColumn:nth-of-type(2) {
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 450px) {
+	.footerHero .scheduleWrapper {
+		max-width: calc(100vw - var(--size-5));
+	}
+	.footerWrapper .column {
+		max-width: calc(100vw - var(--size-7-5));
+		width: 100%;
+		margin-right: 0;
+		margin-top: var(--size-5);
+		margin-bottom: var(--size-5);
+	}
+}
