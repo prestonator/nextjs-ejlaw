@@ -29,6 +29,8 @@
 	flex-direction: row;
 	justify-content: center;
 	gap: var(--size-5);
+	padding-left: var(--size-0-75);
+    padding-right: var(--size-0-75);
 }
 
 .footerWrapper .column {

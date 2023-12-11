@@ -1,0 +1,26 @@
+.floatingButton {
+	position: fixed;
+	bottom: 1.5rem;
+	right: 2.5rem;
+	z-index: 100;
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	padding: var(--size-2) var(--size-2-5);
+	border-radius: 5rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--size-0-75);
+	font: 500 1rem var(--font-body);
+    transition: all .5s ease;
+}
+
+.floatingButton:hover {
+    transform: scale(0.95);
+}
+
+.icon {
+	width: var(--size-1-5);
+	height: var(--size-1-5);
+}
