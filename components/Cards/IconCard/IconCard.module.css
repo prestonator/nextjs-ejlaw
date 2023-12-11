@@ -4,11 +4,11 @@
 	flex-basis: var(--size-40);
 	justify-content: flex-start;
 	align-items: center;
-	height: var(--size-20);
+	height: fit-content;
 }
 
 .iconCard .iconWrapper {
-	flex-basis: 25%;
+	flex-basis: 10vh;
 }
 
 .iconCard .iconWrapper svg {
@@ -19,12 +19,13 @@
 
 .iconCard h6 {
     font: 400 var(--size-2) var(--font-special);
-    flex-basis: 25%;
+    flex-basis: 10vh;
+	text-align: center;
 }
 
 .iconCard p {
     color: var(--color-medium-gray);
-    flex-basis: var(--size-10);
+    flex-basis: 45vh;
     text-align: center;
     line-height: 1.8em;
 }
