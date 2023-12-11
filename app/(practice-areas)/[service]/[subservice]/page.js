@@ -1,10 +1,10 @@
 import {
 	SafeImage,
 	SafeImageUrl,
+	SafeImageAlt,
 	SafeHtml,
 	IconComponent,
 } from "@/utils/helperFunctions";
-import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { SubPracticeBySlug } from "@/queries/subPracticeBySlug.graphql";
@@ -33,6 +33,34 @@ export async function generateStaticParams() {
 	return SubPracticeData.map((page) => ({
 		subservice: page.attributes.slug,
 	}));
+}
+
+export async function generateMetadata({ params }) {
+	const meta = (await getPage(params.subservice))?.meta || {};
+	return {
+		title: meta?.metaTitle || "",
+		description: meta?.metaDescription || "",
+		alternates: {
+			canonical: meta?.canonical || "",
+		},
+		openGraph: {
+			title: meta?.ogTitle || "",
+			description: meta?.ogDescription || "",
+			url: meta?.ogUrl || "",
+			type: meta?.ogType || "",
+			images: [
+				{
+					url: SafeImageUrl(meta?.ogImage?.data),
+					width: 1200,
+					height: 630,
+					alt: SafeImageAlt(meta?.ogImage?.data),
+				},
+			],
+		},
+		twitter: {
+			card: meta?.twitterCard || "",
+		},
+	};
 }
 
 const Page = async ({ params }) => {
