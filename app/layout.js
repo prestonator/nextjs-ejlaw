@@ -4,7 +4,7 @@ import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import FloatingButton from "@/components/ContactForm/FloatingButton";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
-import ClientNavbar from "@/components/NavBar/navBarClient";
+import ClientNavbar from "@/components/NavBar/NavBarClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 
 const getData = async () => {
