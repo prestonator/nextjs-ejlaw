@@ -1,7 +1,7 @@
 // NavBar/parts/NavItem.js
 "use client";
 import Link from "next/link";
-import styles from "@/components/Navbar/navBar.module.css";
+import styles from "../Nav.module.css";
 import { useState } from "react";
 import { IconComponent } from "@/utils/helperFunctions";
 

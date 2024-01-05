@@ -1,10 +1,12 @@
 import "./globals.css";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import FloatingButton from "@/components/ContactForm/FloatingButton";
-import NavBar from "@/components/NavBar/NavBar";
+import Nav from "@/components/Nav/Nav";
 import Footer from "@/components/Footer/Footer";
-import ClientNavbar from "@/components/NavBar/navBarClient";
+import NavClient from "@/components/Nav/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 import Analytics from "@/components/Analytics/Analytics";
 import { Suspense } from 'react'
@@ -46,6 +48,8 @@ export default async function RootLayout({ children }) {
 				{children}
 				<Footer footer={footer} />
 				<FloatingButton />
+				<SpeedInsights />
+				<Analytics />
 			</body>
 		</html>
 	);

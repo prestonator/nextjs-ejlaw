@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { debounce } from "./debounce";
-import styles from "@/components/Navbar/navBar.module.css";
+import styles from "@/components/Nav/Nav.module.css";
 import { IconComponent } from "@/utils/helperFunctions";
 
-function ClientNavbar({ children }) {
+function NavClient({ children }) {
 	// Initialize state variables
 	const [isNavExpanded, setIsNavExpanded] = useState(false);
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -73,4 +73,4 @@ function ClientNavbar({ children }) {
 	);
 }
 
-export default ClientNavbar;
+export default NavClient;

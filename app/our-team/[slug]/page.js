@@ -8,7 +8,7 @@ import {
 import Link from "next/link";
 import styles from "./OurTeam.module.css";
 import { fetchData } from "@/lib/fetchData";
-import { OurTeamsBySlug } from "@/queries/OurTeamBySlug.graphql";
+import { OurTeamsBySlug } from "@/queries/ourTeamBySlug.graphql";
 import { OurTeams } from "@/queries/ourTeam.graphql";
 import TabContainer from "./TabContainer";
 
