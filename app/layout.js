@@ -8,8 +8,6 @@ import Nav from "@/components/Nav/Nav";
 import Footer from "@/components/Footer/Footer";
 import NavClient from "@/components/Nav/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
-import Analytics from "@/components/Analytics/Analytics";
-import { Suspense } from 'react'
 
 const getData = async () => {
 	const { data } = await fetchData(RootLayoutQuery.loc.source.body);
@@ -39,12 +37,9 @@ export default async function RootLayout({ children }) {
 			className={`${cormorant.variable} ${montserrat.variable} ${saira.variable}`}
 		>
 			<body>
-				<Suspense>
-					<Analytics />
-				</Suspense>
-				<ClientNavbar>
-					<NavBar navItems={navMenu} logo={logo} />
-				</ClientNavbar>
+				<NavClient>
+					<Nav navItems={navMenu} logo={logo} />
+				</NavClient>
 				{children}
 				<Footer footer={footer} />
 				<FloatingButton />
