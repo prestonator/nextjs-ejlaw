@@ -12,9 +12,15 @@ import { cormorant, montserrat, saira } from "@/lib/font";
 import { Suspense } from 'react'
 
 const getData = async () => {
-	const { data } = await fetchData(RootLayoutQuery.loc.source.body);
-	return data?.rootLayout?.data?.attributes || [];
+	try {
+		const { data } = await fetchData(RootLayoutQuery.loc.source.body);
+		return data?.rootLayout?.data?.attributes || [];
+	} catch (error) {
+		console.error('Error fetching data:', error);
+		throw new Error('Failed to fetch data'); // Throw an error to indicate the failure
+	}
 };
+
 
 export const metadata = {
 	metadataBase: new URL("https://www.eltonjenkinslaw.com"),
