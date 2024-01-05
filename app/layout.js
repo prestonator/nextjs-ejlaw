@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import FloatingButton from "@/components/ContactForm/FloatingButton";
@@ -42,6 +43,7 @@ export default async function RootLayout({ children }) {
 				{children}
 				<Footer footer={footer} />
 				<FloatingButton />
+				<SpeedInsights />
 				<Analytics />
 			</body>
 		</html>
