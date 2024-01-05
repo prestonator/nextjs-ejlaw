@@ -1,11 +1,11 @@
-// components/Analytics/Analytics.js
+// components/Analytics/GTM_Analytics.js
 "use client"
 import { GTM_ID, pageview } from "./gtm"
 import { usePathname, useSearchParams } from "next/navigation"
 import Script from "next/script"
 import { useEffect } from "react"
 
-export default function Analytics() {
+export default function GTM_Analytics() {
     const pathname = usePathname()
     const searchParams = useSearchParams()
 

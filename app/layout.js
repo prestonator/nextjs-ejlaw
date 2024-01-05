@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/react';
+import GTM_Analytics from "@/components/Analytics/GTM_Analytics";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
@@ -8,6 +9,7 @@ import Nav from "@/components/Nav/Nav";
 import Footer from "@/components/Footer/Footer";
 import NavClient from "@/components/Nav/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
+import { Suspense } from 'react'
 
 const getData = async () => {
 	const { data } = await fetchData(RootLayoutQuery.loc.source.body);
@@ -37,6 +39,9 @@ export default async function RootLayout({ children }) {
 			className={`${cormorant.variable} ${montserrat.variable} ${saira.variable}`}
 		>
 			<body>
+				<Suspense>
+					<GTM_Analytics />
+				</Suspense>
 				<NavClient>
 					<Nav navItems={navMenu} logo={logo} />
 				</NavClient>
