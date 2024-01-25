@@ -6,6 +6,7 @@ import { ContactPageQuery } from "@/queries/contact.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 import MapPreview from "@/components/MapPreview/MapPreview";
 import GoogleForm from "@/components/ContactForm/TallyForm";
+import ConsultForm from "@/components/Consult/Consult";
 
 const getData = async () => {
 	const { data } = await fetchData(ContactPageQuery.loc.source.body);
@@ -53,7 +54,7 @@ const ContactPage = async () => {
 
 					<div className={styles.contactInfoWrapper}>
 						<div className={styles.contactScheduleWrapper}>
-							<GoogleForm />
+							<ConsultForm />
 						</div>
 						<div className={styles.contactInfoContainer}>
 							{details?.map((detail) => (
