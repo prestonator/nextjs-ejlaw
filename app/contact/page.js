@@ -1,11 +1,9 @@
 import { SafeImage, SafeImageUrl, SafeImageAlt, SafeHtml, IconComponent } from "@/utils/helperFunctions";
-import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { ContactPageQuery } from "@/queries/contact.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 import MapPreview from "@/components/MapPreview/MapPreview";
-import GoogleForm from "@/components/ContactForm/TallyForm";
 import ConsultForm from "@/components/Consult/Consult";
 
 const getData = async () => {
