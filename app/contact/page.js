@@ -50,9 +50,7 @@ const ContactPage = async () => {
 	return (
 		<main className={styles.contactMain}>
 			<section className={styles.mapSection}>
-				<div>
-					<Map />
-				</div>
+				<Map />
 			</section>
 			<section className={styles.bookingSection}>
 				<div className={styles.bookingContainer}>
