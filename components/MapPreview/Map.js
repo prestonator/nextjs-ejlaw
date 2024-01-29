@@ -1,8 +1,9 @@
 import React from "react";
-import styles from "./Map.module.css";
+import Image from "next/image";
+import mapImage from "@/public/localMap.webp";
 
 const Map = () => {
-	return <div className={styles.myMap}></div>;
+	return <Image src={mapImage} alt="Map" className="object-cover" />;
 };
 
 export default Map;
