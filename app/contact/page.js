@@ -1,10 +1,16 @@
-import { SafeImage, SafeImageUrl, SafeImageAlt, SafeHtml, IconComponent } from "@/utils/helperFunctions";
+import {
+	SafeImage,
+	SafeImageUrl,
+	SafeImageAlt,
+	SafeHtml,
+	IconComponent,
+} from "@/utils/helperFunctions";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { ContactPageQuery } from "@/queries/contact.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
-import MapPreview from "@/components/MapPreview/MapPreview";
 import ConsultForm from "@/components/Consult/Consult";
+import Map from "@/components/MapPreview/Map";
 
 const getData = async () => {
 	const { data } = await fetchData(ContactPageQuery.loc.source.body);
@@ -44,7 +50,9 @@ const ContactPage = async () => {
 	return (
 		<main className={styles.contactMain}>
 			<section className={styles.mapSection}>
-				<MapPreview />
+				<div>
+					<Map />
+				</div>
 			</section>
 			<section className={styles.bookingSection}>
 				<div className={styles.bookingContainer}>
