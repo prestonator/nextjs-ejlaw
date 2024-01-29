@@ -70,7 +70,7 @@ const ConsultForm = () => {
     };
 
     return (
-        <div>
+        <div className='px-2 py-4'>
             {renderStep()}
         </div>
     );

@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import styles from "@/components/Consult/styles/FormStyles.module.css";
 
 import useFormStore from "@/store/useFormStore";
 import Button from "@/components/Buttons/FormButton/Button";
@@ -67,71 +67,68 @@ export default function RecapPage({ goToPreviousStep }) {
 	// If the form has been submitted, show the "Thank You" message
 	if (isSubmitted) {
 		return (
-			<main>
-				<section>
-					<article>
-						<h1 className="mb-6 font-light text-center">Thank You!</h1>
-						<p className="text-center">Your request has been received, and we will be in touch soon.</p>
-					</article>
-				</section>
-			</main>
+			<section>
+				<h1 className="mb-6 font-light text-center">Thank You!</h1>
+				<p className="text-center">
+					Your request has been received, and we will be in touch soon.
+				</p>
+			</section>
 		);
 	}
 
 	return (
-		<main>
-			<section>
-				<article>
-					<h1 className="mb-6 text-center">Recap</h1>
-					<form onSubmit={handleSubmit(onSubmit)} className="customForm">
-						<div>
-							<fieldset>
-								<legend>Step 1</legend>
-								<DisplayField label="First Name" value={stepOne.fname} />
-								<DisplayField label="Last Name" value={stepOne.lname} />
-								<DisplayField label="Email" value={stepOne.email} />
-								<DisplayField label="Phone" value={stepOne.phone} />
-							</fieldset>
-							<fieldset>
-								<legend>Step 2</legend>
-								<DisplayField
-									label="Day Preference"
-									value={stepTwo.day_preference}
-								/>
-								<DisplayField
-									label="Time Preference"
-									value={stepTwo.time_preference}
-								/>
-							</fieldset>
-							<fieldset>
-								<legend>Step 3</legend>
-								<DisplayField
-									label="Type of Legal Issue"
-									value={stepThree.issue_type}
-								/>
-								<DisplayField
-									label="Brief Description"
-									value={stepThree.brief_description}
-								/>
-								<DisplayField label="County" value={stepThree.issue_county} />
-								<DisplayField
-									label="Understands Retainer"
-									value={stepThree.user_understands ? "Yes" : "No"}
-								/>
-							</fieldset>
-							<div className="flex justify-around">
-								<Button type="button" onClick={goToPreviousStep}>
-									Go Back
-								</Button>
-								<Button type="submit" disabled={isSubmitting}>
-									{isSubmitting ? "Submitting..." : "Request Consult"}
-								</Button>
-							</div>
-							{submitError && <p>Error: {submitError}</p>}
-						</div>
-					</form>
-				</article>
-			</section>
-		</main>
+		<section>
+			<h1 className="mb-6 font-light text-center">Recap</h1>
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className={`${styles.customForm}`}
+			>
+				<div>
+					<fieldset>
+						<legend>Step 1</legend>
+						<DisplayField label="First Name" value={stepOne.fname} />
+						<DisplayField label="Last Name" value={stepOne.lname} />
+						<DisplayField label="Email" value={stepOne.email} />
+						<DisplayField label="Phone" value={stepOne.phone} />
+					</fieldset>
+					<fieldset>
+						<legend>Step 2</legend>
+						<DisplayField
+							label="Day Preference"
+							value={stepTwo.day_preference}
+						/>
+						<DisplayField
+							label="Time Preference"
+							value={stepTwo.time_preference}
+						/>
+					</fieldset>
+					<fieldset>
+						<legend>Step 3</legend>
+						<DisplayField
+							label="Type of Legal Issue"
+							value={stepThree.issue_type}
+						/>
+						<DisplayField
+							label="Brief Description"
+							value={stepThree.brief_description}
+						/>
+						<DisplayField label="County" value={stepThree.issue_county} />
+						<DisplayField
+							label="Understands Retainer"
+							value={stepThree.user_understands ? "Yes" : "No"}
+						/>
+					</fieldset>
+					<div className="flex justify-around">
+						<Button type="button" onClick={goToPreviousStep}>
+							Go Back
+						</Button>
+						<Button type="submit" disabled={isSubmitting}>
+							{isSubmitting ? "Submitting..." : "Request Consult"}
+						</Button>
+					</div>
+					{submitError && <p>Error: {submitError}</p>}
+				</div>
+			</form>
+		</section>
 	);
 }

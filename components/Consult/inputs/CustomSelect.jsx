@@ -12,6 +12,7 @@
 "use client";
 import SelectSearch from "react-select-search";
 import "@/components/Consult/styles/SelectSearch.css";
+import styles from "@/components/Consult/styles/FormStyles.module.css";
 import { Controller, useFormContext } from "react-hook-form";
 import { HiExclamationCircle } from "react-icons/hi";
 
@@ -34,7 +35,7 @@ export default function CustomSelect({
 	} = useFormContext();
 
 	return (
-		<div className="customInput">
+		<div className={`${styles.customSelect}`}>
 			<label htmlFor={id}>{label}</label>
 			<Controller
 				control={control}
@@ -43,7 +44,7 @@ export default function CustomSelect({
 				name={id}
 				render={({ field: { onChange, onBlur, value } }) => (
 					<>
-						<div>
+						<div className="w-full">
 							<SelectSearch
 								search="true"
 								name={id}

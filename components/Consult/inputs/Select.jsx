@@ -10,6 +10,7 @@
 import { Children, cloneElement, isValidElement } from "react";
 import { useFormContext } from "react-hook-form";
 import { HiExclamationCircle } from "react-icons/hi";
+import styles from "@/components/Consult/styles/FormStyles.module.css";
 
 export default function Select({
 	label,
@@ -37,7 +38,7 @@ export default function Select({
 	});
 
 	return (
-		<div className="customInput">
+		<div className={`${styles.customInput}`}>
 			<label htmlFor={id}>{label}</label>
 			<div>
 				<select

@@ -8,6 +8,7 @@
  */
 import { useFormContext } from "react-hook-form";
 import { HiExclamationCircle } from "react-icons/hi";
+import styles from "@/components/Consult/styles/FormStyles.module.css";
 
 export default function TextArea({
 	label,
@@ -26,7 +27,7 @@ export default function TextArea({
 	} = useFormContext();
 
 	return (
-		<div className="customInput">
+		<div className={`${styles.customInput}`}>
 			<label htmlFor={id}>{label}</label>
 			<div>
 				<textarea

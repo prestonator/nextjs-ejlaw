@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import styles from "@/components/Consult/styles/FormStyles.module.css";
 
 import useFormStore from "@/store/useFormStore";
 import { stepThreeSchema } from "@/lib/yup";
@@ -11,7 +11,6 @@ import Button from "@/components/Buttons/FormButton/Button";
 import Select from "@/components/Consult/inputs/Select";
 import CustomSelect from "@/components/Consult/inputs/CustomSelect";
 import TextArea from "@/components/Consult/inputs/TextArea";
-import Checkbox from "@/components/Consult/inputs/Checkbox";
 import ToggleSwitch from "@/components/Consult/inputs/ToggleSwitch";
 import { counties } from "@/components/Consult/data";
 
@@ -32,7 +31,10 @@ const StepThreeForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 
 	return (
 		<FormProvider {...methods}>
-			<form onSubmit={methods.handleSubmit(onSubmit)} className="customForm">
+			<form
+				onSubmit={methods.handleSubmit(onSubmit)}
+				className={`${styles.customForm}`}
+			>
 				<Select
 					id="issue_type"
 					label="Type of Legal Issue"
@@ -59,7 +61,7 @@ const StepThreeForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 					label="I understand a retainer* will be required if I hire this firm."
 					helperText="A retainer is an upfront cost to secure legal services and will be applied to your bill for provided services."
 				/>
-				<div className="flex justify-around">
+				<div className={`flex justify-around ${styles.buttonContainer}`}>
 					<Button onClick={goToPreviousStep}>Go Back</Button>
 					<Button type="submit">Next</Button>
 				</div>
@@ -87,21 +89,10 @@ export default function StepThreePage({ goToNextStep, goToPreviousStep }) {
 	};
 
 	return (
-		<>
-			<main>
-				<section>
-					<article>
-						<h1 className="mb-6 font-light text-center">
-							Step 3 - Case Information
-						</h1>
-						{submissionError && <p>{submissionError}</p>}
-						<StepThreeForm
-							onSubmit={onSubmit}
-							goToPreviousStep={goToPreviousStep}
-						/>
-					</article>
-				</section>
-			</main>
-		</>
+		<section>
+			<h1 className="mb-6 font-light text-center">Step 3 - Case Information</h1>
+			{submissionError && <p>{submissionError}</p>}
+			<StepThreeForm onSubmit={onSubmit} goToPreviousStep={goToPreviousStep} />
+		</section>
 	);
 }

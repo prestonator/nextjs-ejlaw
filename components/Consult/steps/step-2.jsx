@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import styles from "@/components/Consult/styles/FormStyles.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useFormStore from "@/store/useFormStore";
 import { stepTwoSchema } from "@/lib/yup";
@@ -22,7 +22,10 @@ const StepTwoForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 
 	return (
 		<FormProvider {...methods}>
-			<form onSubmit={methods.handleSubmit(onSubmit)} className="customForm">
+			<form
+				onSubmit={methods.handleSubmit(onSubmit)}
+				className={`${styles.customForm}`}
+			>
 				<Select
 					id="day_preference"
 					label="Which day works best for you?"
@@ -46,7 +49,7 @@ const StepTwoForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 					<option value="morning">Morning (8AM - 12PM)</option>
 					<option value="afternoon">Afternoon (12PM - 5PM)</option>
 				</Select>
-				<div className="flex justify-around">
+				<div className={`flex justify-around ${styles.buttonContainer}`}>
 					<Button type="button" onClick={goToPreviousStep}>
 						Go Back
 					</Button>
@@ -76,23 +79,12 @@ export default function StepTwoPage({ goToNextStep, goToPreviousStep }) {
 	};
 
 	return (
-		<>
-			<main>
-				<section className="bg-gray-100">
-					<article className="min-h-screen py-16 layout">
-						<h1 className="mb-6 font-light text-center">
-							When are you available to schedule an appointment?
-						</h1>
-						{submissionError && (
-							<p className="text-red-500">{submissionError}</p>
-						)}
-						<StepTwoForm
-							onSubmit={onSubmit}
-							goToPreviousStep={goToPreviousStep}
-						/>
-					</article>
-				</section>
-			</main>
-		</>
+		<section className="bg-gray-100">
+			<h1 className="mb-6 font-light text-center">
+				When are you available to schedule an appointment?
+			</h1>
+			{submissionError && <p className="text-red-500">{submissionError}</p>}
+			<StepTwoForm onSubmit={onSubmit} goToPreviousStep={goToPreviousStep} />
+		</section>
 	);
 }

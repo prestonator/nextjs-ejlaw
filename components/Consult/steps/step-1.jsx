@@ -5,6 +5,7 @@ import { stepOneSchema } from "@/lib/yup";
 import useFormStore from "@/store/useFormStore";
 import Button from "@/components/Buttons/FormButton/Button";
 import Input from "@/components/Consult/inputs/Input";
+import styles from "@/components/Consult/styles/FormStyles.module.css";
 
 // Memoized StepOneForm component
 const StepOneForm = React.memo(({ onSubmit }) => {
@@ -23,14 +24,12 @@ const StepOneForm = React.memo(({ onSubmit }) => {
 
 	return (
 		<FormProvider {...methods}>
-			<form onSubmit={methods.handleSubmit(onSubmit)} className="customForm">
+			<form onSubmit={methods.handleSubmit(onSubmit)} className={`${styles.customForm}`}>
 				<Input label="First Name" id="fname" placeholder="My First Name Is" />
 				<Input label="Last Name" id="lname" placeholder="My Last Name Is" />
 				<Input id="email" label="Email" placeholder="My Email Is" />
 				<Input id="phone" label="Phone" placeholder="My Phone Number Is" />
-				<Button type="submit">
-					Next
-				</Button>
+				<Button type="submit">Next</Button>
 			</form>
 		</FormProvider>
 	);
@@ -55,12 +54,12 @@ export default function StepOnePage({ goToNextStep }) {
 	};
 
 	return (
-		<main>
-			<section>
-				<h1 className="mb-6 font-light text-center">Step 1 - Contact Information</h1>
-				{submissionError && <p>{submissionError}</p>}
-				<StepOneForm onSubmit={onSubmit} />
-			</section>
-		</main>
+		<section>
+			<h1 className="mb-6 font-light text-center">
+				Step 1 - Contact Information
+			</h1>
+			{submissionError && <p>{submissionError}</p>}
+			<StepOneForm onSubmit={onSubmit} />
+		</section>
 	);
 }
