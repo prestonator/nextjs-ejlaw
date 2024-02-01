@@ -10,6 +10,7 @@ import Footer from "@/components/Footer/Footer";
 import NavClient from "@/components/Nav/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 import { Suspense } from 'react'
+import Link from "next/link";
 
 const getData = async () => {
 	try {
@@ -48,6 +49,16 @@ export default async function RootLayout({ children }) {
 				<Suspense>
 					<GTM_Analytics />
 				</Suspense>
+				<div className="fixed w-full py-2 text-sm text-center z-[4] bg-white">
+					<a
+						className="text-[#800000] hover:text-blue-700"
+						href="https://elton-jenkins-attorney-at-law.mycase.com/paypage/DNMiVDCbKLCJvWyCSiPEe3FA"
+						target="_blank"
+					>
+						Important Notice: Please visit our payment page to settle your
+						invoices online.
+					</a>
+				</div>
 				<NavClient>
 					<Nav navItems={navMenu} logo={logo} />
 				</NavClient>
