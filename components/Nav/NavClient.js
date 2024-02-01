@@ -44,7 +44,7 @@ function NavClient({ children }) {
 	// CSS for navbar when hidden or visible
 	const stickyStyles = {
 		position: "fixed",
-		width: "100%",
+		width: "100vw",
 		height: `${navRef.current ? navRef.current.clientHeight : "auto"}`,
 		transition: "top 0.6s",
 	};

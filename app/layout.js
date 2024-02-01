@@ -49,7 +49,7 @@ export default async function RootLayout({ children }) {
 				<Suspense>
 					<GTM_Analytics />
 				</Suspense>
-				<div className="fixed w-full py-2 text-sm text-center z-[4] bg-white">
+				<div className="fixed w-[100vw] py-2 text-sm text-center z-[4] bg-white">
 					<a
 						className="text-[#800000] hover:text-blue-700"
 						href="https://elton-jenkins-attorney-at-law.mycase.com/paypage/DNMiVDCbKLCJvWyCSiPEe3FA"
