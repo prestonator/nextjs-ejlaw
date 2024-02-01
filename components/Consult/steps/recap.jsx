@@ -67,7 +67,7 @@ export default function RecapPage({ goToPreviousStep }) {
 	// If the form has been submitted, show the "Thank You" message
 	if (isSubmitted) {
 		return (
-			<section>
+			<section id="formSubmitted">
 				<h1 className="mb-6 font-light text-center">Thank You!</h1>
 				<p className="text-center">
 					Your request has been received, and we will be in touch soon.
