@@ -52,6 +52,16 @@ function NavClient({ children }) {
 	// Render the component
 	return (
 		<nav className={styles.navContainer} style={stickyStyles} ref={navRef}>
+			<div className="fixed w-[100vw] py-2 text-sm text-center z-[4] top-0 bg-white">
+				<a
+					className="text-[#800000] hover:text-blue-700"
+					href="https://elton-jenkins-attorney-at-law.mycase.com/paypage/DNMiVDCbKLCJvWyCSiPEe3FA"
+					target="_blank"
+				>
+					Important Notice: Please visit our payment page to settle your
+					invoices online.
+				</a>
+			</div>
 			{/* Hamburger menu toggle */}
 			<button
 				aria-label="Hamburger Menu Toggle"
