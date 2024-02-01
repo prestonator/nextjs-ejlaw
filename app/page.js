@@ -56,7 +56,6 @@ const Home = async () => {
 		whyUsCards,
 		meta
 	} = await getData();
-	console.log(staffPreview);
 	return (
 		<main className={styles.main}>
 			<JsonLd jsonLd={meta?.jsonLD} />
