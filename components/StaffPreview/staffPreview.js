@@ -98,10 +98,6 @@ function StaffPreview({
 	);
 }
 
-function StaffListNode({ children }) {
-	// This component is never used, consider removing it.
-}
-
 function Avatar({ image }) {
 	return (
 		<div className={styles.avatarWrapper}>
