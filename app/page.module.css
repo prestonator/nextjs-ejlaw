@@ -110,7 +110,7 @@
 
 @media (--medium-viewport) {
 	.hero {
-		padding-top: var(--size-10);
+		padding-top: var(--size-15);
 	}
 
 	.hero .textContent {
@@ -128,8 +128,8 @@
 		color: var(--color-white);
 	}
 
-	.hero .button {
-		border-color: var(--color-white);
+	.hero .button a {
+		border-color: rgb(255 255 255 / 35%);
 		color: var(--color-white);
 	}
 

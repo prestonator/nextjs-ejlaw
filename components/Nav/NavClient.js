@@ -45,14 +45,14 @@ function NavClient({ children }) {
 	const stickyStyles = {
 		position: "fixed",
 		width: "100vw",
-		height: `${navRef.current ? navRef.current.clientHeight : "auto"}`,
-		transition: "top 0.6s",
+		height: `${navRef.current ? navRef.current.clientHeight : "var(--size-7-5)"}`,
+		transition: "top 0.5s",
 	};
 
 	// Render the component
 	return (
 		<nav className={styles.navContainer} style={stickyStyles} ref={navRef}>
-			<div className="fixed w-[100vw] py-2 text-sm text-center z-[4] top-0 bg-white">
+			<div className="w-[100vw] py-2 text-sm text-center z-[4] top-0 bg-white absolute">
 				<a
 					className="text-[#800000] hover:text-blue-700"
 					href="https://elton-jenkins-attorney-at-law.mycase.com/paypage/DNMiVDCbKLCJvWyCSiPEe3FA"
