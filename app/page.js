@@ -56,6 +56,7 @@ const Home = async () => {
 		whyUsCards,
 		meta
 	} = await getData();
+	console.log(staffPreview);
 	return (
 		<main className={styles.main}>
 			<JsonLd jsonLd={meta?.jsonLD} />
@@ -98,7 +99,7 @@ const Home = async () => {
 						infoButton={staff.button}
 						placement={staff.id % 2 === 0}
 						index={index}
-						totalItems="2"
+						totalItems="3"
 					/>
 				))}
 			</section>
