@@ -122,7 +122,7 @@ export default function RecapPage({ goToPreviousStep }) {
 						<Button type="button" onClick={goToPreviousStep}>
 							Go Back
 						</Button>
-						<Button type="submit" disabled={isSubmitting}>
+						<Button id="formSubmitButton" type="submit" disabled={isSubmitting}>
 							{isSubmitting ? "Submitting..." : "Request Consult"}
 						</Button>
 					</div>
