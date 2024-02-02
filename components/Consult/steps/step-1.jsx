@@ -24,13 +24,15 @@ const StepOneForm = React.memo(({ onSubmit }) => {
 
 	return (
 		<FormProvider {...methods}>
-			<form onSubmit={methods.handleSubmit(onSubmit)} className={`${styles.customForm}`}>
+			<div className={`${styles.customForm}`}>
 				<Input label="First Name" id="fname" placeholder="My First Name Is" />
 				<Input label="Last Name" id="lname" placeholder="My Last Name Is" />
 				<Input id="email" label="Email" placeholder="My Email Is" />
 				<Input id="phone" label="Phone" placeholder="My Phone Number Is" />
-				<Button type="submit">Next</Button>
-			</form>
+				<Button type="button" onClick={methods.handleSubmit(onSubmit)}>
+					Next
+				</Button>
+			</div>
 		</FormProvider>
 	);
 });

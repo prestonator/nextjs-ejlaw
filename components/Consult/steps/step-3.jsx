@@ -31,7 +31,7 @@ const StepThreeForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 
 	return (
 		<FormProvider {...methods}>
-			<form
+			<div
 				onSubmit={methods.handleSubmit(onSubmit)}
 				className={`${styles.customForm}`}
 			>
@@ -63,9 +63,11 @@ const StepThreeForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 				/>
 				<div className={`flex justify-around ${styles.buttonContainer}`}>
 					<Button onClick={goToPreviousStep}>Go Back</Button>
-					<Button type="submit">Next</Button>
+					<Button type="button" onClick={methods.handleSubmit(onSubmit)}>
+						Next
+					</Button>
 				</div>
-			</form>
+			</div>
 		</FormProvider>
 	);
 });
