@@ -10,7 +10,6 @@ import Footer from "@/components/Footer/Footer";
 import NavClient from "@/components/Nav/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 import { Suspense } from 'react'
-import Link from "next/link";
 
 const getData = async () => {
 	try {
