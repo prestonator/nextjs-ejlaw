@@ -49,7 +49,7 @@ const StepThreeForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 				<TextArea
 					id="brief_description"
 					label="Please provide a brief description of your legal issue"
-					maxLength={500}
+					maxLength={400}
 				/>
 				<CustomSelect
 					id="issue_county"

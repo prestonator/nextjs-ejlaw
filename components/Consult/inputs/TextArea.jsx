@@ -20,7 +20,8 @@ export default function TextArea({
 	readOnly = false,
 	validation,
 	rows = 3,
-	maxLength = 200, // Set the default maxLength if not provided
+	maxLength = 350, // Set the default maxLength if not provided
+	minLength = 1, // Added minLength prop
 	...rest
 }) {
 	// Get register and errors from React Hook Form
@@ -41,8 +42,15 @@ export default function TextArea({
 			<label htmlFor={id}>{label}</label>
 			<div>
 				<textarea
-					// Register the field with validation and maxLength
-					{...register(id, { ...validation, maxLength })}
+					// Register the field with validation, maxLength and minLength
+					{...register(id, {
+						...validation,
+						maxLength,
+						minLength: {
+							value: minLength,
+							message: "Please enter something", // Added error text
+						},
+					})}
 					{...rest}
 					id={id}
 					name={id}
