@@ -162,6 +162,7 @@
 	}
 	.hamburgerButton {
 		display: block;
+		z-index: 5;
 		padding-top: var(--size-10);
 	}
 	.navbarItems {
