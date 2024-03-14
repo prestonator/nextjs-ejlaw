@@ -1,6 +1,5 @@
 "use client";
 import { useInView,useSpring, animated } from "@react-spring/web";
-//import { useInView } from "react-intersection-observer";
 import React, { useEffect } from "react";
 import { IconComponent, SafeHtml, SafeImage } from "@/utils/helperFunctions";
 import styles from "./staffPreview.module.css";
