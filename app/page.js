@@ -54,8 +54,9 @@ const Home = async () => {
 		staffPreview,
 		whyUsHeading,
 		whyUsCards,
-		meta
+		meta,
 	} = await getData();
+
 	return (
 		<main className={styles.main}>
 			<JsonLd jsonLd={meta?.jsonLD} />
@@ -91,14 +92,14 @@ const Home = async () => {
 				{/* Staff Preview */}
 				{staffPreview?.map((staff, index) => (
 					<StaffPreview
-						key={staff.id}
+						key={staff.staffOrder}
 						socialIcons={staff.socialIcons}
 						avatarImage={staff.image.data}
 						infoText={staff.richText}
 						infoButton={staff.button}
-						placement={staff.id % 2 === 0}
+						staffOrder={staff.staffOrder}
 						index={index}
-						totalItems="3"
+						totalItems={staffPreview.length}
 					/>
 				))}
 			</section>

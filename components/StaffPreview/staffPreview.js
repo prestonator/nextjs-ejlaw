@@ -1,38 +1,10 @@
 "use client";
+import { useSpring, animated } from "@react-spring/web";
+import { useInView } from "react-intersection-observer";
 import React, { useEffect } from "react";
-import {
-	IconComponent,
-	SafeHtml,
-	SafeImage,
-} from "@/utils/helperFunctions";
+import { IconComponent, SafeHtml, SafeImage } from "@/utils/helperFunctions";
 import styles from "./staffPreview.module.css";
 import Button from "@/components/Buttons/MainButton/Button";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
-// Variants outside of the StaffPreview component
-const getImageVariant = (placement) => ({
-	visible: {
-		translateX: "0%",
-		opacity: 1,
-		transition: { duration: 0.75, type: "ease" },
-	},
-	hidden: { opacity: 0, translateX: placement ? "-100%" : "100%" },
-});
-
-const getTextVariant = (placement) => ({
-	visible: {
-		translateX: "0%",
-		opacity: 1,
-		transition: { duration: 0.75, type: "ease" },
-	},
-	hidden: { opacity: 0, translateX: placement ? "100%" : "-100%" },
-});
-
-const dividerVariant = {
-	visible: { opacity: 1, transition: { duration: 0.75, type: "ease" } },
-	hidden: { opacity: 0 },
-};
 
 function StaffPreview({
 	socialIcons,
@@ -41,17 +13,35 @@ function StaffPreview({
 	infoButton,
 	index,
 	totalItems,
-	placement,
+	staffOrder,
 }) {
-	const containerClassName = placement ? styles.even : styles.odd;
-	const shouldRenderDivider = index !== totalItems - 1;
+	const [ref, inView] = useInView({
+		threshold: 0.1,
+	});
 
-	const control = useAnimation();
-	const [ref, inView] = useInView();
+	const isOdd = staffOrder % 2 === 1;
+	const containerClassName = isOdd ? styles.odd : styles.even;
+	const isLastItem = index === totalItems - 1;
 
-	useEffect(() => {
-		control.start(inView ? "visible" : "hidden");
-	}, [control, inView]);
+	const textAnimation = useSpring({
+		translateX: inView ? "0%" : isOdd ? "-100%" : "100%",
+		opacity: inView ? 1 : 0,
+		config: { mass: 1, tension: 280, friction: 60 },
+		reset: true,
+	});
+
+	const imageAnimation = useSpring({
+		translateX: inView ? "0%" : isOdd ? "100%" : "-100%",
+		opacity: inView ? 1 : 0,
+		config: { mass: 1, tension: 280, friction: 60 },
+		reset: true,
+	});
+
+	const dividerAnimation = useSpring({
+		opacity: inView ? 1 : 0,
+		config: { mass: 1, tension: 280, friction: 60 },
+		reset: true,
+	});
 
 	return (
 		<>
@@ -59,10 +49,8 @@ function StaffPreview({
 				ref={ref}
 				className={`${styles.staffPreviewContainer} ${containerClassName}`}
 			>
-				<MotionElement
-					variants={getImageVariant(placement)}
-					initial="hidden"
-					animate={control}
+				<animated.div
+					style={imageAnimation}
 					className={`${styles.colOne} ${containerClassName}`}
 				>
 					<div className={styles.iconContainer}>
@@ -76,23 +64,16 @@ function StaffPreview({
 						)}
 					</div>
 					<Avatar image={avatarImage} />
-				</MotionElement>
-				<MotionElement
-					variants={getTextVariant(placement)}
-					initial="hidden"
-					animate={control}
+				</animated.div>
+				<animated.div
+					style={textAnimation}
 					className={`${styles.content} ${containerClassName}`}
 				>
 					<StaffQuoteButton infoText={infoText} infoButton={infoButton} />
-				</MotionElement>
+				</animated.div>
 			</div>
-			{shouldRenderDivider && (
-				<motion.hr
-					variants={dividerVariant}
-					initial="hidden"
-					animate={control}
-					className={`${styles.divider}`}
-				/>
+			{!isLastItem && (
+				<animated.hr style={dividerAnimation} className={styles.divider} />
 			)}
 		</>
 	);
@@ -110,30 +91,8 @@ function StaffQuoteButton({ infoText, infoButton }) {
 	return (
 		<blockquote>
 			{SafeHtml(infoText)}
-			<Button href={infoButton.href}>{infoButton.label}</Button>
+			<Button href={infoButton?.href || []}>{infoButton?.label}</Button>
 		</blockquote>
-	);
-}
-
-function MotionElement({
-	variants,
-	initial,
-	animate,
-	children,
-	className,
-	custom,
-}) {
-	// Added custom prop to allow dynamic variant definitions
-	return (
-		<motion.div
-			variants={variants}
-			initial={initial}
-			animate={animate}
-			className={className}
-			custom={custom}
-		>
-			{children}
-		</motion.div>
 	);
 }
 

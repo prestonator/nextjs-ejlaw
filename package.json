@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@hookform/resolvers": "^3.3.4",
 		"@next/third-parties": "^14.1.0",
+		"@react-spring/web": "^9.7.3",
 		"@vercel/analytics": "^1.1.2",
 		"@vercel/speed-insights": "^1.0.9",
 		"framer-motion": "^11.0.3",
