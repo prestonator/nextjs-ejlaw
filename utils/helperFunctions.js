@@ -3,15 +3,22 @@ import { sanitize } from "isomorphic-dompurify";
 import parse from "html-react-parser";
 import Image from "next/image";
 
-export const SafeImage = (imageData, styles) => {
+export const SafeImage = (imageData, styles, sizes) => {
 	const strapiMediaEndpoint = "https://strapi.eltonjenkinslaw.com";
 	const url = encodeURI(imageData?.attributes?.url) ?? "";
 	const alt = imageData?.attributes?.alternativeText ?? "";
 
 	return (
-		<Image src={strapiMediaEndpoint + url} alt={alt} fill className={styles} />
+		<Image
+			src={strapiMediaEndpoint + url}
+			alt={alt}
+			fill
+			className={styles}
+			sizes={sizes || ""}
+		/>
 	);
 };
+
 
 export const SafeImageUrl = (imageData) => {
 	const strapiMediaEndpoint = process.env.STRAPI_MEDIA_ENDPOINT;

@@ -74,7 +74,11 @@ const Home = async () => {
 				</div>
 				{/* Image */}
 				<div className={styles.imageWrapper}>
-					{SafeImage(hero.image.data, styles.image)}
+					{SafeImage(
+						hero.image.data,
+						styles.image,
+						"(min-width: 860px) calc(26.64vw + 135px), 100vw"
+					)}
 				</div>
 			</section>
 			{/* Call to Action Section */}

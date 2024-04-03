@@ -81,7 +81,11 @@ function StaffPreview({
 function Avatar({ image }) {
 	return (
 		<div className={styles.avatarWrapper}>
-			{SafeImage(image, styles.avatar)}
+			{SafeImage(
+				image,
+				styles.avatar,
+				"(min-width: 860px) calc(10.47vw + 62px), calc(17.78vw + 94px)"
+			)}
 		</div>
 	);
 }

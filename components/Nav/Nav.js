@@ -51,6 +51,7 @@ function Logo({ url, logo }) {
 					src={process.env.STRAPI_MEDIA_ENDPOINT + logo.attributes.url}
 					alt={logo.attributes.name}
 					className={styles.image}
+					sizes="(min-width: 1460px) calc(12.27vw + 70px), (min-width: 920px) calc(8.65vw + 54px), calc(21.33vw + 110px)"
 					fill
 				/>
 			</Link>
