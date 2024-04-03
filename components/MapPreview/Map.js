@@ -6,7 +6,7 @@ const Map = () => {
 
 	return (
 		<div className="relative">
-			<Image src={mapUrl} alt="Map" className="object-cover" fill />
+			<Image src={mapUrl} alt="Map" className="object-cover" fill sizes="100vw" />
 		</div>
 	);
 };

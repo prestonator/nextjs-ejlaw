@@ -51,7 +51,11 @@ const MyCasePage = async () => {
 			<section className={styles.heroSection}>
 				<div className={styles.imageButtonWrapper}>
 					<div className={styles.imageWrapper}>
-						{SafeImage(hero?.image?.data, styles.image)}
+						{SafeImage(
+							hero?.image?.data,
+							styles.image,
+							"(min-width: 1860px) calc(35.7vw + 173px), 45.45vw"
+						)}
 					</div>
 					<div className={styles.buttonWrapper}>
 						<Button href={hero?.buttons[0]?.href}>

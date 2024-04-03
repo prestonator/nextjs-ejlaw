@@ -14,7 +14,7 @@ export const SafeImage = (imageData, styles, sizes) => {
 			alt={alt}
 			fill
 			className={styles}
-			sizes={sizes || ""}
+			sizes={sizes}
 		/>
 	);
 };

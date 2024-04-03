@@ -82,7 +82,11 @@ const Page = async ({ params }) => {
 		<main className={styles.ourTeamContainer}>
 			<section className={styles.authorInfo}>
 				<div className={`${styles.infoColumn} ${styles.headshotWrapper}`}>
-					{SafeImage(team_member.data.attributes.image.data, styles.image)}
+					{SafeImage(
+						team_member.data.attributes.image.data,
+						styles.image,
+						"(min-width: 1320px) calc(38.15vw - 138px), (min-width: 1160px) calc(35vw - 73px), (min-width: 860px) calc(37.5vw - 37px), 100vw"
+					)}
 				</div>
 				<div className={`${styles.infoColumn} ${styles.authorDetails}`}>
 					<div className={styles.authorInfoTitle}>

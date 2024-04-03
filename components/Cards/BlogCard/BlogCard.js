@@ -12,7 +12,7 @@ function BlogCard(props) {
 		<Link href={slug} className={styles.cardContainer}>
 			<div className={styles.cardWrapper}>
 				<div className={styles.imageWrapper}>
-					{SafeImage(image, styles.image)}
+					{SafeImage(image, styles.image, "calc(14.04vw + 79px)")}
 				</div>
 				<div className={styles.textWrapper}>
 					<h4>{title}</h4>
@@ -20,9 +20,7 @@ function BlogCard(props) {
 
 					<p>By {author}</p>
 					<div>{SafeHtml(excerpt)}</div>
-					<div className={styles.categoryContainer}>
-						{categories}
-					</div>
+					<div className={styles.categoryContainer}>{categories}</div>
 				</div>
 			</div>
 		</Link>

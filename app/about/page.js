@@ -1,7 +1,6 @@
 import {
 	SafeImage,
 	SafeHtml,
-	IconComponent,
 	SafeImageUrl,
 	SafeImageAlt,
 } from "@/utils/helperFunctions";
@@ -89,14 +88,18 @@ const AboutPage = async () => {
 		<main className={styles.container}>
 			<section className={styles.hero}>
 				<div className={styles.imageWrapper}>
-					{SafeImage(hero?.image?.data, styles.image)}
+					{SafeImage(
+						hero?.image?.data,
+						styles.image,
+						"(min-width: 2840px) calc(41.88vw - 161px), (min-width: 780px) calc(37.79vw - 46px), (min-width: 640px) calc(53.33vw + 257px), calc(89.69vw + 31px)"
+					)}
 				</div>
 				<div className={styles.textContent}>{SafeHtml(hero?.richText)}</div>
 			</section>
 			<section className={styles.callToAction}>
 				<div className={styles.textContent}>{SafeHtml(cta?.richText)}</div>
 				<div className={styles.imageWrapper}>
-					{SafeImage(cta?.image?.data, styles.image)}
+					{SafeImage(cta?.image?.data, styles.image, "calc(21.26vw + 110px)")}
 				</div>
 			</section>
 			<section className={styles.ourServices}>
