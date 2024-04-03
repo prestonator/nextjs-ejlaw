@@ -5,7 +5,6 @@ import {
 	SafeImageUrl,
 	SafeImageAlt,
 } from "@/utils/helperFunctions";
-import BlurImage from "@/components/CustomImages/BlurImage";
 import JsonLd from "@/components/Seo/jsonLD";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
@@ -75,7 +74,7 @@ const Home = async () => {
 				</div>
 				{/* Image */}
 				<div className={styles.imageWrapper}>
-					{BlurImage(
+					{SafeImage(
 						hero.image.data,
 						styles.image,
 						"(min-width: 860px) calc(26.64vw + 135px), 100vw"
