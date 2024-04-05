@@ -20,6 +20,10 @@
 	}
 }
 
+.container {
+	padding-top: var(--size-20);
+}
+
 .imageWrapper {
 	position: relative;
 	width: 100%;
@@ -27,7 +31,6 @@
 }
 
 .hero {
-	padding-top: var(--size-7-5);
 	max-width: var(--size-150);
 	margin: auto;
 	display: flex;

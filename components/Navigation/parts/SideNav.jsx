@@ -15,7 +15,7 @@ const SideNav = () => {
     return (
 			<Sheet>
 				<SheetTrigger asChild>
-					<Button className="lg:hidden" size="icon" variant="outline">
+					<Button className="z-[5] bg-transparent cursor-pointer hover:bg-transparent lg:hidden" size="icon" variant="outline">
 						<LuMenu className="w-6 h-6" />
 						<span className="sr-only">Toggle navigation menu</span>
 					</Button>
