@@ -1,25 +1,34 @@
 import "./globals.css";
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import FloatingButton from "@/components/ContactForm/FloatingButton";
-import Nav from "@/components/Nav/Nav";
+//import Nav from "@/components/Nav/Nav";
 import Footer from "@/components/Footer/Footer";
-import NavClient from "@/components/Nav/NavClient";
+//import NavClient from "@/components/Nav/NavClient";
+import Nav from "@/components/Navigation/Nav";
+import NavbarClient from "@/components/Navigation/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { cn } from "@/utils";
+import { Cormorant as FontSans } from "next/font/google";
+
+const fancyFont = FontSans({
+	subsets: ["latin"],
+	variable: "--font-fancy",
+	display: "swap",
+});
 
 const getData = async () => {
 	try {
 		const { data } = await fetchData(RootLayoutQuery.loc.source.body);
 		return data?.rootLayout?.data?.attributes || [];
 	} catch (error) {
-		console.error('Error fetching data:', error);
-		throw new Error('Failed to fetch data'); // Throw an error to indicate the failure
+		console.error("Error fetching data:", error);
+		throw new Error("Failed to fetch data"); // Throw an error to indicate the failure
 	}
 };
-
 
 export const metadata = {
 	metadataBase: new URL("https://www.eltonjenkinslaw.com"),
@@ -39,14 +48,16 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 	const { navMenu, logo, footer } = await getData();
 	return (
-		<html
-			lang="en"
-			className={`${cormorant.variable} ${montserrat.variable} ${saira.variable}`}
-		>
-			<body>
-				<NavClient>
-					<Nav navItems={navMenu} logo={logo} />
-				</NavClient>
+		<html lang="en" className={`${montserrat.variable} ${saira.variable}`}>
+			<body
+				className={cn(
+					"min-h-screen bg-background font-sans antialiased",
+					fancyFont.variable
+				)}
+			>
+				<NavbarClient>
+					<Nav />
+				</NavbarClient>
 				{children}
 				<Footer footer={footer} />
 				<FloatingButton />

@@ -58,7 +58,7 @@ const Home = async () => {
 	} = await getData();
 
 	return (
-		<main className={styles.main}>
+		<main className={`min-h-screen ${styles.main}`}>
 			<JsonLd jsonLd={meta?.jsonLD} />
 			{/* Hero section */}
 			<section className={styles.hero}>
