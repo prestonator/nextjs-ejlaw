@@ -9,6 +9,7 @@ query RootLayoutQuery {
 						attributes {
 							url
 							name
+							alternativeText
 						}
 					}
 				}

@@ -9,131 +9,84 @@ import { Button } from "@/components/ui/button";
 import { LuMenu } from "react-icons/lu";
 import styles from "../Nav.module.css";
 import Image from "next/image";
+import { SafeImage } from "@/utils/helperFunctions";
 import Link from "next/link";
 
-const SideNav = () => {
-    return (
-			<Sheet>
-				<SheetTrigger asChild>
-					<Button className="z-[5] bg-transparent cursor-pointer hover:bg-transparent lg:hidden" size="icon" variant="outline">
-						<LuMenu className="w-6 h-6" />
-						<span className="sr-only">Toggle navigation menu</span>
-					</Button>
-				</SheetTrigger>
-				<SheetContent side="left">
-					<Link className="relative flex h-20 w-52" href="/">
-						<Image
-							src="/logo.webp"
-							alt="Logo for Elton Jenkins Law, PLLC"
-							className="object-contain bg-white"
-							fill
-						/>
-						<span className="sr-only">Elton Jenkins Law, PLLC</span>
-					</Link>
-					<div className="grid gap-6 py-6">
-						<Link
-							className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-							href="/"
-						>
-							Home
-						</Link>
-						<Accordion type="single" collapsible className="w-full">
-							<AccordionItem value="item-1">
-								<AccordionTrigger className="flex items-center w-full py-2 font-sans text-lg font-bold bg-transparent hover:bg-gray-200">
-									Our Team
-								</AccordionTrigger>
-								<AccordionContent
-									className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
+const SideNav = ({ navItems, logo }) => {
+	// Find the logo item from the navItems array
+	const logoItem = navItems.find((item) => item.item === "Logo");
+
+	return (
+		<Sheet>
+			<SheetTrigger asChild>
+				<Button
+					className="z-[5] bg-transparent cursor-pointer hover:bg-transparent lg:hidden"
+					size="icon"
+					variant="outline"
+				>
+					<LuMenu className="w-6 h-6" />
+					<span className="sr-only">Toggle navigation menu</span>
+				</Button>
+			</SheetTrigger>
+			<SheetContent side="left">
+				<Link className="relative flex h-20 w-52" href={logoItem.slug}>
+					{SafeImage(
+						logo.data,
+						"object-contain bg-white",
+						"calc(12.24vw + 71px)"
+					)}
+					<span className="sr-only">{logo.data.attributes.name}</span>
+				</Link>
+				<div className="grid gap-6 py-6">
+					{navItems.map((item) => {
+						// Skip rendering the logo item
+						if (item.item === "Logo") {
+							return null;
+						}
+
+						// Render items with submenus (accordion)
+						if (item.children) {
+							return (
+								<Accordion
+									key={item.id}
+									type="single"
+									collapsible
+									className="w-full"
 								>
-									<Link href="/our-team/elton-jenkins" className="w-full">
-										Elton Jenkins
-									</Link>
-								</AccordionContent>
-								<AccordionContent
-									className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-								>
-									<Link href="/our-team/eric-kroier" className="w-full">
-										Eric Kroier
-									</Link>
-								</AccordionContent>
-							</AccordionItem>
-						</Accordion>
-						<Accordion type="single" collapsible className="w-full">
-							<AccordionItem value="item-2">
-								<AccordionTrigger className="flex items-center w-full py-2 font-sans text-lg font-bold bg-transparent hover:bg-gray-200">
-									Practice Areas
-								</AccordionTrigger>
-								<AccordionContent
-									className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-								>
-									<Link href="/criminal-defense" className="w-full">
-										Criminal Defense
-									</Link>
-								</AccordionContent>
-								<AccordionContent
-									className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-								>
-									<Link href="/family-law" className="w-full">
-										Family Law
-									</Link>
-								</AccordionContent>
-								<AccordionContent
-									className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-								>
-									<Link href="/mediation" className="w-full">
-										Mediation
-									</Link>
-								</AccordionContent>
-								<AccordionContent
-									className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-								>
-									<Link href="/expungements" className="w-full">
-										Expungements
-									</Link>
-								</AccordionContent>
-								<AccordionContent
-									className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-								>
-									<Link href="/personal-injury" className="w-full">
-										Personal Injury
-									</Link>
-								</AccordionContent>
-							</AccordionItem>
-						</Accordion>
-						<Link
-							className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-							href="/about"
-						>
-							About
-						</Link>
-						<Link
-							className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-							href="/blog"
-						>
-							Blog
-						</Link>
-						<Link
-							className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-							href="/in-the-news"
-						>
-							In the News
-						</Link>
-						<Link
-							className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-							href="/my-case"
-						>
-							MyCase
-						</Link>
-						<Link
-							className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-							href="/contact"
-						>
-							Contact
-						</Link>
-					</div>
-				</SheetContent>
-			</Sheet>
-		);
+									<AccordionItem value={`item-${item.id}`}>
+										<AccordionTrigger className="flex items-center w-full py-2 font-sans text-lg font-bold bg-transparent hover:bg-gray-200">
+											{item.item}
+										</AccordionTrigger>
+										{item.children.map((subItem) => (
+											<AccordionContent
+												key={subItem.id}
+												className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
+											>
+												<Link href={subItem.slug} className="w-full">
+													{subItem.item}
+												</Link>
+											</AccordionContent>
+										))}
+									</AccordionItem>
+								</Accordion>
+							);
+						}
+
+						// Render regular menu items
+						return (
+							<Link
+								key={item.id}
+								className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
+								href={item.slug}
+							>
+								{item.item}
+							</Link>
+						);
+					})}
+				</div>
+			</SheetContent>
+		</Sheet>
+	);
 };
 
 export default SideNav;

@@ -56,7 +56,7 @@ export default async function RootLayout({ children }) {
 				)}
 			>
 				<NavbarClient>
-					<Nav />
+					<Nav navMenuItems={navMenu} logo={logo} />
 				</NavbarClient>
 				{children}
 				<Footer footer={footer} />

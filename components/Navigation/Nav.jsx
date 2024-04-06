@@ -1,11 +1,11 @@
 import SideNav from "./parts/SideNav";
 import MainNav from "./parts/MainNav";
 
-const Nav = () => {
+const Nav = ({ navMenuItems, logo }) => {
 	return (
 		<>
-			<SideNav />
-			<MainNav />
+			<SideNav navItems={navMenuItems.menuItems} logo={logo} />
+			<MainNav navItems={navMenuItems.menuItems} logo={logo} />
 		</>
 	);
 };
