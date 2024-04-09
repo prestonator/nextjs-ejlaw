@@ -45,15 +45,22 @@ const MainNav = ({ navItems, logo }) => {
 								</NavigationMenuTrigger>
 								<NavigationMenuContent>
 									<ul className={styles.subMenu}>
-										{item.children.map((subItem) => (
-											<li key={subItem.id}>
-												<Link href={subItem.slug} legacyBehavior passHref>
-													<NavigationMenuLink>
-														{subItem.item}
-													</NavigationMenuLink>
-												</Link>
-											</li>
-										))}
+										{item.children.map((subItem) => {
+											// Prepend "/our-team/" to the href for "Our Team" submenu items
+											const href =
+												item.item === "Our Team"
+													? `/our-team${subItem.slug}`
+													: subItem.slug;
+											return (
+												<li key={subItem.id}>
+													<Link href={href} legacyBehavior passHref>
+														<NavigationMenuLink>
+															{subItem.item}
+														</NavigationMenuLink>
+													</Link>
+												</li>
+											);
+										})}
 									</ul>
 								</NavigationMenuContent>
 							</NavigationMenuItem>

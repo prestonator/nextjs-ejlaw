@@ -22,7 +22,11 @@
 .headshotWrapper {
 	height: var(--size-75);
 	position: relative;
-	width: 100%;
+	width: var(--size-100);
+}
+
+.authorDetails {
+	width: var(--size-150);
 }
 
 .image {
