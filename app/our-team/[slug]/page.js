@@ -85,7 +85,7 @@ const Page = async ({ params }) => {
 					{SafeImage(
 						team_member.data.attributes.image.data,
 						styles.image,
-						"(min-width: 1320px) calc(38.15vw - 138px), (min-width: 1160px) calc(35vw - 73px), (min-width: 860px) calc(37.5vw - 37px), 100vw"
+						"(min-width: 860px) calc(24.44vw + 111px), calc(35.74vw + 174px)"
 					)}
 				</div>
 				<div className={`${styles.infoColumn} ${styles.authorDetails}`}>
