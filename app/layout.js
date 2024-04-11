@@ -47,7 +47,6 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 	const { navMenu, logo, footer } = await getData();
-	console.log(footer.image)
 	return (
 		<html lang="en" className={`${montserrat.variable} ${saira.variable}`}>
 			<body

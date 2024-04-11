@@ -25,11 +25,7 @@ const MainNav = ({ navItems, logo }) => {
 								href={logoItem.slug}
 								className="relative flex h-[var(--size-10)] w-[var(--size-35)]"
 							>
-								{SafeImage(
-									logo.data,
-									"object-contain",
-									"(min-width: 1460px) calc(12.27vw + 70px), (min-width: 920px) calc(8.65vw + 54px), calc(21.33vw + 110px)"
-								)}
+								{SafeImage(logo.data, "object-contain", "calc(12.24vw + 71px)", "eager")}
 							</Link>
 						);
 					}

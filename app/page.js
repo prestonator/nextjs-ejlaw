@@ -77,7 +77,8 @@ const Home = async () => {
 					{SafeImage(
 						hero.image.data,
 						styles.image,
-						"(min-width: 860px) calc(26.64vw + 135px), 100vw"
+						"(min-width: 860px) calc(26.64vw + 135px), 100vw",
+						"eager"
 					)}
 				</div>
 			</section>

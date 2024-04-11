@@ -33,7 +33,8 @@ const SideNav = ({ navItems, logo }) => {
 					{SafeImage(
 						logo.data,
 						"object-contain bg-white",
-						"calc(12.24vw + 71px)"
+						"calc(12.24vw + 71px)",
+						"eager"
 					)}
 					<span className="sr-only">{logo.data.attributes.name}</span>
 				</Link>
