@@ -9,6 +9,12 @@ const nextConfig = {
 				port: "",
 				pathname: "/uploads/**",
 			},
+			{
+				protocol: "https",
+				hostname: "ej-law-space.sfo3.cdn.digitaloceanspaces.com",
+				port: "",
+				pathname: "/uploads/**",
+			},
 		],
 	},
 	webpack: (config, options) => {
