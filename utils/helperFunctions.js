@@ -8,25 +8,12 @@ export const SafeImage = (imageData, styles, sizes) => {
 	const url = encodeURI(imageData?.attributes?.url) ?? "";
 	const alt = imageData?.attributes?.alternativeText ?? "";
 
-	return (
-		<Image
-			src={strapiMediaEndpoint + url}
-			alt={alt}
-			fill
-			className={styles}
-			sizes={sizes}
-		/>
-	);
+	return <Image src={url} alt={alt} fill className={styles} sizes={sizes} />;
 };
 
-
 export const SafeImageUrl = (imageData) => {
-	const strapiMediaEndpoint = process.env.STRAPI_MEDIA_ENDPOINT;
 	const url = encodeURI(imageData?.attributes?.url) ?? "";
-
-	const full_url = strapiMediaEndpoint + url;
-
-	return full_url;
+	return url;
 };
 
 export const SafeImageAlt = (imageData) => {
