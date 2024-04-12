@@ -1,4 +1,9 @@
-import { SheetTrigger, SheetContent, Sheet } from "@/components/ui/sheet";
+import {
+	SheetTrigger,
+	SheetContent,
+	Sheet,
+	SheetClose,
+} from "@/components/ui/sheet";
 import {
 	Accordion,
 	AccordionContent,
@@ -61,9 +66,11 @@ const SideNav = ({ navItems, logo }) => {
 													key={subItem.id}
 													className={`${styles.sheetLink} flex items-center py-2 text-lg font-semibold`}
 												>
-													<Link href={href} className="w-full">
-														{subItem.item}
-													</Link>
+													<SheetClose key={item.id} asChild>
+														<Link href={href} className="w-full">
+															{subItem.item}
+														</Link>
+													</SheetClose>
 												</AccordionContent>
 											);
 										})}
@@ -74,13 +81,14 @@ const SideNav = ({ navItems, logo }) => {
 
 						// Render regular menu items
 						return (
-							<Link
-								key={item.id}
-								className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
-								href={item.slug}
-							>
-								{item.item}
-							</Link>
+							<SheetClose key={item.id} asChild>
+								<Link
+									className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
+									href={item.slug}
+								>
+									{item.item}
+								</Link>
+							</SheetClose>
 						);
 					})}
 				</div>
