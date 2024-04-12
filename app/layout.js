@@ -51,7 +51,7 @@ export default async function RootLayout({ children }) {
 		<html lang="en" className={`${montserrat.variable} ${saira.variable}`}>
 			<body
 				className={cn(
-					"min-h-screen bg-background font-sans antialiased",
+					"w-screen overflow-x-hidden min-h-screen font-sans antialiased",
 					fancyFont.variable
 				)}
 			>

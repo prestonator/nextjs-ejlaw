@@ -5,28 +5,19 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import { LuMenu } from "react-icons/lu";
 import styles from "../Nav.module.css";
-import Image from "next/image";
 import { SafeImage } from "@/utils/helperFunctions";
 import Link from "next/link";
 
 const SideNav = ({ navItems, logo }) => {
 	// Find the logo item from the navItems array
 	const logoItem = navItems.find((item) => item.item === "Logo");
-
 	return (
-		<Sheet>
-			<SheetTrigger asChild>
-				<Button
-					className="z-[5] bg-transparent cursor-pointer hover:bg-transparent lg:hidden"
-					size="icon"
-					variant="outline"
-				>
-					<LuMenu className="w-6 h-6" />
-					<span className="sr-only">Toggle navigation menu</span>
-				</Button>
+		<Sheet id="sheet">
+			<SheetTrigger className="z-[5] bg-transparent cursor-pointer hover:bg-transparent lg:hidden">
+				<LuMenu className="w-6 h-6" />
+				<span className="sr-only">Toggle navigation menu</span>
 			</SheetTrigger>
 			<SheetContent side="left">
 				<Link className="relative flex h-20 w-52" href={logoItem.slug}>
@@ -68,7 +59,7 @@ const SideNav = ({ navItems, logo }) => {
 											return (
 												<AccordionContent
 													key={subItem.id}
-													className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
+													className={`${styles.sheetLink} flex items-center py-2 text-lg font-semibold`}
 												>
 													<Link href={href} className="w-full">
 														{subItem.item}
