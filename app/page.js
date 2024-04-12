@@ -11,7 +11,12 @@ import { fetchData } from "@/lib/fetchData";
 import { HomeQuery } from "@/queries/home.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 //import StaffPreview from "@/components/StaffPreview/staffPreview";
-const StaffPreview = dynamic(() => import("@/components/StaffPreview/staffPreview"));
+const StaffPreview = dynamic(
+	() => import("@/components/StaffPreview/staffPreview"),
+	{
+		ssr: false,
+	}
+);
 import ServiceCard from "@/components/Cards/ServiceCard/ServiceCard";
 import dynamic from "next/dynamic";
 

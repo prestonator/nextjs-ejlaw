@@ -52,6 +52,9 @@ export async function GET(request) {
 
 	const result = await parseXMLToJSON(data);
 	const sitemap = mapDataToSitemap(result);
-	console.log(sitemap);
+	sitemap.forEach((item) => {
+		console.log(item.loc);
+	});
+
 	return getServerSideSitemap(sitemap);
 }
