@@ -68,10 +68,14 @@ const Home = async () => {
 		<main className={`min-h-screen ${styles.main}`}>
 			<JsonLd jsonLd={meta?.jsonLD} />
 			{/* Hero section */}
-			<section className={styles.hero}>
-				<div className={styles.textContent}>
+			<section
+				className={`${styles.hero} pt-[var(--size-20)] items-center flex justify-center relative gap-[var(--size-7-5)]`}
+			>
+				<div
+					className={`${styles.textContent} w-[var(--size-60)] items-center flex flex-col text-center`}
+				>
 					{SafeHtml(hero.richText)}
-					<div className={styles.button}>
+					<div className={`${styles.button} flex gap-[var(--size-1-5)] mt-[var(--size-1-5)]`}>
 						{hero?.buttons?.map((button) => (
 							<Button key={button.id} href={button.href}>
 								{button.label}
@@ -80,18 +84,24 @@ const Home = async () => {
 					</div>
 				</div>
 				{/* Image */}
-				<div className={styles.imageWrapper}>
+				<div
+					className={`${styles.imageWrapper} relative h-[var(--size-60)] w-[var(--size-75)]`}
+				>
 					{SafeImage(
 						hero.image.data,
-						styles.image,
+						`${styles.image} object-contain`,
 						"(min-width: 860px) calc(26.64vw + 135px), 100vw",
 						"eager"
 					)}
 				</div>
 			</section>
 			{/* Call to Action Section */}
-			<section className={`${styles.callToAction} ${styles.modalContainer}`}>
-				<article className={styles.modal}>
+			<section
+				className={`${styles.callToAction} ${styles.modalContainer} py-[var(--size-15)]`}
+			>
+				<article
+					className={`${styles.modal} items-center flex flex-col my-0 mx-auto bg-white gap-[var(--size-2)] py-[var(--size-5)] w-[var(--size-100)]`}
+				>
 					{SafeHtml(modal?.richText)}
 					<Button href={modal?.buttons[0]?.href}>
 						{modal?.buttons[0]?.label}
@@ -116,10 +126,14 @@ const Home = async () => {
 				))}
 			</section>
 			{/* Why Choose Us Section */}
-			<section className={styles.whyChoose}>
+			<section
+				className={`${styles.whyChoose} my-0 mx-auto py-[var(--size-15)]`}
+			>
 				<div className={styles.services}>
 					<div className={styles.heading}>{SafeHtml(whyUsHeading)}</div>
-					<ul className={styles.serviceGrid}>
+					<ul
+						className={`${styles.serviceGrid} flex flex-wrap list-none m-0 p-0 justify-center items-center`}
+					>
 						{whyUsCards.map((card) => (
 							<ServiceCard
 								key={card.id}

@@ -4,7 +4,6 @@ import parse from "html-react-parser";
 import Image from "next/image";
 
 export const SafeImage = (imageData, styles, sizes, loading) => {
-	const strapiMediaEndpoint = "https://strapi.eltonjenkinslaw.com";
 	const url = encodeURI(imageData?.attributes?.url) ?? "";
 	const alt = imageData?.attributes?.alternativeText ?? "";
 
