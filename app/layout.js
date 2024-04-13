@@ -1,18 +1,17 @@
+import dynamic from "next/dynamic";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import FloatingButton from "@/components/ContactForm/FloatingButton";
-//import Nav from "@/components/Nav/Nav";
-import Footer from "@/components/Footer/Footer";
-//import NavClient from "@/components/Nav/NavClient";
 import Nav from "@/components/Navigation/Nav";
 import NavbarClient from "@/components/Navigation/NavClient";
-import { cormorant, montserrat, saira } from "@/lib/font";
+import { montserrat, saira } from "@/lib/font";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { cn } from "@/utils";
 import { Cormorant as FontSans } from "next/font/google";
+const Footer = dynamic(() => import("@/components/Footer/Footer"), {
+	ssr: false,
+});
 
 const fancyFont = FontSans({
 	subsets: ["latin"],
@@ -61,8 +60,6 @@ export default async function RootLayout({ children }) {
 				{children}
 				<Footer footer={footer} />
 				<FloatingButton />
-				<SpeedInsights />
-				<Analytics />
 			</body>
 			<GoogleTagManager gtmId="GTM-M36SJ6FT" />
 		</html>
