@@ -84,7 +84,8 @@ function Avatar({ image }) {
 			{SafeImage(
 				image,
 				styles.avatar,
-				"(min-width: 860px) calc(10.47vw + 62px), calc(17.78vw + 94px)"
+				"(min-width: 860px) calc(10.47vw + 62px), calc(17.78vw + 94px)",
+				"eager"
 			)}
 		</div>
 	);
