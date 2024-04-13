@@ -11,7 +11,6 @@ import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { HomeQuery } from "@/queries/home.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
-//import StaffPreview from "@/components/StaffPreview/staffPreview";
 const StaffPreview = dynamic(
 	() => import("@/components/StaffPreview/staffPreview"),
 	{
@@ -24,7 +23,6 @@ const ServiceCard = dynamic(
 		ssr: false,
 	}
 );
-//import ServiceCard from "@/components/Cards/ServiceCard/ServiceCard";
 
 const getData = async () => {
 	const { data } = await fetchData(HomeQuery.loc.source.body);
