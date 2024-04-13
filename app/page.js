@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import {
 	SafeImage,
 	SafeHtml,
@@ -17,8 +18,13 @@ const StaffPreview = dynamic(
 		ssr: false,
 	}
 );
-import ServiceCard from "@/components/Cards/ServiceCard/ServiceCard";
-import dynamic from "next/dynamic";
+const ServiceCard = dynamic(
+	() => import("@/components/Cards/ServiceCard/ServiceCard"),
+	{
+		ssr: false,
+	}
+);
+//import ServiceCard from "@/components/Cards/ServiceCard/ServiceCard";
 
 const getData = async () => {
 	const { data } = await fetchData(HomeQuery.loc.source.body);
@@ -75,7 +81,9 @@ const Home = async () => {
 					className={`${styles.textContent} w-[var(--size-60)] items-center flex flex-col text-center`}
 				>
 					{SafeHtml(hero.richText)}
-					<div className={`${styles.button} flex gap-[var(--size-1-5)] mt-[var(--size-1-5)]`}>
+					<div
+						className={`${styles.button} flex gap-[var(--size-1-5)] mt-[var(--size-1-5)]`}
+					>
 						{hero?.buttons?.map((button) => (
 							<Button key={button.id} href={button.href}>
 								{button.label}
