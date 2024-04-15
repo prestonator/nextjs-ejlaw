@@ -1,12 +1,9 @@
 import {
-	SafeImage,
 	SafeImageUrl,
 	SafeImageAlt,
 	SafeHtml,
-	IconComponent,
 } from "@/utils/helperFunctions";
 import BlogCard from "@/components/Cards/BlogCard/BlogCard";
-import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { NewsBlogBySlug } from "@/queries/postPageBySlug.graphql";

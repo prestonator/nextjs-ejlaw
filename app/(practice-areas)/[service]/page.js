@@ -1,16 +1,15 @@
-import {
-	SafeImage,
-	SafeImageUrl,
-	SafeImageAlt,
-	SafeHtml,
-	IconComponent,
-} from "@/utils/helperFunctions";
-import Link from "next/link";
+import dynamic from "next/dynamic";
+import { SafeImageUrl, SafeImageAlt, SafeHtml } from "@/utils/helperFunctions";
 import styles from "./page.module.css";
-import ExpandCard from "@/components/Cards/ExpandCard/ExpandCard";
 import { fetchData } from "@/lib/fetchData";
 import { PracticeAreaSlugs } from "@/queries/practiceAreaBySlug.graphql";
 import { PracticeAreaData } from "@/queries/allPracticeAreas.graphql";
+const ExpandCard = dynamic(
+	() => import("@/components/Cards/ExpandCard/ExpandCard"),
+	{
+		ssr: false,
+	}
+);
 
 const getPage = async (service) => {
 	try {

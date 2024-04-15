@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import {
 	SafeImage,
 	SafeHtml,
-	IconComponent,
 	SafeImageUrl,
 	SafeImageAlt,
 } from "@/utils/helperFunctions";

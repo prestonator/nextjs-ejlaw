@@ -1,6 +1,6 @@
 "use client";
 import { useInView,useSpring, animated } from "@react-spring/web";
-import React, { useEffect } from "react";
+import React from "react";
 import { IconComponent, SafeHtml, SafeImage } from "@/utils/helperFunctions";
 import styles from "./staffPreview.module.css";
 import Button from "@/components/Buttons/MainButton/Button";

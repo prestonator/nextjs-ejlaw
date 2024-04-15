@@ -1,5 +1,4 @@
 import {
-	SafeImage,
 	SafeImageUrl,
 	SafeImageAlt,
 	SafeHtml,

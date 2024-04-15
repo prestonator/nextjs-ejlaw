@@ -5,18 +5,11 @@ import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import FloatingButton from "@/components/ContactForm/FloatingButton";
 import Nav from "@/components/Navigation/Nav";
 import NavbarClient from "@/components/Navigation/NavClient";
-import { montserrat, saira } from "@/lib/font";
+import { cormorant, montserrat, saira } from "@/lib/font";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { cn } from "@/utils";
-import { Cormorant as FontSans } from "next/font/google";
 const Footer = dynamic(() => import("@/components/Footer/Footer"), {
 	ssr: false,
-});
-
-const fancyFont = FontSans({
-	subsets: ["latin"],
-	variable: "--font-fancy",
-	display: "swap",
 });
 
 const getData = async () => {
@@ -47,11 +40,11 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 	const { navMenu, logo, footer } = await getData();
 	return (
-		<html lang="en" className={`${montserrat.variable} ${saira.variable}`}>
+		<html lang="en">
 			<body
 				className={cn(
-					"w-screen overflow-x-hidden min-h-screen font-sans antialiased",
-					fancyFont.variable
+					"w-screen overflow-x-hidden min-h-screen antialiased",
+					`${cormorant} ${montserrat} ${saira}`
 				)}
 			>
 				<NavbarClient>

@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import {
 	SafeImage,
 	SafeHtml,
@@ -7,9 +8,13 @@ import {
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { AboutQuery } from "@/queries/about.graphql";
-import TextCard from "@/components/Cards/TextCard/TextCard";
-import IconCard from "@/components/Cards/IconCard/IconCard";
 import Button from "@/components/Buttons/MainButton/Button";
+const IconCard = dynamic(() => import("@/components/Cards/IconCard/IconCard"), {
+	ssr: false,
+});
+const TextCard = dynamic(() => import("@/components/Cards/TextCard/TextCard"), {
+	ssr: false,
+});
 
 const getData = async () => {
 	const { data } = await fetchData(AboutQuery.loc.source.body);
