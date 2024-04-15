@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { stepOneSchema } from "@/lib/yup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { stepOneSchema } from "@/lib/zod";
 import useFormStore from "@/store/useFormStore";
 import Button from "@/components/Buttons/FormButton/Button";
 import Input from "@/components/Consult/inputs/Input";
@@ -13,7 +13,7 @@ const StepOneForm = React.memo(({ onSubmit }) => {
 
 	const methods = useForm({
 		mode: "onTouched",
-		resolver: yupResolver(stepOneSchema),
+		resolver: zodResolver(stepOneSchema),
 		defaultValues: stepOne || {
 			fname: "",
 			lname: "",

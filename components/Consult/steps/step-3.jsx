@@ -1,12 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { stepThreeSchema } from "@/lib/zod";
 import styles from "@/components/Consult/styles/FormStyles.module.css";
-
 import useFormStore from "@/store/useFormStore";
-import { stepThreeSchema } from "@/lib/yup";
-
 import Button from "@/components/Buttons/FormButton/Button";
 import Select from "@/components/Consult/inputs/Select";
 import CustomSelect from "@/components/Consult/inputs/CustomSelect";
@@ -20,7 +18,7 @@ const StepThreeForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 
 	const methods = useForm({
 		mode: "onTouched",
-		resolver: yupResolver(stepThreeSchema),
+		resolver: zodResolver(stepThreeSchema),
 		defaultValues: stepThree || {
 			issue_type: "",
 			brief_description: "",

@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import styles from "@/components/Consult/styles/FormStyles.module.css";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { stepTwoSchema } from "@/lib/zod";
 import useFormStore from "@/store/useFormStore";
-import { stepTwoSchema } from "@/lib/yup";
 import Select from "@/components/Consult/inputs/Select";
 import Button from "@/components/Buttons/FormButton/Button";
 
@@ -13,7 +13,7 @@ const StepTwoForm = React.memo(({ onSubmit, goToPreviousStep }) => {
 	const { stepTwo } = useFormStore();
 	const methods = useForm({
 		mode: "onTouched",
-		resolver: yupResolver(stepTwoSchema),
+		resolver: zodResolver(stepTwoSchema),
 		defaultValues: stepTwo || {
 			day_preference: "",
 			time_preference: "",
