@@ -1,12 +1,13 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import styles from "@/components/Consult/styles/FormStyles.module.css";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { stepTwoSchema } from "@/lib/zod";
 import useFormStore from "@/store/useFormStore";
-import Select from "@/components/Consult/inputs/Select";
-import Button from "@/components/Buttons/FormButton/Button";
+import { stepTwoSchema } from "../schemas/stepTwoSchema";
+const Select = dynamic(() => import("@/components/Consult/inputs/Select"));
+const Button = dynamic(() => import("@/components/Buttons/FormButton/Button"));
 
 // Memoized StepTwoForm component
 const StepTwoForm = React.memo(({ onSubmit, goToPreviousStep }) => {

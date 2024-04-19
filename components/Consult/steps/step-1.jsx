@@ -1,11 +1,12 @@
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { stepOneSchema } from "@/lib/zod";
 import useFormStore from "@/store/useFormStore";
-import Button from "@/components/Buttons/FormButton/Button";
-import Input from "@/components/Consult/inputs/Input";
 import styles from "@/components/Consult/styles/FormStyles.module.css";
+import { stepOneSchema } from "../schemas/stepOneSchema";
+const Input = dynamic(() => import("@/components/Consult/inputs/Input"));
+const Button = dynamic(() => import("@/components/Buttons/FormButton/Button"));
 
 // Memoized StepOneForm component
 const StepOneForm = React.memo(({ onSubmit }) => {

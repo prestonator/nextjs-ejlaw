@@ -1,26 +1,11 @@
 "use client"
 import React, { useState } from 'react';
-import StepOnePage from "./steps/step-1";
-import StepTwoPage from "./steps/step-2";
-import StepThreePage from "./steps/step-3";
-import RecapPage from "./steps/recap";
-
-// Enum-like object for step identifiers
-const Steps = {
-    STEP_1: 'step-1',
-    STEP_2: 'step-2',
-    STEP_3: 'step-3',
-    RECAP: 'recap',
-    COMPLETED: 'completed'
-};
-
-const stepOrder = [
-    Steps.STEP_1,
-    Steps.STEP_2,
-    Steps.STEP_3,
-    Steps.RECAP,
-    Steps.COMPLETED
-];
+import dynamic from "next/dynamic";
+import { Steps, stepOrder } from "./constants";
+const StepOnePage = dynamic(() => import("./steps/step-1"));
+const StepTwoPage = dynamic(() => import("./steps/step-2"));
+const StepThreePage = dynamic(() => import("./steps/step-3"));
+const RecapPage = dynamic(() => import("./steps/recap"));
 
 const ConsultForm = () => {
     // State to keep track of the current step

@@ -1,16 +1,21 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { stepThreeSchema } from "@/lib/zod";
 import styles from "@/components/Consult/styles/FormStyles.module.css";
 import useFormStore from "@/store/useFormStore";
-import Button from "@/components/Buttons/FormButton/Button";
-import Select from "@/components/Consult/inputs/Select";
-import CustomSelect from "@/components/Consult/inputs/CustomSelect";
-import TextArea from "@/components/Consult/inputs/TextArea";
-import ToggleSwitch from "@/components/Consult/inputs/ToggleSwitch";
+import { stepThreeSchema } from "../schemas/stepThreeSchema";
 import { counties } from "@/components/Consult/data";
+const Button = dynamic(() => import("@/components/Buttons/FormButton/Button"));
+const Select = dynamic(() => import("@/components/Consult/inputs/Select"));
+const CustomSelect = dynamic(() =>
+	import("@/components/Consult/inputs/CustomSelect")
+);
+const TextArea = dynamic(() => import("@/components/Consult/inputs/TextArea"));
+const ToggleSwitch = dynamic(() =>
+	import("@/components/Consult/inputs/ToggleSwitch")
+);
 
 // Memoized StepThreeForm component
 const StepThreeForm = React.memo(({ onSubmit, goToPreviousStep }) => {

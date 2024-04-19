@@ -7,7 +7,6 @@
  *
  * Exports a React component.
  */
-import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 import { HiExclamationCircle } from "react-icons/hi";
 import styles from "@/components/Consult/styles/FormStyles.module.css";

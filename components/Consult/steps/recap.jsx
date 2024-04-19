@@ -13,11 +13,12 @@ export default function RecapPage({ goToPreviousStep }) {
 	// State to manage loading and error states
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitError, setSubmitError] = useState(null);
-	const [isSubmitted, setIsSubmitted] = useState(false); // New state to track submission status
+	const [isSubmitted, setIsSubmitted] = useState(false);
+
 	// Retrieve the form data from the global state
 	const { stepOne, stepTwo, stepThree } = useFormStore();
 
-	// Memoized default values for useForm to prevent unnecessary re-renders
+	// Memoize the default values for useForm to prevent unnecessary re-renders
 	const defaultValues = useMemo(
 		() => ({ ...stepOne, ...stepTwo, ...stepThree }),
 		[stepOne, stepTwo, stepThree]
@@ -29,36 +30,44 @@ export default function RecapPage({ goToPreviousStep }) {
 	});
 	const { handleSubmit } = methods;
 
-	// Improved error handling in onSubmit
-	const onSubmit = async (data) => {
-		setIsSubmitting(true);
-		setSubmitError(null);
+	// Memoize the form submission logic using useCallback
+	const onSubmit = useCallback(
+		async (data) => {
+			setIsSubmitting(true);
+			setSubmitError(null);
 
-		try {
-			const response = await fetch(
-				"https://n8n.do.prestonator.com/webhook/12cd7931-872b-400f-a05b-177bf8181a86",
-				{
-					method: "POST",
-					headers: {},
-					body: JSON.stringify({ stepOne, stepTwo, stepThree }),
+			try {
+				const response = await fetch(
+					"https://n8n.do.prestonator.com/webhook/12cd7931-872b-400f-a05b-177bf8181a86",
+					{
+						method: "POST",
+						headers: {},
+						body: JSON.stringify({ stepOne, stepTwo, stepThree }),
+					}
+				);
+
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
 				}
-			);
 
-			if (!response.ok) {
-				throw new Error("Network response was not ok");
+				// Handle success - you might want to redirect the user or show a success message
+				console.log("Form submitted successfully");
+				setIsSubmitted(true);
+			} catch (error) {
+				console.error("Failed to submit the form:", error);
+				setSubmitError(error.message);
+			} finally {
+				setIsSubmitting(false);
 			}
+		},
+		[stepOne, stepTwo, stepThree]
+	);
 
-			// Handle success - you might want to redirect the user or show a success message
-			console.log("Form submitted successfully");
-			// If the request is successful, set isSubmitted to true
-			setIsSubmitted(true);
-		} catch (error) {
-			console.error("Failed to submit the form:", error);
-			setSubmitError(error.message);
-		} finally {
-			setIsSubmitting(false);
-		}
-	};
+	// Memoize the retrieved form data using useMemo
+	const formData = useMemo(
+		() => ({ stepOne, stepTwo, stepThree }),
+		[stepOne, stepTwo, stepThree]
+	);
 
 	// If the form has been submitted, show the "Thank You" message
 	if (isSubmitted) {
@@ -82,36 +91,39 @@ export default function RecapPage({ goToPreviousStep }) {
 				<div>
 					<fieldset>
 						<legend>Step 1</legend>
-						<DisplayField label="First Name" value={stepOne.fname} />
-						<DisplayField label="Last Name" value={stepOne.lname} />
-						<DisplayField label="Email" value={stepOne.email} />
-						<DisplayField label="Phone" value={stepOne.phone} />
+						<DisplayField label="First Name" value={formData.stepOne.fname} />
+						<DisplayField label="Last Name" value={formData.stepOne.lname} />
+						<DisplayField label="Email" value={formData.stepOne.email} />
+						<DisplayField label="Phone" value={formData.stepOne.phone} />
 					</fieldset>
 					<fieldset>
 						<legend>Step 2</legend>
 						<DisplayField
 							label="Day Preference"
-							value={stepTwo.day_preference}
+							value={formData.stepTwo.day_preference}
 						/>
 						<DisplayField
 							label="Time Preference"
-							value={stepTwo.time_preference}
+							value={formData.stepTwo.time_preference}
 						/>
 					</fieldset>
 					<fieldset>
 						<legend>Step 3</legend>
 						<DisplayField
 							label="Type of Legal Issue"
-							value={stepThree.issue_type}
+							value={formData.stepThree.issue_type}
 						/>
 						<DisplayField
 							label="Brief Description"
-							value={stepThree.brief_description}
+							value={formData.stepThree.brief_description}
 						/>
-						<DisplayField label="County" value={stepThree.issue_county} />
+						<DisplayField
+							label="County"
+							value={formData.stepThree.issue_county}
+						/>
 						<DisplayField
 							label="Understands Retainer"
-							value={stepThree.user_understands ? "Yes" : "No"}
+							value={formData.stepThree.user_understands ? "Yes" : "No"}
 						/>
 					</fieldset>
 					<div className="flex justify-around">
