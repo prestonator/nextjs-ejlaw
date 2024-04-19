@@ -1,16 +1,12 @@
 "use client";
-import { useMemo, useState } from "react";
+import dynamic from "next/dynamic";
+import { useMemo, useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "@/components/Consult/styles/FormStyles.module.css";
-
 import useFormStore from "@/store/useFormStore";
-import Button from "@/components/Buttons/FormButton/Button";
-
-// Helper function to display form data as text
-const DisplayField = ({ label, value }) => (
-	<div>
-		<strong>{label}:</strong> {value}
-	</div>
+const Button = dynamic(() => import("@/components/Buttons/FormButton/Button"));
+const DisplayField = dynamic(() =>
+	import("@/components/Consult/inputs/DisplayField")
 );
 
 export default function RecapPage({ goToPreviousStep }) {
