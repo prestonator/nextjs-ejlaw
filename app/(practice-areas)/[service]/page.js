@@ -1,5 +1,11 @@
 import dynamic from "next/dynamic";
-import { SafeImageUrl, SafeImageAlt, SafeHtml } from "@/utils/helperFunctions";
+import Image from "next/image";
+import {
+	SafeImageUrl,
+	SafeImageAlt,
+	SafeHtml,
+	SafeImage,
+} from "@/utils/helperFunctions";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { PracticeAreaSlugs } from "@/queries/practiceAreaBySlug.graphql";
@@ -70,15 +76,15 @@ const Page = async ({ params }) => {
 	return (
 		<main>
 			{/* Hero section */}
-			<section
-				className={styles.heroSection}
-				style={{
-					backgroundImage: `url(${SafeImageUrl(hero?.image?.data)})`,
-					backgroundSize: "cover",
-				}}
-			>
-				<div className={styles.heroTextContainer}>
-					{SafeHtml(hero?.richText)}
+			<section className="pt-[var(--size-15)]">
+				<div className="relative w-full h-[50vh]">
+					{SafeImage(hero?.image?.data, "object-cover", "100vw", "eager")}
+					<div className="absolute top-0 left-0 w-full h-full z-[1] bg-opacity-60 bg-black"></div>
+					<div
+						className={`${styles.heroTextContainer} absolute left-[var(--size-15)] top-[var(--size-10)] z-[2] text-white`}
+					>
+						{SafeHtml(hero?.richText)}
+					</div>
 				</div>
 			</section>
 			{/* Information section */}
