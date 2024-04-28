@@ -48,8 +48,10 @@ const MyCasePage = async () => {
 	const { title, slug, hero, sections } = await getData();
 	return (
 		<main className={styles.main}>
-			<section className={styles.heroSection}>
-				<div className={styles.imageButtonWrapper}>
+			<section className={`md:flex-row flex-col ${styles.heroSection}`}>
+				<div
+					className={`w-full md:w-[var(--size-100)] ${styles.imageButtonWrapper}`}
+				>
 					<div className={styles.imageWrapper}>
 						{SafeImage(
 							hero?.image?.data,
@@ -63,9 +65,11 @@ const MyCasePage = async () => {
 						</Button>
 					</div>
 				</div>
-				<div className={styles.heroText}>{SafeHtml(hero?.richText)}</div>
+				<div className={`w-unset mx-16 md:w-[var(--size-100)] ${styles.heroText}`}>
+					{SafeHtml(hero?.richText)}
+				</div>
 			</section>
-			<section className={styles.contentSection}>
+			<section className={`mx-16 ${styles.contentSection}`}>
 				<div className={styles.contentWrapper}>{SafeHtml(sections)}</div>
 			</section>
 		</main>
