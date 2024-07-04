@@ -60,7 +60,7 @@ query NewsBlogPages($filters: NewsBlogPageFiltersInput) {
 						data {
 							attributes {
 								url
-								alternativeText
+								name
 							}
 						}
 					}

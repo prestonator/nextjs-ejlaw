@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const SafeImage = (imageData, styles, sizes, loading) => {
 	const url = encodeURI(imageData?.attributes?.url) ?? "";
-	const alt = imageData?.attributes?.alternativeText ?? "";
+	const alt = imageData?.attributes?.name ?? "";
 
 	return <Image src={url} alt={alt} fill className={styles} sizes={sizes} loading={loading} />;
 };
