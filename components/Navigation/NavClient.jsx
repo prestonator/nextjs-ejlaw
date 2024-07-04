@@ -1,28 +1,30 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Nav.module.css";
 
 const NavbarClient = ({ children }) => {
 	const [isVisible, setIsVisible] = useState(true);
-	const [lastScrollY, setLastScrollY] = useState(0);
+	const lastScrollY = useRef(0);
 
 	useEffect(() => {
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
-			if (currentScrollY > lastScrollY) {
+			if (currentScrollY > lastScrollY.current) {
 				setIsVisible(false);
 			} else {
 				setIsVisible(true);
 			}
-			setLastScrollY(currentScrollY);
+			lastScrollY.current = currentScrollY;
 		};
 
-		window.addEventListener("scroll", handleScroll);
+		const throttledHandleScroll = throttle(handleScroll, 200);
+		window.addEventListener("scroll", throttledHandleScroll);
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("scroll", throttledHandleScroll);
 		};
-	}, [lastScrollY]);
+	}, []);
+
 	return (
 		<header
 			className={`${styles.header} ${
@@ -45,3 +47,13 @@ const NavbarClient = ({ children }) => {
 };
 
 export default NavbarClient;
+
+function throttle(fn, wait) {
+	let time = Date.now();
+	return function () {
+		if (time + wait - Date.now() < 0) {
+			fn();
+			time = Date.now();
+		}
+	};
+}

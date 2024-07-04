@@ -3,11 +3,25 @@ import { sanitize } from "isomorphic-dompurify";
 import parse from "html-react-parser";
 import Image from "next/image";
 
-export const SafeImage = (imageData, styles, sizes, loading) => {
+export const SafeImage = (
+	imageData,
+	styles = "",
+	sizes = "100vw",
+	loading = "lazy"
+) => {
 	const url = encodeURI(imageData?.attributes?.url) ?? "";
 	const alt = imageData?.attributes?.name ?? "";
 
-	return <Image src={url} alt={alt} fill className={styles} sizes={sizes} loading={loading} />;
+	return (
+		<Image
+			src={url}
+			alt={alt}
+			fill
+			className={styles}
+			sizes={sizes}
+			loading={loading}
+		/>
+	);
 };
 
 export const SafeImageUrl = (imageData) => {
