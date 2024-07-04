@@ -1,5 +1,5 @@
 "use client";
-import { useInView,useSpring, animated } from "@react-spring/web";
+import { useInView, useSpring, animated } from "@react-spring/web";
 import React from "react";
 import { IconComponent, SafeHtml, SafeImage } from "@/utils/helperFunctions";
 import styles from "./staffPreview.module.css";
@@ -17,7 +17,6 @@ function StaffPreview({
 	const [ref, inView] = useInView({
 		threshold: 0.1,
 	});
-
 	const isOdd = staffOrder % 2 === 1;
 	const containerClassName = isOdd ? styles.odd : styles.even;
 	const isLastItem = index === totalItems - 1;
@@ -28,14 +27,12 @@ function StaffPreview({
 		config: { mass: 1, tension: 280, friction: 60 },
 		reset: true,
 	});
-
 	const imageAnimation = useSpring({
 		translateX: inView ? "0%" : isOdd ? "100%" : "-100%",
 		opacity: inView ? 1 : 0,
 		config: { mass: 1, tension: 280, friction: 60 },
 		reset: true,
 	});
-
 	const dividerAnimation = useSpring({
 		opacity: inView ? 1 : 0,
 		config: { mass: 1, tension: 280, friction: 60 },
@@ -52,16 +49,7 @@ function StaffPreview({
 					style={imageAnimation}
 					className={`${styles.colOne} ${containerClassName}`}
 				>
-					<div className={styles.iconContainer}>
-						{socialIcons.map(({ icon, href }) =>
-							IconComponent({
-								icon: icon,
-								customClassName: styles.icon,
-								href: href,
-								key: icon,
-							})
-						)}
-					</div>
+					<IconList socialIcons={socialIcons} />
 					<Avatar image={avatarImage} />
 				</animated.div>
 				<animated.div
@@ -78,26 +66,35 @@ function StaffPreview({
 	);
 }
 
-function Avatar({ image }) {
-	return (
-		<div className={styles.avatarWrapper}>
-			{SafeImage(
-				image,
-				styles.avatar,
-				"(min-width: 860px) calc(10.47vw + 62px), calc(17.78vw + 94px)",
-				"eager"
-			)}
-		</div>
-	);
-}
+const Avatar = React.memo(({ image }) => (
+	<div className={styles.avatarWrapper}>
+		{SafeImage(
+			image,
+			styles.avatar,
+			"(min-width: 860px) calc(10.47vw + 62px), calc(17.78vw + 94px)",
+			"eager"
+		)}
+	</div>
+));
 
-function StaffQuoteButton({ infoText, infoButton }) {
-	return (
-		<blockquote>
-			{SafeHtml(infoText)}
-			<Button href={infoButton?.href || []}>{infoButton?.label}</Button>
-		</blockquote>
-	);
-}
+const StaffQuoteButton = React.memo(({ infoText, infoButton }) => (
+	<blockquote>
+		{SafeHtml(infoText)}
+		<Button href={infoButton?.href || []}>{infoButton?.label}</Button>
+	</blockquote>
+));
+
+const IconList = React.memo(({ socialIcons }) => (
+	<div className={styles.iconContainer}>
+		{socialIcons.map(({ icon, href }) => (
+			<IconComponent
+				icon={icon}
+				customClassName={styles.icon}
+				href={href}
+				key={icon}
+			/>
+		))}
+	</div>
+));
 
 export default StaffPreview;

@@ -157,13 +157,16 @@
 	.staffPreviewContainer .colOne.odd {
 		flex-direction: column-reverse;
 	}
+
 	.staffPreviewContainer .avatarWrapper {
 		width: var(--size-50);
 		height: var(--size-50);
 	}
+
 	.staffPreviewContainer .content {
 		width: var(--size-115);
 	}
+
 	.staffPreviewContainer .content blockquote {
 		width: auto;
 		text-align: center;
@@ -171,14 +174,17 @@
 		border-left: 3px solid var(--color-accent);
 		padding-bottom: var(--size-15);
 	}
+
 	.staffPreviewContainer .content blockquote ul {
 		justify-content: center;
 	}
+
 	.iconContainer {
 		flex-direction: row;
-		.icon {
-			width: var(--size-7-5);
-			height: var(--size-7-5);
-		}
+	}
+
+	.icon {
+		width: var(--size-7-5);
+		height: var(--size-7-5);
 	}
 }
