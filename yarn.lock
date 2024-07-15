@@ -165,12 +165,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:^3.7.0":
-  version: 3.7.0
-  resolution: "@hookform/resolvers@npm:3.7.0"
+"@hookform/resolvers@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "@hookform/resolvers@npm:3.9.0"
   peerDependencies:
     react-hook-form: ^7.0.0
-  checksum: 10c0/0f64d5d9fedc5b0b7126f88185a1768cf3f80dafa351150dc3ba78b818e49c1f18df16b15628cf391849149c0f911c4130195987668e0337b8ab07224a718167
+  checksum: 10c0/0e0e55f63abbd212cf14abbd39afad1f9b6105d6b25ce827fc651b624ed2be467ebe9b186026e0f032062db59ce2370b14e9583b436ae2d057738bdd6f04356c
   languageName: node
   linkType: hard
 
@@ -339,15 +339,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/third-parties@npm:^14.2.4":
-  version: 14.2.4
-  resolution: "@next/third-parties@npm:14.2.4"
+"@next/third-parties@npm:^14.2.5":
+  version: 14.2.5
+  resolution: "@next/third-parties@npm:14.2.5"
   dependencies:
     third-party-capital: "npm:1.0.20"
   peerDependencies:
     next: ^13.0.0 || ^14.0.0
     react: ^18.2.0
-  checksum: 10c0/92dc2f1d507d0f5a8c208d0ede355a5084cbc242e46348da0f042522968811b62bb360d78fbbfc53f603c1f875dd4610bc492cd0024ee4a1402541d94287a73f
+  checksum: 10c0/04caedb8de1044a892439c460b916ef462389012724fd86f8665726cbbc1f25d8eb6fe6d76111ca3d01483353351a6d4fd48bd1205212f25d485e04407228fcf
   languageName: node
   linkType: hard
 
@@ -1797,10 +1797,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.1.5":
-  version: 3.1.5
-  resolution: "dompurify@npm:3.1.5"
-  checksum: 10c0/8227fb1328c02d94f823de8cd499fca5ee07051e03e6b52bce06b592348aeb6e56ea8e2a4b0a9cfaeac7d623e4b5a52e4326aedf72596a6c2510b88dfcf2a2b6
+"dompurify@npm:^3.1.6":
+  version: 3.1.6
+  resolution: "dompurify@npm:3.1.6"
+  checksum: 10c0/3de1cca187c78d3d8cb4134fc2985b644d6a81f6b4e024c77cfb04c1c2f38544ccf7b0ea37a48ce22fcca64594170ed7c22252574c75b801c44345cdd7b06c64
   languageName: node
   linkType: hard
 
@@ -1833,9 +1833,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ejlaw-next13@workspace:."
   dependencies:
-    "@hookform/resolvers": "npm:^3.7.0"
+    "@hookform/resolvers": "npm:^3.9.0"
     "@next/bundle-analyzer": "npm:^14.2.4"
-    "@next/third-parties": "npm:^14.2.4"
+    "@next/third-parties": "npm:^14.2.5"
     "@radix-ui/react-accordion": "npm:^1.2.0"
     "@radix-ui/react-dialog": "npm:^1.1.1"
     "@radix-ui/react-navigation-menu": "npm:^1.2.0"
@@ -1849,7 +1849,7 @@ __metadata:
     graphql: "npm:^16.9.0"
     graphql-tag: "npm:^2.12.6"
     html-react-parser: "npm:^5.1.10"
-    isomorphic-dompurify: "npm:^2.12.0"
+    isomorphic-dompurify: "npm:^2.13.0"
     lucide-react: "npm:^0.400.0"
     next: "npm:^14.2.4"
     next-sitemap: "npm:^4.2.3"
@@ -3181,14 +3181,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isomorphic-dompurify@npm:^2.12.0":
-  version: 2.12.0
-  resolution: "isomorphic-dompurify@npm:2.12.0"
+"isomorphic-dompurify@npm:^2.13.0":
+  version: 2.13.0
+  resolution: "isomorphic-dompurify@npm:2.13.0"
   dependencies:
     "@types/dompurify": "npm:^3.0.5"
-    dompurify: "npm:^3.1.5"
+    dompurify: "npm:^3.1.6"
     jsdom: "npm:^24.1.0"
-  checksum: 10c0/a7322f33ad9294d6c42a8f6e6d1e69dc59416f9d5b4e77ab7b8ef9eb4161cb6b05111f4bade25a836153628cfb0f57e77b6c5fae6423cfaff5bdae71d2f667a8
+  checksum: 10c0/6a951a5a8ffd6a752b804a05684ce0b597ce896eab21ddeaf27fac7966d5232cd5fc16a29a7443ad8aae124b63caf072be7e73b0e74ec0e4f4d6f87104f06d6e
   languageName: node
   linkType: hard
 
