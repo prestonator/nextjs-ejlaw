@@ -103,8 +103,8 @@
 .socialSection .iconWrapper svg {
 	filter: invert(6%) sepia(91%) saturate(7495%) hue-rotate(2deg) brightness(77%)
 		contrast(105%);
-	width: var(--size-10);
-	height: var(--size-10);
+	width: var(--size-15);
+	height: var(--size-15);
 }
 
 .ctaSection .iconWrapper {
@@ -150,6 +150,11 @@
 .socialSection .iconWrapper a:nth-of-type(1),
 .socialSection .iconWrapper a:nth-of-type(3) {
 	justify-content: flex-end;
+}
+
+.socialSection .iconWrapper a:nth-of-type(1),
+.socialSection .iconWrapper a:nth-of-type(2) {
+	align-items: flex-end;
 }
 
 @media (max-width: 980px) {
