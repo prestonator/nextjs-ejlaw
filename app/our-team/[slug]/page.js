@@ -10,6 +10,7 @@ import { fetchData } from "@/lib/fetchData";
 import { OurTeamsBySlug } from "@/queries/ourTeamBySlug.graphql";
 import { OurTeams } from "@/queries/ourTeam.graphql";
 import TabContainer from "./TabContainer";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const getPage = async (slug) => {
 	try {
@@ -117,9 +118,14 @@ const Page = async ({ params }) => {
 							</a>
 						</p>
 					</div>
-					<div className={styles.authorBio}>
+					<div className={`sm:block hidden ${styles.authorBio}`}>
 						{SafeHtml(team_member.data.attributes.longBio)}
 					</div>
+					<ScrollArea
+						className={`${styles.bioScroll} sm:hidden text-center font-body bg-white h-[150px] border`}
+					>
+						{SafeHtml(team_member.data.attributes.longBio)}
+					</ScrollArea>
 				</div>
 			</section>
 			<section className={styles.authorTabs}>

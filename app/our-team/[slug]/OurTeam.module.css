@@ -88,6 +88,22 @@
 	margin-bottom: var(--size-1-25);
 }
 
+.bioScroll {
+	padding: 0 var(--size-2-5);
+}
+
+.bioScroll p:first-child {
+	padding-top: var(--size-2-5);
+}
+
+.bioScroll p:last-child {
+	padding-bottom: var(--size-2-5);
+}
+
+.bioScroll p:not(:last-child) {
+	margin-bottom: var(--size-1-25);
+}
+
 .tabContainer {
 	width: 100%;
 }
