@@ -5,7 +5,6 @@ import {
 	SafeHtml,
 	IconComponent,
 } from "@/utils/helperFunctions";
-import Link from "next/link";
 import styles from "./OurTeam.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { OurTeamsBySlug } from "@/queries/ourTeamBySlug.graphql";

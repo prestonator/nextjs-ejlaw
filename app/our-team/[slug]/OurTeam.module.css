@@ -304,8 +304,12 @@
 	.authorInfoTitle {
 		width: 100%;
 	}
+	.authorDetails {
+		padding-bottom: var(--size-5);
+		width: unset;
+	}
 	.authorBio {
-		padding: var(--size-5) var(--size-20);
+		padding: var(--size-2-5);
 		font-size: var(--size-1);
 		background: white;
 	}
