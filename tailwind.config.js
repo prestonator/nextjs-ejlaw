@@ -11,11 +11,20 @@ module.exports = {
 	],
 	prefix: "",
 	theme: {
+		screens: {
+			xs: "475px",
+			sm: "576px",
+			md: "960px",
+			lg: "1440px",
+			"2xl": "1536px",
+			"3xl": "1800px",
+			"4xl": "2560px",
+		},
 		container: {
 			center: true,
 			padding: "2rem",
 			screens: {
-				"2xl": "1400px",
+				"2xl": "1536px",
 			},
 		},
 		extend: {
@@ -73,10 +82,29 @@ module.exports = {
 					from: { height: "var(--radix-accordion-content-height)" },
 					to: { height: "0" },
 				},
+				backgroundGradient: {
+					"0%": {
+						backgroundPosition: "0% 0%",
+					},
+					"100%": {
+						backgroundPosition: "35% 50%",
+					},
+				},
+				textColor: {
+					"0%": {
+						color: "#000",
+					},
+					"100%": {
+						color: "#fff",
+					},
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
+				"background-gradient": "backgroundGradient 2s ease forwards",
+				"text-white-black": "textColor 2s ease forwards",
+				"text-black-white": "textColor 2s ease reverse forwards",
 			},
 		},
 	},
