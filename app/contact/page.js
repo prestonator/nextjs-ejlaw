@@ -56,9 +56,6 @@ const ContactPage = async () => {
 					<h1 className={styles.contactInfoTitle}>Contact Us Today!</h1>
 
 					<div className={styles.contactInfoWrapper}>
-						<div className={styles.contactScheduleWrapper}>
-							<ConsultForm />
-						</div>
 						<div className={styles.contactInfoContainer}>
 							{details?.map((detail) => (
 								<div className={styles.row} key={detail.id}>
@@ -73,6 +70,9 @@ const ContactPage = async () => {
 									</div>
 								</div>
 							))}
+						</div>
+						<div className={styles.contactScheduleWrapper}>
+							<ConsultForm />
 						</div>
 					</div>
 				</div>

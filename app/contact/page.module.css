@@ -28,6 +28,7 @@
 
 .contactInfoWrapper {
 	display: flex;
+	flex-direction: row-reverse;
 }
 
 .contactScheduleWrapper {
