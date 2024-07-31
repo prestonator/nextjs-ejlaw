@@ -1,3 +1,4 @@
+import { createElement, Component } from "react";
 import { useIntl } from "react-intl";
 import AsyncSelectInput from "@commercetools-uikit/async-select-input";
 
@@ -22,54 +23,70 @@ const colourOptions = [
 	},
 ];
 
+const filterColors = (inputValue) =>
+	colourOptions.map((groupedOptionsList) => {
+		const filteredOptions = groupedOptionsList.options.filter((option) =>
+			option.label.toLowerCase().includes(inputValue.toLowerCase())
+		);
+		return {
+			options: filteredOptions,
+		};
+	});
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const loadOptions = (inputValue) =>
+	delay(500).then(() => filterColors(inputValue));
+
 const SearchSelectInput = (props) => {
 	const intl = useIntl();
+
+	const isMulti = false;
+	const defaultOptions = true ? colourOptions : false;
+	const showOptionGroupDivider = false;
+	const loadingMessage = "Loading results";
+	const iconLeft = icons[select("iconLeft", ["", ...iconNames])];
+
 	return (
 		<>
 			<section>
 				<AsyncSelectInput
-					horizontalConstraint={select(
-						"horizontalConstraint",
-						Constraints.getAcceptedMaxPropValues(3),
-						"scale"
-					)}
-					hasError={boolean("hasError", false)}
-					hasWarning={boolean("hasWarning", false)}
-					aria-label={text("aria-label", "")}
-					aria-labelledby={text("aria-labelledby", "")}
-					isAutofocussed={boolean("isAutofocussed", false)}
-					backspaceRemovesValue={boolean("backspaceRemovesValue", true)}
-					controlShouldRenderValue={boolean("controlShouldRenderValue", true)}
-					id={text("id", "")}
-					containerId={text("containerId", "")}
-					isClearable={boolean("isClearable", false)}
-					isCondensed={boolean("isCondensed", false)}
-					isDisabled={boolean("isDisabled", false)}
-					isReadOnly={boolean("isReadOnly", false)}
+					horizontalConstraint="scale"
+					hasError={false}
+					hasWarning={false}
+					aria-label=""
+					aria-labelledby=""
+					isAutofocussed={false}
+					backspaceRemovesValue={true}
+					controlShouldRenderValue={true}
+					id=""
+					containerId=""
+					isClearable={false}
+					isCondensed={false}
+					isDisabled={false}
+					isReadOnly={false}
 					isMulti={isMulti}
-					isSearchable={boolean("isSearchable", true)}
-					maxMenuHeight={number("maxMenuHeight", 220)}
-					closeMenuOnSelect={boolean("closeMenuOnSelect", true)}
-					name={text("name", "form-field-name")}
-					onBlur={action("onBlur")}
+					isSearchable={true}
+					maxMenuHeight={220}
+					closeMenuOnSelect={true}
+					name="form-field-name"
+					onBlur={"onBlur"}
 					onChange={(event, info) => {
-						action("onChange")(event, info);
-						onChange(event.target.value);
+						console.log(event.target.value);
 					}}
 					loadingMessage={loadingMessage}
-					onFocus={action("onFocus")}
-					onInputChange={action("onInputChange")}
-					placeholder={text("placeholder", "Select..")}
-					tabIndex={text("tabIndex", "0")}
-					tabSelectsValue={boolean("tabSelectsValue", true)}
+					onFocus={"onFocus"}
+					onInputChange={"onInputChange"}
+					placeholder="Select.."
+					tabIndex="0"
+					tabSelectsValue={true}
 					value={value}
 					// Async props
 					defaultOptions={defaultOptions}
 					loadOptions={loadOptions}
-					cacheOptions={boolean("cacheOptions", false)}
+					cacheOptions={false}
 					showOptionGroupDivider={showOptionGroupDivider}
-					iconLeft={iconLeft ? createElement(iconLeft) : undefined}
-					{...addMenuPortalProps()}
+					iconLeft={iconLeft ? iconLeft : undefined}
 				/>
 			</section>
 		</>
