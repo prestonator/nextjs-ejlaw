@@ -10,8 +10,7 @@ import { counties } from "@/components/Consult/data";
 const Button = dynamic(() => import("@/components/Buttons/FormButton/Button"));
 const Select = dynamic(() => import("@/components/Consult/inputs/Select"));
 const CustomSelect = dynamic(() =>
-	import("@/components/Consult/inputs/CustomSelect")
-);
+	import("@/components/Consult/inputs/ReactSelect"));
 const TextArea = dynamic(() => import("@/components/Consult/inputs/TextArea"));
 const ToggleSwitch = dynamic(() =>
 	import("@/components/Consult/inputs/ToggleSwitch")

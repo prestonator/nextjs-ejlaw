@@ -1,326 +1,326 @@
 export const counties = [
     {
         value: "adair",
-        name: "Adair County"
+        label: "Adair County"
     },
     {
         value: "alfalfa",
-        name: "Alfalfa County"
+        label: "Alfalfa County"
     },
     {
         value: "appellate",
-        name: "Appellate Courts"
+        label: "Appellate Courts"
     },
     {
         value: "atoka",
-        name: "Atoka County"
+        label: "Atoka County"
     },
     {
         value: "beaver",
-        name: "Beaver County"
+        label: "Beaver County"
     },
     {
         value: "beckham",
-        name: "Beckham County"
+        label: "Beckham County"
     },
     {
         value: "blaine",
-        name: "Blaine County"
+        label: "Blaine County"
     },
     {
         value: "bryan",
-        name: "Bryan County"
+        label: "Bryan County"
     },
     {
         value: "caddo",
-        name: "Caddo County"
+        label: "Caddo County"
     },
     {
         value: "canadian",
-        name: "Canadian County"
+        label: "Canadian County"
     },
     {
         value: "carter",
-        name: "Carter County"
+        label: "Carter County"
     },
     {
         value: "cherokee",
-        name: "Cherokee County"
+        label: "Cherokee County"
     },
     {
         value: "choctaw",
-        name: "Choctaw County"
+        label: "Choctaw County"
     },
     {
         value: "cimarron",
-        name: "Cimarron County"
+        label: "Cimarron County"
     },
     {
         value: "cleveland",
-        name: "Cleveland County"
+        label: "Cleveland County"
     },
     {
         value: "coal",
-        name: "Coal County"
+        label: "Coal County"
     },
     {
         value: "comanche",
-        name: "Comanche County"
+        label: "Comanche County"
     },
     {
         value: "cotton",
-        name: "Cotton County"
+        label: "Cotton County"
     },
     {
         value: "craig",
-        name: "Craig County"
+        label: "Craig County"
     },
     {
         value: "creek",
-        name: "Creek County"
+        label: "Creek County"
     },
     {
         value: "bristow",
-        name: "Creek (Bristow)"
+        label: "Creek (Bristow)"
     },
     {
         value: "drumright",
-        name: "Creek (Drumright)"
+        label: "Creek (Drumright)"
     },
     {
         value: "custer",
-        name: "Custer County"
+        label: "Custer County"
     },
     {
         value: "delaware",
-        name: "Delaware County"
+        label: "Delaware County"
     },
     {
         value: "dewey",
-        name: "Dewey County"
+        label: "Dewey County"
     },
     {
         value: "ellis",
-        name: "Ellis County"
+        label: "Ellis County"
     },
     {
         value: "garfield",
-        name: "Garfield County"
+        label: "Garfield County"
     },
     {
         value: "garvin",
-        name: "Garvin County"
+        label: "Garvin County"
     },
     {
         value: "grady",
-        name: "Grady County"
+        label: "Grady County"
     },
     {
         value: "grant",
-        name: "Grant County"
+        label: "Grant County"
     },
     {
         value: "greer",
-        name: "Greer County"
+        label: "Greer County"
     },
     {
         value: "harmon",
-        name: "Harmon County"
+        label: "Harmon County"
     },
     {
         value: "harper",
-        name: "Harper County"
+        label: "Harper County"
     },
     {
         value: "haskell",
-        name: "Haskell County"
+        label: "Haskell County"
     },
     {
         value: "hughes",
-        name: "Hughes County"
+        label: "Hughes County"
     },
     {
         value: "jackson",
-        name: "Jackson County"
+        label: "Jackson County"
     },
     {
         value: "jefferson",
-        name: "Jefferson County"
+        label: "Jefferson County"
     },
     {
         value: "johnston",
-        name: "Johnston County"
+        label: "Johnston County"
     },
     {
         value: "kay",
-        name: "Kay County"
+        label: "Kay County"
     },
     {
         value: "kingfisher",
-        name: "Kingfisher County"
+        label: "Kingfisher County"
     },
     {
         value: "kiowa",
-        name: "Kiowa County"
+        label: "Kiowa County"
     },
     {
         value: "latimer",
-        name: "Latimer County"
+        label: "Latimer County"
     },
     {
         value: "leflore",
-        name: "LeFlore County"
+        label: "LeFlore County"
     },
     {
         value: "lincoln",
-        name: "Lincoln County"
+        label: "Lincoln County"
     },
     {
         value: "logan",
-        name: "Logan County"
+        label: "Logan County"
     },
     {
         value: "love",
-        name: "Love County"
+        label: "Love County"
     },
     {
         value: "major",
-        name: "Major County"
+        label: "Major County"
     },
     {
         value: "marshall",
-        name: "Marshall County"
+        label: "Marshall County"
     },
     {
         value: "mayes",
-        name: "Mayes County"
+        label: "Mayes County"
     },
     {
         value: "mcclain",
-        name: "McClain County"
+        label: "McClain County"
     },
     {
         value: "mccurtain",
-        name: "McCurtain County"
+        label: "McCurtain County"
     },
     {
         value: "mcintosh",
-        name: "McIntosh County"
+        label: "McIntosh County"
     },
     {
         value: "murray",
-        name: "Murray County"
+        label: "Murray County"
     },
     {
         value: "muskogee",
-        name: "Muskogee County"
+        label: "Muskogee County"
     },
     {
         value: "noble",
-        name: "Noble County"
+        label: "Noble County"
     },
     {
         value: "nowata",
-        name: "Nowata County"
+        label: "Nowata County"
     },
     {
         value: "okfuskee",
-        name: "Okfuskee County"
+        label: "Okfuskee County"
     },
     {
         value: "oklahoma",
-        name: "Oklahoma County"
+        label: "Oklahoma County"
     },
     {
         value: "okmulgee",
-        name: "Okmulgee County"
+        label: "Okmulgee County"
     },
     {
         value: "henryetta",
-        name: "Okmulgee (Henryetta)"
+        label: "Okmulgee (Henryetta)"
     },
     {
         value: "osage",
-        name: "Osage County"
+        label: "Osage County"
     },
     {
         value: "ottawa",
-        name: "Ottawa County"
+        label: "Ottawa County"
     },
     {
         value: "payne",
-        name: "Payne County"
+        label: "Payne County"
     },
     {
         value: "pawnee",
-        name: "Pawnee County"
+        label: "Pawnee County"
     },
     {
         value: "pittsburg",
-        name: "Pittsburg County"
+        label: "Pittsburg County"
     },
     {
         value: "pontotoc",
-        name: "Pontotoc County"
+        label: "Pontotoc County"
     },
     {
         value: "pottawatomie",
-        name: "Pottawatomie County"
+        label: "Pottawatomie County"
     },
     {
         value: "pushmataha",
-        name: "Pushmataha County"
+        label: "Pushmataha County"
     },
     {
         value: "rogermills",
-        name: "Roger Mills County"
+        label: "Roger Mills County"
     },
     {
         value: "rogers",
-        name: "Rogers County"
+        label: "Rogers County"
     },
     {
         value: "seminole",
-        name: "Seminole County"
+        label: "Seminole County"
     },
     {
         value: "sequoyah",
-        name: "Sequoyah County"
+        label: "Sequoyah County"
     },
     {
         value: "stephens",
-        name: "Stephens County"
+        label: "Stephens County"
     },
     {
         value: "texas",
-        name: "Texas County"
+        label: "Texas County"
     },
     {
         value: "tillman",
-        name: "Tillman County"
+        label: "Tillman County"
     },
     {
         value: "tulsa",
-        name: "Tulsa County"
+        label: "Tulsa County"
     },
     {
         value: "wagoner",
-        name: "Wagoner County"
+        label: "Wagoner County"
     },
     {
         value: "washington",
-        name: "Washington County"
+        label: "Washington County"
     },
     {
         value: "washita",
-        name: "Washita County"
+        label: "Washita County"
     },
     {
         value: "woods",
-        name: "Woods County"
+        label: "Woods County"
     },
     {
         value: "woodward",
-        name: "Woodward County"
+        label: "Woodward County"
     }
 ]

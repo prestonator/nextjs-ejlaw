@@ -18,8 +18,11 @@
 	padding: var(--size-1-25);
 }
 
-.customInput select,
-.customSelect input {
+.customSelect {
+	
+}
+
+.customInput select {
 	background-color: transparent;
 	border: none;
 	border-bottom: 2px solid;

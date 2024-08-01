@@ -51,7 +51,7 @@
 	justify-content: space-evenly;
 	width: 30%;
 	background: var(--color-secondary);
-	padding: 0 var(--size-0-75);
+	padding: 1rem var(--size-0-75);
 }
 
 .contactInfoContainer .row {

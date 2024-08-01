@@ -50,7 +50,7 @@ const renderNavItem = (item) => {
 		return (
 			<Accordion key={item.id} type="single" collapsible className="w-full">
 				<AccordionItem value={`item-${item.id}`}>
-					<AccordionTrigger className="flex items-center w-full py-2 font-sans text-lg font-bold bg-transparent hover:bg-gray-200">
+					<AccordionTrigger className="flex items-center w-full py-2 text-lg font-black bg-transparent font-fancy hover:bg-gray-200">
 						{item.item}
 					</AccordionTrigger>
 					{item.children.map((subItem) => {
@@ -61,7 +61,7 @@ const renderNavItem = (item) => {
 						return (
 							<AccordionContent
 								key={subItem.id}
-								className={`${styles.sheetLink} flex items-center py-2 text-lg font-semibold`}
+								className={`${styles.sheetLink} font-fancy flex items-center py-2 text-lg font-black`}
 							>
 								<SheetClose key={item.id} asChild>
 									<Link href={href} className="w-full">
@@ -79,7 +79,7 @@ const renderNavItem = (item) => {
 	return (
 		<SheetClose key={item.id} asChild>
 			<Link
-				className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-semibold`}
+				className={`${styles.sheetLink} flex items-center w-full py-2 text-lg font-black font-fancy`}
 				href={item.slug}
 			>
 				{item.item}
