@@ -661,7 +661,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:^15.0.0-canary.94":
+"@next/bundle-analyzer@npm:^15.0.0-canary.96":
   version: 15.0.0-rc.0
   resolution: "@next/bundle-analyzer@npm:15.0.0-rc.0"
   dependencies:
@@ -756,7 +756,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/third-parties@npm:^15.0.0-canary.94":
+"@next/third-parties@npm:^15.0.0-canary.96":
   version: 15.0.0-rc.0
   resolution: "@next/third-parties@npm:15.0.0-rc.0"
   dependencies:
@@ -2427,8 +2427,8 @@ __metadata:
   resolution: "ejlaw-next13@workspace:."
   dependencies:
     "@hookform/resolvers": "npm:^3.9.0"
-    "@next/bundle-analyzer": "npm:^15.0.0-canary.94"
-    "@next/third-parties": "npm:^15.0.0-canary.94"
+    "@next/bundle-analyzer": "npm:^15.0.0-canary.96"
+    "@next/third-parties": "npm:^15.0.0-canary.96"
     "@radix-ui/react-accordion": "npm:^1.2.0"
     "@radix-ui/react-collapsible": "npm:^1.1.0"
     "@radix-ui/react-dialog": "npm:^1.1.1"
@@ -2440,13 +2440,13 @@ __metadata:
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.1.1"
     eslint: "npm:^9.8.0"
-    eslint-config-next: "npm:^15.0.0-canary.94"
+    eslint-config-next: "npm:^15.0.0-canary.96"
     graphql: "npm:^16.9.0"
     graphql-tag: "npm:^2.12.6"
     html-react-parser: "npm:^5.1.12"
     isomorphic-dompurify: "npm:^2.14.0"
     lucide-react: "npm:^0.417.0"
-    next: "npm:^15.0.0-canary.94"
+    next: "npm:^15.0.0-canary.96"
     next-sitemap: "npm:^4.2.3"
     postcss: "npm:^8.4.40"
     postcss-custom-media: "npm:^10.0.8"
@@ -2709,7 +2709,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^15.0.0-canary.94":
+"eslint-config-next@npm:^15.0.0-canary.96":
   version: 15.0.0-rc.0
   resolution: "eslint-config-next@npm:15.0.0-rc.0"
   dependencies:
@@ -4417,7 +4417,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:^15.0.0-canary.94":
+"next@npm:^15.0.0-canary.96":
   version: 15.0.0-rc.0
   resolution: "next@npm:15.0.0-rc.0"
   dependencies:

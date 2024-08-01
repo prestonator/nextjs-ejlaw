@@ -40,10 +40,10 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
+	margin: 0 2.5rem;
 }
 
 .footerWrapper .linkColumn {
-	margin-right: var(--size-5);
 }
 
 .footerWrapper .linkColumn h5 {
@@ -153,6 +153,7 @@
 	.footerWrapper .column {
 		max-width: calc((100vw / 2) - var(--size-7-5));
 		width: 100%;
+		margin: 0;
 	}
 	.footerWrapper .signUpColumn,
 	.footerWrapper .linkColumn:nth-of-type(3) {
