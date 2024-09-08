@@ -43,9 +43,6 @@
 	margin: 0 2.5rem;
 }
 
-.footerWrapper .linkColumn {
-}
-
 .footerWrapper .linkColumn h5 {
 	font: 600 var(--size-2-5) var(--font-fancy);
 	width: 100%;
@@ -99,7 +96,6 @@
 
 .footerWrapper .signUpColumn .row.formWrapper .textInput {
 	border: 1px solid var(--color-black);
-	border: 1px solid;
 	background-color: transparent;
 }
 
