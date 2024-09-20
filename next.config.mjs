@@ -21,6 +21,12 @@ const nextConfig = {
 				port: "",
 				pathname: "/uploads/**",
 			},
+			{
+				protocol: "https",
+				hostname: "maps.googleapis.com",
+				port: "",
+				pathname: "/maps/**",
+			},
 		],
 	},
 	webpack: (config, options) => {
