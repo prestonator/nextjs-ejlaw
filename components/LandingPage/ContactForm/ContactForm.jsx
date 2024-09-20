@@ -47,7 +47,7 @@ function ThankYouMessage({ data }) {
 						<span className="font-medium">Phone:</span> {data.phone}
 					</li>
 					<li>
-						<span className="font-medium">Case Description:</span>{" "}
+						<span className="font-medium">Case Description:</span>
 						{data.caseDescription}
 					</li>
 				</ul>
@@ -74,7 +74,7 @@ export default function LandingPageForm() {
 	const onSubmit = async (data) => {
 		try {
 			const response = await fetch(
-				"https://n8n.do.prestonator.com/webhook-test/f9950bbd-6a01-4316-844f-d5834dbb2d9e",
+				"https://n8n.do.prestonator.com/webhook/f9950bbd-6a01-4316-844f-d5834dbb2d9e",
 				{
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -104,7 +104,7 @@ export default function LandingPageForm() {
 				<ThankYouMessage data={formStatus.data} />
 			) : (
 				<div className="bg-white p-8 rounded-lg shadow-lg">
-					<h2 className="text-2xl font-bold text-gray-900 mb-6">
+					<h2 className="text-2xl font-bold text-gray-900 mb-6 font-fancy">
 						Schedule Your Case Evaluation
 					</h2>
 					<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -186,7 +186,7 @@ export default function LandingPageForm() {
 						</div>
 						<Button
 							type="submit"
-							className="w-full font-saira"
+							className="w-full font-special"
 							disabled={isSubmitting}
 						>
 							{isSubmitting ? "Submitting..." : "Request Consultation"}

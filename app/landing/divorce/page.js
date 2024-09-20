@@ -25,7 +25,7 @@ export default function DivorceLandingPage() {
 	const fadeIn = useSpring({
 		from: { opacity: 0 },
 		to: { opacity: 1 },
-		config: { duration: 2 },
+		config: { duration: 1 },
 	});
 
 	const slideUp = useSpring({
@@ -382,7 +382,7 @@ export default function DivorceLandingPage() {
 							</Button>
 							<Button variant="link" className="text-primary font-special">
 								<Mail className="mr-2 h-5 w-5" />
-								info@eltonjenkinslaw.com
+								susan@eltonjenkinslaw.com
 							</Button>
 						</div>
 					</animated.div>
