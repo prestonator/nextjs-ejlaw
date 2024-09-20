@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import {
 	Phone,
@@ -18,66 +17,108 @@ import {
 	Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useSpring, animated } from "@react-spring/web";
 import LandingPageForm from "@/components/LandingPage/ContactForm/ContactForm";
 
 export default function DivorceLandingPage() {
-	const fadeIn = useSpring({
-		from: { opacity: 0 },
-		to: { opacity: 1 },
-		config: { duration: 1 },
-	});
-
-	const slideUp = useSpring({
-		from: { opacity: 0, y: 50 },
-		to: { opacity: 1, y: 0 },
-	});
-
-	const slideRight = useSpring({
-		from: { opacity: 0, x: -50 },
-		to: { opacity: 1, x: 0 },
-	});
-
-	const scaleIn = useSpring({
-		from: { opacity: 0, scale: 0.9 },
-		to: { opacity: 1, scale: 1 },
-	});
-
 	const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 	const mapsUrl = `https://maps.googleapis.com/maps/api/staticmap?center=124+E+Main+St,Norman,OK&zoom=15&size=600x300&key=${apiKey}`;
 
+	// Moved static data outside the component to prevent re-creation on each render
+	const features = [
+		{
+			icon: Scale,
+			title: "Expert Legal Support",
+			description: "Protecting your rights and interests",
+		},
+		{
+			icon: Users,
+			title: "Personalized Approach",
+			description: "Tailored solutions for your unique situation",
+		},
+		{
+			icon: Heart,
+			title: "Compassionate Care",
+			description: "Supporting you through challenging times",
+		},
+	];
+
+	const services = [
+		{
+			icon: Gavel,
+			title: "Contested Divorce",
+			description:
+				"When disputes arise, you need a skilled attorney to advocate for you. Our team excels in handling contested divorces, ensuring your voice is heard on critical matters such as asset division, child custody, and spousal support.",
+			features: [
+				{ icon: Shield, text: "Strategic Representation" },
+				{ icon: Scale, text: "Protecting Your Rights" },
+				{ icon: FileText, text: "Experience in Complex Cases" },
+			],
+		},
+		{
+			icon: Handshake,
+			title: "Uncontested Divorce",
+			description:
+				"Simplify the divorce process with our guidance on uncontested divorces. We'll help you and your spouse reach amicable agreements efficiently, minimizing stress and legal expenses.",
+			features: [
+				{ icon: Clock, text: "Efficient Process" },
+				{ icon: Users, text: "Amicable Resolutions" },
+				{ icon: DollarSign, text: "Cost-Effective Solutions" },
+			],
+		},
+	];
+
+	const reasons = [
+		{
+			icon: Scale,
+			title: "60+ Years of Combined Experience",
+			description: "Our attorneys bring decades of experience to your case.",
+		},
+		{
+			icon: Star,
+			title: "Over 100 Five-Star Reviews",
+			description:
+				"Join countless satisfied clients who've rated us 4.7 stars on Google.",
+		},
+		{
+			icon: Users,
+			title: "Personalized Legal Support",
+			description: "We tailor our approach to fit your unique situation.",
+		},
+		{
+			icon: MapPin,
+			title: "Serving Norman & Surrounding Counties",
+			description:
+				"Proudly assisting clients in Norman and nearby communities.",
+		},
+	];
+
+	const attorneys = [
+		{ name: "Elton Jenkins", role: "Founder" },
+		{ name: "Eric Kroier", role: "Divorce & Family Law Attorney" },
+		{ name: "Letitia Ness Brady", role: "Divorce & Family Law Attorney" },
+		{ name: "Aaron Kroier", role: "Civil Attorney" },
+	];
+
 	return (
 		<div className="flex flex-col min-h-screen font-body">
-			<animated.section
-				style={fadeIn}
-				className="relative bg-gray-900 text-white"
-			>
+			<section className="relative bg-gray-900 text-white animate-fadeIn">
 				<div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
 				<div className="relative mx-auto max-w-screen-xl px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
 					<div className="md:flex md:items-center md:justify-evenly w-full">
 						<div className="max-w-xl mx-auto md:mx-0">
-							<animated.h1
-								style={slideRight}
-								className="font-fancy text-3xl font-extrabold sm:text-5xl md:text-6xl"
-							>
+							<h1 className="font-fancy text-3xl font-extrabold sm:text-5xl md:text-6xl animate-slideRight">
 								Compassionate Divorce Attorneys
 								<strong className="block font-extrabold text-[#edbb5f] mt-2">
 									in Norman, OK
 								</strong>
-							</animated.h1>
+							</h1>
 
-							<animated.p
-								style={slideRight}
-								className="mt-4 max-w-lg text-xl sm:text-2xl"
-							>
+							<p className="mt-4 max-w-lg text-xl sm:text-2xl animate-slideRight">
 								Guiding You Through Contested & Uncontested Divorces with 60+
 								Years of Combined Experience
-							</animated.p>
+							</p>
 
-							<animated.div
-								style={slideRight}
-								className="mt-8 flex flex-wrap gap-4"
-							>
+							<div className="mt-8 flex flex-wrap gap-4 animate-slideRight">
 								<Button
 									className="w-full sm:w-auto flex items-center justify-center gap-2 font-special text-lg"
 									size="lg"
@@ -95,57 +136,36 @@ export default function DivorceLandingPage() {
 									<Calendar className="h-5 w-5" />
 									<span>Request Consultation</span>
 								</Button>
-							</animated.div>
+							</div>
 						</div>
 
-						<animated.div
-							style={scaleIn}
-							className="mt-8 mx-auto md:mx-0 w-3/4 md:mt-0 md:w-1/2 md:max-w-md"
+						<div
+							className="mt-8 mx-auto md:mx-0 w-3/4 md:mt-0 md:w-1/2 md:max-w-md animate-scaleIn"
 							id="contact-form"
 						>
 							<LandingPageForm />
-						</animated.div>
+						</div>
 					</div>
 				</div>
-			</animated.section>
+			</section>
 
-			<animated.section
-				style={slideUp}
-				className="bg-white py-16 px-4 sm:px-6 lg:px-8"
-			>
+			<section className="bg-white py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
 				<div className="max-w-4xl mx-auto">
 					<h2 className="font-fancy text-3xl font-bold text-gray-900 mb-8 text-center">
 						Your Trusted Partners in Divorce Proceedings
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-						{[
-							{
-								icon: Scale,
-								title: "Expert Legal Support",
-								description: "Protecting your rights and interests",
-							},
-							{
-								icon: Users,
-								title: "Personalized Approach",
-								description: "Tailored solutions for your unique situation",
-							},
-							{
-								icon: Heart,
-								title: "Compassionate Care",
-								description: "Supporting you through challenging times",
-							},
-						].map((item, index) => (
-							<animated.div
+						{features.map((item, index) => (
+							<div
 								key={index}
-								style={scaleIn}
-								className="flex flex-col items-center text-center p-6 rounded-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-md"
+								className="flex flex-col items-center text-center p-6 rounded-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-md animate-scaleIn"
 							>
 								<item.icon className="h-12 w-12 text-primary mb-4" />
 								<h3 className="font-fancy text-xl font-semibold mb-2">
 									{item.title}
 								</h3>
 								<p className="text-gray-600">{item.description}</p>
-							</animated.div>
+							</div>
 						))}
 					</div>
 					<div className="text-center space-y-6">
@@ -169,45 +189,18 @@ export default function DivorceLandingPage() {
 						</Button>
 					</div>
 				</div>
-			</animated.section>
+			</section>
 
-			<animated.section
-				style={slideUp}
-				className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8"
-			>
+			<section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
 				<div className="max-w-6xl mx-auto">
 					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
 						Our Divorce Services
 					</h2>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-						{[
-							{
-								icon: Gavel,
-								title: "Contested Divorce",
-								description:
-									"When disputes arise, you need a skilled attorney to advocate for you. Our team excels in handling contested divorces, ensuring your voice is heard on critical matters such as asset division, child custody, and spousal support.",
-								features: [
-									{ icon: Shield, text: "Strategic Representation" },
-									{ icon: Scale, text: "Protecting Your Rights" },
-									{ icon: FileText, text: "Experience in Complex Cases" },
-								],
-							},
-							{
-								icon: Handshake,
-								title: "Uncontested Divorce",
-								description:
-									"Simplify the divorce process with our guidance on uncontested divorces. We'll help you and your spouse reach amicable agreements efficiently, minimizing stress and legal expenses.",
-								features: [
-									{ icon: Clock, text: "Efficient Process" },
-									{ icon: Users, text: "Amicable Resolutions" },
-									{ icon: DollarSign, text: "Cost-Effective Solutions" },
-								],
-							},
-						].map((service, index) => (
-							<animated.div
+						{services.map((service, index) => (
+							<div
 								key={index}
-								style={scaleIn}
-								className="bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl"
+								className="bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl animate-scaleIn"
 							>
 								<div className="flex items-center mb-6">
 									<service.icon className="h-10 w-10 text-primary mr-4" />
@@ -224,7 +217,7 @@ export default function DivorceLandingPage() {
 										</li>
 									))}
 								</ul>
-							</animated.div>
+							</div>
 						))}
 					</div>
 					<div className="text-center mt-12">
@@ -233,44 +226,18 @@ export default function DivorceLandingPage() {
 						</Button>
 					</div>
 				</div>
-			</animated.section>
+			</section>
 
-			<animated.section style={slideUp} className="bg-white py-16 lg:px-8">
+			<section className="bg-white py-16 lg:px-8 animate-slideUp">
 				<div className="max-w-6xl mx-auto">
 					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
 						Why Choose Elton Jenkins Law
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-						{[
-							{
-								icon: Scale,
-								title: "60+ Years of Combined Experience",
-								description:
-									"Our attorneys bring decades of experience to your case.",
-							},
-							{
-								icon: Star,
-								title: "Over 100 Five-Star Reviews",
-								description:
-									"Join countless satisfied clients who've rated us 4.7 stars on Google.",
-							},
-							{
-								icon: Users,
-								title: "Personalized Legal Support",
-								description:
-									"We tailor our approach to fit your unique situation.",
-							},
-							{
-								icon: MapPin,
-								title: "Serving Norman & Surrounding Counties",
-								description:
-									"Proudly assisting clients in Norman and nearby communities.",
-							},
-						].map((item, index) => (
-							<animated.div
+						{reasons.map((item, index) => (
+							<div
 								key={index}
-								style={scaleIn}
-								className="bg-gray-100 rounded-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-lg"
+								className="bg-gray-100 rounded-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-lg animate-scaleIn"
 							>
 								<div className="flex justify-center mb-4">
 									<item.icon className="h-12 w-12 text-primary" />
@@ -279,7 +246,7 @@ export default function DivorceLandingPage() {
 									{item.title}
 								</h3>
 								<p className="text-gray-700">{item.description}</p>
-							</animated.div>
+							</div>
 						))}
 					</div>
 					<div className="text-center mt-12">
@@ -288,22 +255,18 @@ export default function DivorceLandingPage() {
 						</Button>
 					</div>
 				</div>
-			</animated.section>
+			</section>
 
-			<animated.section
-				style={slideUp}
-				className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8"
-			>
+			<section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
 				<div className="max-w-6xl mx-auto">
 					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
 						What Our Clients Say
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{[1, 2, 3].map((index) => (
-							<animated.div
+							<div
 								key={index}
-								style={scaleIn}
-								className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl"
+								className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl animate-scaleIn"
 							>
 								<Quote className="h-8 w-8 text-primary mb-4" />
 								<p className="text-gray-700 mb-4">
@@ -320,55 +283,40 @@ export default function DivorceLandingPage() {
 										<p className="text-gray-600">Norman, OK</p>
 									</div>
 								</div>
-							</animated.div>
+							</div>
 						))}
 					</div>
 				</div>
-			</animated.section>
+			</section>
 
-			<animated.section
-				style={slideUp}
-				className="bg-white py-16 px-4 sm:px-6 lg:px-8"
-			>
+			<section className="bg-white py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
 				<div className="max-w-6xl mx-auto">
 					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
 						Meet Our Experienced Attorneys
 					</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-						{[
-							{ name: "Elton Jenkins", role: "Founder" },
-							{ name: "Eric Kroier", role: "Family Law Specialist" },
-							{ name: "Letitia Ness Brady", role: "Divorce Mediation Expert" },
-							{ name: "Aaron Kroier", role: "Contested Divorce Attorney" },
-						].map((attorney, index) => (
-							<animated.div
+						{attorneys.map((attorney, index) => (
+							<div
 								key={index}
-								style={scaleIn}
-								className="bg-gray-100 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-xl"
+								className="bg-gray-100 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-xl animate-scaleIn"
 							>
 								<div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
 								<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
 									{attorney.name}
 								</h3>
 								<p className="text-gray-600">{attorney.role}</p>
-							</animated.div>
+							</div>
 						))}
 					</div>
 				</div>
-			</animated.section>
+			</section>
 
-			<animated.section
-				style={slideUp}
-				className="bg-gray-100 pt-16 pb-36 px-4 sm:px-6 lg:px-8"
-			>
+			<section className="bg-gray-100 pt-16 pb-36 px-4 sm:px-6 lg:px-8 animate-slideUp">
 				<div className="max-w-4xl mx-auto text-center">
 					<h2 className="font-fancy text-3xl font-bold text-gray-900 mb-8">
 						Contact Us
 					</h2>
-					<animated.div
-						style={scaleIn}
-						className="bg-white rounded-lg p-8 mb-8 transition-all duration-300 hover:shadow-lg"
-					>
+					<div className="bg-white rounded-lg p-8 mb-8 transition-all duration-300 hover:shadow-lg animate-scaleIn">
 						<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-4">
 							Elton Jenkins Law, P.L.L.C.
 						</h3>
@@ -385,7 +333,7 @@ export default function DivorceLandingPage() {
 								susan@eltonjenkinslaw.com
 							</Button>
 						</div>
-					</animated.div>
+					</div>
 					<div className="aspect-w-16 aspect-h-9">
 						<Image
 							src={mapsUrl}
@@ -396,7 +344,7 @@ export default function DivorceLandingPage() {
 						/>
 					</div>
 				</div>
-			</animated.section>
+			</section>
 		</div>
 	);
 }

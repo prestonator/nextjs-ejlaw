@@ -98,6 +98,22 @@ module.exports = {
 						color: "#fff",
 					},
 				},
+				fadeIn: {
+					"0%": { opacity: "0" },
+					"100%": { opacity: "1" },
+				},
+				slideUp: {
+					"0%": { opacity: "0", transform: "translateY(50px)" },
+					"100%": { opacity: "1", transform: "translateY(0)" },
+				},
+				slideRight: {
+					"0%": { opacity: "0", transform: "translateX(-50px)" },
+					"100%": { opacity: "1", transform: "translateX(0)" },
+				},
+				scaleIn: {
+					"0%": { opacity: "0", transform: "scale(0.9)" },
+					"100%": { opacity: "1", transform: "scale(1)" },
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -105,6 +121,10 @@ module.exports = {
 				"background-gradient": "backgroundGradient 2s ease forwards",
 				"text-white-black": "textColor 2s ease forwards",
 				"text-black-white": "textColor 2s ease reverse forwards",
+				fadeIn: "fadeIn 1s ease-in-out forwards",
+				slideUp: "slideUp 1s ease-in-out forwards",
+				slideRight: "slideRight 1s ease-in-out forwards",
+				scaleIn: "scaleIn 1s ease-in-out forwards",
 			},
 		},
 	},
