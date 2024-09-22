@@ -1,0 +1,10 @@
+query LandingPagesBySlug {
+	landingPages {
+		data {
+			attributes {
+				title
+				slug
+			}
+		}
+	}
+}

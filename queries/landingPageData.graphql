@@ -1,0 +1,41 @@
+query LandingPageData($filters: LandingPageFiltersInput) {
+	landingPages(filters: $filters) {
+		data {
+			attributes {
+				title
+				slug
+				landing_page_hero {
+					header
+					subheader
+					description
+					heroButton {
+						id
+						label
+						href
+						icon
+					}
+					image {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
+				section_one_header
+				section_one_card {
+					id
+					icon
+					header
+					content
+				}
+				section_one_content {
+					id
+					text
+				}
+				section_one_button
+			}
+		}
+	}
+}
