@@ -49,6 +49,13 @@ query LandingPageData($filters: LandingPageFiltersInput) {
 						content
 					}
 				}
+				section_three_header
+				reasons_card {
+					id
+					icon
+					header
+					content
+				}
 			}
 		}
 	}

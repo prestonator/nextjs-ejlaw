@@ -228,34 +228,34 @@ export default function DivorceLandingPage() {
 				</div>
 			</section>
 
-<section className="bg-white py-16 lg:px-8 animate-slideUp">
-	<div className="max-w-6xl mx-auto">
-		<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
-			Why Choose Elton Jenkins Law
-		</h2>
-		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-			{reasons.map((item, index) => (
-				<div
-					key={index}
-					className="bg-gray-100 rounded-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-lg animate-scaleIn"
-				>
-					<div className="flex justify-center mb-4">
-						<item.icon className="h-12 w-12 text-primary" />
+			<section className="bg-white py-16 lg:px-8 animate-slideUp">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
+						Why Choose Elton Jenkins Law
+					</h2>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+						{reasons.map((item, index) => (
+							<div
+								key={index}
+								className="bg-gray-100 rounded-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-lg animate-scaleIn"
+							>
+								<div className="flex justify-center mb-4">
+									<item.icon className="h-12 w-12 text-primary" />
+								</div>
+								<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
+									{item.title}
+								</h3>
+								<p className="text-gray-700">{item.description}</p>
+							</div>
+						))}
 					</div>
-					<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
-						{item.title}
-					</h3>
-					<p className="text-gray-700">{item.description}</p>
+					<div className="text-center mt-12">
+						<Button className="font-special text-lg" size="lg">
+							Experience the Elton Jenkins Law Difference
+						</Button>
+					</div>
 				</div>
-			))}
-		</div>
-		<div className="text-center mt-12">
-			<Button className="font-special text-lg" size="lg">
-				Experience the Elton Jenkins Law Difference
-			</Button>
-		</div>
-	</div>
-</section>
+			</section>
 
 			<section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
 				<div className="max-w-6xl mx-auto">
