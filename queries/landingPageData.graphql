@@ -56,6 +56,21 @@ query LandingPageData($filters: LandingPageFiltersInput) {
 					header
 					content
 				}
+				section_four_header
+				testimonial {
+					id
+					quote
+					name
+					location
+					avatar {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
 			}
 		}
 	}
