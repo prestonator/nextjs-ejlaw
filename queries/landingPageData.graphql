@@ -35,6 +35,20 @@ query LandingPageData($filters: LandingPageFiltersInput) {
 					text
 				}
 				section_one_button
+				section_two_header
+				services_card {
+					id
+					services_card_header {
+						icon
+						content
+					}
+					services_card_description
+					services_card_content {
+						id
+						icon
+						content
+					}
+				}
 			}
 		}
 	}

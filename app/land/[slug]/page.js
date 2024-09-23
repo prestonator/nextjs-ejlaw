@@ -47,9 +47,11 @@ const Page = async ({ params }) => {
 		section_one_card,
 		section_one_content,
 		section_one_button,
+		section_two_header,
+		services_card,
 	} = await getPage(params.slug);
 
-	console.log(section_one_content);
+	console.log(services_card);
 	return (
 		<div className="flex flex-col min-h-screen font-body">
 			<section className="relative bg-gray-900 text-white animate-fadeIn">
@@ -136,6 +138,45 @@ const Page = async ({ params }) => {
 						>
 							{section_one_button}
 						</Button>
+					</div>
+				</div>
+			</section>
+			<section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
+				<div className="max-w-6xl mx-auto">
+					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
+						{section_two_header}
+					</h2>
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+						{services_card.map((service) => (
+							<div
+								key={service.id}
+								className="bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl animate-scaleIn"
+							>
+								<div className="flex items-center mb-6">
+									{IconComponent({
+										icon: service.services_card_header.icon,
+										customClassName: "h-10 w-10 text-primary mr-4",
+									})}
+									<h3 className="font-fancy text-2xl font-semibold text-gray-900">
+										{service.services_card_header.content}
+									</h3>
+								</div>
+								<p className="text-gray-700 mb-6">
+									{service.services_card_description}
+								</p>
+								<ul className="space-y-4">
+									{service.services_card_content.map((feature) => (
+										<li key={feature.id} className="flex items-center">
+											{IconComponent({
+												icon: feature.icon,
+												customClassName: "h-6 w-6 text-primary mr-2",
+											})}
+											<span className="text-gray-700">{feature.content}</span>
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
 					</div>
 				</div>
 			</section>
