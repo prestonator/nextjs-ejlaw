@@ -10,8 +10,6 @@ import { LandingPagesBySlug } from "@/queries/landingPageBySlug.graphql";
 import { LandingPageData } from "@/queries/landingPageData.graphql";
 import LandingPageForm from "@/components/LandingPage/ContactForm/ContactForm";
 import { Button } from "@/components/ui/button";
-import { GoLaw, GoPeople, GoHeart } from "react-icons/go";
-import { Icon } from "lucide-react";
 
 const getPage = async (slug) => {
 	try {
@@ -51,7 +49,7 @@ const Page = async ({ params }) => {
 		services_card,
 	} = await getPage(params.slug);
 
-	console.log(services_card);
+	//console.log(services_card);
 	return (
 		<div className="flex flex-col min-h-screen font-body">
 			<section className="relative bg-gray-900 text-white animate-fadeIn">
@@ -177,6 +175,11 @@ const Page = async ({ params }) => {
 								</ul>
 							</div>
 						))}
+					</div>
+					<div className="text-center mt-12">
+						<Button className="font-special text-lg" size="lg">
+							Discuss Your Case With Us
+						</Button>
 					</div>
 				</div>
 			</section>
