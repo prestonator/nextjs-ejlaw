@@ -209,7 +209,7 @@ export default function LandingPage() {
 				className="bg-gradient-to-b from-gray-100 to-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden animate-slideUp"
 			>
 				<div className="max-w-6xl mx-auto relative z-10">
-					<h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
+					<h2 className="font-fancy text-4xl font-bold text-center text-gray-900 mb-12">
 						Our Story of Justice
 					</h2>
 
@@ -275,7 +275,7 @@ export default function LandingPage() {
 												<item.icon className="h-6 w-6 text-primary" />
 											</div>
 											<div>
-												<h3 className="font-semibold">{item.title}</h3>
+												<h3 className="font-fancy font-semibold">{item.title}</h3>
 												<p className="text-sm text-gray-600">
 													{item.description}
 												</p>
@@ -288,7 +288,7 @@ export default function LandingPage() {
 					</div>
 
 					<div className="mt-16 text-center">
-						<h3 className="text-2xl font-bold text-gray-900 mb-6">
+						<h3 className="font-fancy text-2xl font-bold text-gray-900 mb-6">
 							What Sets Us Apart
 						</h3>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -317,7 +317,7 @@ export default function LandingPage() {
 										<div className="bg-primary-100 p-3 rounded-full mb-4">
 											<item.icon className="h-8 w-8 text-primary" />
 										</div>
-										<h3 className="text-xl font-semibold text-gray-900 mb-2">
+										<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
 											{item.title}
 										</h3>
 										<p className="text-gray-700">{item.description}</p>
@@ -418,7 +418,7 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			<section id="contact" className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+			<section id="contact" className="bg-white pt-16 pb-24 px-4 sm:px-6 lg:px-8">
 				<div className="max-w-4xl mx-auto">
 					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-8">
 						Contact Us
@@ -460,59 +460,7 @@ export default function LandingPage() {
 							</div>
 						</div>
 						<div className="bg-gray-100 rounded-lg p-8 shadow-lg transition-all duration-300 hover:shadow-xl animate-scaleIn">
-							<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-4">
-								Send Us a Message
-							</h3>
-							<form className="space-y-4">
-								<div>
-									<label
-										htmlFor="name"
-										className="block text-sm font-medium text-gray-700"
-									>
-										Name
-									</label>
-									<Input
-										id="name"
-										name="name"
-										type="text"
-										required
-										className="mt-1"
-									/>
-								</div>
-								<div>
-									<label
-										htmlFor="email"
-										className="block text-sm font-medium text-gray-700"
-									>
-										Email
-									</label>
-									<Input
-										id="email"
-										name="email"
-										type="email"
-										required
-										className="mt-1"
-									/>
-								</div>
-								<div>
-									<label
-										htmlFor="message"
-										className="block text-sm font-medium text-gray-700"
-									>
-										Message
-									</label>
-									<Textarea
-										id="message"
-										name="message"
-										required
-										className="mt-1"
-										rows={4}
-									/>
-								</div>
-								<Button type="submit" className="w-full font-special">
-									Send Message
-								</Button>
-							</form>
+							<LandingPageForm />
 						</div>
 					</div>
 				</div>
