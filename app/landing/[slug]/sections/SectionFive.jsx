@@ -40,7 +40,7 @@ const SectionFive = ({ section_five_header, staff_cards }) => {
 				<div className="text-center mt-12">
 					<Button className="font-special text-lg" size="lg" asChild>
 						<Link href="/contact">
-							Experience the Elton Jenkins Law Difference
+							Experience the Difference
 						</Link>
 					</Button>
 				</div>

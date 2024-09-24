@@ -38,7 +38,7 @@ const SectionOne = ({
 							{item.text}
 						</p>
 					))}
-					<Button className="font-special text-lg" size="lg" asChild>
+					<Button className="font-special text-sm px-4 sm:text-lg sm:px-8" size="lg" asChild>
 						<Link href="#contact-form">{section_one_button}</Link>
 					</Button>
 				</div>

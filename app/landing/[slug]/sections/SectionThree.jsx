@@ -4,7 +4,7 @@ import { IconComponent } from "@/utils/helperFunctions";
 
 const SectionThree = ({ section_three_header, reasons_card }) => {
 	return (
-		<section className="bg-white py-16 lg:px-8 animate-slideUp">
+		<section className="bg-white py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
 			<div className="max-w-6xl mx-auto">
 				<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
 					{section_three_header}
