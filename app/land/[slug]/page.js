@@ -58,7 +58,6 @@ const Page = async ({ params }) => {
 	const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 	const mapsUrl = `https://maps.googleapis.com/maps/api/staticmap?center=124+E+Main+St,Norman,OK&zoom=15&size=600x300&key=${apiKey}`;
 
-	//console.log(services_card);
 	return (
 		<div className="flex flex-col min-h-screen font-body">
 			<section className="relative bg-gray-900 text-white animate-fadeIn">
@@ -272,7 +271,7 @@ const Page = async ({ params }) => {
 								<img
 									src={staff.avatar.data.attributes.url}
 									alt={staff.avatar.data.attributes.name}
-									className="w-32 h-32 rounded-full mx-auto mb-4"
+									className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
 								/>
 								<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
 									{staff.name}
