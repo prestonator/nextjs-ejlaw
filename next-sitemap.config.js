@@ -9,7 +9,7 @@ module.exports = {
 		policies: [
 			{
 				userAgent: "*",
-				allow: "/",
+				disallow: ["/landing", "/landing/*", "/landing/divorce"],
 			},
 		],
 		additionalSitemaps: [

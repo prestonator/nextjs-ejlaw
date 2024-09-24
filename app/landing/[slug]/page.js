@@ -1,8 +1,4 @@
 import {
-	SafeImage,
-	SafeImageUrl,
-	SafeImageAlt,
-	SafeHtml,
 	IconComponent,
 } from "@/utils/helperFunctions";
 import Image from "next/image";
@@ -37,10 +33,14 @@ export async function generateStaticParams() {
 	}));
 }
 
+export const metadata = {
+	title: "Divorce | Elton Jenkins Law, PLLC",
+	description:
+		"Facing divorce? Elton Jenkins Law offers compassionate legal support for contested and uncontested divorces in Norman, OK. Call (405) 217-3623 for a free consultation.",
+};
+
 const Page = async ({ params }) => {
 	const {
-		title,
-		slug,
 		landing_page_hero,
 		section_one_header,
 		section_one_card,
@@ -57,7 +57,7 @@ const Page = async ({ params }) => {
 	} = await getPage(params.slug);
 	const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 	const mapsUrl = `https://maps.googleapis.com/maps/api/staticmap?center=124+E+Main+St,Norman,OK&zoom=15&size=600x300&key=${apiKey}`;
-
+console.log(landing_page_hero.heroButton);
 	return (
 		<div className="flex flex-col min-h-screen font-body">
 			<section className="relative bg-gray-900 text-white animate-fadeIn">
@@ -82,11 +82,8 @@ const Page = async ({ params }) => {
 									return (
 										<Button
 											key={button.id}
-											className={`w-full sm:w-auto flex items-center justify-center gap-2 font-special text-lg ${
-												button.id === 2
-													? 'variant="outline" bg-white text-gray-900'
-													: ""
-											}`}
+											className={`w-full sm:w-auto flex items-center justify-center gap-2 font-special text-lg`}
+											variant={button.id % 2 === 0 ? "outline" : undefined}
 											size="lg"
 											href={button.href}
 										>
