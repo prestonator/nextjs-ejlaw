@@ -1,5 +1,6 @@
 import React from "react";
 import { IconComponent } from "@/utils/helperFunctions";
+import { Icon } from "lucide-react";
 
 const SectionFour = ({ section_four_header, testimonial }) => {
 	return (
@@ -20,11 +21,10 @@ const SectionFour = ({ section_four_header, testimonial }) => {
 							})}
 							<p className="text-gray-700 mb-4">{testimonial.quote}</p>
 							<div className="flex items-center">
-								<img
-									src={testimonial.avatar.data.attributes.url}
-									alt={testimonial.avatar.data.attributes.name}
-									className="w-12 h-12 bg-gray-300 rounded-full mr-4"
-								/>
+								{IconComponent({
+									icon: "IoMdPerson",
+									customClassName: "w-6 h-6 p-2 bg-gray-300 rounded-full mr-4",
+								})}
 								<div>
 									<h4 className="font-fancy font-semibold text-gray-900">
 										{testimonial.name}
