@@ -1,12 +1,13 @@
-import {
-	IconComponent,
-} from "@/utils/helperFunctions";
-import Image from "next/image";
 import { fetchData } from "@/lib/fetchData";
 import { LandingPagesBySlug } from "@/queries/landingPageBySlug.graphql";
 import { LandingPageData } from "@/queries/landingPageData.graphql";
-import LandingPageForm from "@/components/LandingPage/ContactForm/ContactForm";
-import { Button } from "@/components/ui/button";
+import LandingHero from "./sections/LandingHero";
+import SectionOne from "./sections/SectionOne";
+import SectionTwo from "./sections/SectionTwo";
+import SectionThree from "./sections/SectionThree";
+import SectionFour from "./sections/SectionFour";
+import SectionFive from "./sections/SectionFive";
+import ContactUsSection from "./sections/ContactUsSection";
 
 const getPage = async (slug) => {
 	try {
@@ -40,285 +41,36 @@ export const metadata = {
 };
 
 const Page = async ({ params }) => {
-	const {
-		landing_page_hero,
-		section_one_header,
-		section_one_card,
-		section_one_content,
-		section_one_button,
-		section_two_header,
-		services_card,
-		section_three_header,
-		reasons_card,
-		section_four_header,
-		testimonial,
-		section_five_header,
-		staff_cards,
-	} = await getPage(params.slug);
+	const data = await getPage(params.slug);
 	const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 	const mapsUrl = `https://maps.googleapis.com/maps/api/staticmap?center=124+E+Main+St,Norman,OK&zoom=15&size=600x300&key=${apiKey}`;
-console.log(landing_page_hero.heroButton);
+
 	return (
 		<div className="flex flex-col min-h-screen font-body">
-			<section className="relative bg-gray-900 text-white animate-fadeIn">
-				<div
-					className={`absolute inset-0 bg-[url('https://ej-law-space.sfo3.cdn.digitaloceanspaces.com/uploads/3e513387e27b2c5cac7f3b2e2846027d.webp')] bg-cover bg-top opacity-20`}
-				></div>
-				<div className="relative mx-auto max-w-screen-xl px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
-					<div className="md:flex md:items-center md:justify-evenly w-full">
-						<div className="max-w-xl mx-auto md:mx-0">
-							<h1 className="font-fancy text-3xl font-extrabold sm:text-5xl md:text-6xl animate-slideRight">
-								{landing_page_hero.header}
-								<strong className="block font-extrabold text-[#edbb5f] mt-2">
-									{landing_page_hero.subheader}
-								</strong>
-							</h1>
-							<p className="mt-4 max-w-lg text-xl sm:text-2xl animate-slideRight">
-								{landing_page_hero.description}
-							</p>
-
-							<div className="mt-8 flex flex-wrap gap-4 animate-slideRight">
-								{landing_page_hero.heroButton.map((button) => {
-									return (
-										<Button
-											key={button.id}
-											className={`w-full sm:w-auto flex items-center justify-center gap-2 font-special text-lg`}
-											variant={button.id % 2 === 0 ? "outline" : undefined}
-											size="lg"
-											href={button.href}
-										>
-											{IconComponent({
-												icon: button.icon,
-											})}
-											<span>{button.label}</span>
-										</Button>
-									);
-								})}
-							</div>
-						</div>
-
-						<div
-							className="mt-8 mx-auto md:mx-0 w-3/4 md:mt-0 md:w-1/2 md:max-w-md animate-scaleIn"
-							id="contact-form"
-						>
-							<LandingPageForm />
-						</div>
-					</div>
-				</div>
-			</section>
-			<section className="bg-white py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
-				<div className="max-w-4xl mx-auto">
-					<h2 className="font-fancy text-3xl font-bold text-gray-900 mb-8 text-center">
-						{section_one_header}
-					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-						{section_one_card.map((item) => (
-							<div
-								key={item.id}
-								className="flex flex-col items-center text-center p-6 rounded-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-md animate-scaleIn"
-							>
-								{IconComponent({
-									icon: item.icon,
-									customClassName: "h-12 w-12 text-primary mb-4",
-								})}
-								<h3 className="font-fancy text-xl font-semibold mb-2">
-									{item.header}
-								</h3>
-								<p className="text-gray-600">{item.content}</p>
-							</div>
-						))}
-					</div>
-					<div className="text-center space-y-6">
-						{section_one_content.map((item) => (
-							<p key={item.id} className="text-lg text-gray-700">
-								{item.text}
-							</p>
-						))}
-						<Button
-							className="font-special text-lg"
-							size="lg"
-							href="#contact-form"
-						>
-							{section_one_button}
-						</Button>
-					</div>
-				</div>
-			</section>
-			<section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
-				<div className="max-w-6xl mx-auto">
-					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
-						{section_two_header}
-					</h2>
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-						{services_card.map((service) => (
-							<div
-								key={service.id}
-								className="bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl animate-scaleIn"
-							>
-								<div className="flex items-center mb-6">
-									{IconComponent({
-										icon: service.services_card_header.icon,
-										customClassName: "h-10 w-10 text-primary mr-4",
-									})}
-									<h3 className="font-fancy text-2xl font-semibold text-gray-900">
-										{service.services_card_header.content}
-									</h3>
-								</div>
-								<p className="text-gray-700 mb-6">
-									{service.services_card_description}
-								</p>
-								<ul className="space-y-4">
-									{service.services_card_content.map((feature) => (
-										<li key={feature.id} className="flex items-center">
-											{IconComponent({
-												icon: feature.icon,
-												customClassName: "h-6 w-6 text-primary mr-2",
-											})}
-											<span className="text-gray-700">{feature.content}</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						))}
-					</div>
-					<div className="text-center mt-12">
-						<Button className="font-special text-lg" size="lg">
-							Discuss Your Case With Us
-						</Button>
-					</div>
-				</div>
-			</section>
-			<section className="bg-white py-16 lg:px-8 animate-slideUp">
-				<div className="max-w-6xl mx-auto">
-					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
-						{section_three_header}
-					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-						{reasons_card.map((item) => (
-							<div
-								key={item.id}
-								className="bg-gray-100 rounded-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-lg animate-scaleIn"
-							>
-								<div className="flex justify-center mb-4">
-									<IconComponent
-										icon={item.icon}
-										customClassName="h-12 w-12 text-primary"
-									/>
-								</div>
-								<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
-									{item.header}
-								</h3>
-								<p className="text-gray-700">{item.content}</p>
-							</div>
-						))}
-					</div>
-					<div className="text-center mt-12">
-						<Button className="font-special text-lg" size="lg">
-							Experience the Elton Jenkins Law Difference
-						</Button>
-					</div>
-				</div>
-			</section>
-			<section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
-				<div className="max-w-6xl mx-auto">
-					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
-						{section_four_header}
-					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-						{testimonial.map((testimonial) => (
-							<div
-								key={testimonial.id}
-								className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl animate-scaleIn"
-							>
-								<IconComponent
-									key="quote"
-									icon="Quote"
-									customClassName="h-8 w-8 text-primary mb-4"
-								/>
-								<p className="text-gray-700 mb-4">{testimonial.quote}</p>
-								<div className="flex items-center">
-									<img
-										src={testimonial.avatar.data.attributes.url}
-										alt={testimonial.avatar.data.attributes.name}
-										className="w-12 h-12 bg-gray-300 rounded-full mr-4"
-									/>
-									<div>
-										<h4 className="font-fancy font-semibold text-gray-900">
-											{testimonial.name}
-										</h4>
-										<p className="text-gray-600">{testimonial.location}</p>
-									</div>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-			<section className="bg-white py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
-				<div className="max-w-6xl mx-auto">
-					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
-						{section_five_header}
-					</h2>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-						{staff_cards.map((staff, index) => (
-							<div
-								key={staff.id}
-								className="bg-gray-100 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-xl animate-scaleIn"
-							>
-								<img
-									src={staff.avatar.data.attributes.url}
-									alt={staff.avatar.data.attributes.name}
-									className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-								/>
-								<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
-									{staff.name}
-								</h3>
-								<p className="text-gray-600">{staff.title}</p>
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
-			<section className="bg-gray-100 pt-16 pb-36 px-4 sm:px-6 lg:px-8 animate-slideUp">
-				<div className="max-w-4xl mx-auto text-center">
-					<h2 className="font-fancy text-3xl font-bold text-gray-900 mb-8">
-						Contact Us
-					</h2>
-					<div className="bg-white rounded-lg p-8 mb-8 transition-all duration-300 hover:shadow-lg animate-scaleIn">
-						<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-4">
-							Elton Jenkins Law, P.L.L.C.
-						</h3>
-						<p className="text-gray-700 mb-2">
-							124 E Main Street, Norman, OK 73069
-						</p>
-						<div className="flex justify-center space-x-4 mb-4">
-							<Button variant="link" className="text-primary font-special">
-								{IconComponent({
-									icon: "HiOutlinePhone",
-									customClassName: "mr-2 h-5 w-5",
-								})}
-								(405) 217-3623
-							</Button>
-							<Button variant="link" className="text-primary font-special">
-								{IconComponent({
-									icon: "HiOutlineMail",
-									customClassName: "mr-2 h-5 w-5",
-								})}
-								susan@eltonjenkinslaw.com
-							</Button>
-						</div>
-					</div>
-					<div className="aspect-w-16 aspect-h-9">
-						<Image
-							src={mapsUrl}
-							alt="Map showing the location of Elton Jenkins Law"
-							width={600}
-							height={300}
-							className="rounded-lg shadow-lg object-contain"
-						/>
-					</div>
-				</div>
-			</section>
+			<LandingHero landing_page_hero={data.landing_page_hero} />
+			<SectionOne
+				section_one_header={data.section_one_header}
+				section_one_card={data.section_one_card}
+				section_one_content={data.section_one_content}
+				section_one_button={data.section_one_button}
+			/>
+			<SectionTwo
+				section_two_header={data.section_two_header}
+				services_card={data.services_card}
+			/>
+			<SectionThree
+				section_three_header={data.section_three_header}
+				reasons_card={data.reasons_card}
+			/>
+			<SectionFour
+				section_four_header={data.section_four_header}
+				testimonial={data.testimonial}
+			/>
+			<SectionFive
+				section_five_header={data.section_five_header}
+				staff_cards={data.staff_cards}
+			/>
+			<ContactUsSection mapsUrl={mapsUrl} />
 		</div>
 	);
 };
