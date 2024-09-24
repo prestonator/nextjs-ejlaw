@@ -1,6 +1,9 @@
 # *
 User-agent: *
-Allow: /
+# Allow all paths except the ones specified below
+Disallow: /landing
+Disallow: /landing/*
+Disallow: /landing/divorce
 
 # Host
 Host: https://www.eltonjenkinslaw.com
