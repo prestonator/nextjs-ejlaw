@@ -12,7 +12,7 @@ const SectionFour = ({ section_four_header, testimonial }) => {
 					{testimonial.map((testimonial) => (
 						<div
 							key={testimonial.id}
-							className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl animate-scaleIn"
+							className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl animate-scaleIn flex flex-col justify-between"
 						>
 							{IconComponent({
 								icon: "FaQuoteLeft",

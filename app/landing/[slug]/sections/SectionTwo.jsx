@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { IconComponent } from "@/utils/helperFunctions";
 
 const SectionTwo = ({ section_two_header, services_card }) => {
@@ -42,8 +43,8 @@ const SectionTwo = ({ section_two_header, services_card }) => {
 					))}
 				</div>
 				<div className="text-center mt-12">
-					<Button className="font-special text-lg" size="lg">
-						Discuss Your Case With Us
+					<Button asChild className="font-special text-lg" size="lg">
+						<Link href="/family-law/divorce">Learn More about Divorce</Link>
 					</Button>
 				</div>
 			</div>

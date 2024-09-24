@@ -28,11 +28,6 @@ const SectionThree = ({ section_three_header, reasons_card }) => {
 						</div>
 					))}
 				</div>
-				<div className="text-center mt-12">
-					<Button className="font-special text-lg" size="lg">
-						Experience the Elton Jenkins Law Difference
-					</Button>
-				</div>
 			</div>
 		</section>
 	);

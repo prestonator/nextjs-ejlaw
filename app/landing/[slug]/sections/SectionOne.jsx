@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { IconComponent } from "@/utils/helperFunctions";
 
 const SectionOne = ({
@@ -37,12 +38,8 @@ const SectionOne = ({
 							{item.text}
 						</p>
 					))}
-					<Button
-						className="font-special text-lg"
-						size="lg"
-						href="#contact-form"
-					>
-						{section_one_button}
+					<Button className="font-special text-lg" size="lg" asChild>
+						<Link href="#contact-form">{section_one_button}</Link>
 					</Button>
 				</div>
 			</div>
