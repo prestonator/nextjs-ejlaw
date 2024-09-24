@@ -71,6 +71,21 @@ query LandingPageData($filters: LandingPageFiltersInput) {
 						}
 					}
 				}
+				section_five_header
+				staff_cards {
+					id
+					name
+					title
+					href
+					avatar {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+				}
 			}
 		}
 	}
