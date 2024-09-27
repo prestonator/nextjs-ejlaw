@@ -34,6 +34,7 @@ module.exports = {
 				special: ["var(--font-special)"],
 			},
 			colors: {
+				gold: "#edbb5f",
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",

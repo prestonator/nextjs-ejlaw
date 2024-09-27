@@ -8,6 +8,7 @@ import { useState } from "react";
 import { CheckCircle } from "lucide-react";
 import * as z from "zod";
 
+// Define the form schema using Zod
 const formSchema = z.object({
 	fullName: z
 		.string()
@@ -22,6 +23,44 @@ const formSchema = z.object({
 		.max(500, { message: "Case description must not exceed 500 characters." }),
 });
 
+// Reusable FormField component
+function FormField({ id, label, register, error, type = "text", ...rest }) {
+	return (
+		<div>
+			<label htmlFor={id} className="block text-sm font-medium text-gray-700">
+				{label}
+			</label>
+			<Input
+				id={id}
+				type={type}
+				{...register(id)}
+				{...rest}
+				className="mt-1 box-border"
+			/>
+			{error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+		</div>
+	);
+}
+
+// Reusable TextareaField component
+function TextareaField({ id, label, register, error, ...rest }) {
+	return (
+		<div>
+			<label htmlFor={id} className="block text-sm font-medium text-gray-700">
+				{label}
+			</label>
+			<Textarea
+				id={id}
+				{...register(id)}
+				{...rest}
+				className="mt-1 box-border"
+			/>
+			{error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+		</div>
+	);
+}
+
+// ThankYouMessage component with typed data
 function ThankYouMessage({ data }) {
 	return (
 		<div className="bg-white p-8 rounded-lg shadow-lg text-center">
@@ -47,8 +86,7 @@ function ThankYouMessage({ data }) {
 						<span className="font-medium">Phone:</span> {data.phone}
 					</li>
 					<li>
-						<span className="font-medium">Case Description:</span>
-						{data.caseDescription}
+						<span className="font-medium">Case Description:</span> {data.caseDescription}
 					</li>
 				</ul>
 			</div>
@@ -57,133 +95,83 @@ function ThankYouMessage({ data }) {
 }
 
 export default function LandingPageForm() {
-	const [formStatus, setFormStatus] = useState({
-		success: false,
-		message: null,
-		data: null,
-	});
+	const [submittedData, setSubmittedData] = useState(null);
 
 	const {
 		register,
 		handleSubmit,
-		formState: { errors, isSubmitting },
+		formState: { errors, isSubmitting, isSubmitSuccessful },
+		setError,
+		reset,
 	} = useForm({
 		resolver: zodResolver(formSchema),
 	});
 
 	const onSubmit = async (data) => {
 		try {
-			const response = await fetch(
-				"https://n8n.do.prestonator.com/webhook/f9950bbd-6a01-4316-844f-d5834dbb2d9e",
-				{
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(data),
-				}
-			);
-
-			if (!response.ok) throw new Error("Failed to submit form");
-
-			setFormStatus({
-				success: true,
-				message: "Form submitted successfully!",
-				data,
+			const response = await fetch(process.env.NEXT_PUBLIC_N8N_URL, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(data),
 			});
+
+			if (!response.ok) {
+				throw new Error("Failed to submit form");
+			}
+
+			setSubmittedData(data);
+			reset();
 		} catch (error) {
-			setFormStatus({
-				success: false,
+			setError("root.serverError", {
+				type: "manual",
 				message: "An error occurred. Please try again.",
-				data: null,
 			});
 		}
 	};
 
 	return (
 		<>
-			{formStatus.success && formStatus.data ? (
-				<ThankYouMessage data={formStatus.data} />
+			{isSubmitSuccessful && submittedData ? (
+				<ThankYouMessage data={submittedData} />
 			) : (
 				<div className="bg-white p-8 rounded-lg shadow-lg">
 					<h2 className="text-2xl font-bold text-gray-900 mb-6 font-fancy">
 						Schedule Your Case Evaluation
 					</h2>
 					<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-						<div>
-							<label
-								htmlFor="fullName"
-								className="block text-sm font-medium text-gray-700"
-							>
-								Full Name
-							</label>
-							<Input
-								id="fullName"
-								{...register("fullName")}
-								className="mt-1 box-border"
-							/>
-							{errors.fullName && (
-								<p className="text-red-500 text-sm mt-1">
-									{errors.fullName.message}
-								</p>
-							)}
-						</div>
-						<div>
-							<label
-								htmlFor="email"
-								className="block text-sm font-medium text-gray-700"
-							>
-								Email
-							</label>
-							<Input
-								id="email"
-								type="email"
-								{...register("email")}
-								className="mt-1 box-border"
-							/>
-							{errors.email && (
-								<p className="text-red-500 text-sm mt-1">
-									{errors.email.message}
-								</p>
-							)}
-						</div>
-						<div>
-							<label
-								htmlFor="phone"
-								className="block text-sm font-medium text-gray-700"
-							>
-								Phone
-							</label>
-							<Input
-								id="phone"
-								type="tel"
-								{...register("phone")}
-								className="mt-1 box-border"
-							/>
-							{errors.phone && (
-								<p className="text-red-500 text-sm mt-1">
-									{errors.phone.message}
-								</p>
-							)}
-						</div>
-						<div>
-							<label
-								htmlFor="caseDescription"
-								className="block text-sm font-medium text-gray-700"
-							>
-								Brief Case Description
-							</label>
-							<Textarea
-								id="caseDescription"
-								{...register("caseDescription")}
-								rows={3}
-								className="mt-1 box-border"
-								placeholder="Please provide a brief description of your case..."
-							/>
-							{errors.caseDescription && (
-								<p className="text-red-500 text-sm mt-1">
-									{errors.caseDescription.message}
-								</p>
-							)}
-						</div>
+						<FormField
+							id="fullName"
+							label="Full Name"
+							register={register}
+							error={errors.fullName?.message}
+						/>
+						<FormField
+							id="email"
+							label="Email"
+							type="email"
+							register={register}
+							error={errors.email?.message}
+						/>
+						<FormField
+							id="phone"
+							label="Phone"
+							type="tel"
+							register={register}
+							error={errors.phone?.message}
+						/>
+						<TextareaField
+							id="caseDescription"
+							label="Brief Case Description"
+							rows={3}
+							register={register}
+							error={errors.caseDescription?.message}
+							placeholder="Please provide a brief description of your case..."
+						/>
+						{errors.root?.serverError && (
+							<p className="text-red-500 text-sm mt-1">
+								{errors.root.serverError.message}
+							</p>
+						)}
 						<Button
 							type="submit"
 							className="w-full font-special"

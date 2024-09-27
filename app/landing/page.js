@@ -1,28 +1,19 @@
 import {
 	Phone,
-	Calendar,
 	Scale,
 	Users,
 	Heart,
 	Gavel,
 	Handshake,
-	DollarSign,
-	Clock,
 	Shield,
-	FileText,
-	Star,
 	MapPin,
 	Quote,
 	Mail,
 	Baby,
 	Coins,
-	BarChart,
 	FileCheck,
-	UserPlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
 	Card,
 	CardContent,
@@ -31,12 +22,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Link from "next/link";
 import {
-	SafeImage,
-	SafeImageUrl,
-	SafeImageAlt,
-	SafeHtml,
 	IconComponent,
 } from "@/utils/helperFunctions";
 import LandingPageForm from "@/components/LandingPage/ContactForm/ContactForm";
@@ -275,7 +261,9 @@ export default function LandingPage() {
 												<item.icon className="h-6 w-6 text-primary" />
 											</div>
 											<div>
-												<h3 className="font-fancy font-semibold">{item.title}</h3>
+												<h3 className="font-fancy font-semibold">
+													{item.title}
+												</h3>
 												<p className="text-sm text-gray-600">
 													{item.description}
 												</p>
@@ -418,7 +406,10 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			<section id="contact" className="bg-white pt-16 pb-24 px-4 sm:px-6 lg:px-8">
+			<section
+				id="contact"
+				className="bg-white pt-16 pb-24 px-4 sm:px-6 lg:px-8"
+			>
 				<div className="max-w-4xl mx-auto">
 					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-8">
 						Contact Us
