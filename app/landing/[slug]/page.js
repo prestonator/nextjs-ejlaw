@@ -1,3 +1,11 @@
+import {
+	SafeImage,
+	SafeImageUrl,
+	SafeHtml,
+	IconComponent,
+	formatDate,
+	SafeImageAlt,
+} from "@/utils/helperFunctions";
 import { fetchData } from "@/lib/fetchData";
 import { LandingPagesBySlug } from "@/queries/landingPageBySlug.graphql";
 import { LandingPageData } from "@/queries/landingPageData.graphql";
@@ -26,6 +34,35 @@ const getPage = async (slug) => {
 	}
 };
 
+export async function generateMetadata({ params }) {
+	const { meta } = await getPage(params.slug);
+	return {
+		title: meta?.metaTitle,
+		description: meta?.metaDescription,
+		alternates: {
+			canonical: meta?.canonical,
+		},
+		openGraph: {
+			title: meta?.ogTitle || "",
+			description: meta?.ogDescription || "",
+			url: meta?.ogUrl || "",
+			type: meta?.ogType || "",
+			images: [
+				{
+					url: SafeImageUrl(meta?.ogImage?.data),
+					width: 1200,
+					height: 630,
+					alt: SafeImageAlt(meta?.ogImage?.data),
+				},
+			],
+		},
+		twitter: {
+			card: meta?.twitterCard || "",
+		},
+	};
+}
+
+
 export async function generateStaticParams() {
 	const { data } = await fetchData(LandingPagesBySlug.loc.source.body);
 	const LandingData = data?.landingPages?.data ?? [];
@@ -33,12 +70,6 @@ export async function generateStaticParams() {
 		slug: page.attributes.slug,
 	}));
 }
-
-export const metadata = {
-	title: "Divorce | Elton Jenkins Law, PLLC",
-	description:
-		"Facing divorce? Elton Jenkins Law offers compassionate legal support for contested and uncontested divorces in Norman, OK. Call (405) 217-3623 for a free consultation.",
-};
 
 const Page = async ({ params }) => {
 	const data = await getPage(params.slug);

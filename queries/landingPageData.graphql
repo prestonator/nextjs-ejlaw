@@ -86,6 +86,24 @@ query LandingPageData($filters: LandingPageFiltersInput) {
 						}
 					}
 				}
+				meta {
+					metaTitle
+					metaDescription
+					canonical
+					ogTitle
+					ogDescription
+					ogImage {
+						data {
+							attributes {
+								url
+								name
+							}
+						}
+					}
+					ogUrl
+					ogType
+					twitterCard
+				}
 			}
 		}
 	}
