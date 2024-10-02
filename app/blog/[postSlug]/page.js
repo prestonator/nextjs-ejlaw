@@ -2,7 +2,6 @@ import {
 	SafeImage,
 	SafeImageUrl,
 	SafeHtml,
-	IconComponent,
 	formatDate,
 	SafeImageAlt,
 } from "@/utils/helperFunctions";
@@ -36,7 +35,8 @@ const getPage = async (postSlug, slug) => {
 };
 
 export async function generateMetadata({ params }) {
-	const { meta } = await getPage(params.postSlug, params.slug);
+	const awaitedParams = await params;
+	const { meta } = await getPage(awaitedParams.postSlug, awaitedParams.slug);
 	return {
 		title: meta?.metaTitle,
 		description: meta?.metaDescription,
@@ -73,8 +73,9 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({ params }) => {
-	const { postSlug, slug } = params;
-	const { title, hero, image, team_member, category, date, sections, meta } =
+	const awaitedParams = await params;
+	const { postSlug, slug } = awaitedParams;
+	const { title, image, team_member, category, date, sections, meta } =
 		(await getPage(postSlug, slug)) || {};
 	return (
 		<main>

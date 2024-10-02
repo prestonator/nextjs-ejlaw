@@ -31,7 +31,8 @@ const getPage = async (slug) => {
 };
 
 export async function generateMetadata({ params }) {
-	const { meta } = await getPage(params.slug);
+	const awaitedParams = await params;
+	const { meta } = await getPage(awaitedParams.slug);
 	return {
 		title: meta?.metaTitle,
 		description: meta?.metaDescription,
@@ -68,7 +69,8 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({ params }) => {
-	const data = await getPage(params.slug);
+	const awaitedParams = await params;
+	const data = await getPage(awaitedParams.slug);
 	const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 	const mapsUrl = `https://maps.googleapis.com/maps/api/staticmap?center=124+E+Main+St,Norman,OK&zoom=15&size=600x300&key=${apiKey}`;
 

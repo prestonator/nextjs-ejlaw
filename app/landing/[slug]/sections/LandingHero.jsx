@@ -3,12 +3,15 @@ import { IconComponent } from "@/utils/helperFunctions";
 import CaseEvaluationForm from "@/components/CaseEvaluationForm/CaseEvaluationForm";
 
 const LandingHero = ({ landing_page_hero }) => {
-	console.log(landing_page_hero.image);
+	const imageUrl = landing_page_hero.image.data.attributes.url;
 	return (
 		<section className="relative bg-gray-900 text-white animate-fadeIn">
 			{/* Background Image */}
 			<div
-				className={`absolute inset-0 bg-[url('https://ej-law-space.sfo3.cdn.digitaloceanspaces.com/uploads/3e513387e27b2c5cac7f3b2e2846027d.webp')] bg-cover bg-top opacity-20`}
+				className="absolute inset-0 bg-cover bg-top opacity-20"
+				style={{
+					backgroundImage: `url(${imageUrl})`,
+				}}
 			></div>
 			{/* Content */}
 			<div className="relative mx-auto max-w-screen-xl px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">

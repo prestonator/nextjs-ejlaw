@@ -36,7 +36,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-	const meta = (await getPage(params.subservice))?.meta || {};
+	const awaitedParams = await params;
+	const meta = (await getPage(awaitedParams.subservice))?.meta || {};
 	return {
 		title: meta?.metaTitle || "",
 		description: meta?.metaDescription || "",
@@ -64,8 +65,9 @@ export async function generateMetadata({ params }) {
 }
 
 const Page = async ({ params }) => {
-	const { subservice } = params;
-	const { title, slug, hero, sections } = (await getPage(subservice)) || {};
+	const awaitedParams = await params;
+	const { title, slug, hero, sections } =
+		(await getPage(awaitedParams.subservice)) || {};
 	return (
 		<main>
 			{/* Hero section */}

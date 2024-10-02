@@ -39,7 +39,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-	const meta = (await getPage(params.service))?.meta || {};
+	const awaitedParams = await params;
+	const meta = (await getPage(awaitedParams.service))?.meta || {};
 	return {
 		title: meta?.metaTitle || "",
 		description: meta?.metaDescription || "",
@@ -67,8 +68,9 @@ export async function generateMetadata({ params }) {
 }
 
 const Page = async ({ params }) => {
-	const { title, slug, hero, sections, sub_practice_areas } =
-		(await getPage(params.service)) || {};
+	const awaitedParams = await params;
+	const { slug, hero, sections, sub_practice_areas } =
+		(await getPage(awaitedParams.service)) || {};
 	return (
 		<main>
 			{/* Hero section */}

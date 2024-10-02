@@ -86,14 +86,14 @@ const StaffQuoteButton = React.memo(({ infoText, infoButton }) => (
 
 const IconList = React.memo(({ socialIcons }) => (
 	<div className={styles.iconContainer}>
-		{socialIcons.map(({ icon, href }) => (
-			<IconComponent
-				icon={icon}
-				customClassName={styles.icon}
-				href={href}
-				key={icon}
-			/>
-		))}
+		{socialIcons.map(({ icon, href, id }) =>
+			IconComponent({
+				icon: icon,
+				href: href,
+				customClassName: "w-12 h-12",
+				key: id,
+			})
+		)}
 	</div>
 ));
 

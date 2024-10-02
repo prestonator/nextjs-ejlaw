@@ -30,7 +30,8 @@ const getPage = async (slug) => {
 };
 
 export async function generateMetadata({ params }) {
-	const { meta } = await getPage(params.slug);
+	const awaitedParams = await params;
+	const { meta } = await getPage(awaitedParams.slug);
 	return {
 		title: meta?.metaTitle || "",
 		description: meta?.metaDescription || "",
@@ -66,7 +67,10 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({ params }) => {
-	const { title, slug, team_member, tabContainer } = await getPage(params.slug);
+	const awaitedParams = await params;
+	const { title, team_member, tabContainer } = await getPage(
+		awaitedParams.slug
+	);
 
 	const tabs = tabContainer?.tab.map((tab) => ({
 		id: tab.id,

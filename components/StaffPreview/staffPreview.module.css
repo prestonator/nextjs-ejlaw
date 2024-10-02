@@ -46,8 +46,6 @@
 }
 
 .iconContainer svg {
-	width: var(--size-3);
-	height: var(--size-3);
 	color: var(--color-accent);
 }
 
