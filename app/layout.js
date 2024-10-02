@@ -8,9 +8,7 @@ import NavbarClient from "@/components/Navigation/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { cn } from "@/utils";
-const Footer = dynamic(() => import("@/components/Footer/Footer"), {
-	ssr: false,
-});
+const Footer = dynamic(() => import("@/components/Footer/Footer"));
 
 const getData = async () => {
 	try {

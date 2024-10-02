@@ -10,17 +10,11 @@ import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { HomeQuery } from "@/queries/home.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
-const StaffPreview = dynamic(
-	() => import("@/components/StaffPreview/staffPreview"),
-	{
-		ssr: false,
-	}
+const StaffPreview = dynamic(() =>
+	import("@/components/StaffPreview/staffPreview")
 );
-const ServiceCard = dynamic(
-	() => import("@/components/Cards/ServiceCard/ServiceCard"),
-	{
-		ssr: false,
-	}
+const ServiceCard = dynamic(() =>
+	import("@/components/Cards/ServiceCard/ServiceCard")
 );
 
 const getData = async () => {

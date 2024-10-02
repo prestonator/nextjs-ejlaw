@@ -26,6 +26,7 @@ import {
 	IconComponent,
 } from "@/utils/helperFunctions";
 import LandingPageForm from "@/components/LandingPage/ContactForm/ContactForm";
+import CaseEvaluationForm from "@/components/CaseEvaluationForm/CaseEvaluationForm";
 
 export default function LandingPage() {
 	return (
@@ -61,7 +62,8 @@ export default function LandingPage() {
 								<Button
 									className={`w-full sm:w-auto flex items-center justify-center gap-2 font-special text-lg`}
 									size="lg"
-									href="tel:+14052173623"
+									href="#contact-form"
+									variant="outline"
 								>
 									{IconComponent({
 										icon: "HiOutlineCalendar",
@@ -76,7 +78,7 @@ export default function LandingPage() {
 							className="mt-8 mx-auto md:mx-0 w-3/4 md:mt-0 md:w-1/2 md:max-w-md animate-scaleIn"
 							id="contact-form"
 						>
-							<LandingPageForm />
+							<CaseEvaluationForm />
 						</div>
 					</div>
 				</div>

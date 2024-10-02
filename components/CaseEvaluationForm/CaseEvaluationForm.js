@@ -72,9 +72,12 @@ export default function CaseEvaluationForm() {
 
 	return (
 		<div className="bg-white p-8 rounded-lg shadow-lg">
-			<h2 className="text-2xl font-bold text-gray-900 mb-6 font-fancy">
+			<h2 className="text-2xl font-bold text-gray-900 mb-2 font-fancy">
 				Schedule Your Case Evaluation
 			</h2>
+			<span className="block text-md text-gray-900 mb-6 font-body">
+				We will be in contact soon.
+			</span>
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 				<TextInput
 					label="Full Name"
@@ -119,7 +122,7 @@ export default function CaseEvaluationForm() {
 				</div>
 
 				<TextareaInput
-					label="Case Description"
+					label="Case Description & Case Number(s) (If Applicable)"
 					id="caseDescription"
 					register={register}
 					errors={errors}

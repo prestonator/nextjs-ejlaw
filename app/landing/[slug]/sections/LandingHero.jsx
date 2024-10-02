@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { IconComponent } from "@/utils/helperFunctions";
-import LandingPageForm from "@/components/LandingPage/ContactForm/ContactForm";
 import CaseEvaluationForm from "@/components/CaseEvaluationForm/CaseEvaluationForm";
 
 const LandingHero = ({ landing_page_hero }) => {
+	console.log(landing_page_hero.image);
 	return (
 		<section className="relative bg-gray-900 text-white animate-fadeIn">
 			{/* Background Image */}

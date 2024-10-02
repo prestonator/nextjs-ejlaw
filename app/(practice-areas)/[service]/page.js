@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import {
 	SafeImageUrl,
 	SafeImageAlt,
@@ -11,10 +10,7 @@ import { fetchData } from "@/lib/fetchData";
 import { PracticeAreaSlugs } from "@/queries/practiceAreaBySlug.graphql";
 import { PracticeAreaData } from "@/queries/allPracticeAreas.graphql";
 const ExpandCard = dynamic(
-	() => import("@/components/Cards/ExpandCard/ExpandCard"),
-	{
-		ssr: false,
-	}
+	() => import("@/components/Cards/ExpandCard/ExpandCard")
 );
 
 const getPage = async (service) => {
