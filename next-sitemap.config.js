@@ -6,12 +6,7 @@ module.exports = {
 	generateRobotsTxt: true,
 	exclude: ["/server-sitemap-index.xml"], // <= exclude here
 	robotsTxtOptions: {
-		policies: [
-			{
-				userAgent: "*",
-				disallow: ["/landing"],
-			},
-		],
+		policies: [],
 		additionalSitemaps: [
 			"https://www.eltonjenkinslaw.com/server-sitemap-index.xml", // <==== Add here
 		],
