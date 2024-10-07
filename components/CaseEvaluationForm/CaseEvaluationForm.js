@@ -78,7 +78,7 @@ export default function CaseEvaluationForm() {
 			<span className="block text-md text-gray-900 mb-6 font-body">
 				We will be in contact soon.
 			</span>
-			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+			<form onSubmit={handleSubmit(onSubmit)} className="space-y-4 font-body">
 				<TextInput
 					label="Full Name"
 					id="fullName"

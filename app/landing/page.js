@@ -25,7 +25,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
 	IconComponent,
 } from "@/utils/helperFunctions";
-import LandingPageForm from "@/components/LandingPage/ContactForm/ContactForm";
 import CaseEvaluationForm from "@/components/CaseEvaluationForm/CaseEvaluationForm";
 
 export default function LandingPage() {
@@ -453,7 +452,7 @@ export default function LandingPage() {
 							</div>
 						</div>
 						<div className="bg-gray-100 rounded-lg p-8 shadow-lg transition-all duration-300 hover:shadow-xl animate-scaleIn">
-							<LandingPageForm />
+							<CaseEvaluationForm />
 						</div>
 					</div>
 				</div>

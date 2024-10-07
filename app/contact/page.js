@@ -10,6 +10,7 @@ import { ContactPageQuery } from "@/queries/contact.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 import ConsultForm from "@/components/Consult/Consult";
 import Map from "@/components/MapPreview/Map";
+import CaseEvaluationForm from "@/components/CaseEvaluationForm/CaseEvaluationForm";
 
 const getData = async () => {
 	const { data } = await fetchData(ContactPageQuery.loc.source.body);
@@ -52,11 +53,11 @@ const ContactPage = async () => {
 				<Map />
 			</section>
 			<section className={styles.bookingSection}>
-				<div className={styles.bookingContainer}>
+				<div className={`max-w-2xl md:max-w-4xl ${styles.bookingContainer}`}>
 					<h1 className={styles.contactInfoTitle}>Contact Us Today!</h1>
 
 					<div className={styles.contactInfoWrapper}>
-						<div className={styles.contactInfoContainer}>
+						<div className={`w-1/4 ${styles.contactInfoContainer}`}>
 							{details?.map((detail) => (
 								<div className={styles.row} key={detail.id}>
 									<div className={styles.iconWrapper}>
@@ -71,8 +72,11 @@ const ContactPage = async () => {
 								</div>
 							))}
 						</div>
-						<div className={styles.contactScheduleWrapper}>
-							<ConsultForm />
+						<div
+							className="w-full md:w-3/4"
+							id="contact-form"
+						>
+							<CaseEvaluationForm />
 						</div>
 					</div>
 				</div>
