@@ -7,6 +7,7 @@ import Nav from "@/components/Navigation/Nav";
 import NavbarClient from "@/components/Navigation/NavClient";
 import { cormorant, montserrat, saira } from "@/lib/font";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { cn } from "@/utils";
 const Footer = dynamic(() => import("@/components/Footer/Footer"));
 
@@ -51,6 +52,7 @@ export default async function RootLayout({ children }) {
 				{children}
 				<Footer footer={footer} />
 				<FloatingButton />
+				<SpeedInsights />
 			</body>
 			<GoogleTagManager gtmId="GTM-M36SJ6FT" />
 		</html>
