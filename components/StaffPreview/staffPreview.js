@@ -1,6 +1,6 @@
 "use client";
-import { useInView, useSpring, animated } from "@react-spring/web";
 import React from "react";
+import { useInView } from "react-intersection-observer";
 import { IconComponent, SafeHtml, SafeImage } from "@/utils/helperFunctions";
 import styles from "./staffPreview.module.css";
 import Button from "@/components/Buttons/MainButton/Button";
@@ -14,30 +14,33 @@ function StaffPreview({
 	totalItems,
 	staffOrder,
 }) {
-	const [ref, inView] = useInView({
+	// Use useInView hook to detect when the component is in view
+	const { ref, inView } = useInView({
 		threshold: 0.1,
+		triggerOnce: false, // Animation plays only once
 	});
+
 	const isOdd = staffOrder % 2 === 1;
 	const containerClassName = isOdd ? styles.odd : styles.even;
 	const isLastItem = index === totalItems - 1;
 
-	const textAnimation = useSpring({
-		translateX: inView ? "0%" : isOdd ? "-100%" : "100%",
-		opacity: inView ? 1 : 0,
-		config: { mass: 1, tension: 280, friction: 60 },
-		reset: true,
-	});
-	const imageAnimation = useSpring({
-		translateX: inView ? "0%" : isOdd ? "100%" : "-100%",
-		opacity: inView ? 1 : 0,
-		config: { mass: 1, tension: 280, friction: 60 },
-		reset: true,
-	});
-	const dividerAnimation = useSpring({
-		opacity: inView ? 1 : 0,
-		config: { mass: 1, tension: 280, friction: 60 },
-		reset: true,
-	});
+	// Define base transition classes
+	const transitionClasses = "transition-transform transition-opacity duration-700";
+
+	// Determine the initial and in-view state classes for text and image
+	const textInitialClass = isOdd ? "-translate-x-full opacity-0" : "translate-x-full opacity-0";
+	const imageInitialClass = isOdd ? "translate-x-full opacity-0" : "-translate-x-full opacity-0";
+
+	const textClasses = inView
+		? `translate-x-0 opacity-100`
+		: textInitialClass;
+
+	const imageClasses = inView
+		? `translate-x-0 opacity-100`
+		: imageInitialClass;
+
+	// Divider animation classes
+	const dividerClasses = inView ? "opacity-100" : "opacity-0";
 
 	return (
 		<>
@@ -45,22 +48,27 @@ function StaffPreview({
 				ref={ref}
 				className={`${styles.staffPreviewContainer} ${containerClassName}`}
 			>
-				<animated.div
-					style={imageAnimation}
-					className={`${styles.colOne} ${containerClassName}`}
+				{/* Image and Icons */}
+				<div
+					className={`${styles.colOne} ${containerClassName} ${transitionClasses} ${imageClasses}`}
 				>
 					<IconList socialIcons={socialIcons} />
 					<Avatar image={avatarImage} />
-				</animated.div>
-				<animated.div
-					style={textAnimation}
-					className={`${styles.content} ${containerClassName}`}
+				</div>
+
+				{/* Text Content */}
+				<div
+					className={`${styles.content} ${containerClassName} ${transitionClasses} ${textClasses}`}
 				>
 					<StaffQuoteButton infoText={infoText} infoButton={infoButton} />
-				</animated.div>
+				</div>
 			</div>
+
+			{/* Divider Line */}
 			{!isLastItem && (
-				<animated.hr style={dividerAnimation} className={styles.divider} />
+				<hr
+					className={`${styles.divider} transition-opacity duration-700 ${dividerClasses}`}
+				/>
 			)}
 		</>
 	);
