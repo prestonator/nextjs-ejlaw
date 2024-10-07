@@ -17,7 +17,7 @@ export default function CountySelect({ onChange, value }) {
 			value={selectedOption}
 			onChange={handleChange}
 			placeholder="Select a county..."
-			className="react-select-container"
+			className="react-select-container text-black"
 			classNamePrefix="react-select"
 			isClearable
 		/>
