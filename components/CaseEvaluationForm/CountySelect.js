@@ -1,6 +1,6 @@
 "use client";
 import Select from "react-select";
-import { counties as oklahomaCounties } from "../Consult/data";
+import { counties as oklahomaCounties } from "@/lib/counties";
 
 export default function CountySelect({ onChange, value }) {
 	const selectedOption = oklahomaCounties.find(

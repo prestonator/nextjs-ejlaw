@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "@/components/Consult/styles/FormStyles.module.css";
 import useFormStore from "@/store/useFormStore";
 import { stepThreeSchema } from "../schemas/stepThreeSchema";
-import { counties } from "@/components/Consult/data";
+import { counties } from "@/lib/counties";
 const Button = dynamic(() => import("@/components/Buttons/FormButton/Button"));
 const Select = dynamic(() => import("@/components/Consult/inputs/Select"));
 const CustomSelect = dynamic(() =>

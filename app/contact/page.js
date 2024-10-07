@@ -8,7 +8,6 @@ import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
 import { ContactPageQuery } from "@/queries/contact.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
-import ConsultForm from "@/components/Consult/Consult";
 import Map from "@/components/MapPreview/Map";
 import CaseEvaluationForm from "@/components/CaseEvaluationForm/CaseEvaluationForm";
 
