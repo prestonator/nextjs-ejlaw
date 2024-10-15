@@ -1,6 +1,5 @@
 import React from "react";
-import { IconComponent } from "@/utils/helperFunctions";
-import { Icon } from "lucide-react";
+import { IconComponent } from "@/utils/RenderIcon";
 
 const SectionFour = ({ section_four_header, testimonial }) => {
 	return (

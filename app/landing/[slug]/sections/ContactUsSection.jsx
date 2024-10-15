@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { IconComponent } from "@/utils/helperFunctions";
-import Link from "next/link";
+import { IconComponent } from "@/utils/RenderIcon";
 import Image from "next/image";
 
 const ContactUsSection = ({ mapsUrl }) => {

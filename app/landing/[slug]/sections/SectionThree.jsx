@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { IconComponent } from "@/utils/helperFunctions";
+import { IconComponent } from "@/utils/RenderIcon";
 
 const SectionThree = ({ section_three_header, reasons_card }) => {
 	return (

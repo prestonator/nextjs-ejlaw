@@ -1,20 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { IconComponent } from "@/utils/helperFunctions";
+import { IconComponent } from "@/utils/RenderIcon";
 import CaseEvaluationForm from "@/components/CaseEvaluationForm/CaseEvaluationForm";
+import { SafeImage } from "@/utils/helperFunctions";
 
 const LandingHero = ({ landing_page_hero }) => {
-	const imageUrl = landing_page_hero.image.data.attributes.url;
 	return (
 		<section className="relative bg-gray-900 text-white animate-fadeIn">
 			{/* Background Image */}
-			<div
-				className="absolute inset-0 bg-cover bg-top opacity-20"
-				style={{
-					backgroundImage: `url(${imageUrl})`,
-				}}
-			></div>
+			<div className="absolute inset-0 bg-cover bg-top z-[1] opacity-80 bg-gray-900"></div>
+			{SafeImage(
+				landing_page_hero?.image?.data,
+				"object-cover",
+				"100vw",
+				"eager"
+			)}
 			{/* Content */}
-			<div className="relative mx-auto max-w-screen-xl px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
+			<div className="z-[2] relative mx-auto max-w-screen-xl px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
 				<div className="md:flex md:items-center md:justify-evenly w-full">
 					{/* Text Content */}
 					<div className="max-w-xl mx-auto md:mx-0">
