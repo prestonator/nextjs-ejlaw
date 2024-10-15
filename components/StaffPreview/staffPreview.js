@@ -84,6 +84,7 @@ const Avatar = React.memo(({ image }) => (
 		)}
 	</div>
 ));
+Avatar.displayName = 'Avatar';
 
 const StaffQuoteButton = React.memo(({ infoText, infoButton }) => (
 	<blockquote>
@@ -91,6 +92,7 @@ const StaffQuoteButton = React.memo(({ infoText, infoButton }) => (
 		<Button href={infoButton?.href || []}>{infoButton?.label}</Button>
 	</blockquote>
 ));
+StaffQuoteButton.displayName = 'StaffQuoteButton';
 
 const IconList = React.memo(({ socialIcons }) => (
 	<div className={styles.iconContainer}>
@@ -104,5 +106,6 @@ const IconList = React.memo(({ socialIcons }) => (
 		)}
 	</div>
 ));
+IconList.displayName = 'IconList';
 
 export default StaffPreview;
