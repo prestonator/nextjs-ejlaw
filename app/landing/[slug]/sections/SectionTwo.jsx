@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { IconComponent } from "@/utils/helperFunctions";
 
-const SectionTwo = ({ section_two_header, services_card }) => {
+const SectionTwo = ({ section_two_header, services_card, title }) => {
 	return (
 		<section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
 			<div className="max-w-6xl mx-auto">
@@ -44,7 +44,7 @@ const SectionTwo = ({ section_two_header, services_card }) => {
 				</div>
 				<div className="text-center mt-12">
 					<Button asChild className="font-special text-lg" size="lg">
-						<Link href="/family-law/divorce">Learn More about Divorce</Link>
+						<Link href="/family-law/divorce">Learn More about {title}</Link>
 					</Button>
 				</div>
 			</div>

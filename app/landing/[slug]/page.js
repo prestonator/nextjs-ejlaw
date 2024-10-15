@@ -86,6 +86,7 @@ const Page = async ({ params }) => {
 			<SectionTwo
 				section_two_header={data.section_two_header}
 				services_card={data.services_card}
+				title={data.title}
 			/>
 			<SectionThree
 				section_three_header={data.section_three_header}
