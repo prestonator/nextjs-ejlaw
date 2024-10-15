@@ -42,7 +42,7 @@ export default function LandingPage() {
 								</strong>
 							</h1>
 							<p className="mt-4 max-w-lg text-xl sm:text-2xl animate-slideRight">
-								Guiding You Through Life's Legal Challenges with 60+ Years of
+								Guiding You Through Life&apos;s Legal Challenges with 60+ Years of
 								Combined Experience
 							</p>
 
@@ -170,7 +170,7 @@ export default function LandingPage() {
 									</CardHeader>
 									<CardContent>
 										<p className="mb-4">
-											Our experienced attorneys provide comprehensive{" "}
+											Our experienced attorneys provide comprehensive
 											{service.title.toLowerCase()} services, including:
 										</p>
 										<ul className="list-disc pl-5 space-y-2">
@@ -203,16 +203,16 @@ export default function LandingPage() {
 					<div className="grid md:grid-cols-2 gap-12 items-center">
 						<div className="space-y-6">
 							<p className="text-lg text-gray-700 leading-relaxed">
-								At Elton Jenkins Law, we're more than just attorneys – we're
+								At Elton Jenkins Law, we&apos;re more than just attorneys – we&apos;re
 								your steadfast allies in the pursuit of justice. Our journey
 								began with a simple yet powerful idea: to provide compassionate,
 								personalized legal support that truly makes a difference in
-								people's lives.
+								people&apos;s lives.
 							</p>
 							<p className="text-lg text-gray-700 leading-relaxed">
 								With over 60 years of combined experience, our team has
 								weathered countless legal storms, emerging stronger and wiser
-								with each case. We've turned this wisdom into a beacon of hope
+								with each case. We&apos;ve turned this wisdom into a beacon of hope
 								for families navigating the complexities of the legal system.
 							</p>
 							<div className="flex items-center justify-center md:justify-start space-x-4 pt-4">
@@ -396,7 +396,7 @@ export default function LandingPage() {
 							>
 								<Quote className="h-8 w-8 text-primary mb-4" />
 								<p className="text-gray-700 mb-4 italic">
-									"{testimonial.quote}"
+									&quot;{testimonial.quote}&quot;
 								</p>
 								<p className="text-right font-semibold text-gray-900">
 									- {testimonial.name}
