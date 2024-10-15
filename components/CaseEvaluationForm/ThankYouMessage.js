@@ -33,7 +33,7 @@ export default function ThankYouMessage({ submittedData }) {
 			</div>
 			<p className="text-md text-gray-600 mt-4 text-center">
 				If you have any urgent questions or need to make changes to your
-				submission, please don't hesitate to contact us directly.
+				submission, please don&apos;t hesitate to contact us directly.
 			</p>
 		</div>
 	);
