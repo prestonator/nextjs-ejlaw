@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { IconComponent } from "@/utils/RenderIcon";
+import { IconComponent } from "@/utils/helperFunctions";
 
 const SectionTwo = ({ section_two_header, services_card }) => {
 	return (

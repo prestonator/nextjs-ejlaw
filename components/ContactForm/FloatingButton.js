@@ -1,12 +1,12 @@
 import Link from "next/link";
 import styles from "./FloatingButton.module.css";
-import { IconComponent } from "@/utils/helperFunctions";
+import { IconComponent } from "@/utils/RenderIcon";
 
 const FloatingButton = () => {
 	return (
 		<Link className={styles.floatingButton} href="/contact">
 			{IconComponent({
-				icon: "BsCalendar4",
+				icon: "LuCalendar",
 				customClassName: styles.icon,
 			})}
 			Book my Consult

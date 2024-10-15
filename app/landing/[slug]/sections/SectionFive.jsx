@@ -16,7 +16,7 @@ const SectionFive = ({ section_five_header, staff_cards }) => {
 							key={staff.id}
 							className="bg-gray-100 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-xl animate-scaleIn group"
 						>
-							<div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-clip">
+							<div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-clip shadow-xl">
 								{SafeImage(
 									staff.avatar.data,
 									"object-cover [overflow-clip-margin:unset]"
@@ -39,9 +39,7 @@ const SectionFive = ({ section_five_header, staff_cards }) => {
 
 				<div className="text-center mt-12">
 					<Button className="font-special text-lg" size="lg" asChild>
-						<Link href="/contact">
-							Experience the Difference
-						</Link>
+						<Link href="/contact">Experience the Difference</Link>
 					</Button>
 				</div>
 			</div>

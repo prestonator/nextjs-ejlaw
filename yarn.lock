@@ -2624,11 +2624,11 @@ __metadata:
     graphql-tag: "npm:^2.12.6"
     html-react-parser: "npm:^5.1.18"
     isomorphic-dompurify: "npm:^2.16.0"
-    lucide-react: "npm:^0.447.0"
+    lucide-react: "npm:^0.453.0"
     next: "npm:15.0.0-rc.1"
     next-sitemap: "npm:^4.2.3"
     postcss: "npm:^8.4.47"
-    postcss-custom-media: "npm:^11.0.2"
+    postcss-custom-media: "npm:^11.0.3"
     postcss-import: "npm:^16.1.0"
     postcss-nesting: "npm:^13.0.0"
     react: "npm:19.0.0-rc-83825814-20241015"
@@ -2637,15 +2637,13 @@ __metadata:
     react-icons: "npm:^5.3.0"
     react-intersection-observer: "npm:^9.13.1"
     react-select: "npm:^5.8.1"
-    react-select-search: "npm:^4.1.8"
     rfs: "link:./local_modules/rfs/"
     server-only: "npm:^0.0.1"
-    tailwind-merge: "npm:^2.5.3"
-    tailwindcss: "npm:^3.4.13"
+    tailwind-merge: "npm:^2.5.4"
+    tailwindcss: "npm:^3.4.14"
     tailwindcss-animate: "npm:^1.0.7"
     xml2js: "npm:^0.6.2"
     zod: "npm:^3.23.8"
-    zustand: "npm:^4.5.5"
   languageName: unknown
   linkType: soft
 
@@ -4325,12 +4323,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.447.0":
-  version: 0.447.0
-  resolution: "lucide-react@npm:0.447.0"
+"lucide-react@npm:^0.453.0":
+  version: 0.453.0
+  resolution: "lucide-react@npm:0.453.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
-  checksum: 10c0/c8831795a4b4429d0cad28f33baf924d285eb64a0ecbce013a3307e7fab998cd5a48e3dce3607bbfa88fa383b8c603947965453acb60c94e2ef39956afe1eb67
+  checksum: 10c0/eec257049609eff958329943da6e129c8db1969aa789c6e922f59418d7b6f6913c22e971ac7885efc80eeb3e41e180c48afdee92738a63a31ef5a39836037b7e
   languageName: node
   linkType: hard
 
@@ -4952,7 +4950,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-custom-media@npm:^11.0.2":
+"postcss-custom-media@npm:^11.0.3":
   version: 11.0.3
   resolution: "postcss-custom-media@npm:11.0.3"
   dependencies:
@@ -5221,17 +5219,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/c5881c537477d986e8d25d2588a9b6f7fe1254e05946fb4f4b55baeead502b0e1875fc3c42bb6f82736772cd96a50266e41d84e3c4cd25e9525bdfe2d838e96d
-  languageName: node
-  linkType: hard
-
-"react-select-search@npm:^4.1.8":
-  version: 4.1.8
-  resolution: "react-select-search@npm:4.1.8"
-  peerDependencies:
-    prop-types: ^15.8.1
-    react: ^18.0.1 || ^17.0.1
-    react-dom: ^18.0.1 || ^17.0.1
-  checksum: 10c0/cb1e2034f6823cd32e9b63421c7d2aef4bcf0c4594a8a5419d2b3639732d2897f18246258491b3a231ae48cc722b74be4e15768c257f5e663337ef161a1bbd8a
   languageName: node
   linkType: hard
 
@@ -5970,7 +5957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^2.5.3":
+"tailwind-merge@npm:^2.5.4":
   version: 2.5.4
   resolution: "tailwind-merge@npm:2.5.4"
   checksum: 10c0/6c3d2a1d44344f373859f005e6366f0dbd7f66131d330a51dbe823dab08f71c388b2efcbb2b6a2170ca469581d27079c25cd40c234ca1356c4893ae99c2febb3
@@ -5986,7 +5973,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.4.13":
+"tailwindcss@npm:^3.4.14":
   version: 3.4.14
   resolution: "tailwindcss@npm:3.4.14"
   dependencies:
@@ -6323,15 +6310,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.2":
-  version: 1.2.2
-  resolution: "use-sync-external-store@npm:1.2.2"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/23b1597c10adf15b26ade9e8c318d8cc0abc9ec0ab5fc7ca7338da92e89c2536abd150a5891bf076836c352fdfa104fc7231fb48f806fd9960e0cbe03601abaf
-  languageName: node
-  linkType: hard
-
 "util-deprecate@npm:^1.0.2":
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
@@ -6608,25 +6586,5 @@ __metadata:
   version: 3.23.8
   resolution: "zod@npm:3.23.8"
   checksum: 10c0/8f14c87d6b1b53c944c25ce7a28616896319d95bc46a9660fe441adc0ed0a81253b02b5abdaeffedbeb23bdd25a0bf1c29d2c12dd919aef6447652dd295e3e69
-  languageName: node
-  linkType: hard
-
-"zustand@npm:^4.5.5":
-  version: 4.5.5
-  resolution: "zustand@npm:4.5.5"
-  dependencies:
-    use-sync-external-store: "npm:1.2.2"
-  peerDependencies:
-    "@types/react": ">=16.8"
-    immer: ">=9.0.6"
-    react: ">=16.8"
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-    immer:
-      optional: true
-    react:
-      optional: true
-  checksum: 10c0/d04469d76b29c7e4070da269886de4efdadedd3d3824dc2a06ac4ff62e3b5877f925e927afe7382de651829872b99adec48082f1bd69fe486149be666345e626
   languageName: node
   linkType: hard
