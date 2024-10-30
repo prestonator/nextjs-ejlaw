@@ -45,6 +45,10 @@ export default function CaseEvaluationForm() {
 
 			if (response.ok) {
 				const result = await response.json();
+				setSubmitResult({
+					success: true,
+					message: "Form submitted successfully!"
+				});
 				setSubmittedData(data);
 				reset();
 			} else {
@@ -138,7 +142,7 @@ export default function CaseEvaluationForm() {
 				</Button>
 			</form>
 
-			{submitResult && !isSubmitted && (
+			{submitResult && !isSubmitSuccessful && (
 				<div
 					className={`mt-4 p-4 ${
 						submitResult.success
