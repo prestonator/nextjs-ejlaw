@@ -96,7 +96,7 @@ const Home = async () => {
 			</section>
 			{/* Call to Action Section */}
 			<section
-				className={`${styles.callToAction} ${styles.modalContainer} py-[var(--size-15)]`}
+				className={`py-[var(--size-15)]`}
 			>
 				<article
 					className={`${styles.modal} items-center flex flex-col my-0 mx-auto bg-white gap-[var(--size-2)] py-[var(--size-5)] w-[var(--size-100)]`}
