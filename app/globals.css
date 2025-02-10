@@ -1,11 +1,121 @@
-/* globals.css */
-@import 'tailwindcss/utilities' layer(utilities);
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 
-@plugin 'tailwindcss-animate';
+:root {
+  /* Colors */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 3.9%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 3.9%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 3.9%);
+  --primary: hsl(0 0% 9%);
+  --primary-foreground: hsl(0 0% 98%);
+  --secondary: hsl(0 0% 96.1%);
+  --secondary-foreground: hsl(0 0% 9%);
+  --muted: hsl(0 0% 96.1%);
+  --muted-foreground: hsl(0 0% 45.1%);
+  --accent: hsl(0 0% 96.1%);
+  --accent-foreground: hsl(0 0% 9%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 89.8%);
+  --input: hsl(0 0% 89.8%);
+  --ring: hsl(0 0% 3.9%);
 
-@custom-variant dark (&:is(.dark *));
+  --color-primary: #f00;
+  --color-secondary: #edbb5f;
+  --color-gold: #857360;
+  --color-white: #fff;
+  --color-gray: #333;
+  --color-medium-gray: #666;
+  --color-light-gray: #ddd;
+  --color-off-white: #f5f5f5;
+  --color-black: #000;
+  --color-accent: #800000;
+  --color-low-opacity-black: rgb(0 0 0 / 5%);
+  --bg-overlay-dark: rgba(11, 10, 7, 0.7);
 
-@theme {
+  /* Shadows */
+
+  --avatar-box-shadow: rgb(0 0 0 / 30%) 0px 0px 40px 0px;
+  --default-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+
+  /* Border Radius */
+
+  --default-border-radius: 10px;
+  --avatar-border-radius: 50%;
+
+  /* Transitions */
+
+  --default-hover-transition: all 0.3s ease-in-out;
+
+  /* Sizes */
+
+  --size-200: rfs(200rem);
+  --size-195: rfs(195rem);
+  --size-190: rfs(190rem);
+  --size-185: rfs(185rem);
+  --size-175: rfs(175rem);
+  --size-160: rfs(160rem);
+  --size-150: rfs(150rem);
+  --size-125: rfs(125rem);
+  --size-115: rfs(115rem);
+  --size-100: rfs(100rem);
+  --size-90: rfs(90rem);
+  --size-75: rfs(75rem);
+  --size-70: rfs(70rem);
+  --size-65: rfs(65rem);
+  --size-60: rfs(60rem);
+  --size-50: rfs(50rem);
+  --size-45: rfs(45rem);
+  --size-40: rfs(40rem);
+  --size-35: rfs(35rem);
+  --size-30: rfs(30rem);
+  --size-25: rfs(25rem);
+  --size-20: rfs(20rem);
+  --size-15: rfs(15rem);
+  --size-12-5: rfs(12.5rem);
+  --size-10: rfs(10rem);
+  --size-7-5: rfs(7.5rem);
+  --size-5: rfs(5rem);
+  --size-3-5: rfs(3.5rem);
+  --size-3: rfs(3rem);
+  --size-2-5: rfs(2.5rem);
+  --size-2-25: rfs(2.25rem);
+  --size-2: rfs(2rem);
+  --size-1-5: rfs(1.5rem);
+  --size-1-25: rfs(1.25rem);
+  --size-1: rfs(1rem);
+  --size-0-75: rfs(0.75rem);
+  --size-0-5: rfs(0.5rem);
+
+  --radius: 0.5rem;
+
+  /* Tailwind Specific */
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+}
+
+@theme inline {
   --breakpoint-*: initial;
   --breakpoint-xs: 475px;
   --breakpoint-sm: 576px;
@@ -20,36 +130,25 @@
   --font-special: var(--font-special);
 
   --color-gold: #edbb5f;
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -133,153 +232,21 @@
   }
 }
 
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-xs)) {
-    max-width: none;
-  }
-  @media (width >= 1536px) {
-    max-width: 1536px;
-  }
-}
-
-:root {
-	/* Colors */
-
-	--color-primary: #f00;
-	--color-secondary: #edbb5f;
-	--color-gold: #857360;
-	--color-white: #fff;
-	--color-gray: #333;
-	--color-medium-gray: #666;
-	--color-light-gray: #ddd;
-	--color-off-white: #f5f5f5;
-	--color-black: #000;
-	--color-accent: #800000;
-	--color-low-opacity-black: rgb(0 0 0 / 5%);
-	--bg-overlay-dark: rgba(11, 10, 7, 0.7);
-
-	/* Shadows */
-
-	--avatar-box-shadow: rgb(0 0 0 / 30%) 0px 0px 40px 0px;
-	--default-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-		rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-
-	/* Border Radius */
-
-	--default-border-radius: 10px;
-	--avatar-border-radius: 50%;
-
-	/* Transitions */
-
-	--default-hover-transition: all 0.3s ease-in-out;
-
-	/* Sizes */
-
-	--size-200: rfs(200rem);
-	--size-195: rfs(195rem);
-	--size-190: rfs(190rem);
-	--size-185: rfs(185rem);
-	--size-175: rfs(175rem);
-	--size-160: rfs(160rem);
-	--size-150: rfs(150rem);
-	--size-125: rfs(125rem);
-	--size-115: rfs(115rem);
-	--size-100: rfs(100rem);
-	--size-90: rfs(90rem);
-	--size-75: rfs(75rem);
-	--size-70: rfs(70rem);
-	--size-65: rfs(65rem);
-	--size-60: rfs(60rem);
-	--size-50: rfs(50rem);
-	--size-45: rfs(45rem);
-	--size-40: rfs(40rem);
-	--size-35: rfs(35rem);
-	--size-30: rfs(30rem);
-	--size-25: rfs(25rem);
-	--size-20: rfs(20rem);
-	--size-15: rfs(15rem);
-	--size-12-5: rfs(12.5rem);
-	--size-10: rfs(10rem);
-	--size-7-5: rfs(7.5rem);
-	--size-5: rfs(5rem);
-	--size-3-5: rfs(3.5rem);
-	--size-3: rfs(3rem);
-	--size-2-5: rfs(2.5rem);
-	--size-2-25: rfs(2.25rem);
-	--size-2: rfs(2rem);
-	--size-1-5: rfs(1.5rem);
-	--size-1-25: rfs(1.25rem);
-	--size-1: rfs(1rem);
-	--size-0-75: rfs(0.75rem);
-	--size-0-5: rfs(0.5rem);
-
-	--background: 0 0% 100%;
-	--foreground: 0 0% 3.9%;
-
-	--card: 0 0% 100%;
-	--card-foreground: 0 0% 3.9%;
-
-	--popover: 0 0% 100%;
-	--popover-foreground: 0 0% 3.9%;
-
-	--primary: 0 0% 9%;
-	--primary-foreground: 0 0% 98%;
-
-	--secondary: 0 0% 96.1%;
-	--secondary-foreground: 0 0% 9%;
-
-	--muted: 0 0% 96.1%;
-	--muted-foreground: 0 0% 45.1%;
-
-	--accent: 0 0% 96.1%;
-	--accent-foreground: 0 0% 9%;
-
-	--destructive: 0 84.2% 60.2%;
-	--destructive-foreground: 0 0% 98%;
-
-	--border: 0 0% 89.8%;
-	--input: 0 0% 89.8%;
-	--ring: 0 0% 3.9%;
-
-	--radius: 0.5rem;
-
-	/* Tailwind Specific */
-	--tw-border-spacing-x: 0;
-    --tw-border-spacing-y: 0;
-    --tw-translate-x: 0;
-    --tw-translate-y: 0;
-    --tw-rotate: 0;
-    --tw-skew-x: 0;
-    --tw-skew-y: 0;
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    --tw-scroll-snap-strictness: proximity;
-    --tw-ring-offset-width: 0px;
-    --tw-ring-offset-color: #fff;
-    --tw-ring-color: rgba(59,130,246,.5);
-    --tw-ring-offset-shadow: 0 0 #0000;
-    --tw-ring-shadow: 0 0 #0000;
-    --tw-shadow: 0 0 #0000;
-    --tw-shadow-colored: 0 0 #0000;
-}
-
 /* Global Styles */
 
 img,
 video,
 iframe {
-	max-inline-size: 100%;
+  max-inline-size: 100%;
 }
 
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body,
@@ -292,16 +259,16 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 button,
 iframe {
-	border: unset;
+  border: unset;
 }
 
 a {
-	text-decoration: none;
-	color: inherit;
+  text-decoration: none;
+  color: inherit;
 }

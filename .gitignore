@@ -3,7 +3,7 @@
 # custom
 .env.*
 .env.local
-
+*.old
 # dependencies
 /node_modules
 /.pnp
