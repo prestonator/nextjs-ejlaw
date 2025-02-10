@@ -21,7 +21,7 @@ const ContactUsSection = ({ mapsUrl }) => {
 						<a href="tel:4052173623">
 							<Button
 								variant="link"
-								className="text-primary font-special !cursor-pointer"
+								className="text-primary font-special cursor-pointer!"
 							>
 								{IconComponent({
 									icon: "HiOutlinePhone",
@@ -33,7 +33,7 @@ const ContactUsSection = ({ mapsUrl }) => {
 						<a href="mailto:susan@eltonjenkinslaw.com">
 							<Button
 								variant="link"
-								className="text-primary font-special !cursor-pointer"
+								className="text-primary font-special cursor-pointer!"
 							>
 								{IconComponent({
 									icon: "HiOutlineMail",

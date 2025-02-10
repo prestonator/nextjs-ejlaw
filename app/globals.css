@@ -1,6 +1,148 @@
 /* globals.css */
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/utilities' layer(utilities);
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 475px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1440px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1800px;
+  --breakpoint-4xl: 2560px;
+
+  --font-fancy: var(--font-fancy);
+  --font-body: var(--font-body);
+  --font-special: var(--font-special);
+
+  --color-gold: #edbb5f;
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-background-gradient: backgroundGradient 2s ease forwards;
+  --animate-text-white-black: textColor 2s ease forwards;
+  --animate-text-black-white: textColor 2s ease reverse forwards;
+  --animate-fade-in: fadeIn 1s ease-in-out forwards;
+  --animate-slide-up: slideUp 1s ease-in-out forwards;
+  --animate-slide-right: slideRight 1s ease-in-out forwards;
+  --animate-scale-in: scaleIn 1s ease-in-out forwards;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes backgroundGradient {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 35% 50%;
+    }
+  }
+  @keyframes textColor {
+    0% {
+      color: #000;
+    }
+    100% {
+      color: #fff;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes scaleIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-xs)) {
+    max-width: none;
+  }
+  @media (width >= 1536px) {
+    max-width: 1536px;
+  }
+}
 
 :root {
 	/* Colors */

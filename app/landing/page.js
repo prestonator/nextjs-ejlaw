@@ -32,7 +32,7 @@ export default function LandingPage() {
 		<div className="flex flex-col min-h-screen font-body">
 			<section className="relative bg-gray-900 text-white animate-fadeIn">
 				<div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
-				<div className="relative mx-auto max-w-screen-xl px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
+				<div className="relative mx-auto max-w-[theme(screens.xl)] px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
 					<div className="md:flex md:items-center md:justify-evenly w-full">
 						<div className="max-w-xl mx-auto md:mx-0">
 							<h1 className="font-fancy text-3xl font-extrabold sm:text-5xl md:text-6xl animate-slideRight">
@@ -193,7 +193,7 @@ export default function LandingPage() {
 
 			<section
 				id="about"
-				className="bg-gradient-to-b from-gray-100 to-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden animate-slideUp"
+				className="bg-linear-to-b from-gray-100 to-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden animate-slideUp"
 			>
 				<div className="max-w-6xl mx-auto relative z-10">
 					<h2 className="font-fancy text-4xl font-bold text-center text-gray-900 mb-12">
@@ -317,7 +317,7 @@ export default function LandingPage() {
 					</div>
 				</div>
 
-				<div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white to-transparent"></div>
+				<div className="absolute bottom-0 left-0 w-full h-1/2 bg-linear-to-t from-white to-transparent"></div>
 			</section>
 
 			<section className="bg-white py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">

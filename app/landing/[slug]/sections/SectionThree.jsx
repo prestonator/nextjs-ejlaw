@@ -26,7 +26,7 @@ const SectionThree = ({ section_three_header, reasons_card }) => {
 							<p className="text-gray-600 transition-colors duration-300 group-hover:text-gray-900">
 								{item.content}
 							</p>
-							<div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -z-10"></div>
+							<div className="absolute inset-0 bg-linear-to-br from-primary/5 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -z-10"></div>
 						</div>
 					))}
 				</div>

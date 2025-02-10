@@ -21,7 +21,7 @@ const SideNav = ({ navItems, logo }) => {
 
 	return (
 		<Sheet id="sheet">
-			<SheetTrigger className="z-[5] bg-transparent cursor-pointer hover:bg-transparent lg:hidden">
+			<SheetTrigger className="z-5 bg-transparent cursor-pointer hover:bg-transparent lg:hidden">
 				<LuMenu className="w-6 h-6" />
 				<span className="sr-only">Toggle navigation menu</span>
 			</SheetTrigger>

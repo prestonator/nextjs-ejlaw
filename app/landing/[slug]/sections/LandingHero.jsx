@@ -7,7 +7,7 @@ const LandingHero = ({ landing_page_hero }) => {
 	return (
 		<section className="relative bg-gray-900 text-white animate-fadeIn">
 			{/* Background Image */}
-			<div className="absolute inset-0 bg-cover bg-top z-[1] opacity-80 bg-gray-900"></div>
+			<div className="absolute inset-0 bg-cover bg-top z-1 opacity-80 bg-gray-900"></div>
 			{SafeImage(
 				landing_page_hero?.image?.data,
 				"object-cover",
@@ -15,7 +15,7 @@ const LandingHero = ({ landing_page_hero }) => {
 				"eager"
 			)}
 			{/* Content */}
-			<div className="z-[2] relative mx-auto max-w-screen-xl px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
+			<div className="z-2 relative mx-auto max-w-[theme(screens.xl)] px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
 				<div className="md:flex md:items-center md:justify-evenly w-full">
 					{/* Text Content */}
 					<div className="max-w-xl mx-auto md:mx-0">
