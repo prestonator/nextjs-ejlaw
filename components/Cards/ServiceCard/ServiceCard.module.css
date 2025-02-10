@@ -2,13 +2,13 @@
 	display: flex;
 	background-color: var(--color-off-white);
 	flex-direction: column;
-	padding: var(--size-5);
+	padding: var(--size-2-5);
 	align-items: center;
 	box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
 		0 10px 30px 0 rgba(0, 0, 0, 0.3);
 	text-align: center;
-    justify-content: space-evenly;
-    width: 100%;
+    justify-content: space-between;
+	height: 20rem;
 }
 
 .card h6 {
@@ -50,6 +50,5 @@
 @media (min-width: 56rem) {
 	.card {
 		width: 25%;
-		height: var(--size-30);
 	}
 }
