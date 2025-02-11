@@ -71,13 +71,15 @@ const Page = async ({ params }) => {
 	const awaitedParams = await params;
 	const { slug, hero, sections, sub_practice_areas } =
 		(await getPage(awaitedParams.service)) || {};
+
+	console.log(hero?.image?.data);
 	return (
 		<main>
 			{/* Hero section */}
 			<section className="pt-[var(--size-15)]">
 				<div className="relative w-full h-[50vh]">
 					{SafeImage(hero?.image?.data, "object-cover", "100vw", "eager")}
-					<div className="absolute top-0 left-0 w-full h-full z-1 bg-opacity-60 bg-black"></div>
+					<div className="absolute top-0 left-0 w-full h-full z-1 bg-black/60"></div>
 					<div
 						className={`${styles.heroTextContainer} absolute left-[var(--size-15)] top-[var(--size-10)] z-2 text-white`}
 					>
