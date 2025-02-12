@@ -72,7 +72,6 @@ const Page = async ({ params }) => {
 	const { slug, hero, sections, sub_practice_areas } =
 		(await getPage(awaitedParams.service)) || {};
 
-	console.log(hero?.image?.data);
 	return (
 		<main>
 			{/* Hero section */}
