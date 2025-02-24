@@ -1,31 +1,11 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useHeaderVisibility } from "@/hooks/useHeaderVisibility";
 import styles from "./Nav.module.css";
 
 const NavbarClient = ({ children }) => {
-	const [isVisible, setIsVisible] = useState(true);
-	const lastScrollY = useRef(0);
+  const isVisible = useHeaderVisibility(200);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			const currentScrollY = window.scrollY;
-			if (currentScrollY > lastScrollY.current) {
-				setIsVisible(false);
-			} else {
-				setIsVisible(true);
-			}
-			lastScrollY.current = currentScrollY;
-		};
-
-		const throttledHandleScroll = throttle(handleScroll, 200);
-		window.addEventListener("scroll", throttledHandleScroll);
-
-		return () => {
-			window.removeEventListener("scroll", throttledHandleScroll);
-		};
-	}, []);
-
-	return (
+  return (
     <header
       className={`${styles.header} ${
         isVisible ? "translate-y-0" : "-translate-y-full"
@@ -36,6 +16,7 @@ const NavbarClient = ({ children }) => {
           className="text-[#800000] hover:text-blue-700"
           href="https://elton-jenkins-attorney-at-law.mycase.com/paypage/DNMiVDCbKLCJvWyCSiPEe3FA"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Notice: Visit our payment page to settle your invoices online.
         </a>
@@ -46,13 +27,3 @@ const NavbarClient = ({ children }) => {
 };
 
 export default NavbarClient;
-
-function throttle(fn, wait) {
-	let time = Date.now();
-	return function () {
-		if (time + wait - Date.now() < 0) {
-			fn();
-			time = Date.now();
-		}
-	};
-}

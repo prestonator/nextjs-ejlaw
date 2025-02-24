@@ -1,114 +1,126 @@
 /* page.module.css */
 
-@custom-media --medium-viewport (max-width: 850px);
+@custom-media --medium-viewport (max-width: 500px);
 
 .hero .textContent p {
-	color: var(--color-accent);
-	font: 700 var(--size-1-5) var(--font-body);
+  color: var(--color-accent);
+  font: 700 var(--text-lg) var(--font-body);
 }
 
 .hero .textContent h1 {
-	font: 500 var(--size-5) var(--font-fancy);
-	margin: var(--size-1-5) 0;
+  font: 500 var(--size-5) var(--font-fancy);
+  margin: var(--size-1-5) 0;
+}
+
+.hero .imageWrapper {
+  position: relative;
+  width: var(--size-60);
+  height: var(--size-60);
 }
 
 .hero .imageWrapper .image {
-	filter: drop-shadow(15px 15px 0px var(--color-accent));
+  filter: drop-shadow(15px 15px 0px var(--color-accent));
+}
+
+.hero .button a {
+  font-size: var(--text-base);
 }
 
 .modal {
-	box-shadow: var(--default-box-shadow);
+  box-shadow: var(--default-box-shadow);
 }
 
 .modal p {
-	color: var(--color-accent);
-	font: 700 var(--size-1) var(--font-body);
+  color: var(--color-accent);
+  font: 700 var(--size-1) var(--font-body);
 }
 
 .modal h4 {
-	font: 600 var(--size-3) var(--font-fancy);
+  font: 600 var(--size-3) var(--font-fancy);
 }
 
 .staff {
-	border-bottom: 0.15rem solid var(--color-light-gray);
+  border-bottom: 0.15rem solid var(--color-light-gray);
 }
 
 .whyChoose {
-	max-width: calc(100vw - var(--size-15));
-	padding-bottom: var(--size-20);
+  max-width: calc(100vw - var(--size-15));
+  padding-bottom: var(--size-20);
 }
 
 .serviceGrid {
-	gap: var(--size-5);
+  gap: var(--size-5);
 }
 
 .heading {
-	transform: translateY(calc(-1 * var(--size-5)));
+  transform: translateY(calc(-1 * var(--size-5)));
 }
 
 .heading h3 {
-	font: 500 var(--size-5) var(--font-fancy);
-	text-align: center;
+  font: 500 var(--size-5) var(--font-fancy);
+  text-align: center;
 }
 
 .heading hr {
-	border-color: var(--color-accent);
-	border-top-width: 2px;
-	margin: var(--size-2-5) auto;
-	width: var(--size-10);
+  border-color: var(--color-accent);
+  border-top-width: 2px;
+  margin: var(--size-2-5) auto;
+  width: var(--size-10);
 }
 
 @media (--medium-viewport) {
-	.hero {
-		padding-top: var(--size-15);
-	}
+  .hero {
+    padding-top: var(--size-15);
+  }
 
-	.hero .textContent {
-		background-image: url("https://www.eltonjenkinslaw.com/_next/image?url=https%3A%2F%2Fej-law-space.sfo3.cdn.digitaloceanspaces.com%2Fuploads%2Fdb4078b7e457635f06f9c76001f6acf7.webp&w=640&q=75"); /* Replace with your image path */
-		background-size: cover;
-		background-position: center;
-		padding: var(--size-7-5) var(--size-0-75);
-		width: 100%;
-		z-index: 1;
-	}
+  .hero .textContent {
+    background-image: url("https://ej-law-space.sfo3.cdn.digitaloceanspaces.com/uploads/239fd580c9cbcc967a4dd3fd6d28b46e.webp"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    padding: var(--size-15) var(--size-0-75);
+    width: 100%;
+    z-index: 1;
+  }
+  .hero .textContent::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust the opacity as needed */
+    z-index: 1;
+  }
 
-	.hero .textContent::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.6); /* Adjust the opacity as needed */
-		z-index: 1;
-	}
+  .hero .textContent p,
+  .hero .textContent h1,
+  .hero .button {
+    position: relative;
+    z-index: 2;
+  }
 
-	.hero .textContent p,
-	.hero .textContent h1,
-	.hero .button {
-		position: relative;
-		z-index: 2;
-	}
+  .hero .textContent p {
+    color: var(--color-secondary);
+	font-size: var(--text-sm);
+  }
 
-	.hero .textContent p {
-		color: var(--color-secondary);
-	}
+  .hero .textContent h1 {
+    color: var(--color-white);
+	font-size: var(--text-4xl);
+  }
 
-	.hero .textContent h1 {
-		color: var(--color-white);
-	}
+  .hero .button a {
+    border-color: var(--color-white);
+    color: var(--color-white);
+    font-size: var(--text-base);
+  }
 
-	.hero .button a {
-		border-color: rgb(255 255 255 / 35%);
-		color: var(--color-white);
-	}
+  .hero .imageWrapper {
+    display: none;
+  }
 
-	.hero .imageWrapper {
-		display: none;
-	}
-
-	.hero .imageWrapper .image {
-		filter: unset;
-		object-fit: cover;
-	}
+  .hero .imageWrapper .image {
+    filter: unset;
+    object-fit: cover;
+  }
 }
