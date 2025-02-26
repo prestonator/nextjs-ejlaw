@@ -35,6 +35,19 @@ export function Header({ navMenu, logo }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    // Prevent scrolling when mobile menu is open
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -42,7 +55,7 @@ export function Header({ navMenu, logo }) {
   // Helper function to filter out 'Logo' menu item if needed.
   const menuItems =
     navMenu?.menuItems.filter((item) => item.item !== "Logo") || [];
-
+    
   // Split into left/right groups (4 items each)
   const leftItems = menuItems.slice(0, 4);
   const rightItems = menuItems.slice(4);
@@ -111,7 +124,10 @@ export function Header({ navMenu, logo }) {
             ))}
           </div>
           <div className="flex-shrink-0 md:mx-[2.5vw]">
-            <Link href="/" className="relative flex h-16 w-[15vw]">
+            <Link
+              href="/"
+              className="relative flex h-16 w-[15vw]"
+            >
               {SafeImage(
                 logo.data,
                 "object-contain",
@@ -134,73 +150,73 @@ export function Header({ navMenu, logo }) {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu - Fullscreen */}
       <div
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-64 transform bg-white p-6 shadow-lg transition-transform duration-300 ease-in-out md:hidden",
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          "fixed inset-0 z-40 flex items-center justify-center bg-black transition-all duration-500 ease-in-out md:hidden",
+          isMobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         )}
       >
-        <div className="flex items-center justify-between">
-          <Link href="/" className="relative h-16 w-32">
-            {SafeImage(
-              logo.data,
-              "object-contain bg-white",
-              "calc(12.24vw + 71px)",
-              "eager"
-            )}
-          </Link>
-          <button
+        <div
+          className={cn(
+            "flex h-full w-full flex-col items-center justify-center gap-8 p-6 text-center transition-all duration-500",
+            isMobileMenuOpen
+              ? "translate-y-0 scale-100 opacity-100"
+              : "translate-y-8 scale-95 opacity-0"
+          )}
+        >
+          <Link
+            href="/"
+            className="mb-8"
             onClick={toggleMobileMenu}
-            className="text-gray-600 hover:text-gray-900"
           >
-            <X size={24} />
-            <span className="sr-only">Close main menu</span>
-          </button>
-        </div>
-        <div className="mt-6">
-          {menuItems.map((item) => (
-            <div key={item.id} className="py-2">
-              {item.children ? (
-                <details className="group">
-                  <summary className="flex cursor-pointer items-center justify-between font-fancy text-lg">
+            <Image
+              src={logo.data.attributes.url}
+              alt={logo.data.attributes.name}
+              width={100}
+              height={100}
+              className="h-16 w-16"
+            />
+          </Link>
+          <div className="flex flex-col items-center gap-6">
+            {menuItems.map((item) => (
+              <div
+                key={item.id}
+                className="text-center"
+              >
+                {item.items ? (
+                  <details className="group">
+                    <summary className="flex cursor-pointer items-center justify-center gap-2 font-fancy text-2xl text-white">
+                      {item.item}
+                      <ChevronDown className="h-5 w-5 transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="mt-4 space-y-2">
+                      {item.items.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          href={subItem.slug}
+                          className="block font-fancy text-xl text-gray-300 transition-colors hover:text-white"
+                          onClick={toggleMobileMenu}
+                        >
+                          {subItem.item}
+                        </Link>
+                      ))}
+                    </div>
+                  </details>
+                ) : (
+                  <Link
+                    href={item.slug}
+                    className="block font-fancy text-2xl text-white transition-colors hover:text-gray-300"
+                    onClick={toggleMobileMenu}
+                  >
                     {item.item}
-                    <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
-                  </summary>
-                  <div className="ml-4 mt-2 space-y-2">
-                    {item.children.map((subItem) => (
-                      <Link
-                        key={subItem.id}
-                        href={subItem.slug}
-                        className="block font-fancy text-base"
-                        onClick={toggleMobileMenu}
-                      >
-                        {subItem.item}
-                      </Link>
-                    ))}
-                  </div>
-                </details>
-              ) : (
-                <Link
-                  href={item.slug}
-                  className="block font-fancy text-lg"
-                  onClick={toggleMobileMenu}
-                >
-                  {item.item}
-                </Link>
-              )}
-            </div>
-          ))}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black opacity-25 md:hidden"
-          onClick={toggleMobileMenu}
-        ></div>
-      )}
     </header>
   );
 }
