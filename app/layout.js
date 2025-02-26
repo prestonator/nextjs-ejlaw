@@ -3,8 +3,9 @@ import "./globals.css";
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
 import FloatingButton from "@/components/ContactForm/FloatingButton";
-import Nav from "@/components/Navigation/Nav";
-import NavbarClient from "@/components/Navigation/NavClient";
+//import Nav from "@/components/Navigation/Nav";
+//import NavbarClient from "@/components/Navigation/NavClient";
+import { Header } from "@/dev_code/header";
 import { cormorant, montserrat, saira } from "@/lib/font";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -38,8 +39,6 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const { navMenu, logo, footer } = await getData();
-  console.log(JSON.stringify(navMenu, null, 2));
-  console.log(logo);
   return (
     <html lang="en">
       <body
@@ -48,9 +47,7 @@ export default async function RootLayout({ children }) {
           `${cormorant} ${montserrat} ${saira}`
         )}
       >
-        <NavbarClient>
-          <Nav navMenuItems={navMenu} logo={logo} />
-        </NavbarClient>
+        <Header navMenu={navMenu} logo={logo} />
         {children}
         <Footer footer={footer} />
         <FloatingButton />
