@@ -83,13 +83,20 @@ export function Header({ navMenu, logo }) {
 			</div>
 			<nav className="mx-auto px-4">
 				<div className="flex items-center py-4">
-					<div className="block md:hidden">
+					<div className="md:hidden">
 						<button
 							onClick={toggleMobileMenu}
-							className="text-gray-600 hover:text-gray-900"
+							className="relative z-50 text-gray-600 hover:text-gray-900"
+							aria-label={isMobileMenuOpen ? "Close main menu" : "Open main menu"}
 						>
-							<Menu size={24} />
-							<span className="sr-only">Open main menu</span>
+							{isMobileMenuOpen ? (
+								<X
+									size={24}
+									className="text-white"
+								/>
+							) : (
+								<Menu size={24} />
+							)}
 						</button>
 					</div>
 					<div className="hidden md:flex md:flex-1 md:items-center md:justify-evenly md:gap-2.5">
@@ -175,22 +182,22 @@ export function Header({ navMenu, logo }) {
 							className="h-16 w-16"
 						/>
 					</Link>
-					<div className="flex flex-col items-center gap-6">
+					<div className="flex flex-col items-center gap-6 text-white">
 						{menuItems.map((item) => (
 							<div
 								key={item.id}
 								className="text-center"
 							>
-								{item.items ? (
+								{item.children ? (
 									<details className="group">
 										<summary className="flex cursor-pointer items-center justify-center gap-2 font-fancy text-2xl text-white">
 											{item.item}
 											<ChevronDown className="h-5 w-5 transition-transform group-open:rotate-180" />
 										</summary>
 										<div className="mt-4 space-y-2">
-											{item.items.map((subItem) => (
+											{item.children.map((subItem) => (
 												<Link
-													key={subItem.label}
+													key={subItem.id}
 													href={subItem.slug}
 													className="block font-fancy text-xl text-gray-300 transition-colors hover:text-white"
 													onClick={toggleMobileMenu}
