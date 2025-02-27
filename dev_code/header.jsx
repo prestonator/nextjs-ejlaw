@@ -99,7 +99,7 @@ export function Header({ navMenu, logo }) {
 						)}
 					</button>
 				</div>
-				<div className="hidden md:flex md:flex-1 md:items-center md:justify-evenly md:gap-2.5">
+				<div className="hidden md:flex md:flex-1 md:items-center md:justify-evenly md:gap-2">
 					{leftItems.map((item) => (
 						<div
 							key={item.id}
@@ -109,7 +109,7 @@ export function Header({ navMenu, logo }) {
 						>
 							<Link
 								href={item.slug}
-								className="group inline-flex items-center font-fancy text-(length:--size-1-5)"
+								className="group font-fancy relative inline-flex items-center justify-center px- py-2 text-(length:--size-1-5) after:absolute after:left-0 after:w-full after:border-b after:border-black after:top-full after:transition-all after:content-[''] hover:after:top-0"
 							>
 								{item.item}
 								{item.children && (
@@ -140,12 +140,12 @@ export function Header({ navMenu, logo }) {
 						{SafeImage(logo.data, "object-contain", "calc(12.24vw + 71px)", "eager")}
 					</Link>
 				</div>
-				<div className="hidden md:flex md:flex-1 md:items-center md:justify-evenly md:gap-2.5">
+				<div className="hidden md:relative md:flex md:flex-1 md:items-center md:justify-evenly md:gap-2.5">
 					{rightItems.map((item) => (
 						<Link
 							key={item.id}
 							href={item.slug}
-							className="font-fancy text-(length:--size-1-5)"
+							className="font-fancy relative inline-flex items-center justify-center px-2 py-2 text-(length:--size-1-5) after:absolute after:left-0 after:w-full after:border-b after:border-black after:top-full after:transition-all after:content-[''] hover:after:top-0"
 						>
 							{item.item}
 						</Link>
