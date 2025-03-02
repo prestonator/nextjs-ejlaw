@@ -184,7 +184,7 @@ export function Header({ navMenu, logo }) {
 					isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none" // pointer-events-none when closed
 				)}
 			>
-				<div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-50" />
+				
 
 				<div className="relative h-full flex flex-col">
 					<div className="flex-1 overflow-y-auto">
