@@ -51,11 +51,10 @@ export function Header({ navMenu, logo }) {
 		if (isMobileMenuOpen) {
 			document.body.style.overflow = "hidden";
 		} else {
-			document.body.style.overflow = "unset";
+			document.body.style.overflow = "";
 		}
-
 		return () => {
-			document.body.style.overflow = "unset";
+			document.body.style.overflow = "";
 		};
 	}, [isMobileMenuOpen]);
 
@@ -113,23 +112,7 @@ export function Header({ navMenu, logo }) {
 				</div>
 			</div>
 			<nav className="mx-auto px-4">
-				<div className="flex items-center py-4">
-					<div className="md:hidden">
-						<button
-							onClick={toggleMobileMenu}
-							className="relative z-50 text-gray-600 hover:text-gray-900"
-							aria-label={isMobileMenuOpen ? "Close main menu" : "Open main menu"}
-						>
-							{isMobileMenuOpen ? (
-								<X
-									size={24}
-									className="text-black"
-								/>
-							) : (
-								<Menu size={24} />
-							)}
-						</button>
-					</div>
+				<div className="flex justify-between items-center py-1md:py-4">
 					<div className="hidden md:flex md:flex-1 md:items-center md:justify-evenly md:gap-2">
 						{leftItems.map((item) => (
 							<div
@@ -181,6 +164,15 @@ export function Header({ navMenu, logo }) {
 								{item.item}
 							</Link>
 						))}
+					</div>
+					<div className="md:hidden">
+						<button
+							onClick={toggleMobileMenu}
+							className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-[#800000] transition-colors hover:bg-gray-200"
+							aria-label={isMobileMenuOpen ? "Close main menu" : "Open main menu"}
+						>
+							{isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+						</button>
 					</div>
 				</div>
 			</nav>
