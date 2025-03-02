@@ -112,7 +112,7 @@ export function Header({ navMenu, logo }) {
 				</div>
 			</div>
 			<nav className="mx-auto px-4">
-				<div className="flex justify-between items-center py-1md:py-4">
+				<div className="flex justify-between items-center py-1 md:py-4">
 					<div className="hidden md:flex md:flex-1 md:items-center md:justify-evenly md:gap-2">
 						{leftItems.map((item) => (
 							<div
@@ -180,14 +180,48 @@ export function Header({ navMenu, logo }) {
 			{/* Mobile menu - Fullscreen - INTEGRATED FROM MobileNavigation */}
 			<div
 				className={cn(
-					"fixed inset-0 z-30 bg-white pt-16 overflow-hidden transition-opacity duration-300 md:hidden", // Added md:hidden
+					"fixed inset-0 z-30 bg-white overflow-hidden transition-opacity duration-300 md:hidden", // Removed pt-16 to allow space for our new header
 					isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none" // pointer-events-none when closed
 				)}
 			>
-				
+				<div className="sticky top-0 left-0 right-0 z-50 bg-white shadow-md">
+					<div className="border-b">
+						<div className="container mx-auto px-4">
+							<div className="py-2 text-center text-sm">
+								<a
+									href="https://elton-jenkins-attorney-at-law.mycase.com/paypage/DNMiVDCbKLCJvWyCSiPEe3FA"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Notice: Visit our payment page to settle your invoices online.
+								</a>
+							</div>
+						</div>
+					</div>
+
+					{/* Logo and close button */}
+					<div className="flex items-center justify-between px-4 py-2">
+						<div className="flex-shrink-0">
+							<Link
+								href="/"
+								className="relative flex h-16 w-[15vw]"
+								onClick={toggleMobileMenu}
+							>
+								{SafeImage(logo.data, "object-contain", "calc(12.24vw + 71px)", "eager")}
+							</Link>
+						</div>
+						<button
+							onClick={toggleMobileMenu}
+							className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-[#800000] transition-colors hover:bg-gray-200"
+							aria-label="Close main menu"
+						>
+							<X className="h-5 w-5" />
+						</button>
+					</div>
+				</div>
 
 				<div className="relative h-full flex flex-col">
-					<div className="flex-1 overflow-y-auto">
+					<div className="overflow-y-auto">
 						<nav className="p-4">
 							<ul className="space-y-1">
 								{navItems.map((item, index) => (
@@ -225,7 +259,7 @@ export function Header({ navMenu, logo }) {
 														"bg-gray-50 transition-max-height-opacity duration-300 overflow-hidden",
 														activeMobileItem === item.label ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
 													)} // max-h-96 is an example, adjust as needed
-													style={{ willChange: "max-height, opacity" }} // Optimize for transitions
+													style={{ willChange: "max-height, opacity" }}
 												>
 													{item.items.map((subItem, subIndex) => (
 														<li
@@ -241,7 +275,7 @@ export function Header({ navMenu, logo }) {
 															<Link
 																href={subItem.href}
 																className="flex items-center gap-3 py-3 pl-16 pr-4 text-gray-700 hover:text-[#800000] font-cormorant"
-																onClick={toggleMobileMenu} // Close menu on subitem click
+																onClick={toggleMobileMenu}
 															>
 																<span className="text-[#800000]">{subItem.icon}</span>
 																<span>{subItem.label}</span>
@@ -254,7 +288,7 @@ export function Header({ navMenu, logo }) {
 											<Link
 												href={item.href}
 												className="flex items-center gap-3 p-4 text-lg font-cormorant hover:text-[#800000]"
-												onClick={toggleMobileMenu} // Close menu on item click
+												onClick={toggleMobileMenu}
 											>
 												<div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#800000]">
 													{item.icon}
@@ -267,19 +301,18 @@ export function Header({ navMenu, logo }) {
 							</ul>
 						</nav>
 					</div>
-
 					{/* Contact and CTA section */}
 					<div
 						className={cn(
-							"relative mt-auto transition-opacity transform duration-300 translate-y-5 opacity-0",
-							isMobileMenuOpen ? "opacity-100 translate-y-0 delay-150" : ""
+							"relative h-full mt-auto transition-opacity transform duration-300 opacity-0",
+							isMobileMenuOpen ? "opacity-100 delay-150" : ""
 						)}
 					>
 						{/* Decorative top border */}
 						<div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
 						{/* Main content container - reduced padding */}
-						<div className="p-4 bg-gradient-to-b from-white/50 to-gray-50/50 backdrop-blur-md">
+						<div className="p-2 bg-gradient-to-b from-white/50 to-gray-50/50 backdrop-blur-md">
 							{/* Primary CTA - more compact */}
 							<div
 								className="mb-4 transition-transform duration-200 scale-95 opacity-0"
