@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react"; // Removed unused useRef
+import { useState, useEffect } from "react";
 import { SafeImage } from "@/utils/helperFunctions";
 import Link from "next/link";
 import {
@@ -12,15 +12,29 @@ import {
 	Mail,
 	MapPin,
 	FileText,
-} from "lucide-react"; // Removed unused icons
+} from "lucide-react";
 import { cn } from "@/utils";
+
+// **NEW COMPONENT: MobileMenuToggleButton**
+function MobileMenuToggleButton({ isOpen, toggleMenu, customColor }) {
+	const color = customColor ? customColor : "#800000";
+	return (
+		<button
+			onClick={toggleMenu}
+			className={`flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 ${color} transition-colors hover:bg-gray-200`}
+			aria-label={isOpen ? "Close main menu" : "Open main menu"}
+		>
+			{isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+		</button>
+	);
+}
 
 export function Header({ navMenu, logo }) {
 	const [isVisible, setIsVisible] = useState(true);
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const [openSubmenu, setOpenSubmenu] = useState(null);
-	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Renamed from isOpen to isMobileMenuOpen to align with existing state
-	const [activeMobileItem, setActiveMobileItem] = useState(null); // State for active mobile submenu
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const [activeMobileItem, setActiveMobileItem] = useState(null);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -29,9 +43,7 @@ export function Header({ navMenu, logo }) {
 			setLastScrollY(currentScrollY);
 		};
 
-		window.addEventListener("scroll", handleScroll, {
-			passive: true,
-		});
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [lastScrollY]);
 
@@ -47,7 +59,6 @@ export function Header({ navMenu, logo }) {
 	}, []);
 
 	useEffect(() => {
-		// Prevent scrolling when mobile menu is open
 		if (isMobileMenuOpen) {
 			document.body.style.overflow = "hidden";
 		} else {
@@ -61,7 +72,7 @@ export function Header({ navMenu, logo }) {
 	const toggleMobileMenu = () => {
 		setIsMobileMenuOpen(!isMobileMenuOpen);
 		if (!isMobileMenuOpen) {
-			setActiveMobileItem(null); // Close submenus when closing main menu
+			setActiveMobileItem(null);
 		}
 	};
 
@@ -69,25 +80,22 @@ export function Header({ navMenu, logo }) {
 		setActiveMobileItem(activeMobileItem === label ? null : label);
 	};
 
-	// Helper function to filter out 'Logo' menu item if needed.
 	const menuItems =
 		navMenu?.menuItems.filter((item) => item.item !== "Logo") || [];
 
-	// Transform menuItems to navItems structure (basic mapping, you might need to enhance this)
 	const navItems = menuItems.map((item) => ({
 		label: item.item,
 		href: item.slug,
-		icon: <FileText className="h-5 w-5" />, // Default icon for now, you can customize this
+		icon: <FileText className="h-5 w-5" />,
 		items: item.children
 			? item.children.map((child) => ({
 					label: child.item,
 					href: child.slug,
-					icon: <FileText className="h-4 w-4" />, // Default sub-item icon
+					icon: <FileText className="h-4 w-4" />,
 			  }))
 			: undefined,
 	}));
 
-	// Split into left/right groups (4 items each)
 	const leftItems = menuItems.slice(0, 4);
 	const rightItems = menuItems.slice(4);
 
@@ -166,22 +174,20 @@ export function Header({ navMenu, logo }) {
 						))}
 					</div>
 					<div className="md:hidden">
-						<button
-							onClick={toggleMobileMenu}
-							className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-[#800000] transition-colors hover:bg-gray-200"
-							aria-label={isMobileMenuOpen ? "Close main menu" : "Open main menu"}
-						>
-							{isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-						</button>
+						{/* **USE THE NEW COMPONENT HERE** */}
+						<MobileMenuToggleButton
+							isOpen={isMobileMenuOpen}
+							toggleMenu={toggleMobileMenu}
+						/>
 					</div>
 				</div>
 			</nav>
 
-			{/* Mobile menu - Fullscreen - INTEGRATED FROM MobileNavigation */}
+			{/* Mobile menu - Fullscreen */}
 			<div
 				className={cn(
-					"fixed inset-0 z-30 bg-white overflow-hidden transition-opacity duration-300 md:hidden", // Removed pt-16 to allow space for our new header
-					isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none" // pointer-events-none when closed
+					"fixed inset-0 z-30 bg-white overflow-hidden transition-opacity duration-300 md:hidden",
+					isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
 				)}
 			>
 				<div className="sticky top-0 left-0 right-0 z-50 bg-white shadow-md">
@@ -210,19 +216,18 @@ export function Header({ navMenu, logo }) {
 								{SafeImage(logo.data, "object-contain", "calc(12.24vw + 71px)", "eager")}
 							</Link>
 						</div>
-						<button
-							onClick={toggleMobileMenu}
-							className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-[#800000] transition-colors hover:bg-gray-200"
-							aria-label="Close main menu"
-						>
-							<X className="h-5 w-5" />
-						</button>
+						{/* **USE THE NEW COMPONENT HERE, WITH CUSTOM COLOR** */}
+						<MobileMenuToggleButton
+							isOpen={isMobileMenuOpen}
+							toggleMenu={toggleMobileMenu}
+							customColor="text-[#800000]"
+						/>
 					</div>
 				</div>
 
 				<div className="relative h-full flex flex-col">
 					<div className="overflow-y-auto">
-						<nav className="p-4">
+						<nav className="p-4 pb-0">
 							<ul className="space-y-1">
 								{navItems.map((item, index) => (
 									<li
@@ -231,7 +236,7 @@ export function Header({ navMenu, logo }) {
 											"rounded-xl overflow-hidden",
 											activeMobileItem === item.label ? "bg-gray-50" : ""
 										)}
-										style={{ transitionDelay: `${index * 0.05}s` }} // Staggered animation with CSS delay
+										style={{ transitionDelay: `${index * 0.05}s` }}
 									>
 										{item.items ? (
 											<div>
@@ -258,7 +263,7 @@ export function Header({ navMenu, logo }) {
 													className={cn(
 														"bg-gray-50 transition-max-height-opacity duration-300 overflow-hidden",
 														activeMobileItem === item.label ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-													)} // max-h-96 is an example, adjust as needed
+													)}
 													style={{ willChange: "max-height, opacity" }}
 												>
 													{item.items.map((subItem, subIndex) => (
@@ -304,7 +309,7 @@ export function Header({ navMenu, logo }) {
 					{/* Contact and CTA section */}
 					<div
 						className={cn(
-							"relative h-full mt-auto transition-opacity transform duration-300 opacity-0",
+							"relative mt-auto transition-opacity transform duration-300 opacity-0",
 							isMobileMenuOpen ? "opacity-100 delay-150" : ""
 						)}
 					>
