@@ -238,8 +238,13 @@ export function Header({ navMenu, logo }) {
 													{item.items.map((subItem, subIndex) => (
 														<li
 															key={subItem.label}
-															style={{ transitionDelay: `${0.1 + subIndex * 0.03}s` }}
-															className="transition-transform opacity-0 translate-x-[-10px] submenu-item"
+															style={{
+																transitionDelay: `${0.1 + subIndex * 0.03}s`,
+																opacity: activeMobileItem === item.label ? 1 : 0,
+																transform:
+																	activeMobileItem === item.label ? "translateX(0)" : "translateX(-10px)",
+																transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
+															}}
 														>
 															<Link
 																href={subItem.href}
@@ -247,7 +252,7 @@ export function Header({ navMenu, logo }) {
 																onClick={toggleMobileMenu} // Close menu on subitem click
 															>
 																<span className="text-[#800000]">{subItem.icon}</span>
-																<span className="">{subItem.label}</span>
+																<span>{subItem.label}</span>
 															</Link>
 														</li>
 													))}
