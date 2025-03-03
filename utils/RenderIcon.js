@@ -17,7 +17,7 @@ export const IconComponent = ({ key, icon, href, customClassName }) => {
 					}
 				}),
 			{
-				loading: () => <span>Loading...</span>,
+				loading: () => <span></span>,
 			}
 		);
 	}
