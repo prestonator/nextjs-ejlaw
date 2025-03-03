@@ -3,27 +3,28 @@
 import { useState, useEffect } from "react";
 import { SafeImage } from "@/utils/helperFunctions";
 import Link from "next/link";
-import {
-	ChevronDown,
-	Menu,
-	X,
-	ChevronRight,
-	Phone,
-	Mail,
-	MapPin,
-	FileText,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, Phone, Mail, MapPin } from "lucide-react";
 import { cn } from "@/utils";
+import { IconComponent } from "@/utils/RenderIcon"; // Import the IconComponent
+import { MyCaseIcon } from "@/utils/CustomIcon";
 
 function MobileMenuToggleButton({ isOpen, toggleMenu, customColor }) {
-	const color = customColor ? customColor : "#800000";
+	const colorClass = customColor ? customColor : "text-[#800000]"; // Use a class for color
 	return (
 		<button
 			onClick={toggleMenu}
-			className={`flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 ${color} transition-colors hover:bg-gray-200`}
+			className={`flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 ${colorClass} transition-colors hover:bg-gray-200`}
 			aria-label={isOpen ? "Close main menu" : "Open main menu"}
 		>
-			{isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+			{isOpen
+				? IconComponent({
+						icon: "LuX",
+						customClassName: "h-5 w-5",
+				  })
+				: IconComponent({
+						icon: "LuMenu",
+						customClassName: "h-5 w-5",
+				  })}
 		</button>
 	);
 }
@@ -81,20 +82,8 @@ export function Header({ navMenu, logo }) {
 
 	const menuItems =
 		navMenu?.menuItems.filter((item) => item.item !== "Logo") || [];
-
-	const navItems = menuItems.map((item) => ({
-		label: item.item,
-		href: item.slug,
-		icon: <FileText className="h-5 w-5" />,
-		items: item.children
-			? item.children.map((child) => ({
-					label: child.item,
-					href: child.slug,
-					icon: <FileText className="h-4 w-4" />,
-			  }))
-			: undefined,
-	}));
-
+		
+	// No need to pre-map, we can handle the icons dynamically.
 	const leftItems = menuItems.slice(0, 4);
 	const rightItems = menuItems.slice(4);
 
@@ -173,7 +162,6 @@ export function Header({ navMenu, logo }) {
 						))}
 					</div>
 					<div className="md:hidden">
-						{/* **USE THE NEW COMPONENT HERE** */}
 						<MobileMenuToggleButton
 							isOpen={isMobileMenuOpen}
 							toggleMenu={toggleMobileMenu}
@@ -209,7 +197,6 @@ export function Header({ navMenu, logo }) {
 								{SafeImage(logo.data, "object-contain", "calc(12.24vw + 71px)", "eager")}
 							</Link>
 						</div>
-						{/* **USE THE NEW COMPONENT HERE, WITH CUSTOM COLOR** */}
 						<MobileMenuToggleButton
 							isOpen={isMobileMenuOpen}
 							toggleMenu={toggleMobileMenu}
@@ -229,32 +216,36 @@ export function Header({ navMenu, logo }) {
 						<div className="basis-[50vh] overflow-y-auto">
 							<nav className="p-4 pb-0">
 								<ul className="space-y-1">
-									{navItems.map((item, index) => (
+									{menuItems.map((item, index) => (
 										<li
-											key={item.label}
+											key={item.item}
 											className={cn(
 												"rounded-xl overflow-hidden",
 												activeMobileItem === item.label ? "bg-gray-50" : ""
 											)}
 											style={{ transitionDelay: `${index * 0.05}s` }}
 										>
-											{item.items ? (
+											{item.children ? (
 												<div>
 													<button
-														onClick={() => toggleMobileSubMenu(item.label)}
-														className="flex w-full items-center justify-between p-4 text-lg font-cormorant"
-														aria-expanded={activeMobileItem === item.label ? "true" : "false"}
+														onClick={() => toggleMobileSubMenu(item.item)}
+														className="flex w-full items-center justify-between p-4 text-lg font-fancy font-semibold"
+														aria-expanded={activeMobileItem === item.item ? "true" : "false"}
 													>
 														<div className="flex items-center gap-3">
 															<div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#800000]">
-																{item.icon}
+																{/* Use IconComponent here */}
+																{IconComponent({
+																	icon: item.mobileIcon,
+																	customClassName: "h-5 w-5",
+																})}
 															</div>
-															<span className="">{item.label}</span>
+															<span className="">{item.item}</span>
 														</div>
 														<ChevronRight
 															className={cn(
 																"h-5 w-5 text-[#800000] transition-transform duration-200",
-																activeMobileItem === item.label ? "rotate-90" : ""
+																activeMobileItem === item.item ? "rotate-90" : ""
 															)}
 														/>
 													</button>
@@ -262,28 +253,34 @@ export function Header({ navMenu, logo }) {
 													<ul
 														className={cn(
 															"bg-gray-50 transition-max-height-opacity duration-300 overflow-hidden",
-															activeMobileItem === item.label ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+															activeMobileItem === item.item ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
 														)}
 														style={{ willChange: "max-height, opacity" }}
 													>
-														{item.items.map((subItem, subIndex) => (
+														{item.children.map((subItem, subIndex) => (
 															<li
-																key={subItem.label}
+																key={subItem.item}
 																style={{
 																	transitionDelay: `${0.1 + subIndex * 0.03}s`,
-																	opacity: activeMobileItem === item.label ? 1 : 0,
+																	opacity: activeMobileItem === item.item ? 1 : 0,
 																	transform:
-																		activeMobileItem === item.label ? "translateX(0)" : "translateX(-10px)",
+																		activeMobileItem === item.item ? "translateX(0)" : "translateX(-10px)",
 																	transition: "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
 																}}
 															>
 																<Link
-																	href={subItem.href}
-																	className="flex items-center gap-3 py-3 pl-16 pr-4 text-gray-700 hover:text-[#800000] font-cormorant"
+																	href={subItem.slug}
+																	className="flex items-center gap-3 py-3 pl-16 pr-4 text-gray-700 hover:text-[#800000] font-fancy font-semibold"
 																	onClick={toggleMobileMenu}
 																>
-																	<span className="text-[#800000]">{subItem.icon}</span>
-																	<span>{subItem.label}</span>
+																	<span className="text-[#800000]">
+																		{/* Use IconComponent for submenu items */}
+																		{IconComponent({
+																			icon: subItem.mobileIcon,
+																			customClassName: "h-4 w-4",
+																		})}
+																	</span>
+																	<span>{subItem.item}</span>
 																</Link>
 															</li>
 														))}
@@ -291,14 +288,22 @@ export function Header({ navMenu, logo }) {
 												</div>
 											) : (
 												<Link
-													href={item.href}
-													className="flex items-center gap-3 p-4 text-lg font-cormorant hover:text-[#800000]"
+													href={item.slug}
+													className="flex items-center gap-3 p-4 text-lg font-fancy font-semibold hover:text-[#800000]"
 													onClick={toggleMobileMenu}
 												>
 													<div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-[#800000]">
-														{item.icon}
+														{/* Use IconComponent here */}
+														{item.item === "MyCase" ? (
+															<MyCaseIcon />
+														) : (
+															IconComponent({
+																icon: item.mobileIcon,
+																customClassName: "h-5 w-5",
+															})
+														)}
 													</div>
-													<span className="">{item.label}</span>
+													<span className="">{item.item}</span>
 												</Link>
 											)}
 										</li>
@@ -336,7 +341,7 @@ export function Header({ navMenu, logo }) {
 											<span className="text-xs uppercase tracking-wider text-[#800000]">
 												Start Your Journey to Justice
 											</span>
-											<span className="text-lg font-cormorant">Schedule Your Case Evaluation</span>
+											<span className="text-lg font-fancy font-semibold">Schedule Your Case Evaluation</span>
 										</div>
 									</Link>
 								</div>
@@ -357,7 +362,7 @@ export function Header({ navMenu, logo }) {
 											className="group flex items-center gap-2 rounded-md bg-white/80 px-3 py-2 text-center shadow-sm transition-all hover:shadow-md"
 										>
 											<Phone className="h-4 w-4 text-[#800000] transition-transform group-hover:scale-110" />
-											<span className="text-base font-cormorant">(404) 217-2623</span>
+											<span className="text-base font-fancy font-semibold">(404) 217-2623</span>
 										</Link>
 
 										<Link
@@ -365,7 +370,7 @@ export function Header({ navMenu, logo }) {
 											className="group flex items-center gap-2 rounded-md bg-white/80 px-3 py-2 shadow-sm transition-all hover:shadow-md overflow-hidden"
 										>
 											<Mail className="h-4 w-4 flex-shrink-0 text-[#800000] transition-transform group-hover:scale-110" />
-											<span className="text-base font-cormorant truncate">
+											<span className="text-base font-fancy font-semibold truncate">
 												elton@eltonjenkinslaw.com
 											</span>
 										</Link>
@@ -379,7 +384,7 @@ export function Header({ navMenu, logo }) {
 										className="group flex items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:text-[#800000]"
 									>
 										<MapPin className="h-4 w-4 flex-shrink-0 text-[#800000] transition-transform group-hover:scale-110" />
-										<div className="flex items-center gap-1 font-cormorant text-base">
+										<div className="flex items-center gap-1 font-fancy font-semibold text-base">
 											<span>124 E Main Street,</span>
 											<span className="text-gray-600">Norman, OK 73069</span>
 										</div>
@@ -388,7 +393,7 @@ export function Header({ navMenu, logo }) {
 									{/* Social Proof - More compact */}
 									<div className="flex items-center justify-center gap-2 text-center text-xs text-gray-500">
 										<span>⭑⭑⭑⭑⭑</span>
-										<span className="font-cormorant italic">Serving Oklahoma Since 1995</span>
+										<span className="font-fancy font-semibold italic">Serving Oklahoma Since 1995</span>
 									</div>
 								</div>
 							</div>
