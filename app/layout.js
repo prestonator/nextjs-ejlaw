@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import "./globals.css";
 import { fetchData } from "@/lib/fetchData";
 import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
-import FloatingButton from "@/components/ContactForm/FloatingButton";
+//import FloatingButton from "@/components/ContactForm/FloatingButton";
 //import Nav from "@/components/Navigation/Nav";
 //import NavbarClient from "@/components/Navigation/NavClient";
 import { Header } from "@/dev_code/header";
@@ -50,7 +50,6 @@ export default async function RootLayout({ children }) {
         <Header navMenu={navMenu} logo={logo} />
         {children}
         <Footer footer={footer} />
-        <FloatingButton />
         <SpeedInsights />
       </body>
       <GoogleTagManager gtmId="GTM-M36SJ6FT" />
