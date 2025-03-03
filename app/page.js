@@ -66,7 +66,7 @@ const Home = async () => {
       <JsonLd jsonLd={meta?.jsonLD} />
       {/* Hero section */}
       <section
-        className={`${styles.hero} pt-[var(--size-25)] items-center flex justify-center relative gap-[var(--size-7-5)]`}
+        className={`${styles.hero} pt-[var(--size-30)] items-center flex justify-center relative gap-[var(--size-7-5)]`}
       >
         <div
           className={`${styles.textContent} items-center flex flex-col text-center`}

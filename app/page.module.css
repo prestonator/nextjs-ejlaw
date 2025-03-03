@@ -1,6 +1,6 @@
 /* page.module.css */
 
-@custom-media --medium-viewport (max-width: 500px);
+@custom-media --medium-viewport (max-width: 600px);
 
 .hero .textContent p {
   color: var(--color-accent);
