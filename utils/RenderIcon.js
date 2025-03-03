@@ -18,7 +18,6 @@ export const IconComponent = ({ key, icon, href, customClassName }) => {
 				}),
 			{
 				loading: () => <span>Loading...</span>,
-				ssr: false, // Disable SSR for icons (important!)
 			}
 		);
 	}
