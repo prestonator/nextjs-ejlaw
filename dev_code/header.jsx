@@ -106,7 +106,7 @@ export function Header({ navMenu, logo }) {
 				!isVisible && "-translate-y-full"
 			)}
 		>
-			<div className="border-b">
+			<div className="border-b hidden md:block">
 				<div className="container mx-auto px-4">
 					<div className="py-2 text-center text-sm">
 						<a
@@ -119,7 +119,7 @@ export function Header({ navMenu, logo }) {
 					</div>
 				</div>
 			</div>
-			<nav className="mx-auto px-4">
+			<nav className="mx-auto px-4 hidden md:block">
 				<div className="flex justify-between items-center py-1 md:py-4">
 					<div className="hidden md:flex md:flex-1 md:items-center md:justify-evenly md:gap-2">
 						{leftItems.map((item) => (
@@ -184,48 +184,51 @@ export function Header({ navMenu, logo }) {
 			</nav>
 
 			{/* Mobile menu - Fullscreen */}
+			<div className="top-0 left-0 right-0 z-100 bg-white shadow-md md:hidden">
+				<div className="border-b">
+					<div className="container mx-auto px-4">
+						<div className="py-2 text-center text-sm">
+							<a
+								href="https://elton-jenkins-attorney-at-law.mycase.com/paypage/DNMiVDCbKLCJvWyCSiPEe3FA"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Notice: Visit our payment page to settle your invoices online.
+							</a>
+						</div>
+					</div>
+				</div>
+
+				{/* Logo and close button */}
+				<div className="flex items-center justify-between px-4 py-2">
+					<div className="flex-shrink-0">
+						<Link
+							href="/"
+							className="relative flex h-16 w-[40vw]"
+							onClick={toggleMobileMenu}
+						>
+							{SafeImage(logo.data, "object-contain", "calc(12.24vw + 71px)", "eager")}
+						</Link>
+					</div>
+					{/* **USE THE NEW COMPONENT HERE, WITH CUSTOM COLOR** */}
+					<MobileMenuToggleButton
+						isOpen={isMobileMenuOpen}
+						toggleMenu={toggleMobileMenu}
+						customColor="text-[#800000]"
+					/>
+				</div>
+			</div>
+			
+			{/* Mobile menu - Overlay */}
 			<div
 				className={cn(
 					"fixed inset-0 z-30 bg-white overflow-hidden transition-opacity duration-300 md:hidden",
 					isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
 				)}
 			>
-				<div className="sticky top-0 left-0 right-0 z-50 bg-white shadow-md">
-					<div className="border-b">
-						<div className="container mx-auto px-4">
-							<div className="py-2 text-center text-sm">
-								<a
-									href="https://elton-jenkins-attorney-at-law.mycase.com/paypage/DNMiVDCbKLCJvWyCSiPEe3FA"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Notice: Visit our payment page to settle your invoices online.
-								</a>
-							</div>
-						</div>
-					</div>
-
-					{/* Logo and close button */}
-					<div className="flex items-center justify-between px-4 py-2">
-						<div className="flex-shrink-0">
-							<Link
-								href="/"
-								className="relative flex h-16 w-[15vw]"
-								onClick={toggleMobileMenu}
-							>
-								{SafeImage(logo.data, "object-contain", "calc(12.24vw + 71px)", "eager")}
-							</Link>
-						</div>
-						{/* **USE THE NEW COMPONENT HERE, WITH CUSTOM COLOR** */}
-						<MobileMenuToggleButton
-							isOpen={isMobileMenuOpen}
-							toggleMenu={toggleMobileMenu}
-							customColor="text-[#800000]"
-						/>
-					</div>
-				</div>
-
-				<div className="relative h-full flex flex-col">
+				<div
+					className="relative h-full flex flex-col"
+				>
 					<div className="overflow-y-auto">
 						<nav className="p-4 pb-0">
 							<ul className="space-y-1">
