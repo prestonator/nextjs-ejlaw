@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/utils";
 
-// **NEW COMPONENT: MobileMenuToggleButton**
 function MobileMenuToggleButton({ isOpen, toggleMenu, customColor }) {
 	const color = customColor ? customColor : "#800000";
 	return (
