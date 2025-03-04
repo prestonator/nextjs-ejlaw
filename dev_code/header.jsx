@@ -17,7 +17,7 @@ function MobileMenuToggleButton({ isOpen, toggleMenu, customColor }) {
 	return (
 		<button
 			onClick={toggleMenu}
-			className={`flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 ${colorClass} transition-colors hover:bg-gray-200`}
+			className={`flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 ${colorClass} transition-colors cursor-pointer hover:bg-gray-200`}
 			aria-label={isOpen ? "Close main menu" : "Open main menu"}
 		>
 			{IconComponent({
@@ -112,7 +112,7 @@ function MobileMenuItem({
 				<div>
 					<button
 						onClick={() => toggleMobileSubMenu(item.item)}
-						className="flex w-full items-center justify-between p-4 text-lg font-fancy font-semibold"
+						className="cursor-pointer flex w-full items-center justify-between p-4 text-lg font-fancy font-semibold"
 						aria-expanded={activeMobileItem === item.item ? "true" : "false"}
 					>
 						<div className="flex items-center gap-3">
@@ -355,9 +355,10 @@ export function Header({ navMenu, logo }) {
 						isMobileMenuOpen ? "opacity-100" : "hidden opacity-0 pointer-events-none"
 					)}
 				>
-					<div className="relative h-full flex flex-col">
-						{/* Mobile Navigation */}
-						<div className="basis-[50vh] overflow-y-auto">
+					<div className="relative h-[90vh] justify-around flex flex-col">
+						{/* Mobile Navigation - Item 1: Shrinks and Scrolls */}
+						<div className="flex-1 overflow-y-auto max-h-[65vh] h-full">
+							{/* Added flex-1 and overflow-y-auto */}
 							<nav className="p-4 pb-0">
 								<ul className="space-y-1">
 									{menuItems.map((item, index) => (
@@ -372,27 +373,17 @@ export function Header({ navMenu, logo }) {
 								</ul>
 							</nav>
 						</div>
-						{/* Contact and CTA section */}
+						{/* Contact and CTA section - Item 2: Fixed Height */}
 						<div
 							className={cn(
-								"relative basis-[40vh] mt-auto transition-opacity transform duration-300 opacity-0",
+								"relative flex-shrink-0 content-start transition-opacity transform duration-300 opacity-0 max-h-[]", // Added flex-shrink-0 and h-fit
 								isMobileMenuOpen ? "opacity-100 delay-150" : ""
 							)}
 						>
-							{/* Decorative top border */}
-							<div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-
 							{/* Main content container */}
-							<div className="p-2 bg-gradient-to-b from-white/50 to-gray-50/50 backdrop-blur-md">
+							<div className="px-4 pb-4 bg-gradient-to-b from-white/50 to-gray-50/50 backdrop-blur-md">
 								{/* Primary CTA */}
-								<div
-									className="mb-4 transition-transform duration-200 scale-95 opacity-0"
-									style={{
-										transitionDelay: isMobileMenuOpen ? "0.4s" : "0s",
-										transform: isMobileMenuOpen ? "scale(1)" : "scale(0.95)",
-										opacity: isMobileMenuOpen ? "1" : "0",
-									}}
-								>
+								<div className="mb-2">
 									<Link
 										href="/contact"
 										onClick={toggleMobileMenu}
@@ -410,14 +401,7 @@ export function Header({ navMenu, logo }) {
 								</div>
 
 								{/* Contact Information Grid */}
-								<div
-									className="grid gap-3 opacity-0 translate-y-5 transition-opacity transform duration-300"
-									style={{
-										transitionDelay: isMobileMenuOpen ? "0.5s" : "0s",
-										transform: isMobileMenuOpen ? "translateY(0)" : "translateY(5px)",
-										opacity: isMobileMenuOpen ? "1" : "0",
-									}}
-								>
+								<div className="grid gap-1">
 									{/* Phone and Email row */}
 									<div className="grid grid-cols-2 gap-2">
 										<Link
@@ -452,7 +436,7 @@ export function Header({ navMenu, logo }) {
 										href="https://maps.google.com/?q=124+E+Main+Street,+Norman,+OK+73069"
 										target="_blank"
 										rel="noopener noreferrer"
-										className="group flex items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:text-[#800000]"
+										className="group flex justify-center items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:text-[#800000]"
 									>
 										{IconComponent({
 											icon: "LuMapPin",
@@ -466,10 +450,9 @@ export function Header({ navMenu, logo }) {
 									</Link>
 
 									{/* Social Proof */}
-									<div className="flex items-center justify-center gap-2 text-center text-xs text-gray-500">
-										<span>⭑⭑⭑⭑⭑</span>
+									<div className="flex items-center justify-center text-center text-xs text-gray-500">
 										<span className="font-fancy font-semibold italic">
-											Serving Oklahoma Since 1995
+											Serving Oklahoma Since 1999
 										</span>
 									</div>
 								</div>
