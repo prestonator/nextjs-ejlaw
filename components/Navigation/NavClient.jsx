@@ -4,7 +4,6 @@ import styles from "./Nav.module.css";
 
 const NavbarClient = ({ children }) => {
   const isVisible = useHeaderVisibility(200);
-
   return (
     <header
       className={`${styles.header} ${

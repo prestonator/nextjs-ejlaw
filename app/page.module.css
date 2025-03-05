@@ -1,6 +1,6 @@
 /* page.module.css */
 
-@custom-media --medium-viewport (max-width: 500px);
+@custom-media --medium-viewport (max-width: 600px);
 
 .hero .textContent p {
   color: var(--color-accent);
@@ -41,6 +41,8 @@
 
 .staff {
   border-bottom: 0.15rem solid var(--color-light-gray);
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .whyChoose {
@@ -52,9 +54,6 @@
   gap: var(--size-5);
 }
 
-.heading {
-  transform: translateY(calc(-1 * var(--size-5)));
-}
 
 .heading h3 {
   font: 500 var(--size-5) var(--font-fancy);
