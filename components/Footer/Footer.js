@@ -55,7 +55,7 @@ export default async function Footer({ footer }) {
 							/>
 						</div>
 						<div className={`${styles.row} ${styles.copyRightWrapper}`}>
-							Copyright ©2023 | All Rights Reserved
+							Copyright ©{new Date().getFullYear()} | All Rights Reserved
 						</div>
 					</div>
 				</div>
