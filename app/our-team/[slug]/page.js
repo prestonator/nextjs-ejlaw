@@ -7,14 +7,14 @@ import {
 } from "@/utils/helperFunctions";
 import styles from "./OurTeam.module.css";
 import { fetchData } from "@/lib/fetchData";
-import { OurTeamsBySlug } from "@/queries/ourTeamBySlug.graphql";
-import { OurTeams } from "@/queries/ourTeam.graphql";
+import OurTeamsBySlug from "@/queries/ourTeamBySlug.graphql";
+import OurTeams from "@/queries/ourTeam.graphql";
 import TabContainer from "./TabContainer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const getPage = async (slug) => {
 	try {
-		const { data } = await fetchData(OurTeams.loc.source.body, {
+		const { data } = await fetchData(OurTeams, {
 			filters: {
 				slug: {
 					eq: slug,
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-	const { data } = await fetchData(OurTeamsBySlug.loc.source.body);
+	const { data } = await fetchData(OurTeamsBySlug);
 	const OurTeamPageData = data?.ourTeams?.data ?? [];
 	return OurTeamPageData.map((page) => ({
 		slug: page.attributes.slug,

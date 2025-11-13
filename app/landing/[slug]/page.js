@@ -3,8 +3,8 @@ import {
 	SafeImageAlt,
 } from "@/utils/helperFunctions";
 import { fetchData } from "@/lib/fetchData";
-import { LandingPagesBySlug } from "@/queries/landingPageBySlug.graphql";
-import { LandingPageData } from "@/queries/landingPageData.graphql";
+import LandingPagesBySlug from "@/queries/landingPageBySlug.graphql";
+import LandingPageData from "@/queries/landingPageData.graphql";
 import LandingHero from "./sections/LandingHero";
 import SectionOne from "./sections/SectionOne";
 import SectionTwo from "./sections/SectionTwo";
@@ -15,7 +15,7 @@ import ContactUsSection from "./sections/ContactUsSection";
 
 const getPage = async (slug) => {
 	try {
-		const { data } = await fetchData(LandingPageData.loc.source.body, {
+		const { data } = await fetchData(LandingPageData, {
 			filters: {
 				slug: {
 					eq: slug,
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }) {
 
 
 export async function generateStaticParams() {
-	const { data } = await fetchData(LandingPagesBySlug.loc.source.body);
+	const { data } = await fetchData(LandingPagesBySlug);
 	const LandingData = data?.landingPages?.data ?? [];
 	return LandingData.map((page) => ({
 		slug: page.attributes.slug,

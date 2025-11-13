@@ -10,12 +10,12 @@ import JsonLd from "@/components/Seo/jsonLD";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
-import { PostBySlug } from "@/queries/postBySlug.graphql";
-import { PostData } from "@/queries/allPosts.graphql";
+import PostBySlug from "@/queries/postBySlug.graphql";
+import PostData from "@/queries/allPosts.graphql";
 
 const getPage = async (postSlug, slug) => {
 	try {
-		const { data } = await fetchData(PostData.loc.source.body, {
+		const { data } = await fetchData(PostData, {
 			filters: {
 				slug: {
 					endsWith: postSlug,
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }) {
 
 
 export async function generateStaticParams() {
-	const { data } = await fetchData(PostBySlug.loc.source.body);
+	const { data } = await fetchData(PostBySlug);
 	const NewsBlogPostData = data?.newsBlogPosts?.data ?? [];
 	return NewsBlogPostData.map((page) => ({
 		slug: page.attributes.news_blog_page.data.attributes.slug,

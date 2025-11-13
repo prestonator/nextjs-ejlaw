@@ -8,7 +8,7 @@ import {
 import JsonLd from "@/components/Seo/jsonLD";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
-import { HomeQuery } from "@/queries/home.graphql";
+import HomeQuery from "@/queries/home.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 const StaffPreview = dynamic(() =>
 	import("@/components/StaffPreview/staffPreview")
@@ -18,7 +18,7 @@ const ServiceCard = dynamic(() =>
 );
 
 const getData = async () => {
-	const { data } = await fetchData(HomeQuery.loc.source.body);
+  const { data } = await fetchData(HomeQuery);
 	return data?.home?.data?.attributes;
 };
 

@@ -6,12 +6,12 @@ import {
 import BlogCard from "@/components/Cards/BlogCard/BlogCard";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
-import { NewsBlogBySlug } from "@/queries/postPageBySlug.graphql";
-import { NewsBlogPages } from "@/queries/postpage.graphql";
+import NewsBlogBySlug from "@/queries/postPageBySlug.graphql";
+import NewsBlogPages from "@/queries/postpage.graphql";
 
 const getPage = async (slug) => {
 	try {
-		const { data } = await fetchData(NewsBlogPages.loc.source.body, {
+		const { data } = await fetchData(NewsBlogPages, {
 			filters: {
 				slug: {
 					eq: "blog",
@@ -55,7 +55,7 @@ export async function generateMetadata() {
 }
 
 export async function generateStaticParams() {
-	const { data } = await fetchData(NewsBlogBySlug.loc.source.body);
+	const { data } = await fetchData(NewsBlogBySlug);
 	const NewsBlogPageData = data?.newsBlogPages?.data ?? [];
 	return NewsBlogPageData.map((page) => ({
 		slug: page.attributes.slug,

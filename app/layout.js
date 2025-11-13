@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import "./globals.css";
 import { fetchData } from "@/lib/fetchData";
-import { RootLayoutQuery } from "@/queries/rootLayout.graphql";
+import RootLayoutQuery from "@/queries/rootLayout.graphql";
 //import FloatingButton from "@/components/ContactForm/FloatingButton";
 //import Nav from "@/components/Navigation/Nav";
 //import NavbarClient from "@/components/Navigation/NavClient";
@@ -14,7 +14,7 @@ const Footer = dynamic(() => import("@/components/Footer/Footer"));
 
 const getData = async () => {
   try {
-    const { data } = await fetchData(RootLayoutQuery.loc.source.body);
+    const { data } = await fetchData(RootLayoutQuery);
     return data?.rootLayout?.data?.attributes || [];
   } catch (error) {
     console.error("Error fetching data:", error);

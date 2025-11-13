@@ -6,13 +6,13 @@ import {
 } from "@/utils/helperFunctions";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
-import { ContactPageQuery } from "@/queries/contact.graphql";
+import ContactPageQuery from "@/queries/contact.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 import Map from "@/components/MapPreview/Map";
 import CaseEvaluationForm from "@/components/CaseEvaluationForm/CaseEvaluationForm";
 
 const getData = async () => {
-	const { data } = await fetchData(ContactPageQuery.loc.source.body);
+	const { data } = await fetchData(ContactPageQuery);
 	return data?.contact?.data?.attributes;
 };
 

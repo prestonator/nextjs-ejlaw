@@ -7,13 +7,13 @@ import {
 } from "@/utils/helperFunctions";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
-import { AboutQuery } from "@/queries/about.graphql";
+import AboutQuery from "@/queries/about.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 const IconCard = dynamic(() => import("@/components/Cards/IconCard/IconCard"));
 const TextCard = dynamic(() => import("@/components/Cards/TextCard/TextCard"));
 
 const getData = async () => {
-	const { data } = await fetchData(AboutQuery.loc.source.body);
+	const { data } = await fetchData(AboutQuery);
 	return data?.aboutPage?.data?.attributes;
 };
 

@@ -8,11 +8,11 @@ import {
 import Link from "next/link";
 import styles from "./page.module.css";
 import { fetchData } from "@/lib/fetchData";
-import { MyCaseQuery } from "@/queries/mycase.graphql";
+import MyCaseQuery from "@/queries/mycase.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 
 const getData = async () => {
-	const { data } = await fetchData(MyCaseQuery.loc.source.body);
+	const { data } = await fetchData(MyCaseQuery);
 	return data?.mycase?.data?.attributes;
 };
 
