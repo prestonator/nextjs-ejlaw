@@ -1,0 +1,16 @@
+query PracticeAreasWithSubSlugs {
+  mainPracticeAreas {
+    data {
+      attributes {
+        slug
+        sub_practice_areas {
+          data {
+            attributes {
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+}
