@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 import {
-	SafeImage,
-	SafeHtml,
-	SafeImageUrl,
-	SafeImageAlt,
+  SafeImage,
+  SafeHtml,
+  SafeImageUrl,
+  SafeImageAlt,
 } from "@/utils/helperFunctions";
 import JsonLd from "@/components/Seo/jsonLD";
 import styles from "./page.module.css";
@@ -11,57 +11,57 @@ import { fetchData } from "@/lib/fetchData";
 import HomeQuery from "@/queries/home.graphql";
 import Button from "@/components/Buttons/MainButton/Button";
 const StaffPreview = dynamic(() =>
-	import("@/components/StaffPreview/staffPreview")
+  import("@/components/StaffPreview/staffPreview")
 );
 const ServiceCard = dynamic(() =>
-	import("@/components/Cards/ServiceCard/ServiceCard")
+  import("@/components/Cards/ServiceCard/ServiceCard")
 );
 
 const getData = async () => {
   const { data } = await fetchData(HomeQuery);
-	return data?.home?.data?.attributes;
+  return data?.home?.data?.attributes;
 };
 
 export async function generateMetadata() {
-	const { meta } = await getData();
-	return {
-		title: meta?.metaTitle || "Home | Elton Jenkins Law, P.L.L.C.",
-		description: meta?.metaDescription || "",
-		alternates: {
-			canonical: meta?.canonical || "",
-		},
-		openGraph: {
-			title: meta?.ogTitle || "",
-			description: meta?.ogDescription || "",
-			url: meta?.ogUrl || "",
-			type: meta?.ogType || "",
-			images: [
-				{
-					url: SafeImageUrl(meta?.ogImage?.data),
-					width: 1200,
-					height: 630,
-					alt: SafeImageAlt(meta?.ogImage?.data),
-				},
-			],
-		},
-		twitter: {
-			card: meta?.twitterCard || "",
-		},
-	};
+  const { meta } = await getData();
+  return {
+    title: meta?.metaTitle || "Home | Elton Jenkins Law, P.L.L.C.",
+    description: meta?.metaDescription || "",
+    alternates: {
+      canonical: meta?.canonical || "",
+    },
+    openGraph: {
+      title: meta?.ogTitle || "",
+      description: meta?.ogDescription || "",
+      url: meta?.ogUrl || "",
+      type: meta?.ogType || "",
+      images: [
+        {
+          url: SafeImageUrl(meta?.ogImage?.data),
+          width: 1200,
+          height: 630,
+          alt: SafeImageAlt(meta?.ogImage?.data),
+        },
+      ],
+    },
+    twitter: {
+      card: meta?.twitterCard || "",
+    },
+  };
 }
 
 const Home = async () => {
-	const {
-		hero,
-		modal,
-		staffPreviewHeading,
-		staffPreview,
-		whyUsHeading,
-		whyUsCards,
-		meta,
-	} = await getData();
+  const {
+    hero,
+    modal,
+    staffPreviewHeading,
+    staffPreview,
+    whyUsHeading,
+    whyUsCards,
+    meta,
+  } = await getData();
 
-	return (
+  return (
     <main className={`min-h-screen ${styles.main}`}>
       <JsonLd jsonLd={meta?.jsonLD} />
       {/* Hero section */}
