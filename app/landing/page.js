@@ -32,19 +32,16 @@ export default function LandingPage() {
 		<div className="flex flex-col min-h-screen font-body">
 			{/* HERO SECTION */}
 			<section className="relative bg-gray-900 text-white animate-fadeIn">
-				{/* Suggestion: Change this Unsplash URL to a courtroom, gavel, or police lights background */}
-				<div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20"></div>
-				<div className="relative mx-auto max-w-[theme(screens.xl)] px-4 pb-16 pt-48 sm:px-6 md:flex md:items-center md:px-8">
-					<div className="md:flex md:items-center md:justify-evenly w-full">
-						<div className="max-w-xl mx-auto md:mx-0">
-							<h1 className="font-fancy text-3xl font-extrabold sm:text-5xl md:text-6xl animate-slideRight">
-								Aggressive DUI & Criminal Defense
-								<strong className="block font-extrabold text-[#edbb5f] mt-2">
-									in Norman, OK
-								</strong>
+				{/* Courtroom / serious trial background image */}
+				<div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-30"></div>
+				<div className="relative mx-auto max-w-[theme(screens.xl)] px-4 pb-16 pt-36 md:pt-48 sm:px-6">
+					<div className="flex flex-col md:flex-row md:items-center md:justify-between w-full gap-8 md:gap-12">
+						<div className="max-w-xl mx-auto md:mx-0 text-center md:text-left flex-1">
+							<h1 className="font-fancy text-4xl sm:text-5xl md:text-6xl font-extrabold animate-slideRight leading-tight">
+								Oklahoma&apos;s Toughest Defense for Serious Crimes
 							</h1>
-							<p className="mt-4 max-w-lg text-xl sm:text-2xl animate-slideRight">
-								Protect your freedom and future. 25+ Years of Experience & Former OIDS Public Defender.
+							<p className="mt-4 max-w-lg mx-auto md:mx-0 text-lg sm:text-xl md:text-2xl animate-slideRight text-gray-200">
+								Murder, Manslaughter, & High-Stakes Felonies. 25+ Years of Experience & Former OIDS Public Defender.
 							</p>
 
 							<div className="mt-8 flex flex-wrap gap-4 animate-slideRight">
@@ -76,7 +73,7 @@ export default function LandingPage() {
 
 						{/* FORM ABOVE THE FOLD - CRITICAL FOR ADS */}
 						<div
-							className="mt-8 mx-auto md:mx-0 w-3/4 md:mt-0 md:w-1/2 md:max-w-md animate-scaleIn"
+							className="mt-10 mx-auto md:mx-0 w-full sm:w-3/4 md:w-1/2 md:max-w-md animate-scaleIn flex-shrink-0"
 							id="contact-form"
 						>
 							<CaseEvaluationForm />
@@ -94,69 +91,59 @@ export default function LandingPage() {
 					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
 						High-Stakes Criminal Defense Services
 					</h2>
-					<Tabs defaultValue="felony-dui" className="w-full">
-						<TabsList className="grid h-auto w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-							<TabsTrigger value="felony-dui" className="w-full font-special">
-								Felony DUI
+					<Tabs defaultValue="murder-manslaughter" className="w-full">
+						<TabsList className="grid h-auto w-full grid-cols-2 lg:grid-cols-5 gap-2">
+							<TabsTrigger value="murder-manslaughter" className="w-full font-special whitespace-normal h-auto py-2 text-xs sm:text-sm">
+								Murder & Manslaughter
 							</TabsTrigger>
-							<TabsTrigger value="aggravated-dui" className="w-full font-special">
-								Aggravated DUI
-							</TabsTrigger>
-							<TabsTrigger value="multiple-offenses" className="w-full font-special">
-								Repeat Offenses
-							</TabsTrigger>
-							<TabsTrigger value="dwi-defense" className="w-full font-special">
-								DWI Defense
-							</TabsTrigger>
-							<TabsTrigger value="violent-crimes" className="w-full font-special">
+							<TabsTrigger value="violent-crimes" className="w-full font-special whitespace-normal h-auto py-2 text-xs sm:text-sm">
 								Violent Crimes
 							</TabsTrigger>
-							<TabsTrigger value="drug-charges" className="w-full font-special">
-								Drug Charges
+							<TabsTrigger value="drug-trafficking" className="w-full font-special whitespace-normal h-auto py-2 text-xs sm:text-sm">
+								Drug Trafficking
+							</TabsTrigger>
+							<TabsTrigger value="felony-dui" className="w-full font-special whitespace-normal h-auto py-2 text-xs sm:text-sm">
+								Felony DUI
+							</TabsTrigger>
+							<TabsTrigger value="weapons-charges" className="w-full font-special whitespace-normal h-auto py-2 text-xs sm:text-sm">
+								Weapons Charges
 							</TabsTrigger>
 						</TabsList>
 						{[
 							{
-								value: "felony-dui",
-								icon: AlertTriangle,
-								title: "Felony DUI Defense",
+								value: "murder-manslaughter",
+								icon: Swords,
+								title: "Murder & Manslaughter",
 								description:
-									"Severe charges require severe defense. We protect clients facing prison time for felony-level DUIs.",
-							},
-							{
-								value: "aggravated-dui",
-								icon: BadgeAlert,
-								title: "Aggravated DUI",
-								description:
-									"BAC over 0.15% triggers enhanced penalties. We meticulously challenge testing procedures and evidence.",
-							},
-							{
-								value: "multiple-offenses",
-								icon: FileWarning,
-								title: "Multiple DUI Offenses",
-								description:
-									"Prior convictions dramatically increase the stakes. We aggressively fight to keep you out of jail and protect your license.",
-							},
-							{
-								value: "dwi-defense",
-								icon: Car,
-								title: "DWI & APC Defense",
-								description:
-									"Driving While Impaired or Actual Physical Control charges can still ruin your record. We fight for dismissals and reductions.",
+									"When your life is on the line, you need a defense that will scrutinize every piece of forensic and witness evidence.",
 							},
 							{
 								value: "violent-crimes",
-								icon: Swords,
-								title: "Violent Crimes",
+								icon: AlertTriangle,
+								title: "Assault & Violent Crimes",
 								description:
 									"Assault, battery, and other high-stakes violent crime charges handled with uncompromising courtroom advocacy.",
 							},
 							{
-								value: "drug-charges",
-								icon: Shield,
+								value: "drug-trafficking",
+								icon: FileWarning,
 								title: "Drug Trafficking & Distribution",
 								description:
 									"Defending against serious state-level drug charges. We expose illegal searches and constitutional rights violations.",
+							},
+							{
+								value: "felony-dui",
+								icon: Car,
+								title: "Felony & Aggravated DUI",
+								description:
+									"Severe charges require severe defense. We protect clients facing prison time and enhanced penalties for high BAC or repeat offenses.",
+							},
+							{
+								value: "weapons-charges",
+								icon: Shield,
+								title: "Weapons Charges",
+								description:
+									"Possession of a firearm by a felon or using a weapon in the commission of a crime dramatically increases the stakes.",
 							},
 						].map((service) => (
 							<TabsContent key={service.value} value={service.value}>
@@ -204,10 +191,10 @@ export default function LandingPage() {
 					<div className="grid md:grid-cols-2 gap-12 items-center">
 						<div className="space-y-6">
 							<p className="text-lg text-gray-700 leading-relaxed">
-								At Elton Jenkins Law, PLLC, we handle high-stakes criminal defense. Period. We don&apos;t practice civil law, and we don&apos;t take federal cases. Our singular, uncompromising focus is defending your freedom against serious state charges in Oklahoma.
+								At Elton Jenkins Law, PLLC, we handle high-stakes criminal defense. Period. We don&apos;t practice civil law, and we don&apos;t take federal cases. Our singular, uncompromising focus is defending your freedom against the most serious state charges in Oklahoma.
 							</p>
 							<p className="text-lg text-gray-700 leading-relaxed">
-								With over 25 years of courtroom experience, including invaluable time spent as an OIDS Public Defender, Elton Jenkins knows the Oklahoma justice system from the inside out. We take on the toughest cases—Felony DUIs, Aggravated DUIs, and Violent Crimes—because we know exactly how to dismantle the prosecution&apos;s arguments.
+								With over 25 years of courtroom experience, including invaluable time spent as an OIDS Public Defender, Elton Jenkins knows the Oklahoma justice system from the inside out. We take on the toughest cases—Murder, Manslaughter, Drug Trafficking, and Violent Crimes—because we know exactly how to dismantle the prosecution&apos;s arguments.
 							</p>
 							<div className="flex items-center justify-center md:justify-start space-x-4 pt-4">
 								<Button variant="outline" className="rounded-full">
@@ -313,50 +300,27 @@ export default function LandingPage() {
 				<div className="absolute bottom-0 left-0 w-full h-1/2 bg-linear-to-t from-white to-transparent"></div>
 			</section>
 
-			{/* ATTORNEYS SECTION */}
+			{/* ATTORNEY SECTION */}
 			<section className="bg-white py-16 px-4 sm:px-6 lg:px-8 animate-slideUp">
-				<div className="max-w-6xl mx-auto">
+				<div className="max-w-4xl mx-auto">
 					<h2 className="font-fancy text-3xl font-bold text-center text-gray-900 mb-12">
-						Meet Your Defense Team
+						Meet Your Defense Attorney
 					</h2>
-					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-						{[
-							{
-								name: "Elton Jenkins",
-								role: "Founder & Lead Counsel",
-								bio: "With over 25 years of experience and a background as an OIDS Public Defender, Elton provides aggressive representation for high-stakes criminal and DUI charges.",
-							},
-							{
-								name: "Defense Team Member",
-								role: "Trial Attorney",
-								bio: "Dedicated to challenging prosecution evidence and fighting tirelessly for clients' constitutional rights in court.",
-							},
-							{
-								name: "Case Manager",
-								role: "Client Relations",
-								bio: "Ensuring you are informed and supported through every step of the stressful criminal justice process.",
-							},
-							{
-								name: "Legal Support",
-								role: "Defense Investigation",
-								bio: "Working to uncover inconsistencies in police reports and secure vital evidence for your defense.",
-							},
-						].map((attorney, index) => (
-							<div
-								key={index}
-								className="bg-gray-100 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 animate-scaleIn"
-							>
-								{/* Suggestion: Add an image tag here for actual attorney headshots */}
-								<div className="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
-								<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
-									{attorney.name}
+					<div className="bg-gray-100 rounded-lg shadow-lg p-8 sm:p-12 transition-all duration-300 hover:shadow-xl animate-scaleIn">
+						<div className="flex flex-col md:flex-row items-center gap-8">
+							<div className="w-48 h-48 bg-gray-300 rounded-full flex-shrink-0"></div>
+							<div className="text-center md:text-left">
+								<h3 className="font-fancy text-3xl font-bold text-gray-900 mb-2">
+									Elton Jenkins
 								</h3>
-								<p className="text-primary font-semibold mb-2">
-									{attorney.role}
+								<p className="text-primary text-xl font-semibold mb-4">
+									Founder & Lead Counsel
 								</p>
-								<p className="text-gray-600 text-sm">{attorney.bio}</p>
+								<p className="text-gray-700 text-lg leading-relaxed">
+									With over 25 years of courtroom experience and a background as an OIDS Public Defender, Elton provides aggressive, uncompromising representation for high-stakes criminal charges in Oklahoma. He personally handles every case, ensuring you receive dedicated, experienced counsel when your freedom is on the line.
+								</p>
 							</div>
-						))}
+						</div>
 					</div>
 				</div>
 			</section>
