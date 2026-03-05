@@ -14,21 +14,21 @@ const SectionFive = ({ section_five_header, staff_cards }) => {
 					{staff_cards.map((staff) => (
 						<div
 							key={staff.id}
-							className="bg-gray-100 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-xl animate-scaleIn group"
+							className="bg-white rounded-xl shadow-md border border-gray-100 p-8 text-center transition-all duration-300 hover:border-gold/30 hover:shadow-xl hover:-translate-y-1 animate-scaleIn group flex flex-col items-center"
 						>
-							<div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-clip shadow-xl">
+							<div className="relative w-48 h-48 mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white group-hover:border-gold/20 transition-colors duration-300">
 								{SafeImage(
 									staff.avatar.data,
 									"object-cover [overflow-clip-margin:unset]"
 								)}
 							</div>
-							<h3 className="font-fancy text-xl font-semibold text-gray-900 mb-2">
+							<h3 className="font-fancy text-2xl font-bold text-gray-900 mb-2">
 								{staff.name}
 							</h3>
-							<p className="text-gray-600">{staff.title}</p>
+							<p className="text-gray-600 font-medium mb-6">{staff.title}</p>
 							<Button
 								variant="outline"
-								className="mt-4 w-1/2 group-hover:bg-primary group-hover:text-white transition-all duration-300"
+								className="mt-auto w-full group-hover:bg-primary group-hover:text-white transition-all duration-300"
 								asChild
 							>
 								<Link href={staff.href}>View Profile</Link>

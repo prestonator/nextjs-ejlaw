@@ -12,23 +12,25 @@ const SectionFour = ({ section_four_header, testimonial }) => {
 					{testimonial.map((testimonial) => (
 						<div
 							key={testimonial.id}
-							className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl animate-scaleIn flex flex-col justify-between"
+							className="bg-white rounded-xl shadow-md border border-gray-100 p-8 transition-all duration-300 hover:shadow-xl hover:border-gold/30 hover:-translate-y-1 animate-scaleIn flex flex-col justify-between"
 						>
 							{IconComponent({
 								icon: "FaQuoteLeft",
-								customClassName: "h-8 w-8 text-primary mb-4",
+								customClassName: "h-10 w-10 text-gold/40 mb-6",
 							})}
-							<p className="text-gray-700 mb-4">{testimonial.quote}</p>
-							<div className="flex items-center">
-								{IconComponent({
-									icon: "IoMdPerson",
-									customClassName: "w-6 h-6 p-2 bg-gray-300 rounded-full mr-4",
-								})}
+							<p className="text-gray-700 leading-relaxed italic mb-8 relative z-10">"{testimonial.quote}"</p>
+							<div className="flex items-center mt-auto border-t border-gray-100 pt-6">
+								<div className="flex-shrink-0 w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center mr-4 text-primary">
+									{IconComponent({
+										icon: "IoMdPerson",
+										customClassName: "w-6 h-6",
+									})}
+								</div>
 								<div>
-									<h4 className="font-fancy font-semibold text-gray-900">
+									<h4 className="font-fancy text-lg font-bold text-gray-900">
 										{testimonial.name}
 									</h4>
-									<p className="text-gray-600">{testimonial.location}</p>
+									<p className="text-sm font-medium text-gold uppercase tracking-wider">{testimonial.location}</p>
 								</div>
 							</div>
 						</div>

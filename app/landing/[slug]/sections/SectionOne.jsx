@@ -19,7 +19,7 @@ const SectionOne = ({
 					{section_one_card.map((item) => (
 						<div
 							key={item.id}
-							className="flex flex-col items-center text-center p-6 rounded-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-md animate-scaleIn"
+							className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 bg-white transition-all duration-300 hover:border-gold/30 hover:shadow-lg hover:-translate-y-1 animate-scaleIn"
 						>
 							{IconComponent({
 								icon: item.icon,
@@ -32,9 +32,9 @@ const SectionOne = ({
 						</div>
 					))}
 				</div>
-				<div className="text-center space-y-6">
+				<div className="text-center space-y-6 max-w-prose mx-auto">
 					{section_one_content.map((item) => (
-						<p key={item.id} className="text-lg text-gray-700">
+						<p key={item.id} className="text-lg text-gray-700 leading-relaxed">
 							{item.text}
 						</p>
 					))}

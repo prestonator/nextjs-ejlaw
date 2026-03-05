@@ -12,21 +12,21 @@ const SectionThree = ({ section_three_header, reasons_card }) => {
 					{reasons_card.map((item) => (
 						<div
 							key={item.id}
-							className="bg-white rounded-lg p-6 text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-xl group animate-scaleIn"
+							className="bg-white rounded-xl border border-gray-100 p-8 text-center transition-all duration-500 transform hover:-translate-y-2 shadow-sm hover:shadow-2xl hover:border-gold/50 group animate-scaleIn relative overflow-hidden"
 						>
-							<div className="relative border-2 border-solid border-gold z-10 bg-transparent text-gold rounded-full p-4 mx-auto mb-6 w-16 h-16 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:shadow-primary/50 group-hover:scale-105">
+							<div className="relative z-10 bg-gray-50 text-gold rounded-full p-4 mx-auto mb-6 w-20 h-20 flex items-center justify-center shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
 								{IconComponent({
 									icon: item.icon,
 									customClassName: "h-10 w-10",
 								})}
 							</div>
-							<h3 className="font-fancy text-2xl font-semibold text-gray-800 mb-3 transition-colors duration-300 group-hover:text-black">
+							<h3 className="relative z-10 font-fancy text-2xl font-bold text-gray-900 mb-4 transition-colors duration-300">
 								{item.header}
 							</h3>
-							<p className="text-gray-600 transition-colors duration-300 group-hover:text-gray-900">
+							<p className="relative z-10 text-gray-600 leading-relaxed transition-colors duration-300 group-hover:text-gray-800">
 								{item.content}
 							</p>
-							<div className="absolute inset-0 bg-linear-to-br from-primary/5 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg -z-10"></div>
+							<div className="absolute inset-0 bg-linear-to-b from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 						</div>
 					))}
 				</div>

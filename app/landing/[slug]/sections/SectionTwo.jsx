@@ -14,14 +14,16 @@ const SectionTwo = ({ section_two_header, services_card, title }) => {
 					{services_card.map((service) => (
 						<div
 							key={service.id}
-							className="bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl animate-scaleIn"
+							className="bg-white rounded-xl border border-gray-100 shadow-md p-8 transition-all duration-300 hover:shadow-xl hover:border-gold/30 hover:-translate-y-1 animate-scaleIn"
 						>
 							<div className="flex items-center mb-6">
-								{IconComponent({
-									icon: service.services_card_header.icon,
-									customClassName: "h-10 w-10 text-primary mr-4",
-								})}
-								<h3 className="font-fancy text-2xl font-semibold text-gray-900">
+								<div className="flex-shrink-0 bg-primary/5 p-3 rounded-full mr-4 text-primary">
+									{IconComponent({
+										icon: service.services_card_header.icon,
+										customClassName: "h-8 w-8",
+									})}
+								</div>
+								<h3 className="font-fancy text-2xl font-bold text-gray-900 leading-tight">
 									{service.services_card_header.content}
 								</h3>
 							</div>
@@ -44,7 +46,7 @@ const SectionTwo = ({ section_two_header, services_card, title }) => {
 				</div>
 				<div className="text-center mt-12">
 					<Button asChild className="font-special text-lg" size="lg">
-						<Link href="/family-law/divorce">Learn More about {title}</Link>
+						<Link href="#contact-form">Get Help with {title}</Link>
 					</Button>
 				</div>
 			</div>
